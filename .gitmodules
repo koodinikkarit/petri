@@ -1,0 +1,3 @@
+[submodule "matti-client-js"]
+	path = matti-client-js
+	url = https://github.com/koodinikkarit/matti-client-js.git
