@@ -1,3 +1,12 @@
-[submodule "matti-client-js"]
-	path = matti-client-js
+[submodule "src/matti-client-js"]
+	path = src/matti-client-js
 	url = https://github.com/koodinikkarit/matti-client-js.git
+[submodule "src/risto_service"]
+	path = src/risto_service
+	url = https://github.com/koodinikkarit/risto_service.git
+[submodule "src/matti-client-js"]
+	path = src/matti-client-js
+	url = https://github.com/koodinikkarit/matti-client-js.git
+[submodule "src/wompatti_service"]
+	path = src/wompatti_service
+	url = https://github.com/koodinikkarit/wompatti_service.git

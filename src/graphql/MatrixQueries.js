@@ -53,5 +53,5 @@ export default {
 		resolve: (_, args) => new Promise((resolve, reject) => {
 			//resolve(db.matrixs.find(p => p.slug === args.slug));
 		})
-	},
+	}
 }
