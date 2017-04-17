@@ -1,27 +1,19 @@
 import {
-    GraphQLObjectType,
-    GraphQLList,
-    GraphQLString,
-    GraphQLNonNull
+    GraphQLObjectType
 } from "graphql";
 
-/**
- * Queryparts
- */
+import {
+	queries as mattiQueries
+} from "./matti";
 
-import matrixQueries from "./MatrixQueries";
-import diagramQueries from "./DiagramQueries";
-import diagramScreenQueries from "./DiagramScreenQueries";
-import defaultStateQueries from "./DefaultStateQueries";
-import weeklyTimerQueries from "./WeeklyTimerQueries";
+import {
+	queries as wompattiQueries
+} from "./wompatti/";
 
 export default new GraphQLObjectType({
 	name: "QueryType",
 	fields: () => Object.assign(
-		matrixQueries,
-		diagramQueries,
-		diagramScreenQueries,
-		defaultStateQueries,
-		weeklyTimerQueries
+		mattiQueries,
+		wompattiQueries
 	)
 });
