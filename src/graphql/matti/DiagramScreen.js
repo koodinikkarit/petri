@@ -1,33 +1,48 @@
+
 import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLList,
-    GraphQLInt,
-	GraphQLBoolean,
-	GraphQLNonNull
+    GraphQLInt	
 } from "graphql";
 
-import MatrixGraphqlObject from "./Matrix";
-import ConPortGraphqlObject from "./ConPort";
-import CpuPortGraphqlObject from "./CpuPort";
+import * as classes from "./";
 
 export default new GraphQLObjectType({
 	name: "DiagramScreen",
 	fields: () => ({
 		id: {
-			type: GraphQLString
+			type: GraphQLInt
 		},
 		slug: {
 			type: GraphQLString
 		},
-		matrix: {
-			type: MatrixGraphqlObject
+		diagramId: {
+			type: GraphQLInt
 		},
-		conPort: {
-			type: ConPortGraphqlObject
+		matrixId: {
+			type: GraphQLInt
+		},
+		conPortId: {
+			type: GraphQLInt
+		},
+		matrix: {
+			type: classes.Matrix
+		},
+		conPorts: {
+			type:  new GraphQLList(classes.ConPort)
 		},
 		cpuPorts: {
-			type: new GraphQLList(CpuPortGraphqlObject)
+			type:  new GraphQLList(classes.CpuPort)
+		},
+		conPort: {
+			type: classes.ConPort
+		},
+		cpuPort: {
+			type: classes.ConPort
+		},
+		diagram: {
+			type: classes.Diagram
 		}
 	})
-});
+})

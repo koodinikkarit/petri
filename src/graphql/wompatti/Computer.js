@@ -1,22 +1,25 @@
+
 import {
     GraphQLObjectType,
-    GraphQLString
+    GraphQLString,
+    GraphQLList,
+    GraphQLInt	
 } from "graphql";
 
+import * as classes from "./";
+
 export default new GraphQLObjectType({
-    name: "Computer",
-    fields: () => ({
-        id: {
-            type: GraphQLString
-        },
-        name: {
-            type: GraphQLString
-        },
-        ip: {
-            type: GraphQLString
-        },
-        mac: {
-            type: GraphQLString
-        }
-    })
+	name: "Computer",
+	fields: () => ({
+		id: {
+			type: GraphQLInt
+		},
+		name: {
+			type: GraphQLString
+		},
+		mac: {
+			type: GraphQLString
+		},
+		
+	})
 })

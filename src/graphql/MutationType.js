@@ -3,17 +3,22 @@ import {
 } from "graphql";
 
 import {
-	mutations as mattiMutations
+	MattiServiceMutations
 } from "./matti";
 
 import {
-	mutations as wompattiMutations
+	WompattiServiceMutations
 } from "./wompatti";
+
+import {
+	RistoServiceMutations
+} from "./risto";
 
 export default new GraphQLObjectType({
 	name: "MutationType",
 	fields: () => Object.assign(
-		mattiMutations,
-		wompattiMutations
+		MattiServiceMutations,
+		WompattiServiceMutations,
+		RistoServiceMutations
 	)
 });

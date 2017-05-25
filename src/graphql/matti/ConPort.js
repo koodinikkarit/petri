@@ -1,28 +1,33 @@
+
 import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLList,
-    GraphQLInt,
-	GraphQLBoolean,
-	GraphQLNonNull
+    GraphQLInt	
 } from "graphql";
 
-import Matrix from "./Matrix";
+import * as classes from "./";
 
 export default new GraphQLObjectType({
-    name: "ConPort",
-    fields: () => ({
-        id: {
-            type: GraphQLString
-        },
-        slug: {
-            type: GraphQLString
-        },
-        matrix: {
-            type: Matrix
-        },
-        portNum: {
-            type: GraphQLInt
-        }
-    })
-});
+	name: "ConPort",
+	fields: () => ({
+		id: {
+			type: GraphQLInt
+		},
+		slug: {
+			type: GraphQLString
+		},
+		matrixId: {
+			type: GraphQLInt
+		},
+		portNum: {
+			type: GraphQLInt
+		},
+		matrix: {
+			type: classes.Matrix
+		},
+		cpuPorts: {
+			type:  new GraphQLList(classes.CpuPort)
+		}
+	})
+})

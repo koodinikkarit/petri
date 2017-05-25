@@ -1,26 +1,27 @@
+
 import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLList,
-    GraphQLInt,
-	GraphQLBoolean,
-	GraphQLNonNull
+    GraphQLInt	
 } from "graphql";
 
-
-import DiagramScreen from "./DiagramScreen";
+import * as classes from "./";
 
 export default new GraphQLObjectType({
 	name: "Diagram",
 	fields: () => ({
 		id: {
-			type: GraphQLString
+			type: GraphQLInt
 		},
 		slug: {
 			type: GraphQLString
 		},
 		diagramScreens: {
-			type: new GraphQLList(DiagramScreen)
+			type:  new GraphQLList(classes.DiagramScreen)
+		},
+		diagramScreen: {
+			type: classes.DiagramScreen
 		}
 	})
-});
+})

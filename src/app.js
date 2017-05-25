@@ -6,7 +6,9 @@ import {
 import bodyParser from 'body-parser';
 import schema from "./graphql/RootTypes";
 
-import cors from "cors";
+import Context from "./context/Context";
+
+//import cors from "cors";
 
 const fs = require("fs");
 const grpc = require("grpc");
@@ -21,9 +23,9 @@ const APP_PORT = 9595;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(cors({
-	origin: "http://localhost:11111"
-}))
+// app.use(cors({
+// 	origin: "http://localhost:11111"
+// }))
 
 app.use('/graphiql', graphiqlExpress({
 	endpointURL: '/graphql',
@@ -43,12 +45,15 @@ app.post("/login", (req, res) => {
 	// 	res.redirect(301, req.query.return_url + "?token=" + tokenCreated.token.token);
 	// });
 	// console.log(req.query.return_url);
-	
+	res.redirect(301, req.query.return_url + "?token=makkarasiili");
 });
   
 app.use('/', graphqlExpress((req) => {
+	console.log("req", req.body);
+	var context = new Context();
 	return {
-		schema
+		schema,
+		context
 	}
 }));
 

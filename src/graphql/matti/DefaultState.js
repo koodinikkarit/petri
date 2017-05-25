@@ -1,31 +1,33 @@
+
 import {
-	GraphQLObjectType,
-	GraphQLString,
-	GraphQLList
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLList,
+    GraphQLInt	
 } from "graphql";
 
-import Matrix from "./Matrix";
-import DefaultStateVideoConnection from "./DefaultStateVideoConnection";
-import DefaultStateKwmConnection from "./DefualtStateKwmConnection";
-
+import * as classes from "./";
 
 export default new GraphQLObjectType({
 	name: "DefaultState",
 	fields: () => ({
 		id: {
-			type: GraphQLString
+			type: GraphQLInt
 		},
 		slug: {
 			type: GraphQLString
 		},
+		matrixId: {
+			type: GraphQLInt
+		},
 		matrix: {
-			type: Matrix
+			type: classes.Matrix
 		},
-		videoConnections: {
-			type: new GraphQLList(DefaultStateVideoConnection)
+		conPorts: {
+			type:  new GraphQLList(classes.ConPort)
 		},
-		kwmConnections: {
-			type: new GraphQLList(DefaultStateKwmConnection)
+		cpuPorts: {
+			type:  new GraphQLList(classes.CpuPort)
 		}
 	})
-});
+})

@@ -7,7 +7,8 @@
 	},
 	"scripts": {
 		"start": "babel-node ./src/app.js",
-		"watch": "babel-watch ./src/app.js"
+		"watch": "babel-watch ./src/app.js",
+		"tt": "babel-node ./src/test.js"
 	},
 	"dependencies": {
 		"express": "^4.14.0",
@@ -18,7 +19,9 @@
 		"body-parser": "1.17.1",
 		"graphql": "0.9.1",
 		"grpc": "1.2.0",
-		"cors": "^2.8.3"
+		"google-protobuf": "3.3.0",
+		"cors": "^2.8.3",
+		"wompatti-client": "0.0.11"
 	},
 	"devDependencies": {
 		"babel-watch": "2.0.6"

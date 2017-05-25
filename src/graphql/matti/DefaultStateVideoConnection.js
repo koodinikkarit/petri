@@ -1,22 +1,36 @@
+
 import {
-	GraphQLObjectType,
-	GraphQLString
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLList,
+    GraphQLInt	
 } from "graphql";
 
-import ConPort from "./ConPort";
-import CpuPort from "./CpuPort";
+import * as classes from "./";
 
 export default new GraphQLObjectType({
 	name: "DefaultStateVideoConnection",
 	fields: () => ({
 		id: {
-			type: GraphQLString
+			type: GraphQLInt
+		},
+		conPortId: {
+			type: GraphQLInt
+		},
+		cpuPortId: {
+			type: GraphQLInt
+		},
+		defaultStateId: {
+			type: GraphQLInt
 		},
 		conPort: {
-			type: ConPort
+			type: classes.ConPort
 		},
 		cpuPort: {
-			type: CpuPort
+			type: classes.ConPort
+		},
+		defaultState: {
+			type: classes.DefaultState
 		}
 	})
-});
+})

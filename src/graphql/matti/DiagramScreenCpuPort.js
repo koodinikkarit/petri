@@ -1,22 +1,27 @@
+
 import {
-	GraphQLObjectType,
-	GraphQLString
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLList,
+    GraphQLInt	
 } from "graphql";
 
-import DiagramScreen from "./DiagramScreen";
-import CpuPort from "./CpuPort";
+import * as classes from "./";
 
 export default new GraphQLObjectType({
 	name: "DiagramScreenCpuPort",
 	fields: () => ({
 		id: {
-			type: GraphQLString
+			type: GraphQLInt
+		},
+		diagramScreenId: {
+			type: GraphQLInt
+		},
+		cpuPortId: {
+			type: GraphQLInt
 		},
 		diagramScreen: {
-			type: DiagramScreen,
-		},
-		cpuPort: {
-			type: CpuPort
+			type: classes.DiagramScreen
 		}
 	})
-});
+})

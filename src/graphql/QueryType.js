@@ -3,17 +3,22 @@ import {
 } from "graphql";
 
 import {
-	queries as mattiQueries
+	MattiServiceQueries
 } from "./matti";
 
 import {
-	queries as wompattiQueries
-} from "./wompatti/";
+	WompattiServiceQueries
+} from "./wompatti";
+
+import {
+	RistoServiceQueries
+} from "./risto";
 
 export default new GraphQLObjectType({
 	name: "QueryType",
 	fields: () => Object.assign(
-		mattiQueries,
-		wompattiQueries
+		MattiServiceQueries,
+		WompattiServiceQueries,
+		RistoServiceQueries
 	)
 });
