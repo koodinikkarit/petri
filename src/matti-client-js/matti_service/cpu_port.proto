@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-message CpuPort {
-	uint32 id = 1;
-	string slug = 2;
-	uint32 matrixId = 3;
-	uint32 portNum = 4;
-}
