@@ -146,7 +146,7 @@ export default class {
 			var req = new messages.RemoveDefaultStateRequest();
 			req.setDefaultstateid(defaultStateId)
 			
-			this.removeDefaultState(req, (err, res) => {
+			this.client.removeDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -179,7 +179,7 @@ export default class {
 			var req = new messages.RemoveVideoConnectionFromDefaultStateRequest();
 			req.setDefaultstatevideoconnection(this.id)
 			
-			this.removeVideoConnectionFromDefaultState(req, (err, res) => {
+			this.client.removeVideoConnectionFromDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -192,7 +192,7 @@ export default class {
 			var req = new messages.ExecuteDefaultStateRequest();
 			req.setDefaultstateid(defaultStateId)
 			
-			this.executeDefaultState(req, (err, res) => {
+			this.client.executeDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -276,7 +276,7 @@ export default class {
 			req.setDiagramscreenid(diagramScreenId);
 			req.setCpuportid(cpuPortId)
 			
-			this.removeCpuFromDiagramScreen(req, (err, res) => {
+			this.client.removeCpuFromDiagramScreen(req, (err, res) => {
 				resolve();
 			});
 		});

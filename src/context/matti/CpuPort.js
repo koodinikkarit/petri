@@ -166,7 +166,7 @@ export default class {
 			var req = new messages.RemoveMatrixRequest();
 			req.setMatrixid(matrixId)
 			
-			this.removeMatrix(req, (err, res) => {
+			this.client.removeMatrix(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -309,7 +309,7 @@ export default class {
 			req.setDiagramscreenid(diagramScreenId);
 			req.setCpuportid(this.id)
 			
-			this.removeCpuFromDiagramScreen(req, (err, res) => {
+			this.client.removeCpuFromDiagramScreen(req, (err, res) => {
 				resolve();
 			});
 		});

@@ -19,4 +19,5 @@ var wakeup_response_pb = require('./wakeup_response_pb.js');
 var edit_computer_request_pb = require('./edit_computer_request_pb.js');
 var edit_computer_response_pb = require('./edit_computer_response_pb.js');
 var computer_pb = require('./computer_pb.js');
+var keijo_pb = require('./keijo_pb.js');
 goog.object.extend(exports, proto.WompattiService);

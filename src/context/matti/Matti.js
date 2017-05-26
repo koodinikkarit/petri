@@ -225,7 +225,7 @@ export default class Matti {
 			var req = new messages.RemoveMatrixRequest();
 			req.setMatrixid(matrixId);
 			
-			this.removeMatrix(req, (err, res) => {
+			this.client.removeMatrix(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -359,7 +359,7 @@ export default class Matti {
 			req.setDefaultstateid(defaultStateId);
 			req.setSlug(slug);
 			
-			this.editDefaultState(req, (err, res) => {
+			this.client.editDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -372,7 +372,7 @@ export default class Matti {
 			var req = new messages.RemoveDefaultStateRequest();
 			req.setDefaultstateid(defaultStateId);
 			
-			this.removeDefaultState(req, (err, res) => {
+			this.client.removeDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -429,7 +429,7 @@ export default class Matti {
 			var req = new messages.RemoveVideoConnectionFromDefaultStateRequest();
 			req.setDefaultstatevideoconnection(defaultStateVideoConnection);
 			
-			this.removeVideoConnectionFromDefaultState(req, (err, res) => {
+			this.client.removeVideoConnectionFromDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -442,7 +442,7 @@ export default class Matti {
 			var req = new messages.RemoveKvmConnectionFromDefaultStateRequest();
 			req.setDefaultstatekvmconnection(defaultStateKvmConnection);
 			
-			this.removeKvmConnectionFromDefaultState(req, (err, res) => {
+			this.client.removeKvmConnectionFromDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -455,7 +455,7 @@ export default class Matti {
 			var req = new messages.ExecuteDefaultStateRequest();
 			req.setDefaultstateid(defaultStateId);
 			
-			this.executeDefaultState(req, (err, res) => {
+			this.client.executeDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -585,7 +585,7 @@ export default class Matti {
 			var req = new messages.RemoveDiagramRequest();
 			req.setDiagramid(diagramId);
 			
-			this.removeDiagram(req, (err, res) => {
+			this.client.removeDiagram(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -689,7 +689,7 @@ export default class Matti {
 			var req = new messages.RemoveDiagramScreenRequest();
 			req.setDiagramscreenid(diagramScreenId);
 			
-			this.removeDiagramScreen(req, (err, res) => {
+			this.client.removeDiagramScreen(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -748,7 +748,7 @@ export default class Matti {
 			req.setDiagramscreenid(diagramScreenId);
 			req.setCpuportid(cpuPortId);
 			
-			this.removeCpuFromDiagramScreen(req, (err, res) => {
+			this.client.removeCpuFromDiagramScreen(req, (err, res) => {
 				resolve();
 			});
 		});

@@ -117,7 +117,7 @@ export default class {
 			var req = new messages.RemoveDiagramScreenRequest();
 			req.setDiagramscreenid(diagramScreenId)
 			
-			this.removeDiagramScreen(req, (err, res) => {
+			this.client.removeDiagramScreen(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -132,7 +132,7 @@ export default class {
 			req.setDiagramscreenid(diagramScreenId);
 			req.setCpuportid(cpuPortId)
 			
-			this.removeCpuFromDiagramScreen(req, (err, res) => {
+			this.client.removeCpuFromDiagramScreen(req, (err, res) => {
 				resolve();
 			});
 		});

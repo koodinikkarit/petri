@@ -166,7 +166,7 @@ export default class {
 			var req = new messages.RemoveMatrixRequest();
 			req.setMatrixid(matrixId)
 			
-			this.removeMatrix(req, (err, res) => {
+			this.client.removeMatrix(req, (err, res) => {
 				resolve();
 			});
 		});

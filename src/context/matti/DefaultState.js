@@ -184,7 +184,7 @@ export default class {
 			var req = new messages.RemoveMatrixRequest();
 			req.setMatrixid(matrixId)
 			
-			this.removeMatrix(req, (err, res) => {
+			this.client.removeMatrix(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -195,7 +195,7 @@ export default class {
 			var req = new messages.RemoveDefaultStateRequest();
 			req.setDefaultstateid(this.id)
 			
-			this.removeDefaultState(req, (err, res) => {
+			this.client.removeDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -248,7 +248,7 @@ export default class {
 			var req = new messages.RemoveVideoConnectionFromDefaultStateRequest();
 			req.setDefaultstatevideoconnection(this.id)
 			
-			this.removeVideoConnectionFromDefaultState(req, (err, res) => {
+			this.client.removeVideoConnectionFromDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -259,7 +259,7 @@ export default class {
 			var req = new messages.RemoveKvmConnectionFromDefaultStateRequest();
 			req.setDefaultstatekvmconnection(this.id)
 			
-			this.removeKvmConnectionFromDefaultState(req, (err, res) => {
+			this.client.removeKvmConnectionFromDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
@@ -270,7 +270,7 @@ export default class {
 			var req = new messages.ExecuteDefaultStateRequest();
 			req.setDefaultstateid(this.id)
 			
-			this.executeDefaultState(req, (err, res) => {
+			this.client.executeDefaultState(req, (err, res) => {
 				resolve();
 			});
 		});
