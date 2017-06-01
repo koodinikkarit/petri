@@ -10,11 +10,9 @@ import {
 import * as classes from "./";
 
 export default new GraphQLObjectType({
-	name: "Token",
+	name: "EventTimer",
 	fields: () => ({
-		token: {
-			type: GraphQLString
-		},
+		
 		
 	})
 })

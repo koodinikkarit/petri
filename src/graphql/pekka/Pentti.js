@@ -10,11 +10,16 @@ import {
 import * as classes from "./";
 
 export default new GraphQLObjectType({
-	name: "Token",
+	name: "Pentti",
 	fields: () => ({
-		token: {
+		id: {
+			type: GraphQLInt
+		},
+		ip: {
 			type: GraphQLString
 		},
-		
+		buttons: {
+			type:  new GraphQLList(classes.Button)
+		}
 	})
 })

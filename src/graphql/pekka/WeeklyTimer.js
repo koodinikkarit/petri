@@ -10,7 +10,7 @@ import {
 import * as classes from "./";
 
 export default new GraphQLObjectType({
-	name: "DiagramScreen",
+	name: "WeeklyTimer",
 	fields: () => ({
 		id: {
 			type: GraphQLInt
@@ -18,32 +18,36 @@ export default new GraphQLObjectType({
 		slug: {
 			type: GraphQLString
 		},
-		diagramId: {
+		minutes: {
 			type: GraphQLInt
 		},
-		matrixId: {
+		hours: {
 			type: GraphQLInt
 		},
-		conPortId: {
-			type: GraphQLInt
+		active: {
+			type: GraphQLBoolean
 		},
-		matrix: {
-			type: classes.Matrix
+		monday: {
+			type: GraphQLBoolean
 		},
-		conPorts: {
-			type:  new GraphQLList(classes.ConPort)
+		tuesday: {
+			type: GraphQLBoolean
 		},
-		cpuPorts: {
-			type:  new GraphQLList(classes.CpuPort)
+		wednesday: {
+			type: GraphQLBoolean
 		},
-		conPort: {
-			type: classes.ConPort
+		thursday: {
+			type: GraphQLBoolean
 		},
-		cpuPort: {
-			type: classes.ConPort
+		friday: {
+			type: GraphQLBoolean
 		},
-		diagram: {
-			type: classes.Diagram
-		}
+		saturday: {
+			type: GraphQLBoolean
+		},
+		sunday: {
+			type: GraphQLBoolean
+		},
+		
 	})
 })

@@ -18,6 +18,10 @@ import {
 	Risto
 } from "./risto";
 
+import {
+	Pekka
+} from "./pekka";
+
 const config = require("../../config.json");
 
 export default class {
@@ -53,5 +57,12 @@ export default class {
 			this._risto = new Risto("localhost", 5051, this._credentials);
 		}
 		return this._risto;
+	}
+
+	get pekka() {
+		if (!this._pekka) {
+			this._pekka = new Pekka("localhost", 5054, this._credentials);
+		}
+		return this._pekka;
 	}
 }

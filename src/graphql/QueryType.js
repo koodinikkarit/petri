@@ -14,11 +14,16 @@ import {
 	RistoServiceQueries
 } from "./risto";
 
+import {
+	PekkaServiceQueries
+} from "./pekka";
+
 export default new GraphQLObjectType({
 	name: "QueryType",
 	fields: () => Object.assign(
 		MattiServiceQueries,
 		WompattiServiceQueries,
-		RistoServiceQueries
+		RistoServiceQueries,
+		PekkaServiceQueries
 	)
 });

@@ -14,11 +14,16 @@ import {
 	RistoServiceMutations
 } from "./risto";
 
+import {
+	PekkaServiceMutations
+} from "./pekka";
+
 export default new GraphQLObjectType({
 	name: "MutationType",
 	fields: () => Object.assign(
 		MattiServiceMutations,
 		WompattiServiceMutations,
-		RistoServiceMutations
+		RistoServiceMutations,
+		PekkaServiceMutations
 	)
 });

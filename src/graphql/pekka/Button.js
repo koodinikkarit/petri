@@ -10,31 +10,25 @@ import {
 import * as classes from "./";
 
 export default new GraphQLObjectType({
-	name: "Matrix",
+	name: "Button",
 	fields: () => ({
 		id: {
 			type: GraphQLInt
 		},
-		ip: {
-			type: GraphQLString
-		},
-		port: {
+		number: {
 			type: GraphQLInt
 		},
-		slug: {
-			type: GraphQLString
-		},
-		numberOfConPorts: {
+		penttiId: {
 			type: GraphQLInt
 		},
-		numberOfCpuPorts: {
+		onExecutorId: {
 			type: GraphQLInt
 		},
-		conPorts: {
-			type:  new GraphQLList(classes.ConPort)
+		offExecutorId: {
+			type: GraphQLInt
 		},
-		cpuPorts: {
-			type:  new GraphQLList(classes.CpuPort)
+		pentti: {
+			type: classes.Pentti
 		}
 	})
 })

@@ -10,10 +10,13 @@ import {
 import * as classes from "./";
 
 export default new GraphQLObjectType({
-	name: "Token",
+	name: "FetchPenttiDevices",
 	fields: () => ({
-		token: {
-			type: GraphQLString
+		offset: {
+			type: GraphQLInt
+		},
+		limit: {
+			type: GraphQLInt
 		},
 		
 	})
