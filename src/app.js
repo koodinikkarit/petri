@@ -4,9 +4,9 @@ import {
 	graphiqlExpress
 } from 'graphql-server-express';
 import bodyParser from 'body-parser';
-import schema from "./graphql/RootTypes";
+import schema from "./graphql";
 
-import Context from "./context/Context";
+import Context from "./context";
 
 //import cors from "cors";
 
@@ -47,10 +47,12 @@ app.post("/login", (req, res) => {
 	// console.log(req.query.return_url);
 	res.redirect(301, req.query.return_url + "?token=makkarasiili");
 });
-  
+
 app.use('/', graphqlExpress((req) => {
-	console.log("req", req.body);
-	var context = new Context();
+	var context = new Context({
+		wompattiIp: "localhost",
+		wompattiPort: 5052
+	});
 	return {
 		schema,
 		context
