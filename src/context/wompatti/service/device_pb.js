@@ -68,7 +68,8 @@ proto.WompattiService.Device.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     deviceinfoid: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 3, "")
+    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    devicetypeid: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -116,6 +117,10 @@ proto.WompattiService.Device.deserializeBinaryFromReader = function(msg, reader)
     case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDevicetypeid(value);
       break;
     default:
       reader.skipField();
@@ -166,6 +171,13 @@ proto.WompattiService.Device.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
+  f = message.getDevicetypeid();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -211,6 +223,21 @@ proto.WompattiService.Device.prototype.getName = function() {
 /** @param {string} value */
 proto.WompattiService.Device.prototype.setName = function(value) {
   jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 deviceTypeId = 4;
+ * @return {number}
+ */
+proto.WompattiService.Device.prototype.getDevicetypeid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.Device.prototype.setDevicetypeid = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 

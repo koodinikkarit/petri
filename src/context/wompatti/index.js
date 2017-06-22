@@ -382,4 +382,250 @@ export default class {
 			})
 		})
 	}
+
+
+
+
+	editWolInterface({
+		wolInterfaceId,
+		ethernetInterfaceId,
+		mac
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditWolInterfaceRequest();
+			req.setWolinterfaceid(wolInterfaceId);
+			req.setEthernetinterfaceid(ethernetInterfaceId);
+			req.setMac(mac);
+
+			this.client.editWolInterface(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}
+			})
+		});
+	}
+
+	removeWolInterface(id) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveWolInterfaceRequest();
+			req.setWolinterfaceid(id);
+
+			this.client.removeWolInterface(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}
+			})
+		});
+	}
+
+	executeWolInterface(id) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.ExecuteWolInterfaceRequest();
+			req.setWolinterfaceid(id);
+
+			this.client.executeWolInterface(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	fetchWolInterfaceById(id) {
+		if (!this.wolInterfaceLoader) {
+			this.wolInterfaceLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.fetchWolInterfaceByIdRequest();
+				req.setWolinterfaceidtList(keys);
+
+				var call = this.client.fetchWolInterfaceById(req);
+
+				var items = [];
+
+				call.on("data", (res) => {
+
+				});
+
+				call.on("end", () => {
+					resolve(items);
+				});
+
+				call.on("error", () => {
+
+				});
+			}));
+		}
+		return this.wolInterfaceLoader(id);		
+	}
+
+	createDeviceType({
+		name
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateDeviceTypeRequest();
+			req.setName(name);
+
+			this.client.createDeviceType(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}				
+			})
+		});
+	}
+
+	editDeviceType({
+		deviceTypeId,
+		name,
+		serialInterfaceId,
+		telnetInterfaceId,
+		cecInterfaceId
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditDeviceTypeRequest();
+			req.setDevicetypeid(deviceTypeId);
+			req.setName(name);
+			req.setSerialinterfaceid(serialInterfaceId);
+			req.setTelnetInterfaceId(telnetInterfaceId);
+			req.setCecinterfaceid(cecInterfaceId);
+
+			this.client.editDeviceType(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	removeDeviceType(id) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveDeviceTypRequest();
+			req.setDevicetypeid(id);
+
+			this.client.removeDeviceType(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}				
+			});
+		});
+	}
+
+	fetchDeviceTypes({
+		offset,
+		limit
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.FetchDeviceTypesRequest();
+			req.setOffset(offset);
+			req.setLimit(limit);
+
+			var call = this.client.fetchDeviceTypes(req);
+
+			var items = [];
+
+			call.on("data", (res) => {
+
+			});
+
+			call.on("end", () => {
+				resolve(items);
+			});
+
+			call.on("error", () => {
+
+			});
+		})
+	}
+
+	fetchDeviceTypeById(id) {
+		if (!this.fetchDeviceTypeLoader) {
+			this.fetchDeviceTypeLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchDeviceTypeByIdRequest();
+				req.setDevicetypeidtList(keys);
+
+				var call = this.client.fetchDeviceTypeById(req);
+
+				var items = [];
+
+				call.on("data", res => {
+
+				});
+
+				call.on("end", () => {
+					resolve(items);
+				});
+
+				call.on("error", () => {
+
+				});
+			}));
+		}
+	}
+
+	createCommand({
+		deviceTypeId,
+		name,
+		value
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateCommandRequest();
+			req.setDevicetypeid(deviceTypeId);
+			req.setName(name);
+			req.value(value);
+
+			this.client.createCommand(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}				
+			});
+		});
+	}
+
+	editCommand({
+		commandId,
+		name,
+		value
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditCommandRequest();
+			req.setCommandid(commandId);
+			req.setName(name);
+			req.setValue(value);
+
+			this.client.editCommand(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}				
+			});
+		});
+	}
+
+	removeCommand(id) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveCommandRequest();
+			req.setCommandid(id);
+
+			this.client.removeCommand(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}				
+			});
+		});
+	}
 }

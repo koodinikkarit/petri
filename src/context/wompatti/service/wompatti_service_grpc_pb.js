@@ -8,6 +8,7 @@ var arttu_pb = require('./arttu_pb.js');
 var device_pb = require('./device_pb.js');
 var ethernet_interface_pb = require('./ethernet_interface_pb.js');
 var wol_interface_pb = require('./wol_interface_pb.js');
+var device_type_pb = require('./device_type_pb.js');
 
 function serialize_WompattiService_Computer(arg) {
   if (!(arg instanceof computer_pb.Computer)) {
@@ -18,6 +19,28 @@ function serialize_WompattiService_Computer(arg) {
 
 function deserialize_WompattiService_Computer(buffer_arg) {
   return computer_pb.Computer.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_CreateCommandRequest(arg) {
+  if (!(arg instanceof device_type_pb.CreateCommandRequest)) {
+    throw new Error('Expected argument of type WompattiService.CreateCommandRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_CreateCommandRequest(buffer_arg) {
+  return device_type_pb.CreateCommandRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_CreateCommandResponse(arg) {
+  if (!(arg instanceof device_type_pb.CreateCommandResponse)) {
+    throw new Error('Expected argument of type WompattiService.CreateCommandResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_CreateCommandResponse(buffer_arg) {
+  return device_type_pb.CreateCommandResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_CreateComputerRequest(arg) {
@@ -62,6 +85,28 @@ function serialize_WompattiService_CreateDeviceResponse(arg) {
 
 function deserialize_WompattiService_CreateDeviceResponse(buffer_arg) {
   return device_pb.CreateDeviceResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_CreateDeviceTypeRequest(arg) {
+  if (!(arg instanceof device_type_pb.CreateDeviceTypeRequest)) {
+    throw new Error('Expected argument of type WompattiService.CreateDeviceTypeRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_CreateDeviceTypeRequest(buffer_arg) {
+  return device_type_pb.CreateDeviceTypeRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_CreateDeviceTypeResponse(arg) {
+  if (!(arg instanceof device_type_pb.CreateDeviceTypeResponse)) {
+    throw new Error('Expected argument of type WompattiService.CreateDeviceTypeResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_CreateDeviceTypeResponse(buffer_arg) {
+  return device_type_pb.CreateDeviceTypeResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_CreateKeyValueRequest(arg) {
@@ -119,6 +164,28 @@ function deserialize_WompattiService_Device(buffer_arg) {
   return device_pb.Device.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_WompattiService_EditCommandReponse(arg) {
+  if (!(arg instanceof device_type_pb.EditCommandReponse)) {
+    throw new Error('Expected argument of type WompattiService.EditCommandReponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_EditCommandReponse(buffer_arg) {
+  return device_type_pb.EditCommandReponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_EditCommandRequest(arg) {
+  if (!(arg instanceof device_type_pb.EditCommandRequest)) {
+    throw new Error('Expected argument of type WompattiService.EditCommandRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_EditCommandRequest(buffer_arg) {
+  return device_type_pb.EditCommandRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_WompattiService_EditComputerRequest(arg) {
   if (!(arg instanceof computer_pb.EditComputerRequest)) {
     throw new Error('Expected argument of type WompattiService.EditComputerRequest');
@@ -139,6 +206,28 @@ function serialize_WompattiService_EditComputerResponse(arg) {
 
 function deserialize_WompattiService_EditComputerResponse(buffer_arg) {
   return computer_pb.EditComputerResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_EditDeviceTypeRequest(arg) {
+  if (!(arg instanceof device_type_pb.EditDeviceTypeRequest)) {
+    throw new Error('Expected argument of type WompattiService.EditDeviceTypeRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_EditDeviceTypeRequest(buffer_arg) {
+  return device_type_pb.EditDeviceTypeRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_EditDeviceTypeResponse(arg) {
+  if (!(arg instanceof device_type_pb.EditDeviceTypeResponse)) {
+    throw new Error('Expected argument of type WompattiService.EditDeviceTypeResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_EditDeviceTypeResponse(buffer_arg) {
+  return device_type_pb.EditDeviceTypeResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_EditKeyValueRequest(arg) {
@@ -163,6 +252,28 @@ function deserialize_WompattiService_EditKeyValueResponse(buffer_arg) {
   return device_info_pb.EditKeyValueResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_WompattiService_EditWolInterfaceRequest(arg) {
+  if (!(arg instanceof wol_interface_pb.EditWolInterfaceRequest)) {
+    throw new Error('Expected argument of type WompattiService.EditWolInterfaceRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_EditWolInterfaceRequest(buffer_arg) {
+  return wol_interface_pb.EditWolInterfaceRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_EditWolInterfaceResponse(arg) {
+  if (!(arg instanceof wol_interface_pb.EditWolInterfaceResponse)) {
+    throw new Error('Expected argument of type WompattiService.EditWolInterfaceResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_EditWolInterfaceResponse(buffer_arg) {
+  return wol_interface_pb.EditWolInterfaceResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_WompattiService_EthernetInterface(arg) {
   if (!(arg instanceof ethernet_interface_pb.EthernetInterface)) {
     throw new Error('Expected argument of type WompattiService.EthernetInterface');
@@ -172,6 +283,28 @@ function serialize_WompattiService_EthernetInterface(arg) {
 
 function deserialize_WompattiService_EthernetInterface(buffer_arg) {
   return ethernet_interface_pb.EthernetInterface.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_ExecuteWolInterfaceRequest(arg) {
+  if (!(arg instanceof wol_interface_pb.ExecuteWolInterfaceRequest)) {
+    throw new Error('Expected argument of type WompattiService.ExecuteWolInterfaceRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_ExecuteWolInterfaceRequest(buffer_arg) {
+  return wol_interface_pb.ExecuteWolInterfaceRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_ExecuteWolInterfaceResponse(arg) {
+  if (!(arg instanceof wol_interface_pb.ExecuteWolInterfaceResponse)) {
+    throw new Error('Expected argument of type WompattiService.ExecuteWolInterfaceResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_ExecuteWolInterfaceResponse(buffer_arg) {
+  return wol_interface_pb.ExecuteWolInterfaceResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_FetchComputerByIdRequest(arg) {
@@ -295,6 +428,50 @@ function deserialize_WompattiService_FetchKeyValuesByDeviceInfoIdResponse(buffer
   return device_info_pb.FetchKeyValuesByDeviceInfoIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_WompattiService_FetchWolInterfaceByIdRequest(arg) {
+  if (!(arg instanceof wol_interface_pb.FetchWolInterfaceByIdRequest)) {
+    throw new Error('Expected argument of type WompattiService.FetchWolInterfaceByIdRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_FetchWolInterfaceByIdRequest(buffer_arg) {
+  return wol_interface_pb.FetchWolInterfaceByIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_FetchWolInterfaceByIdResponse(arg) {
+  if (!(arg instanceof wol_interface_pb.FetchWolInterfaceByIdResponse)) {
+    throw new Error('Expected argument of type WompattiService.FetchWolInterfaceByIdResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_FetchWolInterfaceByIdResponse(buffer_arg) {
+  return wol_interface_pb.FetchWolInterfaceByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_RemoveCommandRequest(arg) {
+  if (!(arg instanceof device_type_pb.RemoveCommandRequest)) {
+    throw new Error('Expected argument of type WompattiService.RemoveCommandRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_RemoveCommandRequest(buffer_arg) {
+  return device_type_pb.RemoveCommandRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_RemoveCommandResponse(arg) {
+  if (!(arg instanceof device_type_pb.RemoveCommandResponse)) {
+    throw new Error('Expected argument of type WompattiService.RemoveCommandResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_RemoveCommandResponse(buffer_arg) {
+  return device_type_pb.RemoveCommandResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_WompattiService_RemoveComputerRequest(arg) {
   if (!(arg instanceof computer_pb.RemoveComputerRequest)) {
     throw new Error('Expected argument of type WompattiService.RemoveComputerRequest');
@@ -339,6 +516,28 @@ function deserialize_WompattiService_RemoveDeviceResponse(buffer_arg) {
   return device_pb.RemoveDeviceResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_WompattiService_RemoveDeviceTypeRequest(arg) {
+  if (!(arg instanceof device_type_pb.RemoveDeviceTypeRequest)) {
+    throw new Error('Expected argument of type WompattiService.RemoveDeviceTypeRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_RemoveDeviceTypeRequest(buffer_arg) {
+  return device_type_pb.RemoveDeviceTypeRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_RemoveDeviceTypeResponse(arg) {
+  if (!(arg instanceof device_type_pb.RemoveDeviceTypeResponse)) {
+    throw new Error('Expected argument of type WompattiService.RemoveDeviceTypeResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_RemoveDeviceTypeResponse(buffer_arg) {
+  return device_type_pb.RemoveDeviceTypeResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_WompattiService_RemoveKeyValueRequest(arg) {
   if (!(arg instanceof device_info_pb.RemoveKeyValueRequest)) {
     throw new Error('Expected argument of type WompattiService.RemoveKeyValueRequest');
@@ -359,6 +558,28 @@ function serialize_WompattiService_RemoveKeyValueResponse(arg) {
 
 function deserialize_WompattiService_RemoveKeyValueResponse(buffer_arg) {
   return device_info_pb.RemoveKeyValueResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_RemoveWolInterfaceRequest(arg) {
+  if (!(arg instanceof wol_interface_pb.RemoveWolInterfaceRequest)) {
+    throw new Error('Expected argument of type WompattiService.RemoveWolInterfaceRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_RemoveWolInterfaceRequest(buffer_arg) {
+  return wol_interface_pb.RemoveWolInterfaceRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_RemoveWolInterfaceResponse(arg) {
+  if (!(arg instanceof wol_interface_pb.RemoveWolInterfaceResponse)) {
+    throw new Error('Expected argument of type WompattiService.RemoveWolInterfaceResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_RemoveWolInterfaceResponse(buffer_arg) {
+  return wol_interface_pb.RemoveWolInterfaceResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -538,6 +759,116 @@ var WompattiService = exports.WompattiService = {
     requestDeserialize: deserialize_WompattiService_CreateWolInterfaceRequest,
     responseSerialize: serialize_WompattiService_CreateWolInterfaceResponse,
     responseDeserialize: deserialize_WompattiService_CreateWolInterfaceResponse,
+  },
+  editWolInterface: {
+    path: '/WompattiService.Wompatti/editWolInterface',
+    requestStream: false,
+    responseStream: false,
+    requestType: wol_interface_pb.EditWolInterfaceRequest,
+    responseType: wol_interface_pb.EditWolInterfaceResponse,
+    requestSerialize: serialize_WompattiService_EditWolInterfaceRequest,
+    requestDeserialize: deserialize_WompattiService_EditWolInterfaceRequest,
+    responseSerialize: serialize_WompattiService_EditWolInterfaceResponse,
+    responseDeserialize: deserialize_WompattiService_EditWolInterfaceResponse,
+  },
+  removeWolInterface: {
+    path: '/WompattiService.Wompatti/removeWolInterface',
+    requestStream: false,
+    responseStream: false,
+    requestType: wol_interface_pb.RemoveWolInterfaceRequest,
+    responseType: wol_interface_pb.RemoveWolInterfaceResponse,
+    requestSerialize: serialize_WompattiService_RemoveWolInterfaceRequest,
+    requestDeserialize: deserialize_WompattiService_RemoveWolInterfaceRequest,
+    responseSerialize: serialize_WompattiService_RemoveWolInterfaceResponse,
+    responseDeserialize: deserialize_WompattiService_RemoveWolInterfaceResponse,
+  },
+  executeWolInterface: {
+    path: '/WompattiService.Wompatti/executeWolInterface',
+    requestStream: false,
+    responseStream: false,
+    requestType: wol_interface_pb.ExecuteWolInterfaceRequest,
+    responseType: wol_interface_pb.ExecuteWolInterfaceResponse,
+    requestSerialize: serialize_WompattiService_ExecuteWolInterfaceRequest,
+    requestDeserialize: deserialize_WompattiService_ExecuteWolInterfaceRequest,
+    responseSerialize: serialize_WompattiService_ExecuteWolInterfaceResponse,
+    responseDeserialize: deserialize_WompattiService_ExecuteWolInterfaceResponse,
+  },
+  fetchWolInterfaceById: {
+    path: '/WompattiService.Wompatti/fetchWolInterfaceById',
+    requestStream: false,
+    responseStream: true,
+    requestType: wol_interface_pb.FetchWolInterfaceByIdRequest,
+    responseType: wol_interface_pb.FetchWolInterfaceByIdResponse,
+    requestSerialize: serialize_WompattiService_FetchWolInterfaceByIdRequest,
+    requestDeserialize: deserialize_WompattiService_FetchWolInterfaceByIdRequest,
+    responseSerialize: serialize_WompattiService_FetchWolInterfaceByIdResponse,
+    responseDeserialize: deserialize_WompattiService_FetchWolInterfaceByIdResponse,
+  },
+  createDeviceType: {
+    path: '/WompattiService.Wompatti/createDeviceType',
+    requestStream: false,
+    responseStream: false,
+    requestType: device_type_pb.CreateDeviceTypeRequest,
+    responseType: device_type_pb.CreateDeviceTypeResponse,
+    requestSerialize: serialize_WompattiService_CreateDeviceTypeRequest,
+    requestDeserialize: deserialize_WompattiService_CreateDeviceTypeRequest,
+    responseSerialize: serialize_WompattiService_CreateDeviceTypeResponse,
+    responseDeserialize: deserialize_WompattiService_CreateDeviceTypeResponse,
+  },
+  editDeviceType: {
+    path: '/WompattiService.Wompatti/editDeviceType',
+    requestStream: false,
+    responseStream: false,
+    requestType: device_type_pb.EditDeviceTypeRequest,
+    responseType: device_type_pb.EditDeviceTypeResponse,
+    requestSerialize: serialize_WompattiService_EditDeviceTypeRequest,
+    requestDeserialize: deserialize_WompattiService_EditDeviceTypeRequest,
+    responseSerialize: serialize_WompattiService_EditDeviceTypeResponse,
+    responseDeserialize: deserialize_WompattiService_EditDeviceTypeResponse,
+  },
+  removeDeviceType: {
+    path: '/WompattiService.Wompatti/removeDeviceType',
+    requestStream: false,
+    responseStream: false,
+    requestType: device_type_pb.RemoveDeviceTypeRequest,
+    responseType: device_type_pb.RemoveDeviceTypeResponse,
+    requestSerialize: serialize_WompattiService_RemoveDeviceTypeRequest,
+    requestDeserialize: deserialize_WompattiService_RemoveDeviceTypeRequest,
+    responseSerialize: serialize_WompattiService_RemoveDeviceTypeResponse,
+    responseDeserialize: deserialize_WompattiService_RemoveDeviceTypeResponse,
+  },
+  createCommand: {
+    path: '/WompattiService.Wompatti/createCommand',
+    requestStream: false,
+    responseStream: false,
+    requestType: device_type_pb.CreateCommandRequest,
+    responseType: device_type_pb.CreateCommandResponse,
+    requestSerialize: serialize_WompattiService_CreateCommandRequest,
+    requestDeserialize: deserialize_WompattiService_CreateCommandRequest,
+    responseSerialize: serialize_WompattiService_CreateCommandResponse,
+    responseDeserialize: deserialize_WompattiService_CreateCommandResponse,
+  },
+  editCommand: {
+    path: '/WompattiService.Wompatti/editCommand',
+    requestStream: false,
+    responseStream: false,
+    requestType: device_type_pb.EditCommandRequest,
+    responseType: device_type_pb.EditCommandReponse,
+    requestSerialize: serialize_WompattiService_EditCommandRequest,
+    requestDeserialize: deserialize_WompattiService_EditCommandRequest,
+    responseSerialize: serialize_WompattiService_EditCommandReponse,
+    responseDeserialize: deserialize_WompattiService_EditCommandReponse,
+  },
+  removeCommand: {
+    path: '/WompattiService.Wompatti/removeCommand',
+    requestStream: false,
+    responseStream: false,
+    requestType: device_type_pb.RemoveCommandRequest,
+    responseType: device_type_pb.RemoveCommandResponse,
+    requestSerialize: serialize_WompattiService_RemoveCommandRequest,
+    requestDeserialize: deserialize_WompattiService_RemoveCommandRequest,
+    responseSerialize: serialize_WompattiService_RemoveCommandResponse,
+    responseDeserialize: deserialize_WompattiService_RemoveCommandResponse,
   },
 };
 
