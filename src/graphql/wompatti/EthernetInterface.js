@@ -1,36 +1,37 @@
-import {
-    GraphQLObjectType,
-    GraphQLInt,
-	GraphQLString
-} from "graphql";
 
-import {
-	Base64
-} from "js-base64";
+import PageInfo from "./PageInfo";
 
-export default new GraphQLObjectType({
-	name: "EthernetInterface",
-	fields: () => ({
-		id: {
-			type: GraphQLString,
-			resolve: (that, args) => {
-				return Base64.encode("etin_" + that.id)
-			}
-		},
-		name: {
-			type: GraphQLString
-		},
-		mac: {
-			type: GraphQLString
-		},
-		index: {
-			type: GraphQLInt
-		},
-		mtu: {
-			type: GraphQLString
-		},
-		flags: {
-			type: GraphQLInt
-		}
-	})
-})
+const EthernetInterface = `
+    type EthernetInterface {
+        id: ID
+        name: String
+        ip: String
+        mac: String
+        index: Int
+        mtu: Int
+        flags: Int
+    }
+`;
+
+const EthernetInterfacesEdge = `
+    type EthernetInterfacesEdge {
+        node: EthernetInterface
+        cursor: String!
+    }
+`;
+
+const EthernetInterfacesConnecton = `
+    type EthernetInterfacesConnection {
+        pageInfo: PageInfo
+        edges: [EthernetInterfacesEdge]
+        totalCount: Int
+        ethernetInterfaces: [EthernetInterface]
+    }
+`;
+
+export default () => [
+    PageInfo,
+    EthernetInterface,
+    EthernetInterfacesEdge,
+    EthernetInterfacesConnecton
+];

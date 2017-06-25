@@ -1,32 +1,59 @@
-import {
-    GraphQLObjectType,
-    GraphQLInt,
-	GraphQLString
-} from "graphql";
 
-var Base64 = require('js-base64').Base64;
-
-import Arttu from "./Arttu";
 import DeviceInfo from "./DeviceInfo";
-import FetchDeviceInfoByIdResponse from "./FetchDeviceInfoByIdResponse";
+import WolInterface from "./WolInterface";
+import Arttu from "./Arttu";
+import PageInfo from "./PageInfo";
 
-export default new GraphQLObjectType({
-	name: "Computer",
-	fields: () => ({
-		id: {
-			type: GraphQLString,
-			resolve: (that, args) => {
-				return Base64.encode("com_" + that.id);
-			}
-		},
-		arttu: {
-			type: Arttu
-		},
-		deviceInfo: {
-			type: FetchDeviceInfoByIdResponse
-		},
-		name: {
-			type: GraphQLString
-		}
-	})
-})
+const Computer = `
+    type Computer {
+        id: ID
+        name: String
+        deviceInfo: DeviceInfo
+        arttu: Arttu
+        wolInterface: WolInterface
+    }
+`;
+
+const CreateComputerInput = `
+    input CreateComputerInput {
+        name: String
+    }
+`;
+
+const EditComputerInput = `
+    input EditComputerInput {
+        computerId: ID!
+        name: String
+        arttuId: ID
+        deviceInfoId: ID
+        wolInterfaceId: ID
+    }
+`;
+
+const ComputersEdge = `
+    type ComputersEdge {
+        node: Computer
+        cursor: String!
+    }
+`
+
+const ComputersConnection = `
+    type ComputersConnection {
+        pageInfo: PageInfo
+        edges: [ComputersEdge]
+        totalCount: Int
+        computers: [Computer]
+    }
+`;
+
+export default () => [
+    DeviceInfo, 
+    WolInterface, 
+    Arttu, 
+    Computer,
+    PageInfo,
+    CreateComputerInput,
+    EditComputerInput,
+    ComputersConnection,
+    ComputersEdge
+];

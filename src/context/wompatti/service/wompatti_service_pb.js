@@ -16,4 +16,6 @@ var device_pb = require('./device_pb.js');
 var ethernet_interface_pb = require('./ethernet_interface_pb.js');
 var wol_interface_pb = require('./wol_interface_pb.js');
 var device_type_pb = require('./device_type_pb.js');
+var serial_interface_pb = require('./serial_interface_pb.js');
+var telnet_interface_pb = require('./telnet_interface_pb.js');
 goog.object.extend(exports, proto.WompattiService);

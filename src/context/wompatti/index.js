@@ -7,7 +7,10 @@ import DataLoader from "dataloader";
 import CreateComputerResponse from "./CreateComputerResponse";
 import EditComputerResponse from "./EditComputerResponse";
 import RemoveComputerResponse from "./RemoveComputerResponse";
-import Computer from "./Computer";
+import {
+	Computer,
+	ComputersConnection
+} from "./Computer";
 import DeviceInfo from "./DeviceInfo";
 import FetchKeyValuesByDeviceInfoIdResponse from "./FetchKeyValuesByDeviceInfoIdResponse";
 import FetchComputerByIdResponse from "./FetchComputerByIdResponse";
@@ -98,21 +101,29 @@ export default class {
 			var req = new messages.FetchComputersRequest();
 			req.setOffset(offset);
 			req.setLimit(limit);
+
+			this.client.fetchComputers(req, (err, res) => {
+				if (!err) {
+					resolve(new ComputersConnection(this, res));
+				} else {
+					reject();
+				}
+			});
 			
-			var call = this.client.fetchComputers(req);
-			var items = [];
+			// var call = this.client.fetchComputers(req);
+			// var items = [];
 
-			call.on("data", data => {
-				items.push(new Computer(this, data));
-			});
+			// call.on("data", data => {
+			// 	items.push(new Computer(this, data));
+			// });
 
-			call.on("end", () => {
-				resolve(items);
-			});
+			// call.on("end", () => {
+			// 	resolve(items);
+			// });
 
-			call.on("error", () => {
+			// call.on("error", () => {
 
-			});
+			// });
 		});
 	}
 
@@ -627,5 +638,137 @@ export default class {
 				}				
 			});
 		});
+	}
+
+	fetchCommandsByDeviceTypeId(id) {
+		if (!this.commandLoader) {
+			this.commandLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchCommandsByDeviceTypeIdRequest();
+				set.setDevicetypeidtList(keys);
+				var call = this.client.fetchCommandsByDeviceTypeId(req);
+				
+				var items = [];
+
+				call.on("data", (res) => {
+
+				});
+
+				call.on("end", () => {
+					resolve(items);
+				});
+
+				call.on("error", () => {
+
+				});
+			}));
+		}
+		return this.commandLoader.load(id);
+	}
+
+	createTelnetInterface({
+		ip,
+		port
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateTelnetInterfaceRequest();
+			req.setIp(ip);
+			req.setPort(port);
+
+			this.client.createTelnetInterface(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	editTelnetInterface({
+		telnetInterfaceId,
+		ip,
+		port
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditTelnetInterfaceRequest();
+			req.setTelnetinterfaceid(telnetInterfaceId);
+			req.setIp(ip);
+			req.setPort(port);
+
+			this.client.editTelnetInterface(req, (err, res) => {
+				if (!err) {
+					resolve()
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	removeTelnetInterface(id) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveTelnetInterfaceRequest();
+			req.setTelnetinterfaceid(id);
+
+			this.client.removeTelnetInterface(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	fetchTelnetInterfaces({
+		offset,
+		limit
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.FetchTelnetInterfacesRequest();
+			req.setOffset(offset);
+			req.setLimit(limit);
+
+			var call = this.client.fetchTelnetInterfaces(req);
+
+			var items = [];
+
+			call.on("data", telnetInterface => {
+
+			});
+
+			call.on("end", () => {
+				resolve(items);
+			});
+
+			call.on("error", () => {
+
+			});
+		})
+	}
+
+	fetchTelnetInterfaceById(id) {
+		if (!this.telnetInterfaceLoader) {
+			this.telnetInterfaceLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchTelnetInterfaceByIdRequest();
+				req.setTelnetinterfaceidtList(keys);
+
+				var call = this.client.fetchTelnetInterfaceById(req);
+
+				var items = [];
+
+				call.on("data", (res) => {
+
+				});
+
+				call.on("end", () => {
+					resolve(items);
+				});
+
+				call.on("error", () => {
+
+				});
+			}));
+		}
 	}
 }

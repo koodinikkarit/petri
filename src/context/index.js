@@ -1,10 +1,14 @@
 const fs = require("fs");
 const grpc = require("grpc");
 
+import path from "path";
+
+console.log("appdirr", );
+
 let sslCredentials = grpc.credentials.createSsl(
-	fs.readFileSync('../ssl/ca.crt'), 
-	fs.readFileSync('../ssl/client.key'), 
-	fs.readFileSync('../ssl/client.crt')
+	fs.readFileSync(path.join(__dirname, "../../ssl/ca.crt")), 
+	fs.readFileSync(path.join(__dirname, "../../ssl/client.key")), 
+	fs.readFileSync(path.join(__dirname, "../../ssl/client.crt"))
 );
 
 import Wompatti from "./wompatti";

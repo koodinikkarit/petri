@@ -10,7 +10,10 @@ var goog = jspb;
 var global = Function('return this')();
 
 var device_info_pb = require('./device_info_pb.js');
+var page_info_pb = require('./page_info_pb.js');
 goog.exportSymbol('proto.WompattiService.Computer', null, global);
+goog.exportSymbol('proto.WompattiService.ComputersConnection', null, global);
+goog.exportSymbol('proto.WompattiService.ComputersEdge', null, global);
 goog.exportSymbol('proto.WompattiService.CreateComputerRequest', null, global);
 goog.exportSymbol('proto.WompattiService.CreateComputerResponse', null, global);
 goog.exportSymbol('proto.WompattiService.EditComputerRequest', null, global);
@@ -73,9 +76,10 @@ proto.WompattiService.Computer.prototype.toObject = function(opt_includeInstance
 proto.WompattiService.Computer.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    arttuid: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    deviceinfoid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 4, "")
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    arttuid: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    deviceinfoid: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    wolinterfaceid: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -117,16 +121,20 @@ proto.WompattiService.Computer.deserializeBinaryFromReader = function(msg, reade
       msg.setId(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setArttuid(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
       break;
     case 3:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setDeviceinfoid(value);
+      msg.setArttuid(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDeviceinfoid(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setWolinterfaceid(value);
       break;
     default:
       reader.skipField();
@@ -163,24 +171,31 @@ proto.WompattiService.Computer.serializeBinaryToWriter = function(message, write
       f
     );
   }
-  f = message.getArttuid();
-  if (f !== 0) {
-    writer.writeUint32(
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
   }
-  f = message.getDeviceinfoid();
+  f = message.getArttuid();
   if (f !== 0) {
     writer.writeUint32(
       3,
       f
     );
   }
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getDeviceinfoid();
+  if (f !== 0) {
+    writer.writeUint32(
       4,
+      f
+    );
+  }
+  f = message.getWolinterfaceid();
+  if (f !== 0) {
+    writer.writeUint32(
+      5,
       f
     );
   }
@@ -203,47 +218,485 @@ proto.WompattiService.Computer.prototype.setId = function(value) {
 
 
 /**
- * optional uint32 arttuId = 2;
- * @return {number}
- */
-proto.WompattiService.Computer.prototype.getArttuid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.Computer.prototype.setArttuid = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 deviceInfoId = 3;
- * @return {number}
- */
-proto.WompattiService.Computer.prototype.getDeviceinfoid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.Computer.prototype.setDeviceinfoid = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional string name = 4;
+ * optional string name = 2;
  * @return {string}
  */
 proto.WompattiService.Computer.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
 proto.WompattiService.Computer.prototype.setName = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 arttuId = 3;
+ * @return {number}
+ */
+proto.WompattiService.Computer.prototype.getArttuid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.Computer.prototype.setArttuid = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 deviceInfoId = 4;
+ * @return {number}
+ */
+proto.WompattiService.Computer.prototype.getDeviceinfoid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.Computer.prototype.setDeviceinfoid = function(value) {
   jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional uint32 wolInterfaceId = 5;
+ * @return {number}
+ */
+proto.WompattiService.Computer.prototype.getWolinterfaceid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.Computer.prototype.setWolinterfaceid = function(value) {
+  jspb.Message.setField(this, 5, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.WompattiService.ComputersEdge = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.WompattiService.ComputersEdge, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.WompattiService.ComputersEdge.displayName = 'proto.WompattiService.ComputersEdge';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.WompattiService.ComputersEdge.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.ComputersEdge.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.WompattiService.ComputersEdge} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.WompattiService.ComputersEdge.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    node: (f = msg.getNode()) && proto.WompattiService.Computer.toObject(includeInstance, f),
+    cursor: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.WompattiService.ComputersEdge}
+ */
+proto.WompattiService.ComputersEdge.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.WompattiService.ComputersEdge;
+  return proto.WompattiService.ComputersEdge.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.WompattiService.ComputersEdge} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.WompattiService.ComputersEdge}
+ */
+proto.WompattiService.ComputersEdge.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.WompattiService.Computer;
+      reader.readMessage(value,proto.WompattiService.Computer.deserializeBinaryFromReader);
+      msg.setNode(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCursor(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.WompattiService.ComputersEdge.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.WompattiService.ComputersEdge.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.WompattiService.ComputersEdge} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.WompattiService.ComputersEdge.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getNode();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.WompattiService.Computer.serializeBinaryToWriter
+    );
+  }
+  f = message.getCursor();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional Computer node = 1;
+ * @return {?proto.WompattiService.Computer}
+ */
+proto.WompattiService.ComputersEdge.prototype.getNode = function() {
+  return /** @type{?proto.WompattiService.Computer} */ (
+    jspb.Message.getWrapperField(this, proto.WompattiService.Computer, 1));
+};
+
+
+/** @param {?proto.WompattiService.Computer|undefined} value */
+proto.WompattiService.ComputersEdge.prototype.setNode = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.WompattiService.ComputersEdge.prototype.clearNode = function() {
+  this.setNode(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.WompattiService.ComputersEdge.prototype.hasNode = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string cursor = 2;
+ * @return {string}
+ */
+proto.WompattiService.ComputersEdge.prototype.getCursor = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.WompattiService.ComputersEdge.prototype.setCursor = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.WompattiService.ComputersConnection = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.ComputersConnection.repeatedFields_, null);
+};
+goog.inherits(proto.WompattiService.ComputersConnection, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.WompattiService.ComputersConnection.displayName = 'proto.WompattiService.ComputersConnection';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.WompattiService.ComputersConnection.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.WompattiService.ComputersConnection.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.ComputersConnection.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.WompattiService.ComputersConnection} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.WompattiService.ComputersConnection.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    pageinfo: (f = msg.getPageinfo()) && page_info_pb.PageInfo.toObject(includeInstance, f),
+    edgesList: jspb.Message.toObjectList(msg.getEdgesList(),
+    proto.WompattiService.ComputersEdge.toObject, includeInstance),
+    totalcount: jspb.Message.getFieldWithDefault(msg, 3, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.WompattiService.ComputersConnection}
+ */
+proto.WompattiService.ComputersConnection.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.WompattiService.ComputersConnection;
+  return proto.WompattiService.ComputersConnection.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.WompattiService.ComputersConnection} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.WompattiService.ComputersConnection}
+ */
+proto.WompattiService.ComputersConnection.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new page_info_pb.PageInfo;
+      reader.readMessage(value,page_info_pb.PageInfo.deserializeBinaryFromReader);
+      msg.setPageinfo(value);
+      break;
+    case 2:
+      var value = new proto.WompattiService.ComputersEdge;
+      reader.readMessage(value,proto.WompattiService.ComputersEdge.deserializeBinaryFromReader);
+      msg.addEdges(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTotalcount(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.WompattiService.ComputersConnection.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.WompattiService.ComputersConnection.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.WompattiService.ComputersConnection} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.WompattiService.ComputersConnection.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPageinfo();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      page_info_pb.PageInfo.serializeBinaryToWriter
+    );
+  }
+  f = message.getEdgesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.WompattiService.ComputersEdge.serializeBinaryToWriter
+    );
+  }
+  f = message.getTotalcount();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional PageInfo pageInfo = 1;
+ * @return {?proto.WompattiService.PageInfo}
+ */
+proto.WompattiService.ComputersConnection.prototype.getPageinfo = function() {
+  return /** @type{?proto.WompattiService.PageInfo} */ (
+    jspb.Message.getWrapperField(this, page_info_pb.PageInfo, 1));
+};
+
+
+/** @param {?proto.WompattiService.PageInfo|undefined} value */
+proto.WompattiService.ComputersConnection.prototype.setPageinfo = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.WompattiService.ComputersConnection.prototype.clearPageinfo = function() {
+  this.setPageinfo(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.WompattiService.ComputersConnection.prototype.hasPageinfo = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated ComputersEdge edges = 2;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.WompattiService.ComputersEdge>}
+ */
+proto.WompattiService.ComputersConnection.prototype.getEdgesList = function() {
+  return /** @type{!Array.<!proto.WompattiService.ComputersEdge>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.ComputersEdge, 2));
+};
+
+
+/** @param {!Array.<!proto.WompattiService.ComputersEdge>} value */
+proto.WompattiService.ComputersConnection.prototype.setEdgesList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.WompattiService.ComputersEdge=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.WompattiService.ComputersEdge}
+ */
+proto.WompattiService.ComputersConnection.prototype.addEdges = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.WompattiService.ComputersEdge, opt_index);
+};
+
+
+proto.WompattiService.ComputersConnection.prototype.clearEdgesList = function() {
+  this.setEdgesList([]);
+};
+
+
+/**
+ * optional uint32 totalCount = 3;
+ * @return {number}
+ */
+proto.WompattiService.ComputersConnection.prototype.getTotalcount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.ComputersConnection.prototype.setTotalcount = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 
@@ -637,7 +1090,8 @@ proto.WompattiService.EditComputerRequest.toObject = function(includeInstance, m
     computerid: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     arttuid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    deviceinfoid: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    deviceinfoid: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    wolinterfaceid: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -689,6 +1143,10 @@ proto.WompattiService.EditComputerRequest.deserializeBinaryFromReader = function
     case 4:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setDeviceinfoid(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setWolinterfaceid(value);
       break;
     default:
       reader.skipField();
@@ -743,6 +1201,13 @@ proto.WompattiService.EditComputerRequest.serializeBinaryToWriter = function(mes
   if (f !== 0) {
     writer.writeUint32(
       4,
+      f
+    );
+  }
+  f = message.getWolinterfaceid();
+  if (f !== 0) {
+    writer.writeUint32(
+      5,
       f
     );
   }
@@ -806,6 +1271,21 @@ proto.WompattiService.EditComputerRequest.prototype.getDeviceinfoid = function()
 /** @param {number} value */
 proto.WompattiService.EditComputerRequest.prototype.setDeviceinfoid = function(value) {
   jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional uint32 wolInterfaceId = 5;
+ * @return {number}
+ */
+proto.WompattiService.EditComputerRequest.prototype.getWolinterfaceid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.EditComputerRequest.prototype.setWolinterfaceid = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 

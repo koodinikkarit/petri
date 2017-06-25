@@ -1,27 +1,11 @@
-import {
-    GraphQLObjectType,
-    GraphQLString,
-    GraphQLList,
-    GraphQLInt,
-	GraphQLBoolean	
-} from "graphql";
 
-import {
-	Base64
-} from "js-base64";
-import FetchKeyValuesByDeviceInfoIdResponse from "./FetchKeyValuesByDeviceInfoIdResponse";
+import DeviceInfoKeyValue from "./DeviceInfoKeyValue";
 
-export default new GraphQLObjectType({
-	name: "DeviceInfo",
-	fields: () => ({
-		id: {
-			type: GraphQLString,
-			resolve: (that, args) => {
-				return Base64.encode("devi_" + that.id);
-			}
-		},
-		keyValues: {
-			type: FetchKeyValuesByDeviceInfoIdResponse
-		}
-	})
-})
+const DeviceInfo = `
+    type DeviceInfo {
+        id: ID
+        keyValues: [DeviceInfoKeyValue]!
+    }
+`;
+
+export default () => [DeviceInfoKeyValue, DeviceInfo];
