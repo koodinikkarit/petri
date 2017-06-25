@@ -20,6 +20,13 @@ const CreateComputerInput = `
     }
 `;
 
+const CreateComputerOutput = `
+    type CreateComputerOutput {
+        computer: Computer
+        deviceInfo: DeviceInfo
+    }
+`
+
 const EditComputerInput = `
     input EditComputerInput {
         computerId: ID!

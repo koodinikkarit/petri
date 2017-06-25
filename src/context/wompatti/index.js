@@ -9,7 +9,8 @@ import EditComputerResponse from "./EditComputerResponse";
 import RemoveComputerResponse from "./RemoveComputerResponse";
 import {
 	Computer,
-	ComputersConnection
+	ComputersConnection,
+	CreateComputerOutput
 } from "./Computer";
 import DeviceInfo from "./DeviceInfo";
 import FetchKeyValuesByDeviceInfoIdResponse from "./FetchKeyValuesByDeviceInfoIdResponse";
@@ -47,7 +48,7 @@ export default class {
 
 			this.client.createComputer(req, (err, res) => {
 				if (!err) {
-					resolve(new CreateComputerResponse(this.client, res));
+					resolve(new CreateComputerOutput(this.client, res));
 				} else {
 					reject(err);
 				}

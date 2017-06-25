@@ -10,7 +10,7 @@ import SerialInterface from "./SerialInterface";
 
 const WompattiMutation = `
     type Mutation {
-        createComputer(params: CreateComputerInput): Computer
+        createComputer(params: CreateComputerInput): CreateComputerOutput
         editComputer(params: EditComputerInput): Computer!
         removeComputer(id: ID): String
         createDevice(params: CreateDeviceInput): Device 

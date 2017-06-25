@@ -1,5 +1,6 @@
 
 import PageInfo from "./PageInfo";
+import DeviceInfo from "./DeviceInfo";
 
 export class Computer {
 	constructor(context, computer) {
@@ -56,6 +57,19 @@ export class ComputersEdge {
 			},
 			"cursor": {
 				get: () => model.getCursor()
+			}
+		})
+	}
+}
+
+export class CreateComputerOutput {
+	constructor(context, model) {
+		Object.defineProperties(this, {
+			"computer": {
+				get: () => new Computer(context, model.getComputer())
+			},
+			"deviceInfo": {
+				get: () => new DeviceInfo(context, model.getDeviceinfo())
 			}
 		})
 	}
