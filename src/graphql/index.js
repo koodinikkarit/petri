@@ -29,7 +29,10 @@ export default makeExecutableSchema({
 			mutation: Mutation
 		}
 		`
-	]
+	],
+	resolvers: merge(
+		wompattiResolvers
+	)
 });
 
 

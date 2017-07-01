@@ -1,88 +1,28 @@
 
 export default {
-    createComputer(obj, args, context) {
-
-    },
-    editCompuer(obj, args, context) {
-
-    },
-    removeComputer(obj, args, context) {
-
-    },
-    createDevice(obj, args, context) {
-
-    },
-    editDevice(obj, args, context) {
-
-    },
-    removeDevice(obj, args, context) {
-
-    },
-    createKeyValue(obj, args, context) {
-
-    },
-    editKeyValue(obj, args, context) {
-
-    },
-    removeKeyValue(obj, args, context) {
-
-    },
-    createWolInterface(obj, args, context) {
-
-    },
-    editWolInterface(obj, args, context) {
-
-    },
-    removeWolInterface(obj, args, context) {
-
-    },
-    executeWolInterface(obj, args, context) {
-
-    },
-    createDeviceType(obj, args, context) {
-
-    },
-    editDeviceType(obj, args, context) {
-
-    },
-    removeDeviceType(obj, args, context) {
-
-    },
-    createCommand(obj, args, context) {
-
-    },
-    editCommand(obj, args, context) {
-
-    },
-    removeCommand(obj, args, context) {
-
-    },
-    createTelnetInterface(obj, args, context) {
-
-    },
-    editTelnetInterface(obj, args, context) {
-
-    },
-    removeTelnetInterface(obj, args, context) {
-
-    },
-    createSerialInterface(obj, args, context) {
-
-    },
-    editSerialInterface(obj, args, context) {
-
-    },
-    removeSerialInterface(obj, args, context) {
-        
-    }
+    createComputer: (obj, {params}, context) => context.wompatti.createComputer(params),
+    editComputer: (obj, {params}, context) => context.wompatti.editComputer(args.params),
+    removeComputer: (obj, {id}, context) => context.wompatti.removeComputer(id),
+    createDevice: (obj, {params}, context) => context.wompatti.createDevice(params),
+    editDevice: (obj, {params}, context) => context.wompatti.editDevice(params),
+    removeDevice: (obj, {id}, context) => context.wompatti.removeDevice(id),
+    createKeyValue: (obj, {params}, context) => context.wompatti.createKeyValue(params),
+    editKeyValue: (obj, {params}, context) => context.wompatti.editKeyValue(params),
+    removeKeyValue: (obj, {id}, context) => context.wompatti.removeKeyValue(id),
+    createWolInterface: (obj, {params}, context) => context.wompatti.createWolInterface(params),
+    editWolInterface: (obj, {params}, context) => context.wompatti.editWolInterface(params),
+    removeWolInterface: (obj, {id}, context) => context.wompatti.removeWolInterface(id),
+    executeWolInterface: (obj, {id}, context) => context.wompatti.executeWolInterface(id),
+    createDeviceType: (obj, {params}, context) => context.wompatti.createDeviceType(params),
+    editDeviceType: (obj, {params}, context) => context.wompatti.editDeviceType(params),
+    removeDeviceType: (obj, {params}, context) => context.wompatti.removeDeviceType(params),
+    createCommand: (obj, {params}, context) => context.wompatti.createCommand(params),
+    editCommand: (obj, {params}, context) => context.wompatti.editCommand(params),
+    removeCommand: (obj, {id}, context) => context.wompatti.removeCommand(id),
+    createTelnetInterface: (obj, {params}, context) => context.wompatti.createTelnetInterface(params),
+    editTelnetInterface: (obj, {params}, context) => context.wompatti.editTelnetInterface(params),
+    removeTelnetInterface: (obj, {id}, context) => context.wompatti.removeTelnetInterface(id),
+    createSerialInterface: (obj, {params}, context) => context.wompatti.createSerialInterface(params),
+    editSerialInterface: (obj, {params}, context) => context.wompatti.editSerialInterface(params),
+    removeSerialInterface: (obj, {id}, context) => context.wompatti.removeSerialInterface(id)
 }
-
-
-// export default {
-//         createComputer(params: CreateComputerInput): Computer
-//         editComputer(params: EditComputerInput): Computer!
-//         removeComputer(id: ID): Boolean
-//         createDevice(params: CreateDeviceInput): Device 
-//         editDevice(params: EditDeviceInput): Device!
-//         removeDevice(id: ID): Boolean
-// }

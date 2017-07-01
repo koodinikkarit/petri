@@ -20,7 +20,6 @@ goog.exportSymbol('proto.WompattiService.ExecuteWolInterfaceResponse', null, glo
 goog.exportSymbol('proto.WompattiService.ExecuteWolInterfaceResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.FetchWolInterfaceByIdRequest', null, global);
 goog.exportSymbol('proto.WompattiService.FetchWolInterfaceByIdResponse', null, global);
-goog.exportSymbol('proto.WompattiService.FetchWolInterfaceByIdResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.RemoveWolInterfaceRequest', null, global);
 goog.exportSymbol('proto.WompattiService.RemoveWolInterfaceResponse', null, global);
 goog.exportSymbol('proto.WompattiService.RemoveWolInterfaceResponse.State', null, global);
@@ -1814,12 +1813,19 @@ proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.clearWolinterfaceid
  * @constructor
  */
 proto.WompattiService.FetchWolInterfaceByIdResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchWolInterfaceByIdResponse.repeatedFields_, null);
 };
 goog.inherits(proto.WompattiService.FetchWolInterfaceByIdResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.WompattiService.FetchWolInterfaceByIdResponse.displayName = 'proto.WompattiService.FetchWolInterfaceByIdResponse';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.WompattiService.FetchWolInterfaceByIdResponse.repeatedFields_ = [1];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1848,8 +1854,8 @@ proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.toObject = functio
  */
 proto.WompattiService.FetchWolInterfaceByIdResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    wolinterface: (f = msg.getWolinterface()) && proto.WompattiService.WolInterface.toObject(includeInstance, f)
+    wolinterfacesList: jspb.Message.toObjectList(msg.getWolinterfacesList(),
+    proto.WompattiService.WolInterface.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1887,13 +1893,9 @@ proto.WompattiService.FetchWolInterfaceByIdResponse.deserializeBinaryFromReader 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.WompattiService.FetchWolInterfaceByIdResponse.State} */ (reader.readEnum());
-      msg.setState(value);
-      break;
-    case 2:
       var value = new proto.WompattiService.WolInterface;
       reader.readMessage(value,proto.WompattiService.WolInterface.deserializeBinaryFromReader);
-      msg.setWolinterface(value);
+      msg.addWolinterfaces(value);
       break;
     default:
       reader.skipField();
@@ -1923,17 +1925,10 @@ proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.serializeBinary = 
  */
 proto.WompattiService.FetchWolInterfaceByIdResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getState();
-  if (f !== 0.0) {
-    writer.writeEnum(
+  f = message.getWolinterfacesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
       1,
-      f
-    );
-  }
-  f = message.getWolinterface();
-  if (f != null) {
-    writer.writeMessage(
-      2,
       f,
       proto.WompattiService.WolInterface.serializeBinaryToWriter
     );
@@ -1942,55 +1937,35 @@ proto.WompattiService.FetchWolInterfaceByIdResponse.serializeBinaryToWriter = fu
 
 
 /**
- * @enum {number}
+ * repeated WolInterface wolInterfaces = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.WompattiService.WolInterface>}
  */
-proto.WompattiService.FetchWolInterfaceByIdResponse.State = {
-  SUCCESS: 0,
-  NOT_FOUND: 1
-};
-
-/**
- * optional State state = 1;
- * @return {!proto.WompattiService.FetchWolInterfaceByIdResponse.State}
- */
-proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.getState = function() {
-  return /** @type {!proto.WompattiService.FetchWolInterfaceByIdResponse.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.getWolinterfacesList = function() {
+  return /** @type{!Array.<!proto.WompattiService.WolInterface>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.WolInterface, 1));
 };
 
 
-/** @param {!proto.WompattiService.FetchWolInterfaceByIdResponse.State} value */
-proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.setState = function(value) {
-  jspb.Message.setField(this, 1, value);
+/** @param {!Array.<!proto.WompattiService.WolInterface>} value */
+proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.setWolinterfacesList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * optional WolInterface wolInterface = 2;
- * @return {?proto.WompattiService.WolInterface}
+ * @param {!proto.WompattiService.WolInterface=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.WompattiService.WolInterface}
  */
-proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.getWolinterface = function() {
-  return /** @type{?proto.WompattiService.WolInterface} */ (
-    jspb.Message.getWrapperField(this, proto.WompattiService.WolInterface, 2));
+proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.addWolinterfaces = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.WolInterface, opt_index);
 };
 
 
-/** @param {?proto.WompattiService.WolInterface|undefined} value */
-proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.setWolinterface = function(value) {
-  jspb.Message.setWrapperField(this, 2, value);
-};
-
-
-proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.clearWolinterface = function() {
-  this.setWolinterface(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.hasWolinterface = function() {
-  return jspb.Message.getField(this, 2) != null;
+proto.WompattiService.FetchWolInterfaceByIdResponse.prototype.clearWolinterfacesList = function() {
+  this.setWolinterfacesList([]);
 };
 
 

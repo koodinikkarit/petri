@@ -7,4 +7,7 @@ import QueryResolvers from "./QueryResolvers";
 import MutationResolvers from "./MutationResolvers";
 
 //console.log("QQQ", Queries(), Mutations());
-export const resolvers = merge(QueryResolvers, MutationResolvers);
+export const resolvers = {
+	Query: QueryResolvers, 
+	Mutation: MutationResolvers
+}

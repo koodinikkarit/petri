@@ -60,6 +60,7 @@ export default () => [
     Computer,
     PageInfo,
     CreateComputerInput,
+    CreateComputerOutput,
     EditComputerInput,
     ComputersConnection,
     ComputersEdge

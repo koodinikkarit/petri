@@ -1,7 +1,9 @@
 
-const messages = require("./service/wompatti_service_pb");
+import {
+	KeyValue
+} from "./KeyValue";
 
-export default class {
+export class DeviceInfo {
 	constructor(context, deviceInfo) {
 		this.context = context;
 		var _id = deviceInfo.getId();
@@ -15,5 +17,18 @@ export default class {
 
 	get keyValues() {
 		return this.context.fetchKeyValuesByDeviceInfoId(this.id);
+	}
+}
+
+export class DeviceInfoKeyValues {
+	constructor(context, model) {
+		Object.defineProperties(this, {
+			"deviceInfo": {
+				get: () => context.fetchDeviceInfoById(model.getDeviceinfoid())
+			}, 
+			"keyValues": {
+				get: () => model.getKeyvaluesList().map(p => new KeyValue(context, p))
+			}
+		})
 	}
 }

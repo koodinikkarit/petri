@@ -1,28 +1,30 @@
 
 import Computer from "./Computer";
 import Device from "./Device";
-import DevicesConnection from "./DevicesConnection";
 import DeviceInfo from "./DeviceInfo";
 import EthernetInterface from "./EthernetInterface";
 import WolInterface from "./WolInterface";
 import DeviceType from "./DeviceType";
 import TelnetInterface from "./TelnetInterface";
+import SerialInterface from "./SerialInterface";
 import PageInfo from "./PageInfo";
 
 const WompattiQuery = `
     type Query {
         computer(id: ID): Computer
-        computers(offset: Int, limit: Int): ComputersConnection
+        allComputers(after: Int, before: Int, first: Int, last: Int): ComputersConnection
         device(id: ID): Device
-        devices(offset: Int, limit: Int): DevicesConnection
+        allDevices(after: Int, before: Int, first: Int, last: Int): DevicesConnection
         deviceInfo(id: ID): DeviceInfo
-        ethernetInterfaces(offset: Int, limit: Int): EthernetInterfacesConnection
         ethernetInterface(id: ID): EthernetInterface
+        ethernetInterfaces(after: Int, before: Int, first: Int, last: Int): EthernetInterfacesConnection
         wolInterface(id: ID): WolInterface
-        deviceTypes(offset: Int, limit: Int): DeviceTypesConnection
         deviceType(id: ID): DeviceType
+        allDeviceTypes(after: Int, before: Int, first: Int, last: Int): DeviceTypesConnection
         telnetInterface(id: ID): TelnetInterface
-        telnetInterfaces(offset: Int, limit: Int): TelnetInterfacesConnection
+        allTelnetInterfaces(after: Int, before: Int, first: Int, last: Int): TelnetInterfacesConnection
+        serialInterface(id: ID): SerialInterface
+        allSerialInterfaces(after: Int, before: Int, first: Int, last: Int): SerialInterfacesConnection
     }
 `;
 
@@ -30,12 +32,12 @@ export default () => [
     WompattiQuery,
     Computer,
     Device,
-    DevicesConnection,
     DeviceInfo,
     EthernetInterface,
     WolInterface,
     DeviceType,
     TelnetInterface,
     WolInterface,
+    SerialInterface,
     PageInfo
 ];

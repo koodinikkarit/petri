@@ -1,7 +1,7 @@
 
 import Computer from "./Computer";
 import Device from "./Device";
-import DeviceInfoKeyValue from "./DeviceInfoKeyValue";
+import KeyValue from "./KeyValue";
 import WolInterface from "./WolInterface";
 import DeviceType from "./DeviceType";
 import Command from "./Command";
@@ -16,8 +16,8 @@ const WompattiMutation = `
         createDevice(params: CreateDeviceInput): Device 
         editDevice(params: EditDeviceInput): Device!
         removeDevice(id: ID): Boolean
-        createKeyValue(params: CreateKeyValueInput): DeviceInfoKeyValue
-        editKeyValue(params: EditKeyValueInput): DeviceInfoKeyValue
+        createKeyValue(params: CreateKeyValueInput): KeyValue
+        editKeyValue(params: EditKeyValueInput): KeyValue
         removeKeyValue(id: ID): Boolean
         createWolInterface(params: CreateWolInterfaceInput): WolInterface
         editWolInterface(params: EditWolInterfaceInput): WolInterface
@@ -42,7 +42,7 @@ export default () => [
     WompattiMutation,
     Computer,
     Device,
-    DeviceInfoKeyValue,
+    KeyValue,
     WolInterface,
     DeviceType,
     Command,

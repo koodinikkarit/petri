@@ -4,31 +4,60 @@ const services = require("./service/wompatti_service_grpc_pb");
 
 import DataLoader from "dataloader";
 
-import CreateComputerResponse from "./CreateComputerResponse";
-import EditComputerResponse from "./EditComputerResponse";
-import RemoveComputerResponse from "./RemoveComputerResponse";
 import {
 	Computer,
 	ComputersConnection,
 	CreateComputerOutput
 } from "./Computer";
-import DeviceInfo from "./DeviceInfo";
+
+import {
+	Device,
+	DevicesConnection,
+	CreateDeviceOutput
+} from "./Device";
+
+import {
+	DeviceType,
+	DeviceTypesEdge,
+	DeviceTypesConnection,
+	DeviceTypeCommands
+} from "./DeviceType";
+
+import {
+	Command
+} from "./Command";
+
+import {
+	KeyValue
+} from "./KeyValue";
+
+import {
+	WolInterface
+} from "./WolInterface";
+
+import {
+	TelnetInterface,
+	TelnetInterfacesEdge,
+	TelnetInterfacesConnection
+} from "./TelnetInterface";
+
+import {
+	SerialInterface,
+	SerialInterfacesEdge,
+	SerialInterfacesConnections
+} from "./SerialInterface";
+
+import {
+	DeviceInfo,
+	DeviceInfoKeyValues
+} from "./DeviceInfo";
+
+//import DeviceInfo from "./DeviceInfo";
 import FetchKeyValuesByDeviceInfoIdResponse from "./FetchKeyValuesByDeviceInfoIdResponse";
 import FetchComputerByIdResponse from "./FetchComputerByIdResponse";
 import FetchDeviceInfoByIdResponse from "./FetchDeviceInfoByIdResponse";
-import CreateKeyValueResponse from "./CreateKeyValueResponse";
-import EditKeyValueResponse from "./EditKeyValueResponse";
-import RemoveKeyValueResponse from "./RemoveKeyValueResponse";
-import Device from "./Device";
-import CreateDeviceResponse from "./CreateDeviceResponse";
-import RemoveDeviceResponse from "./RemoveDeviceResponse";
 import FetchDeviceByIdResponse from "./FetchDeviceByIdResponse";
 import EthernetInterface from "./EthernetInterface";
-import CreateWolInterfaceResponse from "./CreateWolInterfaceResponse";
-
-import {
-	Base64
-} from "js-base64";
 
 export default class {
 	constructor({
@@ -39,69 +68,20 @@ export default class {
 		this.client = new services.WompattiClient(ip + ":" + port, credentials);
 	}
 
-	createComputer({
-		name
-	}) {
-		return new Promise((resolve, reject) => {
-			var req = new messages.CreateComputerRequest();
-			req.setName(name);
-
-			this.client.createComputer(req, (err, res) => {
-				if (!err) {
-					resolve(new CreateComputerOutput(this.client, res));
-				} else {
-					reject(err);
-				}
-			});
-		});
-	}
-
-	editComputer({
-		computerId,
-		name,
-		arttuId,
-		deviceInfoId
-	}) {
-		return new Promise((resolve, reject) => {
-			var req = new messages.EditComputerRequest();
-			req.setComputerid(computerId);
-			req.setName(name);
-			req.setArttuid(arttuId);
-			req.setDeviceinfoid(deviceInfoId);
-
-			this.client.editComputer(req, (err, res) => {
-				if (!err) {
-					resolve(new EditComputerResponse(this, res));
-				} else {
-					reject();
-				}
-			});
-		})
-	}
-
-	removeComputer(id) {
-		return new Promise((resolve, reject) => {
-			var removeComputerRequest = new messages.removeComputerRequest();
-			removeComputerRequest.setComputerid(id);
-
-			this.client.removeComputer(req, (err, res) => {
-				if (!err) {
-					resolve(new RemoveComputerResponse(this, res));
-				} else {
-					reject();
-				}
-			});
-		});
-	}
+	// Fetch
 
 	fetchComputers({
-		offset,
-		limit
+		after,
+		before,
+		first,
+		last
 	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.FetchComputersRequest();
-			req.setOffset(offset);
-			req.setLimit(limit);
+			req.setAfter(after);
+			req.setBefore(before);
+			req.setFirst(first);
+			req.setLast(last);
 
 			this.client.fetchComputers(req, (err, res) => {
 				if (!err) {
@@ -110,21 +90,6 @@ export default class {
 					reject();
 				}
 			});
-			
-			// var call = this.client.fetchComputers(req);
-			// var items = [];
-
-			// call.on("data", data => {
-			// 	items.push(new Computer(this, data));
-			// });
-
-			// call.on("end", () => {
-			// 	resolve(items);
-			// });
-
-			// call.on("error", () => {
-
-			// });
 		});
 	}
 
@@ -133,20 +98,20 @@ export default class {
 			this.computerLoader = new DataLoader(keys => new Promise((resolve, reject) => {
 				var req = new messages.FetchComputerByIdRequest();
 				req.setComputeridtList(keys);
-				var call = this.client.fetchComputerById(req);
-				
-				var items = [];
 
-				call.on("data", res => {
-					items.push(new FetchComputerByIdResponse(this, res));
-				});
-
-				call.on("end", () => {
-					resolve(items);
-				});
-
-				call.on("error", () => {
-
+				this.client.fetchComputerById(req, (err, res) => {
+					if (!err) {
+						resolve(res.getComputersList().map(p => {
+							console.log("pp", p.getId(), p.getName());
+							if (p.getId() > 0) {
+								return new Computer(this, p);
+							} else {
+								return null;
+							}
+						}));
+					} else {
+						reject();
+					}
 				});
 			}));
 		}
@@ -159,21 +124,18 @@ export default class {
 				var req = new messages.FetchDeviceInfoByIdRequest();
 				req.setDeviceinfoidtList(keys);
 
-				var call = this.client.fetchDeviceInfoById(req);
-
-				var items = [];
-
-				call.on("data", res => {
-					//console.log("device info res", res);
-					items.push(new FetchDeviceInfoByIdResponse(this, res));
-				});
-
-				call.on("end", () => {
-					resolve(items);
-				});
-
-				call.on("error", () => {
-
+				this.client.fetchDeviceInfoById(req, (err, res) => {
+					if (!err) {
+						resolve(res.getDeviceinfosList().map(p => {
+							if (p.getId() > 0) {
+								return new DeviceInfo(this, p);
+							} else {
+								return null;
+							}
+						}));
+					} else {
+						reject();
+					}
 				});
 			}))
 		}
@@ -186,142 +148,37 @@ export default class {
 				var req = new messages.FetchKeyValuesByDeviceInfoIdRequest();
 				req.setDeviceinfoidtList(keys);
 
-				var call = this.client.fetchKeyValuesByDeviceInfoId(req);
-
-				var items = [];
-
-				call.on("data", res => {
-					items.push(new FetchKeyValuesByDeviceInfoIdResponse(this, res));
-				});
-
-				call.on("end", () => {
-					resolve(items);
-				});
-
-				call.on("error", () => {
-
-				});
+				this.client.fetchKeyValuesByDeviceInfoId(req, (err, res) => {
+					if (!err) {
+						resolve(res.getDeviceinfokeyvaluesList().map(deviceInfoKeyValues => new DeviceInfoKeyValues(this, deviceInfoKeyValues)));
+					} else {
+						reject();
+					}
+				})
 			}));
 		}
 		return this.keyValuesByDeviceInfoLoader.load(id);
 	}
 
-	createKeyValue({
-		deviceInfoId,
-		key,
-		value
-	}) {
-		return new Promise((resolve, reject) => {
-			var req = new messages.CreateKeyValueRequest();
-
-			console.log("deviceInfoId", deviceInfoId);
-
-			req.setDeviceinfoid(deviceInfoId);
-			req.setKey(key);
-			req.setValue(value);
-
-			this.client.createKeyValue(req, (err, res) => {
-				if (!err) {
-					resolve(new CreateKeyValueResponse(this, res));
-				} else {
-					reject(err);
-				}
-			});
-		});
-	}
-
-	editKeyValue({
-		keyValueId,
-		key,
-		value
-	}) {
-		return new Promise((resolve, reject) => {
-			var req = new messages.EditKeyValueRequest();
-			req.setKeyvalueid(keyValueId);
-			req.setKey(key);
-			req.setValue(value);
-
-			this.client.editKeyValue(req, (err, res) => {
-				if (!err) {
-					resolve(new EditKeyValueResponse(this, res));
-				} else {
-					reject(err);
-				}
-			});
-		})
-	}
-
-	removeKeyValue(id) {
-		return new Promise((resolve, reject) => {
-			var req = new messages.RemoveKeyValueRequest();
-			req.setKeyvalueid(id);
-
-			this.client.removeKeyValue(req, (err, res) => {
-				console.log("ress", res, err);
-				if (!err) {
-					resolve(new RemoveKeyValueResponse(this, res));
-				} else {
-					reject(err);
-				}
-			})
-		})
-	}
-
-	createDevice({
-		name
-	}) {
-		return new Promise((resolve, reject) => {
-			var createDeviceResponse = new messages.CreateDeviceRequest();
-			createDeviceResponse.setName(name);
-
-			this.client.createDevice(req, (err, res) => {
-				if (!err) {
-					resolve(new CreateDeviceResponse(this, res));
-				} else {
-					reject();
-				}
-			});			
-		});
-	}
-
-	removeDevice(id) {
-		return new Promise((resolve, reject) => {
-			var removeDeviceRequest = new messages.RemoveDeviceRequest();
-			removeDeviceRequest.setDeviceid(id);
-
-			this.client.removeDevice(req, (err, res) => {
-				if (!err) {
-					resolve(new RemoveDeviceResponse(this, res));
-				} else {
-					reject();
-				}
-			})
-		})
-	}
-
 	fetchDevices({
-		offset, 
-		limit
+		after,
+		before,
+		first,
+		last
 	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.FetchDevicesRequest();
-			req.setOffset(offset);
-			req.setLimit(limit);
+			req.setAfter(after);
+			req.setBefore(before);
+			req.setFirst(first);
+			req.setLast(last);
 
-			var call = this.client.fetchDevices(req);
-
-			var items = [];
-
-			call.on("data", res => {
-				items.push(new Device(this, res));
-			});
-
-			call.on("end", () => {
-				resolve(items);
-			});
-
-			call.on("error", () => {
-
+			this.client.fetchDevices(req, (err, res) => {
+				if (!err) {
+					resolve(new DevicesConnection(this, res));
+				} else {
+					reject();
+				}
 			});
 		});
 	}
@@ -332,20 +189,18 @@ export default class {
 				var req = new messages.FetchDeviceByIdRequest();
 				req.setDeviceidt(id);
 
-				var call = this.client.fetchDeviceById(req);
-
-				var items = [];
-
-				call.on("data", res => {
-					items.push(new FetchDeviceByIdResponse(this, res));
-				});
-
-				call.on("end", () => {
-					resolve(items);
-				});
-
-				call.on("error", () => {
-
+				this.client.fetchDeviceById(req, (err, res) => {
+					if (!err) {
+						resolve(res.getDevicesList().map(p => {
+							if (p.getId() > 0) {
+								return new Device(this, p);
+							} else {
+								return null;
+							}
+						}))
+					} else {
+						reject();
+					}
 				});
 			}));
 		}
@@ -374,74 +229,253 @@ export default class {
 		})
 	}
 
-	createWolInterface({
-		computerId, 
-		ethernetInterfaceId, 
-		mac
+	fetchWolInterfaceById(id) {
+		if (!this.wolInterfaceLoader) {
+			this.wolInterfaceLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.fetchWolInterfaceByIdRequest();
+				req.setWolinterfaceidtList(keys);
+
+				this.client.fetchWolInterfaceById(req, (err, res) => {
+					if (!err) {
+						resolve(res.getWolinterfacesList().map(p => {
+							if (p.getId() > 0) {
+								return new WolInterface(this, p);
+							} else {
+								return null;
+							}
+						}))
+					} else {
+						reject();
+					}
+				});
+			}));
+		}
+		return this.wolInterfaceLoader(id);		
+	}
+
+	fetchDeviceTypes({
+		after,
+		before,
+		first,
+		last
 	}) {
 		return new Promise((resolve, reject) => {
-			var req = new messages.CreateWOlInterfaceRequest();
-			req.setComputerid(computerId);
-			req.setEthernetinterfaceid(ethernetInterfaceId);
-			req.setMac(mac);
+			var req = new messages.FetchDeviceTypesRequest();
+			req.setAfter(after);
+			req.setBefore(before);
+			req.setFirst(first);
+			req.setLast(last);
 
-			this.client.createWolInterface(req, (err, res) => {
+			this.client.fetchDeviceTypes(req, (err, res) => {
 				if (!err) {
-					resolve(new CreateWolInterfaceResponse(this, res));
+					resolve(new DeviceTypesConnection(this, res))
 				} else {
 					reject();
 				}
-			})
+			});
 		})
 	}
 
+	fetchDeviceTypeById(id) {
+		if (!this.fetchDeviceTypeLoader) {
+			this.fetchDeviceTypeLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchDeviceTypeByIdRequest();
+				req.setDevicetypeidtList(keys);
 
+				this.client.fetchDeviceTypeById(req, (err, res) => {
+					if (!err) {
+						resolve(res.getDevicetypesList().map(p => {
+							if (p.getId() > 0) {
+								return new DeviceType(this, p);
+							} else {
+								return null;
+							}
+						}));
+					} else {
+						reject();
+					}
+				});
+			}));
+		}
+	}
 
+	fetchCommandsByDeviceTypeId(id) {
+		if (!this.commandLoader) {
+			this.commandLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchCommandsByDeviceTypeIdRequest();
+				set.setDevicetypeidtList(keys);
 
-	editWolInterface({
-		wolInterfaceId,
-		ethernetInterfaceId,
-		mac
+				this.client.fetchCommandsByDeviceTypeId(req, (err, res) => {
+					if (err) {
+						reject();
+					} else {
+						resolve(res.getDevicetypecommands().map(p => new DeviceTypeCommands(this, p)));
+					}
+				});
+			}));
+		}
+		return this.commandLoader.load(id);
+	}
+
+	fetchTelnetInterfaces({
+		after,
+		before,
+		first,
+		last
 	}) {
 		return new Promise((resolve, reject) => {
-			var req = new messages.EditWolInterfaceRequest();
-			req.setWolinterfaceid(wolInterfaceId);
-			req.setEthernetinterfaceid(ethernetInterfaceId);
-			req.setMac(mac);
+			var req = new messages.FetchTelnetInterfacesRequest();
+			req.setAfter(after);
+			req.setBefore(before);
+			req.setFirst(first);
+			req.setLast(last);
 
-			this.client.editWolInterface(req, (err, res) => {
-				if (!err) {
-					resolve();
-				} else {
+			this.client.fetchTelnetInterfaces(req, (err, res) => {
+				if (err) {
 					reject();
+				} else {
+					resolve(new TelnetInterfacesConnection(this, res));
 				}
-			})
+			});
+		})
+	}
+
+	fetchTelnetInterfaceById(id) {
+		if (!this.telnetInterfaceLoader) {
+			this.telnetInterfaceLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchTelnetInterfaceByIdRequest();
+				req.setTelnetinterfaceidtList(keys);
+
+				this.client.fetchCommandsByDeviceTypeId(req, (err, res) => {
+					if (err) {
+						reject();
+					} else {
+						resolve(res.getTelnetinterfaceList().map(p => {
+							if (p.getId() > 0) {
+								return new TelnetInterface(this, p);
+							} else {
+								return null;
+							}
+						}))
+					}
+				});
+			}));
+		}
+	}
+
+	fetchSerialInterfaces({
+		after,
+		before,
+		first,
+		last
+	}) {
+		var req = new messages.FetchSerialInterfaceRequest();
+		req.setAfter(after);
+		req.setBefore(before);
+		req.setFirst(first);
+		req.setLast(last);
+
+		this.client.fetchSerialInterfaces(req, (err, res) => {
+			if (err) {
+				reject();
+			} else {
+				resolve(new SerialInterfacesConnections(this, res));
+			}
+		})
+
+	}
+
+	fetchSerialInterfaceById(id) {
+		if (!this.serialInterfaceLoader) {
+			this.serialInterfaceLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchSerialInterfaceByIdRequest();
+				req.setSerialinterfaceidt(id);
+
+				this.client.fetchSerialInterfaceById(req, (err, res) => {
+					if (err) {
+						reject();
+					} else {
+						resolve(res.getSerialinterfacesList().map(p => {
+							if (p.getId() > 0) {
+								return new SerialInterface(this, p);
+							} else {
+								return null;
+							}
+						}))
+					}
+				})
+			}))
+		}
+		this.serialInterfaceLoader.load(id);
+	}
+
+
+
+
+
+	// Mutations
+
+	createComputer({
+		name
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateComputerRequest();
+			req.setName(name);
+			this.client.createComputer(req, (err, res) => {
+				if (!err) {
+					resolve(new CreateComputerOutput(this, res));
+				} else {
+					reject(err);
+				}
+			});
 		});
 	}
 
-	removeWolInterface(id) {
+	editComputer({
+		computerId,
+		name,
+		arttuId,
+		deviceInfoId
+	}) {
 		return new Promise((resolve, reject) => {
-			var req = new messages.RemoveWolInterfaceRequest();
-			req.setWolinterfaceid(id);
+			var req = new messages.EditComputerRequest();
+			req.setComputerid(computerId);
+			req.setName(name);
+			req.setArttuid(arttuId);
+			req.setDeviceinfoid(deviceInfoId);
 
-			this.client.removeWolInterface(req, (err, res) => {
+			this.client.editComputer(req, (err, res) => {
 				if (!err) {
-					resolve();
+					switch(res.getState()) {
+						case 0:
+							resolve(new Computer(this, res.getComputer()));
+							break;
+						case 1:
+							resolve(null);
+							break;
+					}
 				} else {
 					reject();
 				}
-			})
-		});
+			});
+		})
 	}
 
-	executeWolInterface(id) {
+	removeComputer(id) {
 		return new Promise((resolve, reject) => {
-			var req = new messages.ExecuteWolInterfaceRequest();
-			req.setWolinterfaceid(id);
+			var removeComputerRequest = new messages.removeComputerRequest();
+			removeComputerRequest.setComputerid(id);
 
-			this.client.executeWolInterface(req, (err, res) => {
+			this.client.removeComputer(req, (err, res) => {
 				if (!err) {
-					resolve();
+					switch(res.getState()) {
+						case 0:
+							resolve(true);
+							break;
+						case 1:
+							resolve(false);
+							break;
+					}
 				} else {
 					reject();
 				}
@@ -449,30 +483,79 @@ export default class {
 		});
 	}
 
-	fetchWolInterfaceById(id) {
-		if (!this.wolInterfaceLoader) {
-			this.wolInterfaceLoader = new DataLoader(keys => new Promise((resolve, reject) => {
-				var req = new messages.fetchWolInterfaceByIdRequest();
-				req.setWolinterfaceidtList(keys);
+	createDevice({
+		name
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateDeviceRequest();
+			req.setName(name);
 
-				var call = this.client.fetchWolInterfaceById(req);
+			this.client.createDevice(req, (err, res) => {
+				if (!err) {
+					resolve(new CreateDeviceOutput(this, res));
+				} else {
+					reject();
+				}
+			});			
+		});
+	}
 
-				var items = [];
+	editDevice({
+		deviceId,
+		deviceInfoId,
+		name,
+		deviceTypeId,
+		serialInterfaceId,
+		telnetInterfaceId,
+		cecInterfaceId
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditDeviceRequest();
+			req.setDeviceid(deviceId);
+			req.setDeviceinfoid(deviceInfoId);
+			req.setName(name);
+			req.setDevicetypeid(deviceTypeId);
+			req.setSerialinterfaceid(serialInterfaceId);
+			req.setTelnetinterfaceid(telnetInterfaceId);
+			req.setCecinterfaceid(cecInterfaceId);
 
-				call.on("data", (res) => {
+			this.client.editDevice(req, (err, res) => {
+				if (!err) {
+					switch(res.getState()) {
+						case 0:
+							resolve(new Device(this, res.getDevice()));
+							break;
+						case 1:
+							resolve(null);
+							break;
+					}
+				} else {
+					reject();
+				}
+			})
+		});
+	}
 
-				});
+	removeDevice(id) {
+		return new Promise((resolve, reject) => {
+			var removeDeviceRequest = new messages.RemoveDeviceRequest();
+			removeDeviceRequest.setDeviceid(id);
 
-				call.on("end", () => {
-					resolve(items);
-				});
-
-				call.on("error", () => {
-
-				});
-			}));
-		}
-		return this.wolInterfaceLoader(id);		
+			this.client.removeDevice(req, (err, res) => {
+				if (!err) {
+					switch(res.getState()) {
+						case 0:
+							resolve(true);
+							break;
+						case 1:
+							resolve(false);
+							break;
+					}				
+				} else {
+					reject();
+				}
+			})
+		})
 	}
 
 	createDeviceType({
@@ -484,7 +567,7 @@ export default class {
 
 			this.client.createDeviceType(req, (err, res) => {
 				if (!err) {
-					resolve();
+					resolve(new DeviceType(this, res.getDevicetype()));
 				} else {
 					reject();
 				}				
@@ -509,7 +592,14 @@ export default class {
 
 			this.client.editDeviceType(req, (err, res) => {
 				if (!err) {
-					resolve();
+					switch(res.getState()) {
+						case 0:
+							resolve(new DeviceType(this, res.getDevicetype()));
+							break;
+						case 1:
+							resolve(null);
+							break;
+					}
 				} else {
 					reject();
 				}
@@ -524,65 +614,20 @@ export default class {
 
 			this.client.removeDeviceType(req, (err, res) => {
 				if (!err) {
-					resolve();
+					switch(res.getState()) {
+						case 0:
+							resolve(true);
+							break;
+						case 1:
+							resolve(false);
+							break;
+					}
 				} else {
 					reject();
 				}				
 			});
 		});
-	}
-
-	fetchDeviceTypes({
-		offset,
-		limit
-	}) {
-		return new Promise((resolve, reject) => {
-			var req = new messages.FetchDeviceTypesRequest();
-			req.setOffset(offset);
-			req.setLimit(limit);
-
-			var call = this.client.fetchDeviceTypes(req);
-
-			var items = [];
-
-			call.on("data", (res) => {
-
-			});
-
-			call.on("end", () => {
-				resolve(items);
-			});
-
-			call.on("error", () => {
-
-			});
-		})
-	}
-
-	fetchDeviceTypeById(id) {
-		if (!this.fetchDeviceTypeLoader) {
-			this.fetchDeviceTypeLoader = new DataLoader(keys => new Promise((resolve, reject) => {
-				var req = new messages.FetchDeviceTypeByIdRequest();
-				req.setDevicetypeidtList(keys);
-
-				var call = this.client.fetchDeviceTypeById(req);
-
-				var items = [];
-
-				call.on("data", res => {
-
-				});
-
-				call.on("end", () => {
-					resolve(items);
-				});
-
-				call.on("error", () => {
-
-				});
-			}));
-		}
-	}
+	}	
 
 	createCommand({
 		deviceTypeId,
@@ -597,7 +642,7 @@ export default class {
 
 			this.client.createCommand(req, (err, res) => {
 				if (!err) {
-					resolve();
+					resolve(new Command(this, res.getCommand()));
 				} else {
 					reject();
 				}				
@@ -618,7 +663,14 @@ export default class {
 
 			this.client.editCommand(req, (err, res) => {
 				if (!err) {
-					resolve();
+					switch(res.getState()) {
+						case 0:
+							resolve(new Command(this, res.getCommand()));
+							break;
+						case 1:
+							resolve(null);
+							break;
+					}					
 				} else {
 					reject();
 				}				
@@ -633,7 +685,14 @@ export default class {
 
 			this.client.removeCommand(req, (err, res) => {
 				if (!err) {
-					resolve();
+					switch(res.getState()) {
+						case 0:
+							resolve(true);
+							break;
+						case 1:
+							resolve(false);
+							break;
+					}
 				} else {
 					reject();
 				}				
@@ -641,29 +700,170 @@ export default class {
 		});
 	}
 
-	fetchCommandsByDeviceTypeId(id) {
-		if (!this.commandLoader) {
-			this.commandLoader = new DataLoader(keys => new Promise((resolve, reject) => {
-				var req = new messages.FetchCommandsByDeviceTypeIdRequest();
-				set.setDevicetypeidtList(keys);
-				var call = this.client.fetchCommandsByDeviceTypeId(req);
-				
-				var items = [];
+	createKeyValue({
+		deviceInfoId,
+		key,
+		value
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateKeyValueRequest();
+			req.setDeviceinfoid(deviceInfoId);
+			req.setKey(key);
+			req.setValue(value);
 
-				call.on("data", (res) => {
+			this.client.createKeyValue(req, (err, res) => {
+				if (!err) {
+					resolve(new KeyValue(this, res.getKeyvalue()));
+				} else {
+					reject(err);
+				}
+			});
+		});
+	}
 
-				});
+	editKeyValue({
+		keyValueId,
+		key,
+		value
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditKeyValueRequest();
+			req.setKeyvalueid(keyValueId);
+			req.setKey(key);
+			req.setValue(value);
 
-				call.on("end", () => {
-					resolve(items);
-				});
+			this.client.editKeyValue(req, (err, res) => {
+				if (!err) {
+					switch(res.getState()) {
+						case 0:
+							resolve(new KeyValue(this, res.getKeyvalue()));
+							break;
+						case 1:
+							resolve(null);
+							break;
+					}
+					
+				} else {
+					reject(err);
+				}
+			});
+		})
+	}
 
-				call.on("error", () => {
+	removeKeyValue(id) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveKeyValueRequest();
+			req.setKeyvalueid(id);
 
-				});
-			}));
-		}
-		return this.commandLoader.load(id);
+			this.client.removeKeyValue(req, (err, res) => {
+				console.log("ress", res, err);
+				if (!err) {
+					switch(res.getState()) {
+						case 0:
+							resolve(true);
+							break;
+						case 1:
+							resolve(false);
+							break;
+					}
+				} else {
+					reject(err);
+				}
+			})
+		})
+	}
+
+	createWolInterface({
+		computerId, 
+		ethernetInterfaceId, 
+		mac
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateWOlInterfaceRequest();
+			req.setComputerid(computerId);
+			req.setEthernetinterfaceid(ethernetInterfaceId);
+			req.setMac(mac);
+
+			this.client.createWolInterface(req, (err, res) => {
+				if (!err) {
+					resolve(new WolInterface(this, res.getWolinterface()));
+				} else {
+					reject();
+				}
+			})
+		})
+	}
+
+	editWolInterface({
+		wolInterfaceId,
+		ethernetInterfaceId,
+		mac
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditWolInterfaceRequest();
+			req.setWolinterfaceid(wolInterfaceId);
+			req.setEthernetinterfaceid(ethernetInterfaceId);
+			req.setMac(mac);
+
+			this.client.editWolInterface(req, (err, res) => {
+				if (!err) {
+					switch (res.getState()) {
+						case 0:
+							resolve(new WolInterface(this, res.getWolinterface()));
+							break;
+						case 1:
+							resolve(null);
+							break;
+					}
+				} else {
+					reject();
+				}
+			})
+		});
+	}
+
+	removeWolInterface(id) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveWolInterfaceRequest();
+			req.setWolinterfaceid(id);
+
+			this.client.removeWolInterface(req, (err, res) => {
+				if (!err) {
+					switch(res.getState()) {
+						case 0:
+							resolve(true);
+							break;
+						case 1:
+							resolve(false);
+							break;
+					}
+				} else {
+					reject();
+				}
+			})
+		});
+	}
+
+	executeWolInterface(id) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.ExecuteWolInterfaceRequest();
+			req.setWolinterfaceid(id);
+
+			this.client.executeWolInterface(req, (err, res) => {
+				if (!err) {
+					switch(res.getState()) {
+						case 0:
+							resolve(true);
+							break;
+						case 1:
+							resolve(false);
+							break;
+					}
+				} else {
+					reject();
+				}
+			});
+		});
 	}
 
 	createTelnetInterface({
@@ -677,7 +877,7 @@ export default class {
 
 			this.client.createTelnetInterface(req, (err, res) => {
 				if (!err) {
-					resolve();
+					resolve(new TelnetInterface(this, res.getTelnetinterface()));
 				} else {
 					reject();
 				}
@@ -698,7 +898,14 @@ export default class {
 
 			this.client.editTelnetInterface(req, (err, res) => {
 				if (!err) {
-					resolve()
+					switch(res.getState()) {
+						case 0:
+							resolve(new TelnetInterface(this, res.getTelnetinterface()))
+							break;
+						case 1:
+							resolve(null);
+							break;
+					}
 				} else {
 					reject();
 				}
@@ -713,7 +920,14 @@ export default class {
 
 			this.client.removeTelnetInterface(req, (err, res) => {
 				if (!err) {
-					resolve();
+					switch(res.getState()) {
+						case 0:
+							resolve(true);
+							break;
+						case 1:
+							resolve(false);
+							break;
+					}
 				} else {
 					reject();
 				}
@@ -721,55 +935,68 @@ export default class {
 		});
 	}
 
-	fetchTelnetInterfaces({
-		offset,
-		limit
+	createSerialInterface({
+		serialPortId
 	}) {
 		return new Promise((resolve, reject) => {
-			var req = new messages.FetchTelnetInterfacesRequest();
-			req.setOffset(offset);
-			req.setLimit(limit);
+			var req = new messages.CreateSerialInterface();
+			req.setSerialportid(serialPortId);
 
-			var call = this.client.fetchTelnetInterfaces(req);
-
-			var items = [];
-
-			call.on("data", telnetInterface => {
-
-			});
-
-			call.on("end", () => {
-				resolve(items);
-			});
-
-			call.on("error", () => {
-
-			});
-		})
+			this.client.createSerialInterface(req, (err, res) => {
+				if (!err) {
+					resolve(new SerialInterface(this, res.getSerialinterface()))
+				} else {
+					reject();
+				}
+			})
+		});
 	}
 
-	fetchTelnetInterfaceById(id) {
-		if (!this.telnetInterfaceLoader) {
-			this.telnetInterfaceLoader = new DataLoader(keys => new Promise((resolve, reject) => {
-				var req = new messages.FetchTelnetInterfaceByIdRequest();
-				req.setTelnetinterfaceidtList(keys);
+	editSerialInterface({
+		serialInterfaceId,
+		serialPortId
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditSerialInterfaceRequest();
+			req.setSerialinterfaceid(serialInterfaceId);
+			req.setSerialportid(serialPortId);
 
-				var call = this.client.fetchTelnetInterfaceById(req);
+			this.client.editSerialInterface(req, (err, res) => {
+				if (!err) {
+					switch(res.getState()) {
+						case 0:
+							resolve(new SerialInterface(this, model.getSerialinterface()));
+							break;
+						case 1:
+							resolve(null);
+							break;
+					}
+				} else {
+					reject();
+				}
+			});
+		});
+	}
 
-				var items = [];
+	removeSerialInterface(id) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveSerialInterfaceRequest();
+			req.setSerialInterfaceId(id);
 
-				call.on("data", (res) => {
-
-				});
-
-				call.on("end", () => {
-					resolve(items);
-				});
-
-				call.on("error", () => {
-
-				});
-			}));
-		}
+			this.client.removeSerialInterface(req, (err, res) => {
+				if (!err) {
+					switch(res.getState()) {
+						case 0:
+							resolve(true);
+							break;
+						case 1:
+							resolve(false);
+							break;
+					}
+				} else {
+					reject();
+				}
+			});
+		});
 	}
 }

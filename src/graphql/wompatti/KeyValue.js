@@ -1,8 +1,8 @@
 
 import DeviceInfo from "./DeviceInfo";
 
-const DeviceInfoKeyValue = `
-    type DeviceInfoKeyValue {
+const KeyValue = `
+    type KeyValue {
         id: ID
         deviceInfo: DeviceInfo
         key: String
@@ -28,7 +28,7 @@ const EditKeyValueInput = `
 
 export default () => [
     DeviceInfo,
-    DeviceInfoKeyValue,
+    KeyValue,
     CreateKeyValueInput,
     EditKeyValueInput
 ];

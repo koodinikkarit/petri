@@ -1,11 +1,11 @@
 
-import DeviceInfoKeyValue from "./DeviceInfoKeyValue";
+import KeyValue from "./KeyValue";
 
 const DeviceInfo = `
     type DeviceInfo {
         id: ID
-        keyValues: [DeviceInfoKeyValue]!
+        keyValues: [KeyValue]!
     }
 `;
 
-export default () => [DeviceInfoKeyValue, DeviceInfo];
+export default () => [KeyValue, DeviceInfo];

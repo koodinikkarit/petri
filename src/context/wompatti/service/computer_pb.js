@@ -21,7 +21,6 @@ goog.exportSymbol('proto.WompattiService.EditComputerResponse', null, global);
 goog.exportSymbol('proto.WompattiService.EditComputerResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.FetchComputerByIdRequest', null, global);
 goog.exportSymbol('proto.WompattiService.FetchComputerByIdResponse', null, global);
-goog.exportSymbol('proto.WompattiService.FetchComputerByIdResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.FetchComputersRequest', null, global);
 goog.exportSymbol('proto.WompattiService.FetchManyComputerByIdRequest', null, global);
 goog.exportSymbol('proto.WompattiService.FetchManyComputerByIdResponse', null, global);
@@ -324,7 +323,7 @@ proto.WompattiService.ComputersEdge.prototype.toObject = function(opt_includeIns
 proto.WompattiService.ComputersEdge.toObject = function(includeInstance, msg) {
   var f, obj = {
     node: (f = msg.getNode()) && proto.WompattiService.Computer.toObject(includeInstance, f),
-    cursor: jspb.Message.getFieldWithDefault(msg, 2, "")
+    cursor: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -367,7 +366,7 @@ proto.WompattiService.ComputersEdge.deserializeBinaryFromReader = function(msg, 
       msg.setNode(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readUint32());
       msg.setCursor(value);
       break;
     default:
@@ -407,8 +406,8 @@ proto.WompattiService.ComputersEdge.serializeBinaryToWriter = function(message, 
     );
   }
   f = message.getCursor();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeUint32(
       2,
       f
     );
@@ -447,15 +446,15 @@ proto.WompattiService.ComputersEdge.prototype.hasNode = function() {
 
 
 /**
- * optional string cursor = 2;
- * @return {string}
+ * optional uint32 cursor = 2;
+ * @return {number}
  */
 proto.WompattiService.ComputersEdge.prototype.getCursor = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
-/** @param {string} value */
+/** @param {number} value */
 proto.WompattiService.ComputersEdge.prototype.setCursor = function(value) {
   jspb.Message.setField(this, 2, value);
 };
@@ -1971,12 +1970,19 @@ proto.WompattiService.FetchComputerByIdRequest.prototype.clearComputeridtList = 
  * @constructor
  */
 proto.WompattiService.FetchComputerByIdResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchComputerByIdResponse.repeatedFields_, null);
 };
 goog.inherits(proto.WompattiService.FetchComputerByIdResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.WompattiService.FetchComputerByIdResponse.displayName = 'proto.WompattiService.FetchComputerByIdResponse';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.WompattiService.FetchComputerByIdResponse.repeatedFields_ = [1];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -2005,9 +2011,8 @@ proto.WompattiService.FetchComputerByIdResponse.prototype.toObject = function(op
  */
 proto.WompattiService.FetchComputerByIdResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    computer: (f = msg.getComputer()) && proto.WompattiService.Computer.toObject(includeInstance, f),
-    state: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    computerid: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    computersList: jspb.Message.toObjectList(msg.getComputersList(),
+    proto.WompattiService.Computer.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -2047,15 +2052,7 @@ proto.WompattiService.FetchComputerByIdResponse.deserializeBinaryFromReader = fu
     case 1:
       var value = new proto.WompattiService.Computer;
       reader.readMessage(value,proto.WompattiService.Computer.deserializeBinaryFromReader);
-      msg.setComputer(value);
-      break;
-    case 2:
-      var value = /** @type {!proto.WompattiService.FetchComputerByIdResponse.State} */ (reader.readEnum());
-      msg.setState(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setComputerid(value);
+      msg.addComputers(value);
       break;
     default:
       reader.skipField();
@@ -2085,96 +2082,47 @@ proto.WompattiService.FetchComputerByIdResponse.prototype.serializeBinary = func
  */
 proto.WompattiService.FetchComputerByIdResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getComputer();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getComputersList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
       1,
       f,
       proto.WompattiService.Computer.serializeBinaryToWriter
     );
   }
-  f = message.getState();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      2,
-      f
-    );
-  }
-  f = message.getComputerid();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
 };
 
 
 /**
- * @enum {number}
+ * repeated Computer computers = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.WompattiService.Computer>}
  */
-proto.WompattiService.FetchComputerByIdResponse.State = {
-  SUCCESS: 0,
-  NOT_FOUND: 1
-};
-
-/**
- * optional Computer computer = 1;
- * @return {?proto.WompattiService.Computer}
- */
-proto.WompattiService.FetchComputerByIdResponse.prototype.getComputer = function() {
-  return /** @type{?proto.WompattiService.Computer} */ (
-    jspb.Message.getWrapperField(this, proto.WompattiService.Computer, 1));
+proto.WompattiService.FetchComputerByIdResponse.prototype.getComputersList = function() {
+  return /** @type{!Array.<!proto.WompattiService.Computer>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.Computer, 1));
 };
 
 
-/** @param {?proto.WompattiService.Computer|undefined} value */
-proto.WompattiService.FetchComputerByIdResponse.prototype.setComputer = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-proto.WompattiService.FetchComputerByIdResponse.prototype.clearComputer = function() {
-  this.setComputer(undefined);
+/** @param {!Array.<!proto.WompattiService.Computer>} value */
+proto.WompattiService.FetchComputerByIdResponse.prototype.setComputersList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {!boolean}
+ * @param {!proto.WompattiService.Computer=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.WompattiService.Computer}
  */
-proto.WompattiService.FetchComputerByIdResponse.prototype.hasComputer = function() {
-  return jspb.Message.getField(this, 1) != null;
+proto.WompattiService.FetchComputerByIdResponse.prototype.addComputers = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.Computer, opt_index);
 };
 
 
-/**
- * optional State state = 2;
- * @return {!proto.WompattiService.FetchComputerByIdResponse.State}
- */
-proto.WompattiService.FetchComputerByIdResponse.prototype.getState = function() {
-  return /** @type {!proto.WompattiService.FetchComputerByIdResponse.State} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {!proto.WompattiService.FetchComputerByIdResponse.State} value */
-proto.WompattiService.FetchComputerByIdResponse.prototype.setState = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 computerId = 3;
- * @return {number}
- */
-proto.WompattiService.FetchComputerByIdResponse.prototype.getComputerid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchComputerByIdResponse.prototype.setComputerid = function(value) {
-  jspb.Message.setField(this, 3, value);
+proto.WompattiService.FetchComputerByIdResponse.prototype.clearComputersList = function() {
+  this.setComputersList([]);
 };
 
 
@@ -2606,8 +2554,10 @@ proto.WompattiService.FetchComputersRequest.prototype.toObject = function(opt_in
  */
 proto.WompattiService.FetchComputersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    offset: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    limit: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    after: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    before: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    first: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    last: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -2646,11 +2596,19 @@ proto.WompattiService.FetchComputersRequest.deserializeBinaryFromReader = functi
     switch (field) {
     case 1:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setOffset(value);
+      msg.setAfter(value);
       break;
     case 2:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setLimit(value);
+      msg.setBefore(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFirst(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLast(value);
       break;
     default:
       reader.skipField();
@@ -2680,17 +2638,31 @@ proto.WompattiService.FetchComputersRequest.prototype.serializeBinary = function
  */
 proto.WompattiService.FetchComputersRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getOffset();
+  f = message.getAfter();
   if (f !== 0) {
     writer.writeUint32(
       1,
       f
     );
   }
-  f = message.getLimit();
+  f = message.getBefore();
   if (f !== 0) {
     writer.writeUint32(
       2,
+      f
+    );
+  }
+  f = message.getFirst();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = message.getLast();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
       f
     );
   }
@@ -2698,32 +2670,62 @@ proto.WompattiService.FetchComputersRequest.serializeBinaryToWriter = function(m
 
 
 /**
- * optional uint32 offset = 1;
+ * optional uint32 after = 1;
  * @return {number}
  */
-proto.WompattiService.FetchComputersRequest.prototype.getOffset = function() {
+proto.WompattiService.FetchComputersRequest.prototype.getAfter = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {number} value */
-proto.WompattiService.FetchComputersRequest.prototype.setOffset = function(value) {
+proto.WompattiService.FetchComputersRequest.prototype.setAfter = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * optional uint32 limit = 2;
+ * optional uint32 before = 2;
  * @return {number}
  */
-proto.WompattiService.FetchComputersRequest.prototype.getLimit = function() {
+proto.WompattiService.FetchComputersRequest.prototype.getBefore = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.WompattiService.FetchComputersRequest.prototype.setLimit = function(value) {
+proto.WompattiService.FetchComputersRequest.prototype.setBefore = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 first = 3;
+ * @return {number}
+ */
+proto.WompattiService.FetchComputersRequest.prototype.getFirst = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.FetchComputersRequest.prototype.setFirst = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 last = 4;
+ * @return {number}
+ */
+proto.WompattiService.FetchComputersRequest.prototype.getLast = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.FetchComputersRequest.prototype.setLast = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 

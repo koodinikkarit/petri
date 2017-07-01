@@ -1,5 +1,5 @@
 
-export default class {
+export class WolInterface {
 	constructor(context, model) {
 		var id = model.getId();
 		var ethernetInterfaceId = model.getEthernetinterfaceid();

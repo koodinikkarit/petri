@@ -58,8 +58,8 @@ proto.WompattiService.PageInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
     hasnextpage: jspb.Message.getFieldWithDefault(msg, 1, false),
     haspreviouspage: jspb.Message.getFieldWithDefault(msg, 2, false),
-    startcursor: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    endcursor: jspb.Message.getFieldWithDefault(msg, 4, "")
+    startcursor: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    endcursor: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -105,11 +105,11 @@ proto.WompattiService.PageInfo.deserializeBinaryFromReader = function(msg, reade
       msg.setHaspreviouspage(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readUint32());
       msg.setStartcursor(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readUint32());
       msg.setEndcursor(value);
       break;
     default:
@@ -155,15 +155,15 @@ proto.WompattiService.PageInfo.serializeBinaryToWriter = function(message, write
     );
   }
   f = message.getStartcursor();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeUint32(
       3,
       f
     );
   }
   f = message.getEndcursor();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeUint32(
       4,
       f
     );
@@ -206,30 +206,30 @@ proto.WompattiService.PageInfo.prototype.setHaspreviouspage = function(value) {
 
 
 /**
- * optional string startCursor = 3;
- * @return {string}
+ * optional uint32 startCursor = 3;
+ * @return {number}
  */
 proto.WompattiService.PageInfo.prototype.getStartcursor = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
-/** @param {string} value */
+/** @param {number} value */
 proto.WompattiService.PageInfo.prototype.setStartcursor = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * optional string endCursor = 4;
- * @return {string}
+ * optional uint32 endCursor = 4;
+ * @return {number}
  */
 proto.WompattiService.PageInfo.prototype.getEndcursor = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
-/** @param {string} value */
+/** @param {number} value */
 proto.WompattiService.PageInfo.prototype.setEndcursor = function(value) {
   jspb.Message.setField(this, 4, value);
 };

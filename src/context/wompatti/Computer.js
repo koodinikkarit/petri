@@ -8,7 +8,7 @@ export class Computer {
 		var name = computer.getName();
 		var deviceInfoId = computer.getDeviceinfoid();
 		var arttuId = computer.getArttuid();
-		var wolInterfaceId = computer.getWolInterfaceId();
+		var wolInterfaceId = computer.getWolinterfaceid();
 
 		Object.defineProperties(this, {
 			"id": {
@@ -21,7 +21,7 @@ export class Computer {
 				get: () => context.fetchDeviceInfoById(deviceInfoId)
 			},
 			"arttu": {
-				get: () => context.fetchArttuById()
+				get: () => context.fetchArttuById(arttuId)
 			},
 			"wolInterface": {
 				get: () => context.fetchWolInterfaceById(wolInterfaceId)
@@ -37,13 +37,13 @@ export class ComputersConnection {
 				get: () => new PageInfo(context, model.getPageinfo())
 			},
 			"edges": {
-				get: () => model.getEdges().map(p => new ComputersEdge(context, p))
+				get: () => model.getEdgesList().map(p => new ComputersEdge(context, p))
 			},
 			"totalCount": {
 				get: () => model.getTotalcount()
 			},
 			"computers": {
-				get: () => model.getEdges().map(p => new Computer(context, p.getComputer()))
+				get: () => model.getEdgesList().map(p => new Computer(context, p.getComputer()))
 			}
 		})
 	}
@@ -53,7 +53,7 @@ export class ComputersEdge {
 	constructor(context, model) {
 		Object.defineProperties(this, {
 			"node": {
-				get: () => new Computer(context, model.getComputer())
+				get: () => new Computer(context, model.getNode())
 			},
 			"cursor": {
 				get: () => model.getCursor()

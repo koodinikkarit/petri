@@ -1,4 +1,5 @@
 
+import PageInfo from "./PageInfo";
 import SerialPort from "./SerialPort";
 
 const SerialInterface = `
@@ -7,6 +8,22 @@ const SerialInterface = `
         serialPort: SerialPort
     }
 `;
+
+const SerialInterfaceEdge = `
+    type SerialInterfaceEdge {
+        node: SerialInterface
+        cursor: Int
+    }
+`;
+
+const SerialInterfacesConnection = `
+    type SerialInterfacesConnection {
+        pageInfo: PageInfo
+        edges: [SerialInterfaceEdge]
+        totalCount: Int
+        serialInterfaces: [SerialInterface]
+    }
+` 
 
 const CreateSerialInterfaceInput = `
     input CreateSerialInterfaceInput {
@@ -23,6 +40,8 @@ const EditSerialInterfaceInput = `
 
 export default () => [
     SerialInterface,
+    SerialInterfaceEdge,
+    SerialInterfacesConnection,
     CreateSerialInterfaceInput,
     EditSerialInterfaceInput,
     SerialPort

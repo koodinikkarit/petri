@@ -11,6 +11,21 @@ const Device = `
     }
 `;
 
+const DevicesEdge = `
+    type DevicesEdge {
+        node: Device
+        cursor: String!
+    }
+`;
+
+const DevicesConnection = `
+    type DevicesConnection {
+        pageInfo: PageInfo
+        totalCount: Int       
+        devices: [Device]
+    }
+`;
+
 const CreateDeviceInput = `
     input CreateDeviceInput {
         name: String
@@ -29,6 +44,8 @@ export default () => [
     DeviceInfo,
     DeviceType,
     Device,
+    DevicesEdge,
+    DevicesConnection,
     CreateDeviceInput,
     EditDeviceInput
 ];

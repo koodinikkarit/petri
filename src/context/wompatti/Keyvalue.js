@@ -1,6 +1,6 @@
 
 
-export default class {
+export class KeyValue {
 	constructor(context, keyValue) {
 		var _id = keyValue.getId();
 		var _key = keyValue.getKey();

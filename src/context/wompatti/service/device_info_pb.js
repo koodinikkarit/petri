@@ -13,12 +13,12 @@ goog.exportSymbol('proto.WompattiService.CreateKeyValueRequest', null, global);
 goog.exportSymbol('proto.WompattiService.CreateKeyValueResponse', null, global);
 goog.exportSymbol('proto.WompattiService.CreateKeyValueResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.DeviceInfo', null, global);
+goog.exportSymbol('proto.WompattiService.DeviceInfoKeyValues', null, global);
 goog.exportSymbol('proto.WompattiService.EditKeyValueRequest', null, global);
 goog.exportSymbol('proto.WompattiService.EditKeyValueResponse', null, global);
 goog.exportSymbol('proto.WompattiService.EditKeyValueResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.FetchDeviceInfoByIdRequest', null, global);
 goog.exportSymbol('proto.WompattiService.FetchDeviceInfoByIdResponse', null, global);
-goog.exportSymbol('proto.WompattiService.FetchDeviceInfoByIdResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.FetchKeyValuesByDeviceInfoIdRequest', null, global);
 goog.exportSymbol('proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse', null, global);
 goog.exportSymbol('proto.WompattiService.KeyValue', null, global);
@@ -561,12 +561,19 @@ proto.WompattiService.FetchDeviceInfoByIdRequest.prototype.clearDeviceinfoidtLis
  * @constructor
  */
 proto.WompattiService.FetchDeviceInfoByIdResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchDeviceInfoByIdResponse.repeatedFields_, null);
 };
 goog.inherits(proto.WompattiService.FetchDeviceInfoByIdResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.WompattiService.FetchDeviceInfoByIdResponse.displayName = 'proto.WompattiService.FetchDeviceInfoByIdResponse';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.WompattiService.FetchDeviceInfoByIdResponse.repeatedFields_ = [1];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -595,9 +602,8 @@ proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.toObject = function(
  */
 proto.WompattiService.FetchDeviceInfoByIdResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    deviceinfo: (f = msg.getDeviceinfo()) && proto.WompattiService.DeviceInfo.toObject(includeInstance, f),
-    state: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    deviceinfoid: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    deviceinfosList: jspb.Message.toObjectList(msg.getDeviceinfosList(),
+    proto.WompattiService.DeviceInfo.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -637,15 +643,7 @@ proto.WompattiService.FetchDeviceInfoByIdResponse.deserializeBinaryFromReader = 
     case 1:
       var value = new proto.WompattiService.DeviceInfo;
       reader.readMessage(value,proto.WompattiService.DeviceInfo.deserializeBinaryFromReader);
-      msg.setDeviceinfo(value);
-      break;
-    case 2:
-      var value = /** @type {!proto.WompattiService.FetchDeviceInfoByIdResponse.State} */ (reader.readEnum());
-      msg.setState(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setDeviceinfoid(value);
+      msg.addDeviceinfos(value);
       break;
     default:
       reader.skipField();
@@ -675,96 +673,47 @@ proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.serializeBinary = fu
  */
 proto.WompattiService.FetchDeviceInfoByIdResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getDeviceinfo();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getDeviceinfosList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
       1,
       f,
       proto.WompattiService.DeviceInfo.serializeBinaryToWriter
     );
   }
-  f = message.getState();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      2,
-      f
-    );
-  }
-  f = message.getDeviceinfoid();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
 };
 
 
 /**
- * @enum {number}
+ * repeated DeviceInfo deviceInfos = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.WompattiService.DeviceInfo>}
  */
-proto.WompattiService.FetchDeviceInfoByIdResponse.State = {
-  SUCCESS: 0,
-  NOT_FOUND: 1
-};
-
-/**
- * optional DeviceInfo deviceInfo = 1;
- * @return {?proto.WompattiService.DeviceInfo}
- */
-proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.getDeviceinfo = function() {
-  return /** @type{?proto.WompattiService.DeviceInfo} */ (
-    jspb.Message.getWrapperField(this, proto.WompattiService.DeviceInfo, 1));
+proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.getDeviceinfosList = function() {
+  return /** @type{!Array.<!proto.WompattiService.DeviceInfo>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.DeviceInfo, 1));
 };
 
 
-/** @param {?proto.WompattiService.DeviceInfo|undefined} value */
-proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.setDeviceinfo = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.clearDeviceinfo = function() {
-  this.setDeviceinfo(undefined);
+/** @param {!Array.<!proto.WompattiService.DeviceInfo>} value */
+proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.setDeviceinfosList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {!boolean}
+ * @param {!proto.WompattiService.DeviceInfo=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.WompattiService.DeviceInfo}
  */
-proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.hasDeviceinfo = function() {
-  return jspb.Message.getField(this, 1) != null;
+proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.addDeviceinfos = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.DeviceInfo, opt_index);
 };
 
 
-/**
- * optional State state = 2;
- * @return {!proto.WompattiService.FetchDeviceInfoByIdResponse.State}
- */
-proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.getState = function() {
-  return /** @type {!proto.WompattiService.FetchDeviceInfoByIdResponse.State} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {!proto.WompattiService.FetchDeviceInfoByIdResponse.State} value */
-proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.setState = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 deviceInfoId = 3;
- * @return {number}
- */
-proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.getDeviceinfoid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.setDeviceinfoid = function(value) {
-  jspb.Message.setField(this, 3, value);
+proto.WompattiService.FetchDeviceInfoByIdResponse.prototype.clearDeviceinfosList = function() {
+  this.setDeviceinfosList([]);
 };
 
 
@@ -942,6 +891,201 @@ proto.WompattiService.FetchKeyValuesByDeviceInfoIdRequest.prototype.clearDevicei
  * @extends {jspb.Message}
  * @constructor
  */
+proto.WompattiService.DeviceInfoKeyValues = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.DeviceInfoKeyValues.repeatedFields_, null);
+};
+goog.inherits(proto.WompattiService.DeviceInfoKeyValues, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.WompattiService.DeviceInfoKeyValues.displayName = 'proto.WompattiService.DeviceInfoKeyValues';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.WompattiService.DeviceInfoKeyValues.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.WompattiService.DeviceInfoKeyValues.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.DeviceInfoKeyValues.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.WompattiService.DeviceInfoKeyValues} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.WompattiService.DeviceInfoKeyValues.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    keyvaluesList: jspb.Message.toObjectList(msg.getKeyvaluesList(),
+    proto.WompattiService.KeyValue.toObject, includeInstance),
+    deviceinfoid: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.WompattiService.DeviceInfoKeyValues}
+ */
+proto.WompattiService.DeviceInfoKeyValues.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.WompattiService.DeviceInfoKeyValues;
+  return proto.WompattiService.DeviceInfoKeyValues.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.WompattiService.DeviceInfoKeyValues} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.WompattiService.DeviceInfoKeyValues}
+ */
+proto.WompattiService.DeviceInfoKeyValues.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.WompattiService.KeyValue;
+      reader.readMessage(value,proto.WompattiService.KeyValue.deserializeBinaryFromReader);
+      msg.addKeyvalues(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDeviceinfoid(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.WompattiService.DeviceInfoKeyValues.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.WompattiService.DeviceInfoKeyValues.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.WompattiService.DeviceInfoKeyValues} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.WompattiService.DeviceInfoKeyValues.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getKeyvaluesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.WompattiService.KeyValue.serializeBinaryToWriter
+    );
+  }
+  f = message.getDeviceinfoid();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated KeyValue keyValues = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.WompattiService.KeyValue>}
+ */
+proto.WompattiService.DeviceInfoKeyValues.prototype.getKeyvaluesList = function() {
+  return /** @type{!Array.<!proto.WompattiService.KeyValue>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.KeyValue, 1));
+};
+
+
+/** @param {!Array.<!proto.WompattiService.KeyValue>} value */
+proto.WompattiService.DeviceInfoKeyValues.prototype.setKeyvaluesList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.WompattiService.KeyValue=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.WompattiService.KeyValue}
+ */
+proto.WompattiService.DeviceInfoKeyValues.prototype.addKeyvalues = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.KeyValue, opt_index);
+};
+
+
+proto.WompattiService.DeviceInfoKeyValues.prototype.clearKeyvaluesList = function() {
+  this.setKeyvaluesList([]);
+};
+
+
+/**
+ * optional uint32 deviceInfoId = 2;
+ * @return {number}
+ */
+proto.WompattiService.DeviceInfoKeyValues.prototype.getDeviceinfoid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.DeviceInfoKeyValues.prototype.setDeviceinfoid = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.repeatedFields_, null);
 };
@@ -984,9 +1128,8 @@ proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.toObject = 
  */
 proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    keyvaluesList: jspb.Message.toObjectList(msg.getKeyvaluesList(),
-    proto.WompattiService.KeyValue.toObject, includeInstance),
-    deviceinfoid: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    deviceinfokeyvaluesList: jspb.Message.toObjectList(msg.getDeviceinfokeyvaluesList(),
+    proto.WompattiService.DeviceInfoKeyValues.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1024,13 +1167,9 @@ proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.deserializeBinaryFrom
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.WompattiService.KeyValue;
-      reader.readMessage(value,proto.WompattiService.KeyValue.deserializeBinaryFromReader);
-      msg.addKeyvalues(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setDeviceinfoid(value);
+      var value = new proto.WompattiService.DeviceInfoKeyValues;
+      reader.readMessage(value,proto.WompattiService.DeviceInfoKeyValues.deserializeBinaryFromReader);
+      msg.addDeviceinfokeyvalues(value);
       break;
     default:
       reader.skipField();
@@ -1060,69 +1199,47 @@ proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.serializeBi
  */
 proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getKeyvaluesList();
+  f = message.getDeviceinfokeyvaluesList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
       f,
-      proto.WompattiService.KeyValue.serializeBinaryToWriter
-    );
-  }
-  f = message.getDeviceinfoid();
-  if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
+      proto.WompattiService.DeviceInfoKeyValues.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * repeated KeyValue keyValues = 1;
+ * repeated DeviceInfoKeyValues deviceInfoKeyValues = 1;
  * If you change this array by adding, removing or replacing elements, or if you
  * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.WompattiService.KeyValue>}
+ * @return {!Array.<!proto.WompattiService.DeviceInfoKeyValues>}
  */
-proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.getKeyvaluesList = function() {
-  return /** @type{!Array.<!proto.WompattiService.KeyValue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.KeyValue, 1));
+proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.getDeviceinfokeyvaluesList = function() {
+  return /** @type{!Array.<!proto.WompattiService.DeviceInfoKeyValues>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.DeviceInfoKeyValues, 1));
 };
 
 
-/** @param {!Array.<!proto.WompattiService.KeyValue>} value */
-proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.setKeyvaluesList = function(value) {
+/** @param {!Array.<!proto.WompattiService.DeviceInfoKeyValues>} value */
+proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.setDeviceinfokeyvaluesList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * @param {!proto.WompattiService.KeyValue=} opt_value
+ * @param {!proto.WompattiService.DeviceInfoKeyValues=} opt_value
  * @param {number=} opt_index
- * @return {!proto.WompattiService.KeyValue}
+ * @return {!proto.WompattiService.DeviceInfoKeyValues}
  */
-proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.addKeyvalues = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.KeyValue, opt_index);
+proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.addDeviceinfokeyvalues = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.DeviceInfoKeyValues, opt_index);
 };
 
 
-proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.clearKeyvaluesList = function() {
-  this.setKeyvaluesList([]);
-};
-
-
-/**
- * optional uint32 deviceInfoId = 2;
- * @return {number}
- */
-proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.getDeviceinfoid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.setDeviceinfoid = function(value) {
-  jspb.Message.setField(this, 2, value);
+proto.WompattiService.FetchKeyValuesByDeviceInfoIdResponse.prototype.clearDeviceinfokeyvaluesList = function() {
+  this.setDeviceinfokeyvaluesList([]);
 };
 
 
