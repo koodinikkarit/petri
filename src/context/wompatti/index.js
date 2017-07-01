@@ -52,11 +52,6 @@ import {
 	DeviceInfoKeyValues
 } from "./DeviceInfo";
 
-//import DeviceInfo from "./DeviceInfo";
-import FetchKeyValuesByDeviceInfoIdResponse from "./FetchKeyValuesByDeviceInfoIdResponse";
-import FetchComputerByIdResponse from "./FetchComputerByIdResponse";
-import FetchDeviceInfoByIdResponse from "./FetchDeviceInfoByIdResponse";
-import FetchDeviceByIdResponse from "./FetchDeviceByIdResponse";
 import EthernetInterface from "./EthernetInterface";
 
 export default class {

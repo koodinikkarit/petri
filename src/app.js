@@ -5,13 +5,10 @@ import {
 } from 'graphql-server-express';
 import bodyParser from 'body-parser';
 import schema from "./graphql";
-
 import Context from "./context";
 
-//import cors from "cors";
+import config from "../config.json";
 
-const fs = require("fs");
-const grpc = require("grpc");
 //const ristoservice = grpc.load("./risto_service/risto_service.proto").RistoService;
 
 //var client = new ristoservice.Risto(`localhost:3040`, grpc.credentials.createInsecure());
@@ -49,10 +46,20 @@ app.post("/login", (req, res) => {
 });
 
 app.use('/', graphqlExpress((req) => {
+	var remoteAdressParts = req.connection.remoteAddress.split(":");
+	var hostParts = req.get('host').split(":");	
+
 	var context = new Context({
-		wompattiIp: "localhost",
-		wompattiPort: 5052
+		wompattiIp: config.wompattiIp,
+		wompattiPort: config.wompattiPort,
+		sourceFamily: req.connection.remoteFamily,
+		sourceIp: remoteAdressParts[remoteAdressParts.length-1],
+		sourcePort: req.connection.remotePort,
+		destinationIp: hostParts[0],
+		destinationPort: hostParts[1],
+		destinationPath: req.originalUrl
 	});
+	
 	return {
 		schema,
 		context

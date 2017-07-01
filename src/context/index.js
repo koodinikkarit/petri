@@ -3,8 +3,6 @@ const grpc = require("grpc");
 
 import path from "path";
 
-console.log("appdirr", );
-
 let sslCredentials = grpc.credentials.createSsl(
 	fs.readFileSync(path.join(__dirname, "../../ssl/ca.crt")), 
 	fs.readFileSync(path.join(__dirname, "../../ssl/client.key")), 
@@ -16,15 +14,23 @@ import Wompatti from "./wompatti";
 export default class {
 	constructor({
 		token,
+		sourceFamily,
 		sourceIp,
+		sourcePort,
 		destinationIp,
+		destinationPort,
+		destinationPath,
 		wompattiIp,
 		wompattiPort
 	}) {
 		var meta = new grpc.Metadata();
 		if (token) meta.add("token", token);
+		if (sourceFamily) meta.add("sourceFamily", sourceFamily);
 		if (sourceIp) meta.add("sourceIp", sourceIp);
+		if (sourcePort) meta.add("sourcePort", String(sourcePort));
 		if (destinationIp) meta.add("destinationIp", destinationIp);
+		if (destinationPort) meta.add("destinationPort", destinationPort);
+		if (destinationPath) meta.add("destinationPath", destinationPath);
 
 		var extra = grpc.credentials.createFromMetadataGenerator(
 			function (url, callback) {

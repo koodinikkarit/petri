@@ -7,8 +7,7 @@
 	},
 	"scripts": {
 		"start": "babel-node ./src/app.js",
-		"watch": "babel-watch ./src/app.js",
-		"tt": "babel-node ./src/test.js"
+		"watch": "babel-watch ./src/app.js"
 	},
 	"dependencies": {
 		"express": "^4.14.0",
