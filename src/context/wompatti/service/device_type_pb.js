@@ -1228,10 +1228,7 @@ proto.WompattiService.EditDeviceTypeRequest.prototype.toObject = function(opt_in
 proto.WompattiService.EditDeviceTypeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     devicetypeid: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    serialinterfaceid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    telnetinterfaceid: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    cecinterfaceid: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    name: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1276,18 +1273,6 @@ proto.WompattiService.EditDeviceTypeRequest.deserializeBinaryFromReader = functi
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setSerialinterfaceid(value);
-      break;
-    case 4:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setTelnetinterfaceid(value);
-      break;
-    case 5:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setCecinterfaceid(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -1330,27 +1315,6 @@ proto.WompattiService.EditDeviceTypeRequest.serializeBinaryToWriter = function(m
       f
     );
   }
-  f = message.getSerialinterfaceid();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
-  f = message.getTelnetinterfaceid();
-  if (f !== 0) {
-    writer.writeUint32(
-      4,
-      f
-    );
-  }
-  f = message.getCecinterfaceid();
-  if (f !== 0) {
-    writer.writeUint32(
-      5,
-      f
-    );
-  }
 };
 
 
@@ -1381,51 +1345,6 @@ proto.WompattiService.EditDeviceTypeRequest.prototype.getName = function() {
 /** @param {string} value */
 proto.WompattiService.EditDeviceTypeRequest.prototype.setName = function(value) {
   jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 serialInterfaceId = 3;
- * @return {number}
- */
-proto.WompattiService.EditDeviceTypeRequest.prototype.getSerialinterfaceid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.EditDeviceTypeRequest.prototype.setSerialinterfaceid = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional uint32 telnetInterfaceId = 4;
- * @return {number}
- */
-proto.WompattiService.EditDeviceTypeRequest.prototype.getTelnetinterfaceid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.EditDeviceTypeRequest.prototype.setTelnetinterfaceid = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-/**
- * optional uint32 cecInterfaceId = 5;
- * @return {number}
- */
-proto.WompattiService.EditDeviceTypeRequest.prototype.getCecinterfaceid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.EditDeviceTypeRequest.prototype.setCecinterfaceid = function(value) {
-  jspb.Message.setField(this, 5, value);
 };
 
 
@@ -1807,7 +1726,7 @@ proto.WompattiService.RemoveDeviceTypeResponse.prototype.toObject = function(opt
  */
 proto.WompattiService.RemoveDeviceTypeResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    state: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -1844,6 +1763,10 @@ proto.WompattiService.RemoveDeviceTypeResponse.deserializeBinaryFromReader = fun
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {!proto.WompattiService.RemoveDeviceTypeResponse.State} */ (reader.readEnum());
+      msg.setState(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1872,6 +1795,13 @@ proto.WompattiService.RemoveDeviceTypeResponse.prototype.serializeBinary = funct
  */
 proto.WompattiService.RemoveDeviceTypeResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getState();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      1,
+      f
+    );
+  }
 };
 
 
@@ -1882,6 +1812,21 @@ proto.WompattiService.RemoveDeviceTypeResponse.State = {
   SUCCESS: 0,
   NOT_FOUND: 1
 };
+
+/**
+ * optional State state = 1;
+ * @return {!proto.WompattiService.RemoveDeviceTypeResponse.State}
+ */
+proto.WompattiService.RemoveDeviceTypeResponse.prototype.getState = function() {
+  return /** @type {!proto.WompattiService.RemoveDeviceTypeResponse.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {!proto.WompattiService.RemoveDeviceTypeResponse.State} value */
+proto.WompattiService.RemoveDeviceTypeResponse.prototype.setState = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
 
 
 /**

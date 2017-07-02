@@ -1949,7 +1949,7 @@ proto.WompattiService.RemoveTelnetInterfaceRequest.prototype.toObject = function
  */
 proto.WompattiService.RemoveTelnetInterfaceRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    ethernetinterfaceid: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    telnetinterfaceid: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -1988,7 +1988,7 @@ proto.WompattiService.RemoveTelnetInterfaceRequest.deserializeBinaryFromReader =
     switch (field) {
     case 1:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setEthernetinterfaceid(value);
+      msg.setTelnetinterfaceid(value);
       break;
     default:
       reader.skipField();
@@ -2018,7 +2018,7 @@ proto.WompattiService.RemoveTelnetInterfaceRequest.prototype.serializeBinary = f
  */
 proto.WompattiService.RemoveTelnetInterfaceRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getEthernetinterfaceid();
+  f = message.getTelnetinterfaceid();
   if (f !== 0) {
     writer.writeUint32(
       1,
@@ -2029,16 +2029,16 @@ proto.WompattiService.RemoveTelnetInterfaceRequest.serializeBinaryToWriter = fun
 
 
 /**
- * optional uint32 ethernetInterfaceId = 1;
+ * optional uint32 telnetInterfaceId = 1;
  * @return {number}
  */
-proto.WompattiService.RemoveTelnetInterfaceRequest.prototype.getEthernetinterfaceid = function() {
+proto.WompattiService.RemoveTelnetInterfaceRequest.prototype.getTelnetinterfaceid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {number} value */
-proto.WompattiService.RemoveTelnetInterfaceRequest.prototype.setEthernetinterfaceid = function(value) {
+proto.WompattiService.RemoveTelnetInterfaceRequest.prototype.setTelnetinterfaceid = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 

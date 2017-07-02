@@ -21,6 +21,7 @@ goog.exportSymbol('proto.WompattiService.FetchSerialInterfaceByIdResponse', null
 goog.exportSymbol('proto.WompattiService.FetchSerialInterfacesRequest', null, global);
 goog.exportSymbol('proto.WompattiService.RemoveSerialInterfaceRequest', null, global);
 goog.exportSymbol('proto.WompattiService.RemoveSerialInterfaceResponse', null, global);
+goog.exportSymbol('proto.WompattiService.RemoveSerialInterfaceResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.SerialInterface', null, global);
 goog.exportSymbol('proto.WompattiService.SerialInterfacesConnection', null, global);
 goog.exportSymbol('proto.WompattiService.SerialInterfacesEdge', null, global);
@@ -2043,7 +2044,7 @@ proto.WompattiService.RemoveSerialInterfaceResponse.prototype.toObject = functio
  */
 proto.WompattiService.RemoveSerialInterfaceResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    state: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -2080,6 +2081,10 @@ proto.WompattiService.RemoveSerialInterfaceResponse.deserializeBinaryFromReader 
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {!proto.WompattiService.RemoveSerialInterfaceResponse.State} */ (reader.readEnum());
+      msg.setState(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2108,6 +2113,36 @@ proto.WompattiService.RemoveSerialInterfaceResponse.prototype.serializeBinary = 
  */
 proto.WompattiService.RemoveSerialInterfaceResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getState();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * @enum {number}
+ */
+proto.WompattiService.RemoveSerialInterfaceResponse.State = {
+  SUCCESS: 0,
+  NOT_FOUND: 1
+};
+
+/**
+ * optional State state = 1;
+ * @return {!proto.WompattiService.RemoveSerialInterfaceResponse.State}
+ */
+proto.WompattiService.RemoveSerialInterfaceResponse.prototype.getState = function() {
+  return /** @type {!proto.WompattiService.RemoveSerialInterfaceResponse.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {!proto.WompattiService.RemoveSerialInterfaceResponse.State} value */
+proto.WompattiService.RemoveSerialInterfaceResponse.prototype.setState = function(value) {
+  jspb.Message.setField(this, 1, value);
 };
 
 
