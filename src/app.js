@@ -52,6 +52,8 @@ app.use('/', graphqlExpress((req) => {
 	var context = new Context({
 		wompattiIp: config.wompattiIp,
 		wompattiPort: config.wompattiPort,
+		seppoIp: config.seppoIp,
+		seppoPort: config.seppoPort,
 		sourceFamily: req.connection.remoteFamily,
 		sourceIp: remoteAdressParts[remoteAdressParts.length-1],
 		sourcePort: req.connection.remotePort,
