@@ -8,10 +8,20 @@ import {
 	resolvers as wompattiResolvers
 } from "./wompatti";
 
+
+
+import {
+	Queries as seppoQueries,
+	Mutations as seppoMutations,
+	resolvers as seppoResolvers
+} from "./seppo";
+
 export default makeExecutableSchema({
 	typeDefs: [
 		wompattiQueries,
 		wompattiMutations,
+		seppoQueries,
+		seppoMutations,
 		`
 		schema {
 			query: Query
@@ -20,6 +30,7 @@ export default makeExecutableSchema({
 		`
 	],
 	resolvers: merge(
-		wompattiResolvers
+		wompattiResolvers,
+		seppoResolvers
 	)
 });
