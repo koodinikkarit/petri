@@ -710,6 +710,940 @@ proto.WompattiService.ComputersConnection.prototype.setTotalcount = function(val
  * @extends {jspb.Message}
  * @constructor
  */
+proto.WompattiService.FetchComputerByIdRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchComputerByIdRequest.repeatedFields_, null);
+};
+goog.inherits(proto.WompattiService.FetchComputerByIdRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.WompattiService.FetchComputerByIdRequest.displayName = 'proto.WompattiService.FetchComputerByIdRequest';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.WompattiService.FetchComputerByIdRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.WompattiService.FetchComputerByIdRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.FetchComputerByIdRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.WompattiService.FetchComputerByIdRequest} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.WompattiService.FetchComputerByIdRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    computeridtList: jspb.Message.getField(msg, 1)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.WompattiService.FetchComputerByIdRequest}
+ */
+proto.WompattiService.FetchComputerByIdRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.WompattiService.FetchComputerByIdRequest;
+  return proto.WompattiService.FetchComputerByIdRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.WompattiService.FetchComputerByIdRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.WompattiService.FetchComputerByIdRequest}
+ */
+proto.WompattiService.FetchComputerByIdRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setComputeridtList(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.WompattiService.FetchComputerByIdRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.WompattiService.FetchComputerByIdRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.WompattiService.FetchComputerByIdRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.WompattiService.FetchComputerByIdRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getComputeridtList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated uint32 computerIdt = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.WompattiService.FetchComputerByIdRequest.prototype.getComputeridtList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.WompattiService.FetchComputerByIdRequest.prototype.setComputeridtList = function(value) {
+  jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.WompattiService.FetchComputerByIdRequest.prototype.addComputeridt = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+proto.WompattiService.FetchComputerByIdRequest.prototype.clearComputeridtList = function() {
+  this.setComputeridtList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.WompattiService.FetchComputerByIdResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchComputerByIdResponse.repeatedFields_, null);
+};
+goog.inherits(proto.WompattiService.FetchComputerByIdResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.WompattiService.FetchComputerByIdResponse.displayName = 'proto.WompattiService.FetchComputerByIdResponse';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.WompattiService.FetchComputerByIdResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.WompattiService.FetchComputerByIdResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.FetchComputerByIdResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.WompattiService.FetchComputerByIdResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.WompattiService.FetchComputerByIdResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    computersList: jspb.Message.toObjectList(msg.getComputersList(),
+    proto.WompattiService.Computer.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.WompattiService.FetchComputerByIdResponse}
+ */
+proto.WompattiService.FetchComputerByIdResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.WompattiService.FetchComputerByIdResponse;
+  return proto.WompattiService.FetchComputerByIdResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.WompattiService.FetchComputerByIdResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.WompattiService.FetchComputerByIdResponse}
+ */
+proto.WompattiService.FetchComputerByIdResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.WompattiService.Computer;
+      reader.readMessage(value,proto.WompattiService.Computer.deserializeBinaryFromReader);
+      msg.addComputers(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.WompattiService.FetchComputerByIdResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.WompattiService.FetchComputerByIdResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.WompattiService.FetchComputerByIdResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.WompattiService.FetchComputerByIdResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getComputersList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.WompattiService.Computer.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated Computer computers = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.WompattiService.Computer>}
+ */
+proto.WompattiService.FetchComputerByIdResponse.prototype.getComputersList = function() {
+  return /** @type{!Array.<!proto.WompattiService.Computer>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.Computer, 1));
+};
+
+
+/** @param {!Array.<!proto.WompattiService.Computer>} value */
+proto.WompattiService.FetchComputerByIdResponse.prototype.setComputersList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.WompattiService.Computer=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.WompattiService.Computer}
+ */
+proto.WompattiService.FetchComputerByIdResponse.prototype.addComputers = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.Computer, opt_index);
+};
+
+
+proto.WompattiService.FetchComputerByIdResponse.prototype.clearComputersList = function() {
+  this.setComputersList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.WompattiService.FetchManyComputerByIdRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchManyComputerByIdRequest.repeatedFields_, null);
+};
+goog.inherits(proto.WompattiService.FetchManyComputerByIdRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.WompattiService.FetchManyComputerByIdRequest.displayName = 'proto.WompattiService.FetchManyComputerByIdRequest';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.WompattiService.FetchManyComputerByIdRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.WompattiService.FetchManyComputerByIdRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.FetchManyComputerByIdRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.WompattiService.FetchManyComputerByIdRequest} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.WompattiService.FetchManyComputerByIdRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    idList: jspb.Message.getField(msg, 1)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.WompattiService.FetchManyComputerByIdRequest}
+ */
+proto.WompattiService.FetchManyComputerByIdRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.WompattiService.FetchManyComputerByIdRequest;
+  return proto.WompattiService.FetchManyComputerByIdRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.WompattiService.FetchManyComputerByIdRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.WompattiService.FetchManyComputerByIdRequest}
+ */
+proto.WompattiService.FetchManyComputerByIdRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setIdList(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.WompattiService.FetchManyComputerByIdRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.WompattiService.FetchManyComputerByIdRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.WompattiService.FetchManyComputerByIdRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.WompattiService.FetchManyComputerByIdRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIdList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated uint32 id = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.WompattiService.FetchManyComputerByIdRequest.prototype.getIdList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.WompattiService.FetchManyComputerByIdRequest.prototype.setIdList = function(value) {
+  jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.WompattiService.FetchManyComputerByIdRequest.prototype.addId = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+proto.WompattiService.FetchManyComputerByIdRequest.prototype.clearIdList = function() {
+  this.setIdList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.WompattiService.FetchManyComputerByIdResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.WompattiService.FetchManyComputerByIdResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.WompattiService.FetchManyComputerByIdResponse.displayName = 'proto.WompattiService.FetchManyComputerByIdResponse';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.FetchManyComputerByIdResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.WompattiService.FetchManyComputerByIdResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    computer: (f = msg.getComputer()) && proto.WompattiService.Computer.toObject(includeInstance, f),
+    state: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    computerid: jspb.Message.getFieldWithDefault(msg, 3, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.WompattiService.FetchManyComputerByIdResponse}
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.WompattiService.FetchManyComputerByIdResponse;
+  return proto.WompattiService.FetchManyComputerByIdResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.WompattiService.FetchManyComputerByIdResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.WompattiService.FetchManyComputerByIdResponse}
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.WompattiService.Computer;
+      reader.readMessage(value,proto.WompattiService.Computer.deserializeBinaryFromReader);
+      msg.setComputer(value);
+      break;
+    case 2:
+      var value = /** @type {!proto.WompattiService.FetchManyComputerByIdResponse.State} */ (reader.readEnum());
+      msg.setState(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setComputerid(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.WompattiService.FetchManyComputerByIdResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.WompattiService.FetchManyComputerByIdResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getComputer();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.WompattiService.Computer.serializeBinaryToWriter
+    );
+  }
+  f = message.getState();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
+  f = message.getComputerid();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * @enum {number}
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.State = {
+  SUCCESS: 0,
+  NOT_FOUND: 1
+};
+
+/**
+ * optional Computer computer = 1;
+ * @return {?proto.WompattiService.Computer}
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.prototype.getComputer = function() {
+  return /** @type{?proto.WompattiService.Computer} */ (
+    jspb.Message.getWrapperField(this, proto.WompattiService.Computer, 1));
+};
+
+
+/** @param {?proto.WompattiService.Computer|undefined} value */
+proto.WompattiService.FetchManyComputerByIdResponse.prototype.setComputer = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.WompattiService.FetchManyComputerByIdResponse.prototype.clearComputer = function() {
+  this.setComputer(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.prototype.hasComputer = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional State state = 2;
+ * @return {!proto.WompattiService.FetchManyComputerByIdResponse.State}
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.prototype.getState = function() {
+  return /** @type {!proto.WompattiService.FetchManyComputerByIdResponse.State} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {!proto.WompattiService.FetchManyComputerByIdResponse.State} value */
+proto.WompattiService.FetchManyComputerByIdResponse.prototype.setState = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 computerId = 3;
+ * @return {number}
+ */
+proto.WompattiService.FetchManyComputerByIdResponse.prototype.getComputerid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.FetchManyComputerByIdResponse.prototype.setComputerid = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.WompattiService.FetchComputersRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.WompattiService.FetchComputersRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.WompattiService.FetchComputersRequest.displayName = 'proto.WompattiService.FetchComputersRequest';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.WompattiService.FetchComputersRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.FetchComputersRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.WompattiService.FetchComputersRequest} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.WompattiService.FetchComputersRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    after: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    before: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    first: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    last: jspb.Message.getFieldWithDefault(msg, 4, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.WompattiService.FetchComputersRequest}
+ */
+proto.WompattiService.FetchComputersRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.WompattiService.FetchComputersRequest;
+  return proto.WompattiService.FetchComputersRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.WompattiService.FetchComputersRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.WompattiService.FetchComputersRequest}
+ */
+proto.WompattiService.FetchComputersRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setAfter(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setBefore(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFirst(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLast(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.WompattiService.FetchComputersRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.WompattiService.FetchComputersRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.WompattiService.FetchComputersRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.WompattiService.FetchComputersRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAfter();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getBefore();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getFirst();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = message.getLast();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 after = 1;
+ * @return {number}
+ */
+proto.WompattiService.FetchComputersRequest.prototype.getAfter = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.FetchComputersRequest.prototype.setAfter = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 before = 2;
+ * @return {number}
+ */
+proto.WompattiService.FetchComputersRequest.prototype.getBefore = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.FetchComputersRequest.prototype.setBefore = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 first = 3;
+ * @return {number}
+ */
+proto.WompattiService.FetchComputersRequest.prototype.getFirst = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.FetchComputersRequest.prototype.setFirst = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 last = 4;
+ * @return {number}
+ */
+proto.WompattiService.FetchComputersRequest.prototype.getLast = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.WompattiService.FetchComputersRequest.prototype.setLast = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.WompattiService.CreateComputerRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -1792,940 +2726,6 @@ proto.WompattiService.RemoveComputerResponse.prototype.getState = function() {
 /** @param {!proto.WompattiService.RemoveComputerResponse.State} value */
 proto.WompattiService.RemoveComputerResponse.prototype.setState = function(value) {
   jspb.Message.setField(this, 1, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.FetchComputerByIdRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchComputerByIdRequest.repeatedFields_, null);
-};
-goog.inherits(proto.WompattiService.FetchComputerByIdRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.FetchComputerByIdRequest.displayName = 'proto.WompattiService.FetchComputerByIdRequest';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.WompattiService.FetchComputerByIdRequest.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.FetchComputerByIdRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.FetchComputerByIdRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.FetchComputerByIdRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.FetchComputerByIdRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    computeridtList: jspb.Message.getField(msg, 1)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.FetchComputerByIdRequest}
- */
-proto.WompattiService.FetchComputerByIdRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.FetchComputerByIdRequest;
-  return proto.WompattiService.FetchComputerByIdRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.FetchComputerByIdRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.FetchComputerByIdRequest}
- */
-proto.WompattiService.FetchComputerByIdRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
-      msg.setComputeridtList(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.FetchComputerByIdRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.FetchComputerByIdRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.FetchComputerByIdRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.FetchComputerByIdRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getComputeridtList();
-  if (f.length > 0) {
-    writer.writePackedUint32(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * repeated uint32 computerIdt = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<number>}
- */
-proto.WompattiService.FetchComputerByIdRequest.prototype.getComputeridtList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
-};
-
-
-/** @param {!Array.<number>} value */
-proto.WompattiService.FetchComputerByIdRequest.prototype.setComputeridtList = function(value) {
-  jspb.Message.setField(this, 1, value || []);
-};
-
-
-/**
- * @param {!number} value
- * @param {number=} opt_index
- */
-proto.WompattiService.FetchComputerByIdRequest.prototype.addComputeridt = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
-};
-
-
-proto.WompattiService.FetchComputerByIdRequest.prototype.clearComputeridtList = function() {
-  this.setComputeridtList([]);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.FetchComputerByIdResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchComputerByIdResponse.repeatedFields_, null);
-};
-goog.inherits(proto.WompattiService.FetchComputerByIdResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.FetchComputerByIdResponse.displayName = 'proto.WompattiService.FetchComputerByIdResponse';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.WompattiService.FetchComputerByIdResponse.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.FetchComputerByIdResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.FetchComputerByIdResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.FetchComputerByIdResponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.FetchComputerByIdResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    computersList: jspb.Message.toObjectList(msg.getComputersList(),
-    proto.WompattiService.Computer.toObject, includeInstance)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.FetchComputerByIdResponse}
- */
-proto.WompattiService.FetchComputerByIdResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.FetchComputerByIdResponse;
-  return proto.WompattiService.FetchComputerByIdResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.FetchComputerByIdResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.FetchComputerByIdResponse}
- */
-proto.WompattiService.FetchComputerByIdResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.WompattiService.Computer;
-      reader.readMessage(value,proto.WompattiService.Computer.deserializeBinaryFromReader);
-      msg.addComputers(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.FetchComputerByIdResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.FetchComputerByIdResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.FetchComputerByIdResponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.FetchComputerByIdResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getComputersList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      proto.WompattiService.Computer.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * repeated Computer computers = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.WompattiService.Computer>}
- */
-proto.WompattiService.FetchComputerByIdResponse.prototype.getComputersList = function() {
-  return /** @type{!Array.<!proto.WompattiService.Computer>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.Computer, 1));
-};
-
-
-/** @param {!Array.<!proto.WompattiService.Computer>} value */
-proto.WompattiService.FetchComputerByIdResponse.prototype.setComputersList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.WompattiService.Computer=} opt_value
- * @param {number=} opt_index
- * @return {!proto.WompattiService.Computer}
- */
-proto.WompattiService.FetchComputerByIdResponse.prototype.addComputers = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.Computer, opt_index);
-};
-
-
-proto.WompattiService.FetchComputerByIdResponse.prototype.clearComputersList = function() {
-  this.setComputersList([]);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.FetchManyComputerByIdRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchManyComputerByIdRequest.repeatedFields_, null);
-};
-goog.inherits(proto.WompattiService.FetchManyComputerByIdRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.FetchManyComputerByIdRequest.displayName = 'proto.WompattiService.FetchManyComputerByIdRequest';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.WompattiService.FetchManyComputerByIdRequest.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.FetchManyComputerByIdRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.FetchManyComputerByIdRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.FetchManyComputerByIdRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.FetchManyComputerByIdRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    idList: jspb.Message.getField(msg, 1)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.FetchManyComputerByIdRequest}
- */
-proto.WompattiService.FetchManyComputerByIdRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.FetchManyComputerByIdRequest;
-  return proto.WompattiService.FetchManyComputerByIdRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.FetchManyComputerByIdRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.FetchManyComputerByIdRequest}
- */
-proto.WompattiService.FetchManyComputerByIdRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
-      msg.setIdList(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.FetchManyComputerByIdRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.FetchManyComputerByIdRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.FetchManyComputerByIdRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.FetchManyComputerByIdRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getIdList();
-  if (f.length > 0) {
-    writer.writePackedUint32(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * repeated uint32 id = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<number>}
- */
-proto.WompattiService.FetchManyComputerByIdRequest.prototype.getIdList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
-};
-
-
-/** @param {!Array.<number>} value */
-proto.WompattiService.FetchManyComputerByIdRequest.prototype.setIdList = function(value) {
-  jspb.Message.setField(this, 1, value || []);
-};
-
-
-/**
- * @param {!number} value
- * @param {number=} opt_index
- */
-proto.WompattiService.FetchManyComputerByIdRequest.prototype.addId = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
-};
-
-
-proto.WompattiService.FetchManyComputerByIdRequest.prototype.clearIdList = function() {
-  this.setIdList([]);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.FetchManyComputerByIdResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.FetchManyComputerByIdResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.FetchManyComputerByIdResponse.displayName = 'proto.WompattiService.FetchManyComputerByIdResponse';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.FetchManyComputerByIdResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.FetchManyComputerByIdResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.FetchManyComputerByIdResponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.FetchManyComputerByIdResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    computer: (f = msg.getComputer()) && proto.WompattiService.Computer.toObject(includeInstance, f),
-    state: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    computerid: jspb.Message.getFieldWithDefault(msg, 3, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.FetchManyComputerByIdResponse}
- */
-proto.WompattiService.FetchManyComputerByIdResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.FetchManyComputerByIdResponse;
-  return proto.WompattiService.FetchManyComputerByIdResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.FetchManyComputerByIdResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.FetchManyComputerByIdResponse}
- */
-proto.WompattiService.FetchManyComputerByIdResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.WompattiService.Computer;
-      reader.readMessage(value,proto.WompattiService.Computer.deserializeBinaryFromReader);
-      msg.setComputer(value);
-      break;
-    case 2:
-      var value = /** @type {!proto.WompattiService.FetchManyComputerByIdResponse.State} */ (reader.readEnum());
-      msg.setState(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setComputerid(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.FetchManyComputerByIdResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.FetchManyComputerByIdResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.FetchManyComputerByIdResponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.FetchManyComputerByIdResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getComputer();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      proto.WompattiService.Computer.serializeBinaryToWriter
-    );
-  }
-  f = message.getState();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      2,
-      f
-    );
-  }
-  f = message.getComputerid();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
-};
-
-
-/**
- * @enum {number}
- */
-proto.WompattiService.FetchManyComputerByIdResponse.State = {
-  SUCCESS: 0,
-  NOT_FOUND: 1
-};
-
-/**
- * optional Computer computer = 1;
- * @return {?proto.WompattiService.Computer}
- */
-proto.WompattiService.FetchManyComputerByIdResponse.prototype.getComputer = function() {
-  return /** @type{?proto.WompattiService.Computer} */ (
-    jspb.Message.getWrapperField(this, proto.WompattiService.Computer, 1));
-};
-
-
-/** @param {?proto.WompattiService.Computer|undefined} value */
-proto.WompattiService.FetchManyComputerByIdResponse.prototype.setComputer = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-proto.WompattiService.FetchManyComputerByIdResponse.prototype.clearComputer = function() {
-  this.setComputer(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.WompattiService.FetchManyComputerByIdResponse.prototype.hasComputer = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional State state = 2;
- * @return {!proto.WompattiService.FetchManyComputerByIdResponse.State}
- */
-proto.WompattiService.FetchManyComputerByIdResponse.prototype.getState = function() {
-  return /** @type {!proto.WompattiService.FetchManyComputerByIdResponse.State} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {!proto.WompattiService.FetchManyComputerByIdResponse.State} value */
-proto.WompattiService.FetchManyComputerByIdResponse.prototype.setState = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 computerId = 3;
- * @return {number}
- */
-proto.WompattiService.FetchManyComputerByIdResponse.prototype.getComputerid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchManyComputerByIdResponse.prototype.setComputerid = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.FetchComputersRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.FetchComputersRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.FetchComputersRequest.displayName = 'proto.WompattiService.FetchComputersRequest';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.FetchComputersRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.FetchComputersRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.FetchComputersRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.FetchComputersRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    after: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    before: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    first: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    last: jspb.Message.getFieldWithDefault(msg, 4, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.FetchComputersRequest}
- */
-proto.WompattiService.FetchComputersRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.FetchComputersRequest;
-  return proto.WompattiService.FetchComputersRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.FetchComputersRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.FetchComputersRequest}
- */
-proto.WompattiService.FetchComputersRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setAfter(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setBefore(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setFirst(value);
-      break;
-    case 4:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setLast(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.FetchComputersRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.FetchComputersRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.FetchComputersRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.FetchComputersRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAfter();
-  if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
-  }
-  f = message.getBefore();
-  if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
-    );
-  }
-  f = message.getFirst();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
-  f = message.getLast();
-  if (f !== 0) {
-    writer.writeUint32(
-      4,
-      f
-    );
-  }
-};
-
-
-/**
- * optional uint32 after = 1;
- * @return {number}
- */
-proto.WompattiService.FetchComputersRequest.prototype.getAfter = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchComputersRequest.prototype.setAfter = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * optional uint32 before = 2;
- * @return {number}
- */
-proto.WompattiService.FetchComputersRequest.prototype.getBefore = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchComputersRequest.prototype.setBefore = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 first = 3;
- * @return {number}
- */
-proto.WompattiService.FetchComputersRequest.prototype.getFirst = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchComputersRequest.prototype.setFirst = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional uint32 last = 4;
- * @return {number}
- */
-proto.WompattiService.FetchComputersRequest.prototype.getLast = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchComputersRequest.prototype.setLast = function(value) {
-  jspb.Message.setField(this, 4, value);
 };
 
 

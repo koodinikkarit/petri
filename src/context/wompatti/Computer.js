@@ -43,7 +43,7 @@ export class ComputersConnection {
 				get: () => model.getTotalcount()
 			},
 			"computers": {
-				get: () => model.getEdgesList().map(p => new Computer(context, p.getComputer()))
+				get: () => model.getEdgesList().map(p => new Computer(context, p.getNode()))
 			}
 		})
 	}

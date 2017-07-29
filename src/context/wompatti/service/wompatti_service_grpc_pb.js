@@ -4,6 +4,7 @@
 var grpc = require('grpc');
 var computer_pb = require('./computer_pb.js');
 var device_info_pb = require('./device_info_pb.js');
+var key_value_pb = require('./key_value_pb.js');
 var arttu_pb = require('./arttu_pb.js');
 var device_pb = require('./device_pb.js');
 var ethernet_interface_pb = require('./ethernet_interface_pb.js');
@@ -112,25 +113,25 @@ function deserialize_WompattiService_CreateDeviceTypeResponse(buffer_arg) {
 }
 
 function serialize_WompattiService_CreateKeyValueRequest(arg) {
-  if (!(arg instanceof device_info_pb.CreateKeyValueRequest)) {
+  if (!(arg instanceof key_value_pb.CreateKeyValueRequest)) {
     throw new Error('Expected argument of type WompattiService.CreateKeyValueRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_WompattiService_CreateKeyValueRequest(buffer_arg) {
-  return device_info_pb.CreateKeyValueRequest.deserializeBinary(new Uint8Array(buffer_arg));
+  return key_value_pb.CreateKeyValueRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_CreateKeyValueResponse(arg) {
-  if (!(arg instanceof device_info_pb.CreateKeyValueResponse)) {
+  if (!(arg instanceof key_value_pb.CreateKeyValueResponse)) {
     throw new Error('Expected argument of type WompattiService.CreateKeyValueResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_WompattiService_CreateKeyValueResponse(buffer_arg) {
-  return device_info_pb.CreateKeyValueResponse.deserializeBinary(new Uint8Array(buffer_arg));
+  return key_value_pb.CreateKeyValueResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_CreateSerialInterfaceRequest(arg) {
@@ -310,25 +311,25 @@ function deserialize_WompattiService_EditDeviceTypeResponse(buffer_arg) {
 }
 
 function serialize_WompattiService_EditKeyValueRequest(arg) {
-  if (!(arg instanceof device_info_pb.EditKeyValueRequest)) {
+  if (!(arg instanceof key_value_pb.EditKeyValueRequest)) {
     throw new Error('Expected argument of type WompattiService.EditKeyValueRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_WompattiService_EditKeyValueRequest(buffer_arg) {
-  return device_info_pb.EditKeyValueRequest.deserializeBinary(new Uint8Array(buffer_arg));
+  return key_value_pb.EditKeyValueRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_EditKeyValueResponse(arg) {
-  if (!(arg instanceof device_info_pb.EditKeyValueResponse)) {
+  if (!(arg instanceof key_value_pb.EditKeyValueResponse)) {
     throw new Error('Expected argument of type WompattiService.EditKeyValueResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_WompattiService_EditKeyValueResponse(buffer_arg) {
-  return device_info_pb.EditKeyValueResponse.deserializeBinary(new Uint8Array(buffer_arg));
+  return key_value_pb.EditKeyValueResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_EditSerialInterfaceRequest(arg) {
@@ -585,25 +586,25 @@ function deserialize_WompattiService_FetchEthernetInterfacesRequest(buffer_arg) 
 }
 
 function serialize_WompattiService_FetchKeyValuesByDeviceInfoIdRequest(arg) {
-  if (!(arg instanceof device_info_pb.FetchKeyValuesByDeviceInfoIdRequest)) {
+  if (!(arg instanceof key_value_pb.FetchKeyValuesByDeviceInfoIdRequest)) {
     throw new Error('Expected argument of type WompattiService.FetchKeyValuesByDeviceInfoIdRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_WompattiService_FetchKeyValuesByDeviceInfoIdRequest(buffer_arg) {
-  return device_info_pb.FetchKeyValuesByDeviceInfoIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+  return key_value_pb.FetchKeyValuesByDeviceInfoIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_FetchKeyValuesByDeviceInfoIdResponse(arg) {
-  if (!(arg instanceof device_info_pb.FetchKeyValuesByDeviceInfoIdResponse)) {
+  if (!(arg instanceof key_value_pb.FetchKeyValuesByDeviceInfoIdResponse)) {
     throw new Error('Expected argument of type WompattiService.FetchKeyValuesByDeviceInfoIdResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_WompattiService_FetchKeyValuesByDeviceInfoIdResponse(buffer_arg) {
-  return device_info_pb.FetchKeyValuesByDeviceInfoIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
+  return key_value_pb.FetchKeyValuesByDeviceInfoIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_FetchSerialInterfaceByIdRequest(arg) {
@@ -783,25 +784,25 @@ function deserialize_WompattiService_RemoveDeviceTypeResponse(buffer_arg) {
 }
 
 function serialize_WompattiService_RemoveKeyValueRequest(arg) {
-  if (!(arg instanceof device_info_pb.RemoveKeyValueRequest)) {
+  if (!(arg instanceof key_value_pb.RemoveKeyValueRequest)) {
     throw new Error('Expected argument of type WompattiService.RemoveKeyValueRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_WompattiService_RemoveKeyValueRequest(buffer_arg) {
-  return device_info_pb.RemoveKeyValueRequest.deserializeBinary(new Uint8Array(buffer_arg));
+  return key_value_pb.RemoveKeyValueRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_RemoveKeyValueResponse(arg) {
-  if (!(arg instanceof device_info_pb.RemoveKeyValueResponse)) {
+  if (!(arg instanceof key_value_pb.RemoveKeyValueResponse)) {
     throw new Error('Expected argument of type WompattiService.RemoveKeyValueResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_WompattiService_RemoveKeyValueResponse(buffer_arg) {
-  return device_info_pb.RemoveKeyValueResponse.deserializeBinary(new Uint8Array(buffer_arg));
+  return key_value_pb.RemoveKeyValueResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_RemoveSerialInterfaceRequest(arg) {
@@ -954,8 +955,8 @@ var WompattiService = exports.WompattiService = {
     path: '/WompattiService.Wompatti/fetchKeyValuesByDeviceInfoId',
     requestStream: false,
     responseStream: false,
-    requestType: device_info_pb.FetchKeyValuesByDeviceInfoIdRequest,
-    responseType: device_info_pb.FetchKeyValuesByDeviceInfoIdResponse,
+    requestType: key_value_pb.FetchKeyValuesByDeviceInfoIdRequest,
+    responseType: key_value_pb.FetchKeyValuesByDeviceInfoIdResponse,
     requestSerialize: serialize_WompattiService_FetchKeyValuesByDeviceInfoIdRequest,
     requestDeserialize: deserialize_WompattiService_FetchKeyValuesByDeviceInfoIdRequest,
     responseSerialize: serialize_WompattiService_FetchKeyValuesByDeviceInfoIdResponse,
@@ -971,17 +972,6 @@ var WompattiService = exports.WompattiService = {
     requestDeserialize: deserialize_WompattiService_FetchEthernetInterfacesRequest,
     responseSerialize: serialize_WompattiService_EthernetInterfacesConnection,
     responseDeserialize: deserialize_WompattiService_EthernetInterfacesConnection,
-  },
-  fetchWolInterfaceById: {
-    path: '/WompattiService.Wompatti/fetchWolInterfaceById',
-    requestStream: false,
-    responseStream: false,
-    requestType: wol_interface_pb.FetchWolInterfaceByIdRequest,
-    responseType: wol_interface_pb.FetchWolInterfaceByIdResponse,
-    requestSerialize: serialize_WompattiService_FetchWolInterfaceByIdRequest,
-    requestDeserialize: deserialize_WompattiService_FetchWolInterfaceByIdRequest,
-    responseSerialize: serialize_WompattiService_FetchWolInterfaceByIdResponse,
-    responseDeserialize: deserialize_WompattiService_FetchWolInterfaceByIdResponse,
   },
   fetchDeviceTypes: {
     path: '/WompattiService.Wompatti/fetchDeviceTypes',
@@ -1004,6 +994,17 @@ var WompattiService = exports.WompattiService = {
     requestDeserialize: deserialize_WompattiService_FetchDeviceTypeByIdRequest,
     responseSerialize: serialize_WompattiService_FetchDeviceTypeByIdResponse,
     responseDeserialize: deserialize_WompattiService_FetchDeviceTypeByIdResponse,
+  },
+  fetchWolInterfaceById: {
+    path: '/WompattiService.Wompatti/fetchWolInterfaceById',
+    requestStream: false,
+    responseStream: false,
+    requestType: wol_interface_pb.FetchWolInterfaceByIdRequest,
+    responseType: wol_interface_pb.FetchWolInterfaceByIdResponse,
+    requestSerialize: serialize_WompattiService_FetchWolInterfaceByIdRequest,
+    requestDeserialize: deserialize_WompattiService_FetchWolInterfaceByIdRequest,
+    responseSerialize: serialize_WompattiService_FetchWolInterfaceByIdResponse,
+    responseDeserialize: deserialize_WompattiService_FetchWolInterfaceByIdResponse,
   },
   fetchCommandsByDeviceTypeId: {
     path: '/WompattiService.Wompatti/fetchCommandsByDeviceTypeId',
@@ -1197,8 +1198,8 @@ var WompattiService = exports.WompattiService = {
     path: '/WompattiService.Wompatti/createKeyValue',
     requestStream: false,
     responseStream: false,
-    requestType: device_info_pb.CreateKeyValueRequest,
-    responseType: device_info_pb.CreateKeyValueResponse,
+    requestType: key_value_pb.CreateKeyValueRequest,
+    responseType: key_value_pb.CreateKeyValueResponse,
     requestSerialize: serialize_WompattiService_CreateKeyValueRequest,
     requestDeserialize: deserialize_WompattiService_CreateKeyValueRequest,
     responseSerialize: serialize_WompattiService_CreateKeyValueResponse,
@@ -1208,8 +1209,8 @@ var WompattiService = exports.WompattiService = {
     path: '/WompattiService.Wompatti/editKeyValue',
     requestStream: false,
     responseStream: false,
-    requestType: device_info_pb.EditKeyValueRequest,
-    responseType: device_info_pb.EditKeyValueResponse,
+    requestType: key_value_pb.EditKeyValueRequest,
+    responseType: key_value_pb.EditKeyValueResponse,
     requestSerialize: serialize_WompattiService_EditKeyValueRequest,
     requestDeserialize: deserialize_WompattiService_EditKeyValueRequest,
     responseSerialize: serialize_WompattiService_EditKeyValueResponse,
@@ -1219,8 +1220,8 @@ var WompattiService = exports.WompattiService = {
     path: '/WompattiService.Wompatti/removeKeyValue',
     requestStream: false,
     responseStream: false,
-    requestType: device_info_pb.RemoveKeyValueRequest,
-    responseType: device_info_pb.RemoveKeyValueResponse,
+    requestType: key_value_pb.RemoveKeyValueRequest,
+    responseType: key_value_pb.RemoveKeyValueResponse,
     requestSerialize: serialize_WompattiService_RemoveKeyValueRequest,
     requestDeserialize: deserialize_WompattiService_RemoveKeyValueRequest,
     responseSerialize: serialize_WompattiService_RemoveKeyValueResponse,
