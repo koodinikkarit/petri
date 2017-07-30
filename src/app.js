@@ -4,18 +4,17 @@ import {
 	graphiqlExpress
 } from 'graphql-server-express';
 import bodyParser from 'body-parser';
+import read from "read-yaml";
 import schema from "./graphql";
 import Context from "./context";
 
-import config from "../config.json";
+const config = read.sync("config.yml");
 
 //const ristoservice = grpc.load("./risto_service/risto_service.proto").RistoService;
 
 //var client = new ristoservice.Risto(`localhost:3040`, grpc.credentials.createInsecure());
 
 const app = express();
-
-const APP_PORT = 9595;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -68,6 +67,6 @@ app.use('/', graphqlExpress((req) => {
 	}
 }));
 
-app.listen(APP_PORT, () => {
+app.listen(config.port, () => {
     console.log("serveri on käynnissä");
 });
