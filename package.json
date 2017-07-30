@@ -27,6 +27,7 @@
 		"read-yaml": "1.1.0"
 	},
 	"devDependencies": {
+		"webpack": "3.4.1",
 		"babel-watch": "2.0.6",
 		"babel-loader": "7.1.1"
 	}
