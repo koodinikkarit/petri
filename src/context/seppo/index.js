@@ -8,6 +8,14 @@ import {
 	SearchVariationsOutput
 } from "./Variation";
 
+import {
+	SongDatabase
+} from "./SongDatabase";
+
+import {
+	EwDatabase
+} from "./EwDatabase";
+
 export default class {
 	constructor({
 		ip,
@@ -24,10 +32,8 @@ export default class {
 			this.variationLoader = new DataLoader(keys => new Promise((resolve, reject) => {
 				var req = new messages.FetchVariationByIdRequest();
 				req.setVariationidsList(keys);
-				console.log("keys", keys);
 				this.client.fetchVariationById(req, (err, res) => {
 					if (!err) {
-						console.log("res3.0", res);
 						resolve(res.getVariationsList().map(p => {
 							if (p.getId() > 0) {
 								return new Variation(this, p);
@@ -61,6 +67,80 @@ export default class {
 				}
 			});
 		});
+	}
+
+	fetchSongDatabases() {
+		return new Promise((resolve, reject) => {
+			var req = new messages.FetchSongDatabasesRequest();
+			this.client.fetchSongDatabases(req, (err, res) => {
+				if (!err) {
+					resolve(res.getSongdatabasesList().map(p => new SongDatabase(this, p)));
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	fetchSongDatabaseById(id) {
+		if (!this.songDatabaseLoader) {
+			this.songDatabaseLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchSongDatabaseByIdRequest();
+				req.setSongdatabaseidsList(keys);
+
+				this.client.fetchSongDatabaseById(req, (err, res) => {
+					if (!err) {
+						resolve(res.getSongdatabasesList().map(p => {
+							if (p.getId() > 0) {
+								return new SongDatabase(this, p);
+							} else {
+								return null;
+							}
+						}))
+					} else {
+						reject();
+					}
+				});
+			}));
+		}
+		return this.songDatabaseLoader.load(id);
+	}
+
+	fetchEwDatabases() {
+		return new Promise((resolve, reject) => {
+			var req = new messages.FetchEwDatabasesRequest();
+			this.client.fetchEwDatabases(req, (err, res) => {
+				if (!err) {
+					resolve(res.getEwdatabasesList().map(p => new EwDatabase(this, p)));
+				} else {
+					reject()
+				}
+			});
+		});
+	}
+
+	fetchEwDatabaseById(id) {
+		if (!this.ewDatabaseLoader) {
+			this.ewDatabaseLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchEwDatabaseByIdRequest();
+				req.setEwdatabaseidsList(keys);
+
+				this.client.fetchEwDatabaseById(req, (err, res) => {
+					if (!err) {
+						resolve(res.getEwdatabasesList().map(p => {
+							if (p.getId() > 0) {
+								return new EwDatabase(this, p);
+							} else {
+								return null;
+							}
+						}))
+					} else {
+						reject();
+					}
+				});
+			}));
+		}
+		return this.ewDatabaseLoader.load(id);
 	}
 
 
@@ -106,5 +186,85 @@ export default class {
 				}
 			})
 		})
+	}
+
+	createSongDatabase({
+		name
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateSongDatabaseRequest();
+			req.setName(name);
+
+			this.client.createSongDatabase(req, (err, res) => {
+				if (!err) {
+					resolve(new SongDatabase(this, res.getSongdatabase()));
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	editSongDatabase({
+		songDatabaseId,
+		name
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditSongDatabaseRequest();
+			req.setName(name);
+
+			this.client.editSongDatabase(req, (err, res) => {
+				if (!err) {
+					resolve(new SongDatabase(this, res.getSongdatabase()));
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	removeSongDatabase(songDatabaseId) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveSongDatabaseRequest();
+			req.setSongdatabaseid(songDatabaseId);
+
+			this.client.editSongDatabase(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	createEwDatabase({
+		songDatabaseId
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateEwDatabaseRequest();
+
+			this.client.createEwDatabase(req, (err, res) => {
+				if (!err) {
+					resolve(new EwDatabase(this, res.getEwdatabase()));
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	removeEwDatabase(ewDatabaseId) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveEwDatabaseRequest();
+
+			this.client.removeEwDatabase(req, (err, res) => {
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}
+			});
+		});
 	}
 }

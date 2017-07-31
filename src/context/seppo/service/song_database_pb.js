@@ -68,7 +68,7 @@ proto.SeppoService.SongDatabase.prototype.toObject = function(opt_includeInstanc
 proto.SeppoService.SongDatabase.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     version: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
@@ -111,7 +111,7 @@ proto.SeppoService.SongDatabase.deserializeBinaryFromReader = function(msg, read
       msg.setId(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
     case 3:
@@ -154,8 +154,8 @@ proto.SeppoService.SongDatabase.serializeBinaryToWriter = function(message, writ
     );
   }
   f = message.getName();
-  if (f !== 0) {
-    writer.writeUint32(
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
@@ -186,15 +186,15 @@ proto.SeppoService.SongDatabase.prototype.setId = function(value) {
 
 
 /**
- * optional uint32 name = 2;
- * @return {number}
+ * optional string name = 2;
+ * @return {string}
  */
 proto.SeppoService.SongDatabase.prototype.getName = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
-/** @param {number} value */
+/** @param {string} value */
 proto.SeppoService.SongDatabase.prototype.setName = function(value) {
   jspb.Message.setField(this, 2, value);
 };
@@ -261,7 +261,7 @@ proto.SeppoService.SongDatabaseEdge.prototype.toObject = function(opt_includeIns
  */
 proto.SeppoService.SongDatabaseEdge.toObject = function(includeInstance, msg) {
   var f, obj = {
-    songdatabase: (f = msg.getSongdatabase()) && proto.SeppoService.SongDatabase.toObject(includeInstance, f),
+    node: (f = msg.getNode()) && proto.SeppoService.SongDatabase.toObject(includeInstance, f),
     cursor: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
@@ -302,7 +302,7 @@ proto.SeppoService.SongDatabaseEdge.deserializeBinaryFromReader = function(msg, 
     case 1:
       var value = new proto.SeppoService.SongDatabase;
       reader.readMessage(value,proto.SeppoService.SongDatabase.deserializeBinaryFromReader);
-      msg.setSongdatabase(value);
+      msg.setNode(value);
       break;
     case 2:
       var value = /** @type {number} */ (reader.readUint32());
@@ -336,7 +336,7 @@ proto.SeppoService.SongDatabaseEdge.prototype.serializeBinary = function() {
  */
 proto.SeppoService.SongDatabaseEdge.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSongdatabase();
+  f = message.getNode();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -355,23 +355,23 @@ proto.SeppoService.SongDatabaseEdge.serializeBinaryToWriter = function(message, 
 
 
 /**
- * optional SongDatabase songDatabase = 1;
+ * optional SongDatabase node = 1;
  * @return {?proto.SeppoService.SongDatabase}
  */
-proto.SeppoService.SongDatabaseEdge.prototype.getSongdatabase = function() {
+proto.SeppoService.SongDatabaseEdge.prototype.getNode = function() {
   return /** @type{?proto.SeppoService.SongDatabase} */ (
     jspb.Message.getWrapperField(this, proto.SeppoService.SongDatabase, 1));
 };
 
 
 /** @param {?proto.SeppoService.SongDatabase|undefined} value */
-proto.SeppoService.SongDatabaseEdge.prototype.setSongdatabase = function(value) {
+proto.SeppoService.SongDatabaseEdge.prototype.setNode = function(value) {
   jspb.Message.setWrapperField(this, 1, value);
 };
 
 
-proto.SeppoService.SongDatabaseEdge.prototype.clearSongdatabase = function() {
-  this.setSongdatabase(undefined);
+proto.SeppoService.SongDatabaseEdge.prototype.clearNode = function() {
+  this.setNode(undefined);
 };
 
 
@@ -379,7 +379,7 @@ proto.SeppoService.SongDatabaseEdge.prototype.clearSongdatabase = function() {
  * Returns whether this field is set.
  * @return {!boolean}
  */
-proto.SeppoService.SongDatabaseEdge.prototype.hasSongdatabase = function() {
+proto.SeppoService.SongDatabaseEdge.prototype.hasNode = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -1192,7 +1192,7 @@ proto.SeppoService.CreateSongDatabaseRequest.prototype.toObject = function(opt_i
  */
 proto.SeppoService.CreateSongDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1229,6 +1229,10 @@ proto.SeppoService.CreateSongDatabaseRequest.deserializeBinaryFromReader = funct
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1257,6 +1261,28 @@ proto.SeppoService.CreateSongDatabaseRequest.prototype.serializeBinary = functio
  */
 proto.SeppoService.CreateSongDatabaseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string name = 1;
+ * @return {string}
+ */
+proto.SeppoService.CreateSongDatabaseRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.SeppoService.CreateSongDatabaseRequest.prototype.setName = function(value) {
+  jspb.Message.setField(this, 1, value);
 };
 
 
@@ -1306,7 +1332,7 @@ proto.SeppoService.CreateSongDatabaseResponse.prototype.toObject = function(opt_
  */
 proto.SeppoService.CreateSongDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    songdatabase: (f = msg.getSongdatabase()) && proto.SeppoService.SongDatabase.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1343,6 +1369,11 @@ proto.SeppoService.CreateSongDatabaseResponse.deserializeBinaryFromReader = func
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.SeppoService.SongDatabase;
+      reader.readMessage(value,proto.SeppoService.SongDatabase.deserializeBinaryFromReader);
+      msg.setSongdatabase(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1371,6 +1402,44 @@ proto.SeppoService.CreateSongDatabaseResponse.prototype.serializeBinary = functi
  */
 proto.SeppoService.CreateSongDatabaseResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getSongdatabase();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.SeppoService.SongDatabase.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional SongDatabase songDatabase = 1;
+ * @return {?proto.SeppoService.SongDatabase}
+ */
+proto.SeppoService.CreateSongDatabaseResponse.prototype.getSongdatabase = function() {
+  return /** @type{?proto.SeppoService.SongDatabase} */ (
+    jspb.Message.getWrapperField(this, proto.SeppoService.SongDatabase, 1));
+};
+
+
+/** @param {?proto.SeppoService.SongDatabase|undefined} value */
+proto.SeppoService.CreateSongDatabaseResponse.prototype.setSongdatabase = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.SeppoService.CreateSongDatabaseResponse.prototype.clearSongdatabase = function() {
+  this.setSongdatabase(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SeppoService.CreateSongDatabaseResponse.prototype.hasSongdatabase = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -1420,7 +1489,8 @@ proto.SeppoService.EditSongDatabaseRequest.prototype.toObject = function(opt_inc
  */
 proto.SeppoService.EditSongDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    songdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    name: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1457,6 +1527,14 @@ proto.SeppoService.EditSongDatabaseRequest.deserializeBinaryFromReader = functio
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSongdatabaseid(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1485,6 +1563,50 @@ proto.SeppoService.EditSongDatabaseRequest.prototype.serializeBinary = function(
  */
 proto.SeppoService.EditSongDatabaseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getSongdatabaseid();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 songDatabaseId = 1;
+ * @return {number}
+ */
+proto.SeppoService.EditSongDatabaseRequest.prototype.getSongdatabaseid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.EditSongDatabaseRequest.prototype.setSongdatabaseid = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional string name = 2;
+ * @return {string}
+ */
+proto.SeppoService.EditSongDatabaseRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.SeppoService.EditSongDatabaseRequest.prototype.setName = function(value) {
+  jspb.Message.setField(this, 2, value);
 };
 
 
@@ -1534,7 +1656,7 @@ proto.SeppoService.EditSongDatabaseResponse.prototype.toObject = function(opt_in
  */
 proto.SeppoService.EditSongDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    songdatabase: (f = msg.getSongdatabase()) && proto.SeppoService.SongDatabase.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1571,6 +1693,11 @@ proto.SeppoService.EditSongDatabaseResponse.deserializeBinaryFromReader = functi
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.SeppoService.SongDatabase;
+      reader.readMessage(value,proto.SeppoService.SongDatabase.deserializeBinaryFromReader);
+      msg.setSongdatabase(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1599,6 +1726,44 @@ proto.SeppoService.EditSongDatabaseResponse.prototype.serializeBinary = function
  */
 proto.SeppoService.EditSongDatabaseResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getSongdatabase();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.SeppoService.SongDatabase.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional SongDatabase songDatabase = 1;
+ * @return {?proto.SeppoService.SongDatabase}
+ */
+proto.SeppoService.EditSongDatabaseResponse.prototype.getSongdatabase = function() {
+  return /** @type{?proto.SeppoService.SongDatabase} */ (
+    jspb.Message.getWrapperField(this, proto.SeppoService.SongDatabase, 1));
+};
+
+
+/** @param {?proto.SeppoService.SongDatabase|undefined} value */
+proto.SeppoService.EditSongDatabaseResponse.prototype.setSongdatabase = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.SeppoService.EditSongDatabaseResponse.prototype.clearSongdatabase = function() {
+  this.setSongdatabase(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.SeppoService.EditSongDatabaseResponse.prototype.hasSongdatabase = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -1648,7 +1813,7 @@ proto.SeppoService.RemoveSongDatabaseRequest.prototype.toObject = function(opt_i
  */
 proto.SeppoService.RemoveSongDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    songdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -1685,6 +1850,10 @@ proto.SeppoService.RemoveSongDatabaseRequest.deserializeBinaryFromReader = funct
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSongdatabaseid(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1713,6 +1882,28 @@ proto.SeppoService.RemoveSongDatabaseRequest.prototype.serializeBinary = functio
  */
 proto.SeppoService.RemoveSongDatabaseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getSongdatabaseid();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 songDatabaseId = 1;
+ * @return {number}
+ */
+proto.SeppoService.RemoveSongDatabaseRequest.prototype.getSongdatabaseid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.RemoveSongDatabaseRequest.prototype.setSongdatabaseid = function(value) {
+  jspb.Message.setField(this, 1, value);
 };
 
 
