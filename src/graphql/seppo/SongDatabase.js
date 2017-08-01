@@ -1,8 +1,10 @@
+import Variation from "./Variation";
 
 const SongDatabase = `
     type SongDatabase {
         id: ID
         name: String
+        variations: [Variation]
     }
 `;
 
@@ -35,6 +37,7 @@ const SearchSongDatabasesInput = `
 
 export default () => [
     SongDatabase,
+    Variation,
     SongDatabasesConnection,
     CreateSongDatabaseInput,
     EditSongDatabaseInput,

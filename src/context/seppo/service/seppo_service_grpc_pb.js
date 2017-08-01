@@ -3,10 +3,33 @@
 'use strict';
 var grpc = require('grpc');
 var song_database_pb = require('./song_database_pb.js');
+var song_database_variation_pb = require('./song_database_variation_pb.js');
 var ew_database_pb = require('./ew_database_pb.js');
 var ew_song_pb = require('./ew_song_pb.js');
 var ew_verse_pb = require('./ew_verse_pb.js');
 var variation_pb = require('./variation_pb.js');
+
+function serialize_SeppoService_AddVariationToSongDatabaseRequest(arg) {
+  if (!(arg instanceof song_database_variation_pb.AddVariationToSongDatabaseRequest)) {
+    throw new Error('Expected argument of type SeppoService.AddVariationToSongDatabaseRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_AddVariationToSongDatabaseRequest(buffer_arg) {
+  return song_database_variation_pb.AddVariationToSongDatabaseRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_AddVariationToSongDatabaseResponse(arg) {
+  if (!(arg instanceof song_database_variation_pb.AddVariationToSongDatabaseResponse)) {
+    throw new Error('Expected argument of type SeppoService.AddVariationToSongDatabaseResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_AddVariationToSongDatabaseResponse(buffer_arg) {
+  return song_database_variation_pb.AddVariationToSongDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
 
 function serialize_SeppoService_CreateEwDatabaseRequest(arg) {
   if (!(arg instanceof ew_database_pb.CreateEwDatabaseRequest)) {
@@ -228,6 +251,28 @@ function deserialize_SeppoService_FetchVariationByIdResponse(buffer_arg) {
   return variation_pb.FetchVariationByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_FetchVariationsBySongDatabaseIdRequest(arg) {
+  if (!(arg instanceof song_database_variation_pb.FetchVariationsBySongDatabaseIdRequest)) {
+    throw new Error('Expected argument of type SeppoService.FetchVariationsBySongDatabaseIdRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchVariationsBySongDatabaseIdRequest(buffer_arg) {
+  return song_database_variation_pb.FetchVariationsBySongDatabaseIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchVariationsBySongDatabaseIdResponse(arg) {
+  if (!(arg instanceof song_database_variation_pb.FetchVariationsBySongDatabaseIdResponse)) {
+    throw new Error('Expected argument of type SeppoService.FetchVariationsBySongDatabaseIdResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchVariationsBySongDatabaseIdResponse(buffer_arg) {
+  return song_database_variation_pb.FetchVariationsBySongDatabaseIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_ListenForChangedEwSongRequest(arg) {
   if (!(arg instanceof ew_database_pb.ListenForChangedEwSongRequest)) {
     throw new Error('Expected argument of type SeppoService.ListenForChangedEwSongRequest');
@@ -281,6 +326,28 @@ function serialize_SeppoService_RemoveSongDatabaseResponse(arg) {
 
 function deserialize_SeppoService_RemoveSongDatabaseResponse(buffer_arg) {
   return song_database_pb.RemoveSongDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_RemoveVariationFromSongDatabaseRequest(arg) {
+  if (!(arg instanceof song_database_variation_pb.RemoveVariationFromSongDatabaseRequest)) {
+    throw new Error('Expected argument of type SeppoService.RemoveVariationFromSongDatabaseRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveVariationFromSongDatabaseRequest(buffer_arg) {
+  return song_database_variation_pb.RemoveVariationFromSongDatabaseRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_RemoveVariationFromSongDatabaseResponse(arg) {
+  if (!(arg instanceof song_database_variation_pb.RemoveVariationFromSongDatabaseResponse)) {
+    throw new Error('Expected argument of type SeppoService.RemoveVariationFromSongDatabaseResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveVariationFromSongDatabaseResponse(buffer_arg) {
+  return song_database_variation_pb.RemoveVariationFromSongDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_RemoveVariationRequest(arg) {
@@ -439,6 +506,17 @@ var SeppoService = exports.SeppoService = {
     responseSerialize: serialize_SeppoService_FetchEwDatabaseByIdResponse,
     responseDeserialize: deserialize_SeppoService_FetchEwDatabaseByIdResponse,
   },
+  fetchVariationsBySongDatabaseId: {
+    path: '/SeppoService.Seppo/fetchVariationsBySongDatabaseId',
+    requestStream: false,
+    responseStream: false,
+    requestType: song_database_variation_pb.FetchVariationsBySongDatabaseIdRequest,
+    responseType: song_database_variation_pb.FetchVariationsBySongDatabaseIdResponse,
+    requestSerialize: serialize_SeppoService_FetchVariationsBySongDatabaseIdRequest,
+    requestDeserialize: deserialize_SeppoService_FetchVariationsBySongDatabaseIdRequest,
+    responseSerialize: serialize_SeppoService_FetchVariationsBySongDatabaseIdResponse,
+    responseDeserialize: deserialize_SeppoService_FetchVariationsBySongDatabaseIdResponse,
+  },
   // Mutations
   //
   createVariation: {
@@ -528,6 +606,28 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_RemoveEwDatabaseRequest,
     responseSerialize: serialize_SeppoService_RemoveEwDatabaseResponse,
     responseDeserialize: deserialize_SeppoService_RemoveEwDatabaseResponse,
+  },
+  addVariationToSongDatabase: {
+    path: '/SeppoService.Seppo/addVariationToSongDatabase',
+    requestStream: false,
+    responseStream: false,
+    requestType: song_database_variation_pb.AddVariationToSongDatabaseRequest,
+    responseType: song_database_variation_pb.AddVariationToSongDatabaseResponse,
+    requestSerialize: serialize_SeppoService_AddVariationToSongDatabaseRequest,
+    requestDeserialize: deserialize_SeppoService_AddVariationToSongDatabaseRequest,
+    responseSerialize: serialize_SeppoService_AddVariationToSongDatabaseResponse,
+    responseDeserialize: deserialize_SeppoService_AddVariationToSongDatabaseResponse,
+  },
+  removeVariationFromSongDatabase: {
+    path: '/SeppoService.Seppo/removeVariationFromSongDatabase',
+    requestStream: false,
+    responseStream: false,
+    requestType: song_database_variation_pb.RemoveVariationFromSongDatabaseRequest,
+    responseType: song_database_variation_pb.RemoveVariationFromSongDatabaseResponse,
+    requestSerialize: serialize_SeppoService_RemoveVariationFromSongDatabaseRequest,
+    requestDeserialize: deserialize_SeppoService_RemoveVariationFromSongDatabaseRequest,
+    responseSerialize: serialize_SeppoService_RemoveVariationFromSongDatabaseResponse,
+    responseDeserialize: deserialize_SeppoService_RemoveVariationFromSongDatabaseResponse,
   },
   syncEwDatabase: {
     path: '/SeppoService.Seppo/syncEwDatabase',

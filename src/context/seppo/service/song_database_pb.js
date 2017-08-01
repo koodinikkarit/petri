@@ -9,6 +9,7 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
+var song_database_variation_pb = require('./song_database_variation_pb.js');
 goog.exportSymbol('proto.SeppoService.CreateSongDatabaseRequest', null, global);
 goog.exportSymbol('proto.SeppoService.CreateSongDatabaseResponse', null, global);
 goog.exportSymbol('proto.SeppoService.EditSongDatabaseRequest', null, global);

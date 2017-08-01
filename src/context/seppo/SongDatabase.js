@@ -8,6 +8,9 @@ export class SongDatabase {
             },
             "name": {
                 get: () => model.getName()
+            },
+            "variations": {
+                get: () => context.fetchVariationsBySongDatabaseId(model.getId())
             }
         })
     }

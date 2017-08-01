@@ -2,6 +2,7 @@
 import Variation from "./Variation";
 import SongDatabase from "./SongDatabase";
 import EwDatabase from "./EwDatabase";
+import SongDatabaseVariation from "./SongDatabaseVariation";
 
 const SeppoMutation = `
 	extend type Mutation {
@@ -13,10 +14,15 @@ const SeppoMutation = `
 		removeSongDatabase(songDatabaseId: ID): Boolean
 		createEwDatabase(params: CreateEwDatabaseInput): EwDatabase
 		removeEwDatabase(ewDatabaseId: ID): Boolean
+		addVariationToSongDatabase(songDatabaseId: ID, variationId: ID): SongDatabaseVariation
+		removeVariationFromSongDatabase(songDatabaseId: ID, variationId: ID): Boolean
 	}
 `;
 
 export default () => [
 	SeppoMutation,
-	Variation
+	Variation,
+	SongDatabase,
+	EwDatabase,
+	SongDatabaseVariation
 ];

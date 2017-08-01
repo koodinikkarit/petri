@@ -11,6 +11,7 @@ const SeppoQuery = `
 		searchSongDatabases(params: SearchSongDatabasesInput): SongDatabasesConnection
 		ewDatabase(ewDatabase: ID): EwDatabase
 		searchEwDatabases(params: SearchEwDatabasesInput): EwDatabasesConnection
+		songDatabaseVariations(songDatabaseId: ID): [Variation]
 	}
 `;
 

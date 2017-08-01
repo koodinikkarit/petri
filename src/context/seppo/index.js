@@ -17,6 +17,10 @@ import {
 	EwDatabase
 } from "./EwDatabase";
 
+import {
+	SongDatabaseVariation
+} from "./SongDatabaseVariation";
+
 export default class {
 	constructor({
 		ip,
@@ -144,6 +148,28 @@ export default class {
 			}));
 		}
 		return this.ewDatabaseLoader.load(id);
+	}
+
+	fetchVariationsBySongDatabaseId(id) {
+		if (!this.songDatabaseVariationsLoader) {
+			this.songDatabaseVariationsLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchVariationsBySongDatabaseIdRequest();
+				req.setSongdatabaseidsList(keys);
+				
+
+				this.client.fetchVariationsBySongDatabaseId(req, (err, res) => {
+					if (!err) {
+						resolve(res.getSongdatabasevariationsList().map(p => {
+							return p.getVariationsList().map(e => new Variation(this, e));
+						}));
+					} else {
+						reject();
+					}
+				});
+			}));
+		}
+
+		return this.songDatabaseVariationsLoader.load(id);
 	}
 
 
@@ -286,6 +312,38 @@ export default class {
 					reject();
 				}
 			});
+		});
+	}
+
+	addVariationToSongDatabase(songDatabaseId, variationId) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.AddVariationToSongDatabaseRequest();
+			req.setSongdatabaseid(songDatabaseId);
+			req.setVariationid(variationId);
+
+			this.client.addVariationToSongDatabase(req, (err, res) => {
+				if (!err) {
+					resolve(new SongDatabaseVariation(this, res.getSongdatabasevariation()));
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
+	removeVariationFromSongDatabase(songDatabaseId, variationId) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveVariationFromSongDatabaseRequest();
+			req.setSongdatabaseid(songDatabaseId);
+			req.setVariationid(variationId);
+
+			this.client.removeVariationFromSongDatabase(req, (err, res) => {
+				if (!err) {
+					resolve()
+				} else {
+					reject();
+				}
+			})
 		});
 	}
 }
