@@ -868,7 +868,7 @@ proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.toObject = function(op
  */
 proto.SeppoService.FetchSongDatabaseByIdRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    songdatabasesidsList: jspb.Message.getField(msg, 1)
+    songdatabaseidsList: jspb.Message.getField(msg, 1)
   };
 
   if (includeInstance) {
@@ -907,7 +907,7 @@ proto.SeppoService.FetchSongDatabaseByIdRequest.deserializeBinaryFromReader = fu
     switch (field) {
     case 1:
       var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
-      msg.setSongdatabasesidsList(value);
+      msg.setSongdatabaseidsList(value);
       break;
     default:
       reader.skipField();
@@ -937,7 +937,7 @@ proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.serializeBinary = func
  */
 proto.SeppoService.FetchSongDatabaseByIdRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSongdatabasesidsList();
+  f = message.getSongdatabaseidsList();
   if (f.length > 0) {
     writer.writePackedUint32(
       1,
@@ -948,18 +948,18 @@ proto.SeppoService.FetchSongDatabaseByIdRequest.serializeBinaryToWriter = functi
 
 
 /**
- * repeated uint32 songDatabasesIds = 1;
+ * repeated uint32 songDatabaseIds = 1;
  * If you change this array by adding, removing or replacing elements, or if you
  * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
-proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.getSongdatabasesidsList = function() {
+proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.getSongdatabaseidsList = function() {
   return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
 };
 
 
 /** @param {!Array.<number>} value */
-proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.setSongdatabasesidsList = function(value) {
+proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.setSongdatabaseidsList = function(value) {
   jspb.Message.setField(this, 1, value || []);
 };
 
@@ -968,13 +968,13 @@ proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.setSongdatabasesidsLis
  * @param {!number} value
  * @param {number=} opt_index
  */
-proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.addSongdatabasesids = function(value, opt_index) {
+proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.addSongdatabaseids = function(value, opt_index) {
   jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 
-proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.clearSongdatabasesidsList = function() {
-  this.setSongdatabasesidsList([]);
+proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.clearSongdatabaseidsList = function() {
+  this.setSongdatabaseidsList([]);
 };
 
 

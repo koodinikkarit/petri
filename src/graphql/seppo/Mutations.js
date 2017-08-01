@@ -7,9 +7,10 @@ const SeppoMutation = `
 	extend type Mutation {
 		createVariation(name: String): Variation
 		editVariation(params: EditVariationInput): Variation
-		createSongDatabase(name: String): SongDatabase
+		removeVariation(variationId: ID): Boolean
+		createSongDatabase(params: CreateSongDatabaseInput): SongDatabase
 		editSongDatabase(params: EditSongDatabaseInput): SongDatabase
-		removeSongDatabase(id: ID): Boolean
+		removeSongDatabase(songDatabaseId: ID): Boolean
 		createEwDatabase(params: CreateEwDatabaseInput): EwDatabase
 		removeEwDatabase(ewDatabaseId: ID): Boolean
 	}

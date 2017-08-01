@@ -283,6 +283,28 @@ function deserialize_SeppoService_RemoveSongDatabaseResponse(buffer_arg) {
   return song_database_pb.RemoveSongDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_RemoveVariationRequest(arg) {
+  if (!(arg instanceof variation_pb.RemoveVariationRequest)) {
+    throw new Error('Expected argument of type SeppoService.RemoveVariationRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveVariationRequest(buffer_arg) {
+  return variation_pb.RemoveVariationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_RemoveVariationResponse(arg) {
+  if (!(arg instanceof variation_pb.RemoveVariationResponse)) {
+    throw new Error('Expected argument of type SeppoService.RemoveVariationResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveVariationResponse(buffer_arg) {
+  return variation_pb.RemoveVariationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_SearchVariationsRequest(arg) {
   if (!(arg instanceof variation_pb.SearchVariationsRequest)) {
     throw new Error('Expected argument of type SeppoService.SearchVariationsRequest');
@@ -440,6 +462,17 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_EditVariationRequest,
     responseSerialize: serialize_SeppoService_EditVariationResponse,
     responseDeserialize: deserialize_SeppoService_EditVariationResponse,
+  },
+  removeVariation: {
+    path: '/SeppoService.Seppo/removeVariation',
+    requestStream: false,
+    responseStream: false,
+    requestType: variation_pb.RemoveVariationRequest,
+    responseType: variation_pb.RemoveVariationResponse,
+    requestSerialize: serialize_SeppoService_RemoveVariationRequest,
+    requestDeserialize: deserialize_SeppoService_RemoveVariationRequest,
+    responseSerialize: serialize_SeppoService_RemoveVariationResponse,
+    responseDeserialize: deserialize_SeppoService_RemoveVariationResponse,
   },
   createSongDatabase: {
     path: '/SeppoService.Seppo/createSongDatabase',

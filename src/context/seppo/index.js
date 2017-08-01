@@ -9,7 +9,8 @@ import {
 } from "./Variation";
 
 import {
-	SongDatabase
+	SongDatabase,
+	SongDatabasesConnection
 } from "./SongDatabase";
 
 import {
@@ -71,10 +72,12 @@ export default class {
 
 	fetchSongDatabases() {
 		return new Promise((resolve, reject) => {
+			console.log("fetchSongDatabases");
+			
 			var req = new messages.FetchSongDatabasesRequest();
 			this.client.fetchSongDatabases(req, (err, res) => {
 				if (!err) {
-					resolve(res.getSongdatabasesList().map(p => new SongDatabase(this, p)));
+					resolve(new SongDatabasesConnection(this, res));
 				} else {
 					reject();
 				}
@@ -188,10 +191,27 @@ export default class {
 		})
 	}
 
+	removeVariation(id) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveVariationRequest();
+			req.setVariationid(id);
+
+			this.client.removeVariation(req, (err, res) => {
+				console.log("removed variation");
+				if (!err) {
+					resolve();
+				} else {
+					reject();
+				}
+			});
+		})
+	}
+
 	createSongDatabase({
 		name
 	}) {
 		return new Promise((resolve, reject) => {
+			console.log("createSongDatabase");
 			var req = new messages.CreateSongDatabaseRequest();
 			req.setName(name);
 
@@ -211,6 +231,7 @@ export default class {
 	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.EditSongDatabaseRequest();
+			req.setSongdatabaseid(songDatabaseId);
 			req.setName(name);
 
 			this.client.editSongDatabase(req, (err, res) => {
@@ -228,7 +249,7 @@ export default class {
 			var req = new messages.RemoveSongDatabaseRequest();
 			req.setSongdatabaseid(songDatabaseId);
 
-			this.client.editSongDatabase(req, (err, res) => {
+			this.client.removeSongDatabase(req, (err, res) => {
 				if (!err) {
 					resolve();
 				} else {

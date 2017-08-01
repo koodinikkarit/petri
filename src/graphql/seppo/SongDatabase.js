@@ -12,6 +12,12 @@ const SongDatabasesConnection = `
     }
 `;
 
+const CreateSongDatabaseInput = `
+    input CreateSongDatabaseInput {
+        name: String
+    }
+`;
+
 const EditSongDatabaseInput = `
     input EditSongDatabaseInput {
         songDatabaseId: ID
@@ -30,6 +36,7 @@ const SearchSongDatabasesInput = `
 export default () => [
     SongDatabase,
     SongDatabasesConnection,
+    CreateSongDatabaseInput,
     EditSongDatabaseInput,
     SearchSongDatabasesInput
 ];
