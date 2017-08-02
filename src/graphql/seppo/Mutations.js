@@ -6,7 +6,7 @@ import SongDatabaseVariation from "./SongDatabaseVariation";
 
 const SeppoMutation = `
 	extend type Mutation {
-		createVariation(name: String): Variation
+		createVariation(params: CreateVariationInput): Variation
 		editVariation(params: EditVariationInput): Variation
 		removeVariation(variationId: ID): Boolean
 		createSongDatabase(params: CreateSongDatabaseInput): SongDatabase

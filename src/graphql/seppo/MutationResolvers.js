@@ -1,6 +1,6 @@
 
 export default {
-	createVariation: (obj, props, context) => context.seppo.createVariation(props),
+	createVariation: (obj, props, context) => context.seppo.createVariation(props.params || {}),
 	editVariation: (obj, props, context) => context.seppo.editVariation(props.params),
 	removeVariation: (obj, props, context) => context.seppo.removeVariation(props.variationId),
 	createSongDatabase: (obj, props, context) => context.seppo.createSongDatabase(props.params || {}),

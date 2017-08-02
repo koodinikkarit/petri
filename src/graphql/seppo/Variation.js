@@ -10,8 +10,9 @@ const Variation = `
 `;
 
 const CreateVariationInput = `
-	type CreateVariationInput {
+	input CreateVariationInput {
 		name: String
+		text: String
 	}
 `;
 

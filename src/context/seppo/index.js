@@ -179,13 +179,13 @@ export default class {
 	// Mutations
 
 	createVariation({
-		name
+		name,
+		text
 	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.CreateVariationRequest();
 			req.setName(name);
-
-			console.log("createVariation");
+			req.setText(text);
 
 			this.client.createVariation(req, (err, res) => {
 				if (!err) {
@@ -309,10 +309,31 @@ export default class {
 		});
 	}
 
+	editEwDatabase({
+		ewDatabaseId,
+		name,
+		songDatabaseId
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditEwDatabaseRequest();
+			req.setEwdatabaseid(ewDatabaseId);
+			req.setName(name);
+			req.setSongdatabaseid(songDatabaseId);
+
+			this.client.editEwDatabase(req, (err, res) => {
+				if (!err) {
+					resolve(new EwDatabase(this, res.getEwdatabase()));
+				} else {
+					reject();
+				}
+			});
+		});
+	}
+
 	removeEwDatabase(ewDatabaseId) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.RemoveEwDatabaseRequest();
-
+			req.setEwdatabaseid(ewDatabaseId);
 			this.client.removeEwDatabase(req, (err, res) => {
 				if (!err) {
 					resolve();
