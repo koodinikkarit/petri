@@ -9,7 +9,7 @@ const SeppoQuery = `
 		searchVariations(params: SearchVariationsInput): SearchVariationsOutput
 		songDatabase(songDatabaseId: ID): SongDatabase
 		searchSongDatabases(params: SearchSongDatabasesInput): SongDatabasesConnection
-		ewDatabase(ewDatabase: ID): EwDatabase
+		ewDatabase(ewDatabaseId: ID!): EwDatabase
 		searchEwDatabases(params: SearchEwDatabasesInput): EwDatabasesConnection
 		songDatabaseVariations(songDatabaseId: ID): [Variation]
 	}
