@@ -28,6 +28,8 @@ const EditVariationInput = `
 const SearchVariationsInput = `
 	input SearchVariationsInput {
 		searchWord: String
+		songDatabaseId: ID
+		songDatabaseFilterId: ID
 	}
 `;
 

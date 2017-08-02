@@ -1629,7 +1629,8 @@ proto.SeppoService.SearchVariationsRequest.prototype.toObject = function(opt_inc
 proto.SeppoService.SearchVariationsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     searchword: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    songdatabaseid: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    songdatabaseid: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    songdatabasefilterid: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -1674,6 +1675,10 @@ proto.SeppoService.SearchVariationsRequest.deserializeBinaryFromReader = functio
       var value = /** @type {number} */ (reader.readUint32());
       msg.setSongdatabaseid(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSongdatabasefilterid(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1716,6 +1721,13 @@ proto.SeppoService.SearchVariationsRequest.serializeBinaryToWriter = function(me
       f
     );
   }
+  f = message.getSongdatabasefilterid();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -1746,6 +1758,21 @@ proto.SeppoService.SearchVariationsRequest.prototype.getSongdatabaseid = functio
 /** @param {number} value */
 proto.SeppoService.SearchVariationsRequest.prototype.setSongdatabaseid = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 songDatabaseFilterId = 3;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getSongdatabasefilterid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setSongdatabasefilterid = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 

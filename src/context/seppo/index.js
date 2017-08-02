@@ -14,7 +14,8 @@ import {
 } from "./SongDatabase";
 
 import {
-	EwDatabase
+	EwDatabase,
+	EwDatabasesConnection
 } from "./EwDatabase";
 
 import {
@@ -57,13 +58,15 @@ export default class {
 
 	searchVariations({
 		searchWord,
-		songDatabaseId
+		songDatabaseId,
+		songDatabaseFilterId
 	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.SearchVariationsRequest();
-			//req.setSearchword(searchWord);
-			//req.setSongdatabaseid(songDatabaseId);
-			console.log("searchVariations");
+			req.setSearchword(searchWord);
+			req.setSongdatabaseid(songDatabaseId);
+			req.setSongdatabasefilterid(songDatabaseFilterId);
+			console.log("searchVariations", songDatabaseFilterId);
 			this.client.searchVariations(req, (err, res) => {
 				if (!err) {
 					resolve(new SearchVariationsOutput(this, res));
@@ -118,7 +121,7 @@ export default class {
 			var req = new messages.FetchEwDatabasesRequest();
 			this.client.fetchEwDatabases(req, (err, res) => {
 				if (!err) {
-					resolve(res.getEwdatabasesList().map(p => new EwDatabase(this, p)));
+					resolve(new EwDatabasesConnection(this, res));
 				} else {
 					reject()
 				}
@@ -286,10 +289,15 @@ export default class {
 	}
 
 	createEwDatabase({
+		name,
 		songDatabaseId
 	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.CreateEwDatabaseRequest();
+			req.setName(name);
+			req.setSongdatabaseid(songDatabaseId);
+
+			console.log("createEwDataase", name, songDatabaseId);
 
 			this.client.createEwDatabase(req, (err, res) => {
 				if (!err) {

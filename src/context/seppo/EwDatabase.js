@@ -5,9 +5,26 @@ export class EwDatabase {
             "id": {
                 get: () => model.getId()
             },
+            "name": {
+                get: () => model.getName()
+            },
             "songDatabaseId": {
-                get: () => model.getSongDatabaseId()
+                get: () => model.getSongDatabaseid()
+            },
+            "songDatabase": {
+                get: () => context.fetchSongDatabaseById(model.getSongdatabaseid())
             }
         });
+    }
+}
+
+export class EwDatabasesConnection {
+    constructor(context, model) {
+        var ewDatabases = model.getEwdatabasesList().map(p => new EwDatabase(this, p))
+        Object.defineProperties(this, {
+            "ewDatabases": {
+                get: () => ewDatabases
+            }
+        })
     }
 }

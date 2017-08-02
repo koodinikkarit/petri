@@ -1,9 +1,11 @@
 
+import SongDatabase from "./SongDatabase";
 
 const EwDatabase = `
     type EwDatabase {
         id: ID
-        songDatabaseId: ID
+        name: String
+        songDatabase: SongDatabase
     }
 `;
 
@@ -15,6 +17,7 @@ const EwDatabasesConnection = `
 
 const CreateEwDatabaseInput = `
     input CreateEwDatabaseInput {
+        name: String
         songDatabaseId: ID
     }
 `;
