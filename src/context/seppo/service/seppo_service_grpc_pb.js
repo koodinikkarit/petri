@@ -97,6 +97,28 @@ function deserialize_SeppoService_CreateVariationResponse(buffer_arg) {
   return variation_pb.CreateVariationResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_EditEwDatabaseRequest(arg) {
+  if (!(arg instanceof ew_database_pb.EditEwDatabaseRequest)) {
+    throw new Error('Expected argument of type SeppoService.EditEwDatabaseRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_EditEwDatabaseRequest(buffer_arg) {
+  return ew_database_pb.EditEwDatabaseRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_EditEwDatabaseResponse(arg) {
+  if (!(arg instanceof ew_database_pb.EditEwDatabaseResponse)) {
+    throw new Error('Expected argument of type SeppoService.EditEwDatabaseResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_EditEwDatabaseResponse(buffer_arg) {
+  return ew_database_pb.EditEwDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_EditSongDatabaseRequest(arg) {
   if (!(arg instanceof song_database_pb.EditSongDatabaseRequest)) {
     throw new Error('Expected argument of type SeppoService.EditSongDatabaseRequest');
@@ -595,6 +617,17 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_CreateEwDatabaseRequest,
     responseSerialize: serialize_SeppoService_CreateEwDatabaseResponse,
     responseDeserialize: deserialize_SeppoService_CreateEwDatabaseResponse,
+  },
+  editEwDatabase: {
+    path: '/SeppoService.Seppo/editEwDatabase',
+    requestStream: false,
+    responseStream: false,
+    requestType: ew_database_pb.EditEwDatabaseRequest,
+    responseType: ew_database_pb.EditEwDatabaseResponse,
+    requestSerialize: serialize_SeppoService_EditEwDatabaseRequest,
+    requestDeserialize: deserialize_SeppoService_EditEwDatabaseRequest,
+    responseSerialize: serialize_SeppoService_EditEwDatabaseResponse,
+    responseDeserialize: deserialize_SeppoService_EditEwDatabaseResponse,
   },
   removeEwDatabase: {
     path: '/SeppoService.Seppo/removeEwDatabase',

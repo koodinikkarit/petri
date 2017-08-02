@@ -13,6 +13,7 @@ const SeppoMutation = `
 		editSongDatabase(params: EditSongDatabaseInput): SongDatabase
 		removeSongDatabase(songDatabaseId: ID): Boolean
 		createEwDatabase(params: CreateEwDatabaseInput): EwDatabase
+		editEwDatabase(params: EditEwDatabaseInput): EwDatabase
 		removeEwDatabase(ewDatabaseId: ID): Boolean
 		addVariationToSongDatabase(songDatabaseId: ID, variationId: ID): SongDatabaseVariation
 		removeVariationFromSongDatabase(songDatabaseId: ID, variationId: ID): Boolean

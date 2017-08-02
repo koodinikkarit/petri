@@ -22,6 +22,14 @@ const CreateEwDatabaseInput = `
     }
 `;
 
+const EditEwDatabaseInput = `
+    input EditEwDatabaseInput {
+        ewDatabaseId: ID
+        name: String
+        songDatabaseId: ID
+    }
+`;
+
 const SearchEwDatabasesInput = `
     input SearchEwDatabasesInput {
         offset: Int
@@ -33,5 +41,6 @@ export default () => [
     EwDatabase,
     EwDatabasesConnection,
     CreateEwDatabaseInput,
+    EditEwDatabaseInput,
     SearchEwDatabasesInput
 ];
