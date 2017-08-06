@@ -6,3 +6,8 @@ install:
 
 script:
   npm run build
+
+after_success:
+  - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
+  - docker build -t $DOCKER_ID_USER/petri .
+  - docker push $DOCKER_ID_USER/petri
