@@ -49,10 +49,10 @@ app.use('/', graphqlExpress((req) => {
 	var hostParts = req.get('host').split(":");	
 
 	var context = new Context({
-		wompattiIp: config.wompattiIp,
-		wompattiPort: config.wompattiPort,
-		seppoIp: config.seppoIp,
-		seppoPort: config.seppoPort,
+		wompattiIp: process.env.PETRI_WOMPATTI_PORT,
+		wompattiPort: process.env.PETRI_WOMPATTI_PORT,
+		seppoIp: process.env.PETRI_SEPPO_IP,
+		seppoPort: process.env.PETRI_SEPPO_PORT,
 		sourceFamily: req.connection.remoteFamily,
 		sourceIp: remoteAdressParts[remoteAdressParts.length-1],
 		sourcePort: req.connection.remotePort,
@@ -67,6 +67,6 @@ app.use('/', graphqlExpress((req) => {
 	}
 }));
 
-app.listen(config.port, () => {
+app.listen(process.env.PETRI_PORT || 9595, () => {
     console.log("serveri on käynnissä");
 });
