@@ -8,8 +8,6 @@ import read from "read-yaml";
 import schema from "./graphql";
 import Context from "./context";
 
-const config = read.sync("config.yml");
-
 //const ristoservice = grpc.load("./risto_service/risto_service.proto").RistoService;
 
 //var client = new ristoservice.Risto(`localhost:3040`, grpc.credentials.createInsecure());
