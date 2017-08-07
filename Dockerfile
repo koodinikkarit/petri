@@ -1,7 +1,7 @@
-FROM node
+FROM grpc/node
 WORKDIR /usr/src/petri
 COPY . .
-#RUN npm install
+RUN npm install
 
 CMD ["npm", "start"]
 
