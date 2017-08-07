@@ -1,7 +1,7 @@
-FROM node 
+FROM grpc/node:0.11-onbuild
 WORKDIR /usr/src/petri
-COPY . .
-RUN npm install
+COPY ./dist/ .
+#RUN npm install
 
 CMD ["npm", "start"]
 

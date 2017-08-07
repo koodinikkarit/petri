@@ -8,7 +8,7 @@
 	"scripts": {
 		"start": "babel-node ./src/app.js",
 		"watch": "babel-watch ./src/app.js",
-		"build": "webpack -p"
+		"build": "webpack"
 	},
 	"dependencies": {
 		"express": "^4.14.0",
