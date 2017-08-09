@@ -27,22 +27,22 @@ export default class {
 		seppoIp,
 		seppoPort
 	}) {
-		var meta = new grpc.Metadata();
-		if (token) meta.add("token", token);
-		// if (sourceFamily) meta.add("sourceFamily", sourceFamily);
-		// if (sourceIp) meta.add("sourceIp", sourceIp);
-		// if (sourcePort) meta.add("sourcePort", String(sourcePort));
-		// if (destinationIp) meta.add("destinationIp", destinationIp);
-		// if (destinationPort) meta.add("destinationPort", destinationPort);
-		// if (destinationPath) meta.add("destinationPath", destinationPath);
+		// var meta = new grpc.Metadata();
+		// if (token) meta.add("token", token);
+		// // if (sourceFamily) meta.add("sourceFamily", sourceFamily);
+		// // if (sourceIp) meta.add("sourceIp", sourceIp);
+		// // if (sourcePort) meta.add("sourcePort", String(sourcePort));
+		// // if (destinationIp) meta.add("destinationIp", destinationIp);
+		// // if (destinationPort) meta.add("destinationPort", destinationPort);
+		// // if (destinationPath) meta.add("destinationPath", destinationPath);
 
-		var extra = grpc.credentials.createFromMetadataGenerator(
-			function (url, callback) {
-				callback(null, meta);
-			}
-		);
+		// var extra = grpc.credentials.createFromMetadataGenerator(
+		// 	function (url, callback) {
+		// 		callback(null, meta);
+		// 	}
+		// );
 
-		var credentials = grpc.credentials.combineChannelCredentials(sslCredentials, extra);
+		// var credentials = grpc.credentials.combineChannelCredentials(sslCredentials, extra);
 	
 		var wompatti;
 		var seppo;
@@ -53,7 +53,7 @@ export default class {
 					if (!wompatti) wompatti = new Wompatti({
 						ip: wompattiIp, 
 						port: wompattiPort, 
-						credentials: credentials
+						//credentials: credentials
 					});
 					
 					return wompatti;
@@ -64,7 +64,7 @@ export default class {
 					if (!seppo) seppo = new Seppo({
 						ip: seppoIp,
 						port: seppoPort,
-						credentials: credentials
+						//credentials: credentials
 					});
 
 					return seppo;

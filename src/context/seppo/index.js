@@ -1,5 +1,6 @@
 const messages = require("./service/seppo_service_pb");
 const services = require("./service/seppo_service_grpc_pb");
+const grpc = require("grpc");
 
 import DataLoader from "dataloader";
 
@@ -26,9 +27,10 @@ export default class {
 	constructor({
 		ip,
 		port,
-		credentials
+		//credentials
 	}) {
-		this.client = new services.SeppoClient(ip + ":" + port, credentials);
+		console.log("ipp", ip, port);
+		this.client = new services.SeppoClient(ip + ":" + port, grpc.credentials.createInsecure());
 	}
 
 	// Queries
@@ -71,6 +73,7 @@ export default class {
 				if (!err) {
 					resolve(new SearchVariationsOutput(this, res));
 				} else {
+					console.log("searchVariations err", err);
 					reject();
 				}
 			});
@@ -186,7 +189,7 @@ export default class {
 			var req = new messages.CreateVariationRequest();
 			req.setName(name);
 			req.setText(text);
-
+			console.log("createVariation", name, text);
 			this.client.createVariation(req, (err, res) => {
 				if (!err) {
 					resolve(new Variation(this, res.getVariation()));

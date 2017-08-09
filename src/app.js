@@ -46,6 +46,8 @@ app.use('/', graphqlExpress((req) => {
 	var remoteAdressParts = req.connection.remoteAddress.split(":");
 	var hostParts = req.get('host').split(":");	
 
+	console.log("seppoPort", process.env.PETRI_SEPPO_PORT, process.env.PETRI_SEPPO_IP);
+
 	var context = new Context({
 		wompattiIp: process.env.PETRI_WOMPATTI_PORT,
 		wompattiPort: process.env.PETRI_WOMPATTI_PORT,
@@ -64,6 +66,8 @@ app.use('/', graphqlExpress((req) => {
 		context
 	}
 }));
+
+console.log("listen on ", process.env.PETRI_PORT);
 
 app.listen(process.env.PETRI_PORT || 9595, () => {
     console.log("serveri on käynnissä");
