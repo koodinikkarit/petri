@@ -29,7 +29,6 @@ export default class {
 		port,
 		//credentials
 	}) {
-		console.log("ipp", ip, port);
 		this.client = new services.SeppoClient(ip + ":" + port, grpc.credentials.createInsecure());
 	}
 
@@ -68,12 +67,10 @@ export default class {
 			req.setSearchword(searchWord);
 			req.setSongdatabaseid(songDatabaseId);
 			req.setSongdatabasefilterid(songDatabaseFilterId);
-			console.log("searchVariations", songDatabaseFilterId);
 			this.client.searchVariations(req, (err, res) => {
 				if (!err) {
 					resolve(new SearchVariationsOutput(this, res));
 				} else {
-					console.log("searchVariations err", err);
 					reject();
 				}
 			});
@@ -81,9 +78,7 @@ export default class {
 	}
 
 	fetchSongDatabases() {
-		return new Promise((resolve, reject) => {
-			console.log("fetchSongDatabases");
-			
+		return new Promise((resolve, reject) => {			
 			var req = new messages.FetchSongDatabasesRequest();
 			this.client.fetchSongDatabases(req, (err, res) => {
 				if (!err) {
@@ -189,7 +184,6 @@ export default class {
 			var req = new messages.CreateVariationRequest();
 			req.setName(name);
 			req.setText(text);
-			console.log("createVariation", name, text);
 			this.client.createVariation(req, (err, res) => {
 				if (!err) {
 					resolve(new Variation(this, res.getVariation()));
@@ -229,7 +223,6 @@ export default class {
 			req.setVariationid(id);
 
 			this.client.removeVariation(req, (err, res) => {
-				console.log("removed variation");
 				if (!err) {
 					resolve();
 				} else {
@@ -243,7 +236,6 @@ export default class {
 		name
 	}) {
 		return new Promise((resolve, reject) => {
-			console.log("createSongDatabase");
 			var req = new messages.CreateSongDatabaseRequest();
 			req.setName(name);
 
@@ -300,7 +292,6 @@ export default class {
 			req.setName(name);
 			req.setSongdatabaseid(songDatabaseId);
 
-			console.log("createEwDataase", name, songDatabaseId);
 
 			this.client.createEwDatabase(req, (err, res) => {
 				if (!err) {
