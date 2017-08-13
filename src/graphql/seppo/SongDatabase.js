@@ -31,6 +31,7 @@ const SearchSongDatabasesInput = `
     input SearchSongDatabasesInput {
         offset: Int
         limit: Int
+        searchWord: String
     }
 `;
 

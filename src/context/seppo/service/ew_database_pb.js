@@ -2314,7 +2314,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.SeppoService.SyncEwDatabaseResponse.repeatedFields_ = [1];
+proto.SeppoService.SyncEwDatabaseResponse.repeatedFields_ = [1,2];
 
 
 
@@ -2345,7 +2345,8 @@ proto.SeppoService.SyncEwDatabaseResponse.prototype.toObject = function(opt_incl
 proto.SeppoService.SyncEwDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     ewsongsList: jspb.Message.toObjectList(msg.getEwsongsList(),
-    ew_song_pb.EwSong.toObject, includeInstance)
+    ew_song_pb.EwSong.toObject, includeInstance),
+    removeewsongidsList: jspb.Message.getField(msg, 2)
   };
 
   if (includeInstance) {
@@ -2387,6 +2388,10 @@ proto.SeppoService.SyncEwDatabaseResponse.deserializeBinaryFromReader = function
       reader.readMessage(value,ew_song_pb.EwSong.deserializeBinaryFromReader);
       msg.addEwsongs(value);
       break;
+    case 2:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setRemoveewsongidsList(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2423,6 +2428,13 @@ proto.SeppoService.SyncEwDatabaseResponse.serializeBinaryToWriter = function(mes
       ew_song_pb.EwSong.serializeBinaryToWriter
     );
   }
+  f = message.getRemoveewsongidsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -2456,6 +2468,37 @@ proto.SeppoService.SyncEwDatabaseResponse.prototype.addEwsongs = function(opt_va
 
 proto.SeppoService.SyncEwDatabaseResponse.prototype.clearEwsongsList = function() {
   this.setEwsongsList([]);
+};
+
+
+/**
+ * repeated uint32 removeEwSongIds = 2;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.SeppoService.SyncEwDatabaseResponse.prototype.getRemoveewsongidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 2));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.SeppoService.SyncEwDatabaseResponse.prototype.setRemoveewsongidsList = function(value) {
+  jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SeppoService.SyncEwDatabaseResponse.prototype.addRemoveewsongids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+proto.SeppoService.SyncEwDatabaseResponse.prototype.clearRemoveewsongidsList = function() {
+  this.setRemoveewsongidsList([]);
 };
 
 

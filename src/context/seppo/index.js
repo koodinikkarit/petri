@@ -77,9 +77,13 @@ export default class {
 		});
 	}
 
-	fetchSongDatabases() {
+	fetchSongDatabases({
+		searchWord
+	}) {
 		return new Promise((resolve, reject) => {			
 			var req = new messages.FetchSongDatabasesRequest();
+			req.setSearchword(searchWord);
+			
 			this.client.fetchSongDatabases(req, (err, res) => {
 				if (!err) {
 					resolve(new SongDatabasesConnection(this, res));

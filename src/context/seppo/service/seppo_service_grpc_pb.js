@@ -295,6 +295,28 @@ function deserialize_SeppoService_FetchVariationsBySongDatabaseIdResponse(buffer
   return song_database_variation_pb.FetchVariationsBySongDatabaseIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_InsertEwSongIdsRequest(arg) {
+  if (!(arg instanceof ew_song_pb.InsertEwSongIdsRequest)) {
+    throw new Error('Expected argument of type SeppoService.InsertEwSongIdsRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_InsertEwSongIdsRequest(buffer_arg) {
+  return ew_song_pb.InsertEwSongIdsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_InsertEwSongIdsResponse(arg) {
+  if (!(arg instanceof ew_song_pb.InsertEwSongIdsResponse)) {
+    throw new Error('Expected argument of type SeppoService.InsertEwSongIdsResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_InsertEwSongIdsResponse(buffer_arg) {
+  return ew_song_pb.InsertEwSongIdsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_ListenForChangedEwSongRequest(arg) {
   if (!(arg instanceof ew_database_pb.ListenForChangedEwSongRequest)) {
     throw new Error('Expected argument of type SeppoService.ListenForChangedEwSongRequest');
@@ -672,6 +694,17 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_SyncEwDatabaseRequest,
     responseSerialize: serialize_SeppoService_SyncEwDatabaseResponse,
     responseDeserialize: deserialize_SeppoService_SyncEwDatabaseResponse,
+  },
+  insertEwSongIds: {
+    path: '/SeppoService.Seppo/insertEwSongIds',
+    requestStream: false,
+    responseStream: false,
+    requestType: ew_song_pb.InsertEwSongIdsRequest,
+    responseType: ew_song_pb.InsertEwSongIdsResponse,
+    requestSerialize: serialize_SeppoService_InsertEwSongIdsRequest,
+    requestDeserialize: deserialize_SeppoService_InsertEwSongIdsRequest,
+    responseSerialize: serialize_SeppoService_InsertEwSongIdsResponse,
+    responseDeserialize: deserialize_SeppoService_InsertEwSongIdsResponse,
   },
 };
 
