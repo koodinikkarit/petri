@@ -15,4 +15,5 @@ var ew_database_pb = require('./ew_database_pb.js');
 var ew_song_pb = require('./ew_song_pb.js');
 var ew_verse_pb = require('./ew_verse_pb.js');
 var variation_pb = require('./variation_pb.js');
+var variation_text_pb = require('./variation_text_pb.js');
 goog.object.extend(exports, proto.SeppoService);

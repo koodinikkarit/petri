@@ -97,7 +97,6 @@ export default class {
 				this.client.fetchComputerById(req, (err, res) => {
 					if (!err) {
 						resolve(res.getComputersList().map(p => {
-							console.log("pp", p.getId(), p.getName());
 							if (p.getId() > 0) {
 								return new Computer(this, p);
 							} else {
@@ -751,7 +750,6 @@ export default class {
 			req.setKeyvalueid(id);
 
 			this.client.removeKeyValue(req, (err, res) => {
-				console.log("ress", res, err);
 				if (!err) {
 					switch(res.getState()) {
 						case 0:

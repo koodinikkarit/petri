@@ -13,7 +13,11 @@ export class Variation {
 				get: () => model.getSongid()
 			},
 			"text": {
-				get: () => model.getText()
+				get: () => new Promise((resolve, reject) => {
+					context.fetchVariationTextByVariationId(model.getId()).then(variationText => {
+						resolve(variationText ? variationText.text : "")
+					});
+				})
 			},
 			"version": {
 				get: () => model.getVersion()
@@ -22,9 +26,18 @@ export class Variation {
 	}
 }
 
+export class VariationText {
+	constructor(context, model) {
+		Object.defineProperties(this, {
+			"text": {
+				get: () => model.getText()
+			}
+		})
+	}
+}
+
 export class SearchVariationsOutput {
 	constructor(context, model) {
-		console.log("list", model.getVariationsList());
 		Object.defineProperties(this, {
 			variations: {
 				get: () => model.getVariationsList().map(p => new Variation(context, p))

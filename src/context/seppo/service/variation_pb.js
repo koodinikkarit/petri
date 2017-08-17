@@ -69,7 +69,6 @@ proto.SeppoService.Variation.toObject = function(includeInstance, msg) {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     songid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    text: jspb.Message.getFieldWithDefault(msg, 4, ""),
     version: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
@@ -118,10 +117,6 @@ proto.SeppoService.Variation.deserializeBinaryFromReader = function(msg, reader)
     case 3:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setSongid(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setText(value);
       break;
     case 5:
       var value = /** @type {number} */ (reader.readUint64());
@@ -173,13 +168,6 @@ proto.SeppoService.Variation.serializeBinaryToWriter = function(message, writer)
   if (f !== 0) {
     writer.writeUint32(
       3,
-      f
-    );
-  }
-  f = message.getText();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
       f
     );
   }
@@ -235,21 +223,6 @@ proto.SeppoService.Variation.prototype.getSongid = function() {
 /** @param {number} value */
 proto.SeppoService.Variation.prototype.setSongid = function(value) {
   jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional string text = 4;
- * @return {string}
- */
-proto.SeppoService.Variation.prototype.getText = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
-
-/** @param {string} value */
-proto.SeppoService.Variation.prototype.setText = function(value) {
-  jspb.Message.setField(this, 4, value);
 };
 
 

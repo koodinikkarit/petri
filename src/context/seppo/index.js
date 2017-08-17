@@ -6,8 +6,10 @@ import DataLoader from "dataloader";
 
 import {
 	Variation,
+	VariationText,
 	SearchVariationsOutput
 } from "./Variation";
+
 
 import {
 	SongDatabase,
@@ -55,6 +57,31 @@ export default class {
 			}))
 		}
 		return this.variationLoader.load(id);
+	}
+
+	fetchVariationTextByVariationId(id) {
+		if (!this.variationTextLoader) {
+			this.variationTextLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchVariationTextByVariationIdRequest();
+				req.setVariationidsList(keys);
+
+				this.client.fetchVariationTextByVariationId(req, (err, res) => {
+					if (!err) {
+						resolve(res.getVariationtextsList().map(p => {
+							if (p.getId() > 0) {
+								var vv = new VariationText(this, p);
+								return vv;
+							} else {
+								return null;
+							}
+						}));
+					} else {
+						reject();
+					}
+				})
+			}))
+		}
+		return this.variationTextLoader.load(id);
 	}
 
 	searchVariations({

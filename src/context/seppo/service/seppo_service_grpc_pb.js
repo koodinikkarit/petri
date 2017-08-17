@@ -8,6 +8,7 @@ var ew_database_pb = require('./ew_database_pb.js');
 var ew_song_pb = require('./ew_song_pb.js');
 var ew_verse_pb = require('./ew_verse_pb.js');
 var variation_pb = require('./variation_pb.js');
+var variation_text_pb = require('./variation_text_pb.js');
 
 function serialize_SeppoService_AddVariationToSongDatabaseRequest(arg) {
   if (!(arg instanceof song_database_variation_pb.AddVariationToSongDatabaseRequest)) {
@@ -271,6 +272,28 @@ function serialize_SeppoService_FetchVariationByIdResponse(arg) {
 
 function deserialize_SeppoService_FetchVariationByIdResponse(buffer_arg) {
   return variation_pb.FetchVariationByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchVariationTextByVariationIdRequest(arg) {
+  if (!(arg instanceof variation_text_pb.FetchVariationTextByVariationIdRequest)) {
+    throw new Error('Expected argument of type SeppoService.FetchVariationTextByVariationIdRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchVariationTextByVariationIdRequest(buffer_arg) {
+  return variation_text_pb.FetchVariationTextByVariationIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchVariationTextByVariationIdResponse(arg) {
+  if (!(arg instanceof variation_text_pb.FetchVariationTextByVariationIdResponse)) {
+    throw new Error('Expected argument of type SeppoService.FetchVariationTextByVariationIdResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchVariationTextByVariationIdResponse(buffer_arg) {
+  return variation_text_pb.FetchVariationTextByVariationIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_FetchVariationsBySongDatabaseIdRequest(arg) {
@@ -560,6 +583,17 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_FetchVariationsBySongDatabaseIdRequest,
     responseSerialize: serialize_SeppoService_FetchVariationsBySongDatabaseIdResponse,
     responseDeserialize: deserialize_SeppoService_FetchVariationsBySongDatabaseIdResponse,
+  },
+  fetchVariationTextByVariationId: {
+    path: '/SeppoService.Seppo/fetchVariationTextByVariationId',
+    requestStream: false,
+    responseStream: false,
+    requestType: variation_text_pb.FetchVariationTextByVariationIdRequest,
+    responseType: variation_text_pb.FetchVariationTextByVariationIdResponse,
+    requestSerialize: serialize_SeppoService_FetchVariationTextByVariationIdRequest,
+    requestDeserialize: deserialize_SeppoService_FetchVariationTextByVariationIdRequest,
+    responseSerialize: serialize_SeppoService_FetchVariationTextByVariationIdResponse,
+    responseDeserialize: deserialize_SeppoService_FetchVariationTextByVariationIdResponse,
   },
   // Mutations
   //
