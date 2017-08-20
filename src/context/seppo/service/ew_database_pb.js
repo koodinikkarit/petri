@@ -74,7 +74,8 @@ proto.SeppoService.EwDatabase.toObject = function(includeInstance, msg) {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     songdatabaseid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    version: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    version: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    key: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -126,6 +127,10 @@ proto.SeppoService.EwDatabase.deserializeBinaryFromReader = function(msg, reader
     case 4:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setVersion(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setKey(value);
       break;
     default:
       reader.skipField();
@@ -180,6 +185,13 @@ proto.SeppoService.EwDatabase.serializeBinaryToWriter = function(message, writer
   if (f !== 0) {
     writer.writeUint64(
       4,
+      f
+    );
+  }
+  f = message.getKey();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -243,6 +255,21 @@ proto.SeppoService.EwDatabase.prototype.getVersion = function() {
 /** @param {number} value */
 proto.SeppoService.EwDatabase.prototype.setVersion = function(value) {
   jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string key = 5;
+ * @return {string}
+ */
+proto.SeppoService.EwDatabase.prototype.getKey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.SeppoService.EwDatabase.prototype.setKey = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 
@@ -2149,7 +2176,7 @@ proto.SeppoService.SyncEwDatabaseRequest.prototype.toObject = function(opt_inclu
  */
 proto.SeppoService.SyncEwDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    ewdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    ewdatabasekey: jspb.Message.getFieldWithDefault(msg, 1, ""),
     ewsongsList: jspb.Message.toObjectList(msg.getEwsongsList(),
     ew_song_pb.EwSong.toObject, includeInstance)
   };
@@ -2189,8 +2216,8 @@ proto.SeppoService.SyncEwDatabaseRequest.deserializeBinaryFromReader = function(
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setEwdatabaseid(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setEwdatabasekey(value);
       break;
     case 2:
       var value = new ew_song_pb.EwSong;
@@ -2225,9 +2252,9 @@ proto.SeppoService.SyncEwDatabaseRequest.prototype.serializeBinary = function() 
  */
 proto.SeppoService.SyncEwDatabaseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getEwdatabaseid();
-  if (f !== 0) {
-    writer.writeUint32(
+  f = message.getEwdatabasekey();
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -2244,16 +2271,16 @@ proto.SeppoService.SyncEwDatabaseRequest.serializeBinaryToWriter = function(mess
 
 
 /**
- * optional uint32 EwDatabaseId = 1;
- * @return {number}
+ * optional string ewDatabaseKey = 1;
+ * @return {string}
  */
-proto.SeppoService.SyncEwDatabaseRequest.prototype.getEwdatabaseid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.SeppoService.SyncEwDatabaseRequest.prototype.getEwdatabasekey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
-/** @param {number} value */
-proto.SeppoService.SyncEwDatabaseRequest.prototype.setEwdatabaseid = function(value) {
+/** @param {string} value */
+proto.SeppoService.SyncEwDatabaseRequest.prototype.setEwdatabasekey = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 

@@ -5,6 +5,7 @@ const EwDatabase = `
     type EwDatabase {
         id: ID
         name: String
+        key: String
         songDatabase: SongDatabase
     }
 `;

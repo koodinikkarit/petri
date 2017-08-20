@@ -8,6 +8,9 @@ export class EwDatabase {
             "name": {
                 get: () => model.getName()
             },
+            "key": {
+                get: () => model.getKey()
+            },
             "songDatabaseId": {
                 get: () => model.getSongDatabaseid()
             },
