@@ -1803,7 +1803,8 @@ proto.SeppoService.SearchVariationsResponse.prototype.toObject = function(opt_in
 proto.SeppoService.SearchVariationsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     variationsList: jspb.Message.toObjectList(msg.getVariationsList(),
-    proto.SeppoService.Variation.toObject, includeInstance)
+    proto.SeppoService.Variation.toObject, includeInstance),
+    maxvariations: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -1845,6 +1846,10 @@ proto.SeppoService.SearchVariationsResponse.deserializeBinaryFromReader = functi
       reader.readMessage(value,proto.SeppoService.Variation.deserializeBinaryFromReader);
       msg.addVariations(value);
       break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setMaxvariations(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1881,6 +1886,13 @@ proto.SeppoService.SearchVariationsResponse.serializeBinaryToWriter = function(m
       proto.SeppoService.Variation.serializeBinaryToWriter
     );
   }
+  f = message.getMaxvariations();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -1914,6 +1926,21 @@ proto.SeppoService.SearchVariationsResponse.prototype.addVariations = function(o
 
 proto.SeppoService.SearchVariationsResponse.prototype.clearVariationsList = function() {
   this.setVariationsList([]);
+};
+
+
+/**
+ * optional uint32 maxVariations = 2;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsResponse.prototype.getMaxvariations = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsResponse.prototype.setMaxvariations = function(value) {
+  jspb.Message.setField(this, 2, value);
 };
 
 

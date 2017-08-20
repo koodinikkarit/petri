@@ -37,6 +37,7 @@ const SearchVariationsInput = `
 const SearchVariationsOutput = `
 	type SearchVariationsOutput {
 		variations: [Variation]
+		maxVariations: Int
 	}
 `;
 

@@ -41,6 +41,9 @@ export class SearchVariationsOutput {
 		Object.defineProperties(this, {
 			variations: {
 				get: () => model.getVariationsList().map(p => new Variation(context, p))
+			},
+			maxVariations: {
+				get: () => model.getMaxvariations()
 			}
 		});
 	}
