@@ -10,9 +10,12 @@ var goog = jspb;
 var global = Function('return this')();
 
 var ew_verse_pb = require('./ew_verse_pb.js');
+goog.exportSymbol('proto.SeppoService.ChangeEwSongIdsRequest', null, global);
+goog.exportSymbol('proto.SeppoService.ChangeEwSongIdsResponse', null, global);
 goog.exportSymbol('proto.SeppoService.EwSong', null, global);
 goog.exportSymbol('proto.SeppoService.InsertEwSongIdsRequest', null, global);
 goog.exportSymbol('proto.SeppoService.InsertEwSongIdsResponse', null, global);
+goog.exportSymbol('proto.SeppoService.NewSongId', null, global);
 goog.exportSymbol('proto.SeppoService.VariationIdEwSongId', null, global);
 
 /**
@@ -548,6 +551,173 @@ proto.SeppoService.VariationIdEwSongId.prototype.setVariationid = function(value
  * @extends {jspb.Message}
  * @constructor
  */
+proto.SeppoService.NewSongId = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.SeppoService.NewSongId, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SeppoService.NewSongId.displayName = 'proto.SeppoService.NewSongId';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SeppoService.NewSongId.prototype.toObject = function(opt_includeInstance) {
+  return proto.SeppoService.NewSongId.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SeppoService.NewSongId} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.SeppoService.NewSongId.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    oldewsongid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    newewsongid: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SeppoService.NewSongId}
+ */
+proto.SeppoService.NewSongId.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SeppoService.NewSongId;
+  return proto.SeppoService.NewSongId.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SeppoService.NewSongId} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SeppoService.NewSongId}
+ */
+proto.SeppoService.NewSongId.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setOldewsongid(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setNewewsongid(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SeppoService.NewSongId.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SeppoService.NewSongId.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SeppoService.NewSongId} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.SeppoService.NewSongId.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getOldewsongid();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getNewewsongid();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 oldEwSongId = 1;
+ * @return {number}
+ */
+proto.SeppoService.NewSongId.prototype.getOldewsongid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.NewSongId.prototype.setOldewsongid = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 newEwSongId = 2;
+ * @return {number}
+ */
+proto.SeppoService.NewSongId.prototype.getNewewsongid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.NewSongId.prototype.setNewewsongid = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.SeppoService.InsertEwSongIdsRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.InsertEwSongIdsRequest.repeatedFields_, null);
 };
@@ -560,7 +730,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.SeppoService.InsertEwSongIdsRequest.repeatedFields_ = [2];
+proto.SeppoService.InsertEwSongIdsRequest.repeatedFields_ = [2,3];
 
 
 
@@ -590,9 +760,11 @@ proto.SeppoService.InsertEwSongIdsRequest.prototype.toObject = function(opt_incl
  */
 proto.SeppoService.InsertEwSongIdsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    ewdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    ewdatabasekey: jspb.Message.getFieldWithDefault(msg, 1, ""),
     variationidewsongidsList: jspb.Message.toObjectList(msg.getVariationidewsongidsList(),
-    proto.SeppoService.VariationIdEwSongId.toObject, includeInstance)
+    proto.SeppoService.VariationIdEwSongId.toObject, includeInstance),
+    newsongidsList: jspb.Message.toObjectList(msg.getNewsongidsList(),
+    proto.SeppoService.NewSongId.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -630,13 +802,18 @@ proto.SeppoService.InsertEwSongIdsRequest.deserializeBinaryFromReader = function
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setEwdatabaseid(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setEwdatabasekey(value);
       break;
     case 2:
       var value = new proto.SeppoService.VariationIdEwSongId;
       reader.readMessage(value,proto.SeppoService.VariationIdEwSongId.deserializeBinaryFromReader);
       msg.addVariationidewsongids(value);
+      break;
+    case 3:
+      var value = new proto.SeppoService.NewSongId;
+      reader.readMessage(value,proto.SeppoService.NewSongId.deserializeBinaryFromReader);
+      msg.addNewsongids(value);
       break;
     default:
       reader.skipField();
@@ -666,9 +843,9 @@ proto.SeppoService.InsertEwSongIdsRequest.prototype.serializeBinary = function()
  */
 proto.SeppoService.InsertEwSongIdsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getEwdatabaseid();
-  if (f !== 0) {
-    writer.writeUint32(
+  f = message.getEwdatabasekey();
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -681,20 +858,28 @@ proto.SeppoService.InsertEwSongIdsRequest.serializeBinaryToWriter = function(mes
       proto.SeppoService.VariationIdEwSongId.serializeBinaryToWriter
     );
   }
+  f = message.getNewsongidsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      proto.SeppoService.NewSongId.serializeBinaryToWriter
+    );
+  }
 };
 
 
 /**
- * optional uint32 ewDatabaseId = 1;
- * @return {number}
+ * optional string ewDatabaseKey = 1;
+ * @return {string}
  */
-proto.SeppoService.InsertEwSongIdsRequest.prototype.getEwdatabaseid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.SeppoService.InsertEwSongIdsRequest.prototype.getEwdatabasekey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
-/** @param {number} value */
-proto.SeppoService.InsertEwSongIdsRequest.prototype.setEwdatabaseid = function(value) {
+/** @param {string} value */
+proto.SeppoService.InsertEwSongIdsRequest.prototype.setEwdatabasekey = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
@@ -729,6 +914,39 @@ proto.SeppoService.InsertEwSongIdsRequest.prototype.addVariationidewsongids = fu
 
 proto.SeppoService.InsertEwSongIdsRequest.prototype.clearVariationidewsongidsList = function() {
   this.setVariationidewsongidsList([]);
+};
+
+
+/**
+ * repeated NewSongId newSongIds = 3;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.SeppoService.NewSongId>}
+ */
+proto.SeppoService.InsertEwSongIdsRequest.prototype.getNewsongidsList = function() {
+  return /** @type{!Array.<!proto.SeppoService.NewSongId>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.NewSongId, 3));
+};
+
+
+/** @param {!Array.<!proto.SeppoService.NewSongId>} value */
+proto.SeppoService.InsertEwSongIdsRequest.prototype.setNewsongidsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 3, value);
+};
+
+
+/**
+ * @param {!proto.SeppoService.NewSongId=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.SeppoService.NewSongId}
+ */
+proto.SeppoService.InsertEwSongIdsRequest.prototype.addNewsongids = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.SeppoService.NewSongId, opt_index);
+};
+
+
+proto.SeppoService.InsertEwSongIdsRequest.prototype.clearNewsongidsList = function() {
+  this.setNewsongidsList([]);
 };
 
 
@@ -842,6 +1060,315 @@ proto.SeppoService.InsertEwSongIdsResponse.prototype.serializeBinary = function(
  * @param {!jspb.BinaryWriter} writer
  */
 proto.SeppoService.InsertEwSongIdsResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SeppoService.ChangeEwSongIdsRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.ChangeEwSongIdsRequest.repeatedFields_, null);
+};
+goog.inherits(proto.SeppoService.ChangeEwSongIdsRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SeppoService.ChangeEwSongIdsRequest.displayName = 'proto.SeppoService.ChangeEwSongIdsRequest';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SeppoService.ChangeEwSongIdsRequest.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SeppoService.ChangeEwSongIdsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.SeppoService.ChangeEwSongIdsRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SeppoService.ChangeEwSongIdsRequest} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.SeppoService.ChangeEwSongIdsRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    ewdatabasekey: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    newsongidsList: jspb.Message.toObjectList(msg.getNewsongidsList(),
+    proto.SeppoService.NewSongId.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SeppoService.ChangeEwSongIdsRequest}
+ */
+proto.SeppoService.ChangeEwSongIdsRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SeppoService.ChangeEwSongIdsRequest;
+  return proto.SeppoService.ChangeEwSongIdsRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SeppoService.ChangeEwSongIdsRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SeppoService.ChangeEwSongIdsRequest}
+ */
+proto.SeppoService.ChangeEwSongIdsRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setEwdatabasekey(value);
+      break;
+    case 2:
+      var value = new proto.SeppoService.NewSongId;
+      reader.readMessage(value,proto.SeppoService.NewSongId.deserializeBinaryFromReader);
+      msg.addNewsongids(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SeppoService.ChangeEwSongIdsRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SeppoService.ChangeEwSongIdsRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SeppoService.ChangeEwSongIdsRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.SeppoService.ChangeEwSongIdsRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getEwdatabasekey();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getNewsongidsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.SeppoService.NewSongId.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string ewDatabaseKey = 1;
+ * @return {string}
+ */
+proto.SeppoService.ChangeEwSongIdsRequest.prototype.getEwdatabasekey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.SeppoService.ChangeEwSongIdsRequest.prototype.setEwdatabasekey = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * repeated NewSongId newSongIds = 2;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.SeppoService.NewSongId>}
+ */
+proto.SeppoService.ChangeEwSongIdsRequest.prototype.getNewsongidsList = function() {
+  return /** @type{!Array.<!proto.SeppoService.NewSongId>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.NewSongId, 2));
+};
+
+
+/** @param {!Array.<!proto.SeppoService.NewSongId>} value */
+proto.SeppoService.ChangeEwSongIdsRequest.prototype.setNewsongidsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.SeppoService.NewSongId=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.SeppoService.NewSongId}
+ */
+proto.SeppoService.ChangeEwSongIdsRequest.prototype.addNewsongids = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.SeppoService.NewSongId, opt_index);
+};
+
+
+proto.SeppoService.ChangeEwSongIdsRequest.prototype.clearNewsongidsList = function() {
+  this.setNewsongidsList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SeppoService.ChangeEwSongIdsResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.SeppoService.ChangeEwSongIdsResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SeppoService.ChangeEwSongIdsResponse.displayName = 'proto.SeppoService.ChangeEwSongIdsResponse';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SeppoService.ChangeEwSongIdsResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.SeppoService.ChangeEwSongIdsResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SeppoService.ChangeEwSongIdsResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.SeppoService.ChangeEwSongIdsResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SeppoService.ChangeEwSongIdsResponse}
+ */
+proto.SeppoService.ChangeEwSongIdsResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SeppoService.ChangeEwSongIdsResponse;
+  return proto.SeppoService.ChangeEwSongIdsResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SeppoService.ChangeEwSongIdsResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SeppoService.ChangeEwSongIdsResponse}
+ */
+proto.SeppoService.ChangeEwSongIdsResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SeppoService.ChangeEwSongIdsResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SeppoService.ChangeEwSongIdsResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SeppoService.ChangeEwSongIdsResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.SeppoService.ChangeEwSongIdsResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
 };
 

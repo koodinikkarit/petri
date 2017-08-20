@@ -32,6 +32,28 @@ function deserialize_SeppoService_AddVariationToSongDatabaseResponse(buffer_arg)
   return song_database_variation_pb.AddVariationToSongDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_ChangeEwSongIdsRequest(arg) {
+  if (!(arg instanceof ew_song_pb.ChangeEwSongIdsRequest)) {
+    throw new Error('Expected argument of type SeppoService.ChangeEwSongIdsRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_ChangeEwSongIdsRequest(buffer_arg) {
+  return ew_song_pb.ChangeEwSongIdsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_ChangeEwSongIdsResponse(arg) {
+  if (!(arg instanceof ew_song_pb.ChangeEwSongIdsResponse)) {
+    throw new Error('Expected argument of type SeppoService.ChangeEwSongIdsResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_ChangeEwSongIdsResponse(buffer_arg) {
+  return ew_song_pb.ChangeEwSongIdsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_CreateEwDatabaseRequest(arg) {
   if (!(arg instanceof ew_database_pb.CreateEwDatabaseRequest)) {
     throw new Error('Expected argument of type SeppoService.CreateEwDatabaseRequest');
@@ -739,6 +761,17 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_InsertEwSongIdsRequest,
     responseSerialize: serialize_SeppoService_InsertEwSongIdsResponse,
     responseDeserialize: deserialize_SeppoService_InsertEwSongIdsResponse,
+  },
+  changeEwSongIds: {
+    path: '/SeppoService.Seppo/changeEwSongIds',
+    requestStream: false,
+    responseStream: false,
+    requestType: ew_song_pb.ChangeEwSongIdsRequest,
+    responseType: ew_song_pb.ChangeEwSongIdsResponse,
+    requestSerialize: serialize_SeppoService_ChangeEwSongIdsRequest,
+    requestDeserialize: deserialize_SeppoService_ChangeEwSongIdsRequest,
+    responseSerialize: serialize_SeppoService_ChangeEwSongIdsResponse,
+    responseDeserialize: deserialize_SeppoService_ChangeEwSongIdsResponse,
   },
 };
 
