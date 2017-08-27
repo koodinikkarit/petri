@@ -13,7 +13,7 @@ export class Variation {
 				get: () => model.getSongid()
 			},
 			"text": {
-				get: () => new Promise((resolve, reject) => {
+				get: () => new Promise((resolve) => {
 					context.fetchVariationTextByVariationId(model.getId()).then(variationText => {
 						resolve(variationText ? variationText.text : "")
 					});

@@ -12,6 +12,7 @@ let sslCredentials = grpc.credentials.createSsl(
 
 import Wompatti from "./wompatti";
 import Seppo from "./seppo";
+import Risto from "./risto";
 
 export default class {
 	constructor({
@@ -25,7 +26,9 @@ export default class {
 		wompattiIp,
 		wompattiPort,
 		seppoIp,
-		seppoPort
+		seppoPort,
+		ristoIp,
+		ristoPort
 	}) {
 		// var meta = new grpc.Metadata();
 		// if (token) meta.add("token", token);
@@ -44,16 +47,17 @@ export default class {
 
 		// var credentials = grpc.credentials.combineChannelCredentials(sslCredentials, extra);
 	
-		var wompatti;
-		var seppo;
+		let wompatti;
+		let seppo;
+		let risto;
 
 		Object.defineProperties(this, {
 			wompatti: {
 				get: () => {
 					if (!wompatti) wompatti = new Wompatti({
+						token,
 						ip: wompattiIp, 
 						port: wompattiPort, 
-						//credentials: credentials
 					});
 					
 					return wompatti;
@@ -62,12 +66,23 @@ export default class {
 			seppo: {
 				get: () => {
 					if (!seppo) seppo = new Seppo({
+						token,
 						ip: seppoIp,
 						port: seppoPort,
-						//credentials: credentials
 					});
-
 					return seppo;
+				}
+			},
+			risto: {
+				get: () => {
+					if (!risto) {
+						risto = new Risto({
+							token,
+							ip: ristoIp,
+							port: ristoPort
+						});
+					}
+					return risto;
 				}
 			}
 		})

@@ -2,9 +2,8 @@ import express from "express";
 import { 
 	graphqlExpress,
 	graphiqlExpress
-} from 'graphql-server-express';
-import bodyParser from 'body-parser';
-import read from "read-yaml";
+} from "graphql-server-express";
+import bodyParser from "body-parser";
 import schema from "./graphql";
 import Context from "./context";
 
@@ -21,14 +20,18 @@ app.use(bodyParser.json());
 // 	origin: "http://localhost:11111"
 // }))
 
-app.use('/graphiql', graphiqlExpress({
-	endpointURL: '/graphql',
+app.use("/graphiql", graphiqlExpress({
+	endpointURL: "/graphql",
 	schema: schema,
 	graphiql: true
 }));
 
 app.post("/login", (req, res) => {
-	// console.log("Terve tuloa ", req.body.username, req.body.password);
+	console.log("Terve tuloa ", req.body.username, req.body.password);
+	res.setHeader('Content-Type', 'application/json');
+	res.json({
+		token: "qwerty12345"
+	});
 	// client.createToken({
 	// 	username: req.body.username,
 	// 	password: req.body.password
@@ -39,14 +42,17 @@ app.post("/login", (req, res) => {
 	// 	res.redirect(301, req.query.return_url + "?token=" + tokenCreated.token.token);
 	// });
 	// console.log(req.query.return_url);
-	res.redirect(301, req.query.return_url + "?token=makkarasiili");
+	//res.redirect(301, req.query.return_url + "?token=makkarasiili");
 });
 
-app.use('/', graphqlExpress((req) => {
+app.use("/", graphqlExpress((req) => {
 	var remoteAdressParts = req.connection.remoteAddress.split(":");
 	var hostParts = req.get('host').split(":");	
 
+	console.log("tokenis", req.get("token"));
+
 	var context = new Context({
+		token: req.get("token"),
 		wompattiIp: process.env.PETRI_WOMPATTI_PORT,
 		wompattiPort: process.env.PETRI_WOMPATTI_PORT,
 		seppoIp: process.env.PETRI_SEPPO_IP,
@@ -62,7 +68,7 @@ app.use('/', graphqlExpress((req) => {
 	return {
 		schema,
 		context
-	}
+	};
 }));
 
 app.listen(process.env.PETRI_PORT || 9595, () => {
