@@ -7,6 +7,8 @@ var song_database_variation_pb = require('./song_database_variation_pb.js');
 var ew_database_pb = require('./ew_database_pb.js');
 var ew_song_pb = require('./ew_song_pb.js');
 var ew_verse_pb = require('./ew_verse_pb.js');
+var tag_pb = require('./tag_pb.js');
+var language_pb = require('./language_pb.js');
 var variation_pb = require('./variation_pb.js');
 var variation_text_pb = require('./variation_text_pb.js');
 
@@ -76,6 +78,28 @@ function deserialize_SeppoService_CreateEwDatabaseResponse(buffer_arg) {
   return ew_database_pb.CreateEwDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_CreateLanguageRequest(arg) {
+  if (!(arg instanceof language_pb.CreateLanguageRequest)) {
+    throw new Error('Expected argument of type SeppoService.CreateLanguageRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_CreateLanguageRequest(buffer_arg) {
+  return language_pb.CreateLanguageRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_CreateLanguageResponse(arg) {
+  if (!(arg instanceof language_pb.CreateLanguageResponse)) {
+    throw new Error('Expected argument of type SeppoService.CreateLanguageResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_CreateLanguageResponse(buffer_arg) {
+  return language_pb.CreateLanguageResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_CreateSongDatabaseRequest(arg) {
   if (!(arg instanceof song_database_pb.CreateSongDatabaseRequest)) {
     throw new Error('Expected argument of type SeppoService.CreateSongDatabaseRequest');
@@ -96,6 +120,28 @@ function serialize_SeppoService_CreateSongDatabaseResponse(arg) {
 
 function deserialize_SeppoService_CreateSongDatabaseResponse(buffer_arg) {
   return song_database_pb.CreateSongDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_CreateTagRequest(arg) {
+  if (!(arg instanceof tag_pb.CreateTagRequest)) {
+    throw new Error('Expected argument of type SeppoService.CreateTagRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_CreateTagRequest(buffer_arg) {
+  return tag_pb.CreateTagRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_CreateTagResponse(arg) {
+  if (!(arg instanceof tag_pb.CreateTagResponse)) {
+    throw new Error('Expected argument of type SeppoService.CreateTagResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_CreateTagResponse(buffer_arg) {
+  return tag_pb.CreateTagResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_CreateVariationRequest(arg) {
@@ -142,6 +188,28 @@ function deserialize_SeppoService_EditEwDatabaseResponse(buffer_arg) {
   return ew_database_pb.EditEwDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_EditLanguageRequest(arg) {
+  if (!(arg instanceof language_pb.EditLanguageRequest)) {
+    throw new Error('Expected argument of type SeppoService.EditLanguageRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_EditLanguageRequest(buffer_arg) {
+  return language_pb.EditLanguageRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_EditLanguageResponse(arg) {
+  if (!(arg instanceof language_pb.EditLanguageResponse)) {
+    throw new Error('Expected argument of type SeppoService.EditLanguageResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_EditLanguageResponse(buffer_arg) {
+  return language_pb.EditLanguageResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_EditSongDatabaseRequest(arg) {
   if (!(arg instanceof song_database_pb.EditSongDatabaseRequest)) {
     throw new Error('Expected argument of type SeppoService.EditSongDatabaseRequest');
@@ -162,6 +230,28 @@ function serialize_SeppoService_EditSongDatabaseResponse(arg) {
 
 function deserialize_SeppoService_EditSongDatabaseResponse(buffer_arg) {
   return song_database_pb.EditSongDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_EditTagRequest(arg) {
+  if (!(arg instanceof tag_pb.EditTagRequest)) {
+    throw new Error('Expected argument of type SeppoService.EditTagRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_EditTagRequest(buffer_arg) {
+  return tag_pb.EditTagRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_EditTagResponse(arg) {
+  if (!(arg instanceof tag_pb.EditTagResponse)) {
+    throw new Error('Expected argument of type SeppoService.EditTagResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_EditTagResponse(buffer_arg) {
+  return tag_pb.EditTagResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_EditVariationRequest(arg) {
@@ -241,6 +331,28 @@ function deserialize_SeppoService_FetchEwDatabasesRequest(buffer_arg) {
   return ew_database_pb.FetchEwDatabasesRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_FetchLanguageByIdRequest(arg) {
+  if (!(arg instanceof language_pb.FetchLanguageByIdRequest)) {
+    throw new Error('Expected argument of type SeppoService.FetchLanguageByIdRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchLanguageByIdRequest(buffer_arg) {
+  return language_pb.FetchLanguageByIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchLanguageByIdResponse(arg) {
+  if (!(arg instanceof language_pb.FetchLanguageByIdResponse)) {
+    throw new Error('Expected argument of type SeppoService.FetchLanguageByIdResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchLanguageByIdResponse(buffer_arg) {
+  return language_pb.FetchLanguageByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_FetchSongDatabaseByIdRequest(arg) {
   if (!(arg instanceof song_database_pb.FetchSongDatabaseByIdRequest)) {
     throw new Error('Expected argument of type SeppoService.FetchSongDatabaseByIdRequest');
@@ -272,6 +384,28 @@ function serialize_SeppoService_FetchSongDatabasesRequest(arg) {
 
 function deserialize_SeppoService_FetchSongDatabasesRequest(buffer_arg) {
   return song_database_pb.FetchSongDatabasesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchTagByIdRequest(arg) {
+  if (!(arg instanceof tag_pb.FetchTagByIdRequest)) {
+    throw new Error('Expected argument of type SeppoService.FetchTagByIdRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchTagByIdRequest(buffer_arg) {
+  return tag_pb.FetchTagByIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchTagByIdResponse(arg) {
+  if (!(arg instanceof tag_pb.FetchTagByIdResponse)) {
+    throw new Error('Expected argument of type SeppoService.FetchTagByIdResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchTagByIdResponse(buffer_arg) {
+  return tag_pb.FetchTagByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_FetchVariationByIdRequest(arg) {
@@ -362,6 +496,17 @@ function deserialize_SeppoService_InsertEwSongIdsResponse(buffer_arg) {
   return ew_song_pb.InsertEwSongIdsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_LanguagesConnection(arg) {
+  if (!(arg instanceof language_pb.LanguagesConnection)) {
+    throw new Error('Expected argument of type SeppoService.LanguagesConnection');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_LanguagesConnection(buffer_arg) {
+  return language_pb.LanguagesConnection.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_ListenForChangedEwSongRequest(arg) {
   if (!(arg instanceof ew_database_pb.ListenForChangedEwSongRequest)) {
     throw new Error('Expected argument of type SeppoService.ListenForChangedEwSongRequest');
@@ -395,6 +540,28 @@ function deserialize_SeppoService_RemoveEwDatabaseResponse(buffer_arg) {
   return ew_database_pb.RemoveEwDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_RemoveLanguageRequest(arg) {
+  if (!(arg instanceof language_pb.RemoveLanguageRequest)) {
+    throw new Error('Expected argument of type SeppoService.RemoveLanguageRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveLanguageRequest(buffer_arg) {
+  return language_pb.RemoveLanguageRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_RemoveLanguageResponse(arg) {
+  if (!(arg instanceof language_pb.RemoveLanguageResponse)) {
+    throw new Error('Expected argument of type SeppoService.RemoveLanguageResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveLanguageResponse(buffer_arg) {
+  return language_pb.RemoveLanguageResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_RemoveSongDatabaseRequest(arg) {
   if (!(arg instanceof song_database_pb.RemoveSongDatabaseRequest)) {
     throw new Error('Expected argument of type SeppoService.RemoveSongDatabaseRequest');
@@ -415,6 +582,28 @@ function serialize_SeppoService_RemoveSongDatabaseResponse(arg) {
 
 function deserialize_SeppoService_RemoveSongDatabaseResponse(buffer_arg) {
   return song_database_pb.RemoveSongDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_RemoveTagRequest(arg) {
+  if (!(arg instanceof tag_pb.RemoveTagRequest)) {
+    throw new Error('Expected argument of type SeppoService.RemoveTagRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveTagRequest(buffer_arg) {
+  return tag_pb.RemoveTagRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_RemoveTagResponse(arg) {
+  if (!(arg instanceof tag_pb.RemoveTagResponse)) {
+    throw new Error('Expected argument of type SeppoService.RemoveTagResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveTagResponse(buffer_arg) {
+  return tag_pb.RemoveTagResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_RemoveVariationFromSongDatabaseRequest(arg) {
@@ -459,6 +648,28 @@ function serialize_SeppoService_RemoveVariationResponse(arg) {
 
 function deserialize_SeppoService_RemoveVariationResponse(buffer_arg) {
   return variation_pb.RemoveVariationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_SearchLanguagesRequest(arg) {
+  if (!(arg instanceof language_pb.SearchLanguagesRequest)) {
+    throw new Error('Expected argument of type SeppoService.SearchLanguagesRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_SearchLanguagesRequest(buffer_arg) {
+  return language_pb.SearchLanguagesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_SearchTagsRequest(arg) {
+  if (!(arg instanceof tag_pb.SearchTagsRequest)) {
+    throw new Error('Expected argument of type SeppoService.SearchTagsRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_SearchTagsRequest(buffer_arg) {
+  return tag_pb.SearchTagsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_SearchVariationsRequest(arg) {
@@ -514,6 +725,17 @@ function serialize_SeppoService_SyncEwDatabaseResponse(arg) {
 
 function deserialize_SeppoService_SyncEwDatabaseResponse(buffer_arg) {
   return ew_database_pb.SyncEwDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_TagsConnection(arg) {
+  if (!(arg instanceof tag_pb.TagsConnection)) {
+    throw new Error('Expected argument of type SeppoService.TagsConnection');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_TagsConnection(buffer_arg) {
+  return tag_pb.TagsConnection.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -616,6 +838,50 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_FetchVariationTextByVariationIdRequest,
     responseSerialize: serialize_SeppoService_FetchVariationTextByVariationIdResponse,
     responseDeserialize: deserialize_SeppoService_FetchVariationTextByVariationIdResponse,
+  },
+  searchTags: {
+    path: '/SeppoService.Seppo/searchTags',
+    requestStream: false,
+    responseStream: false,
+    requestType: tag_pb.SearchTagsRequest,
+    responseType: tag_pb.TagsConnection,
+    requestSerialize: serialize_SeppoService_SearchTagsRequest,
+    requestDeserialize: deserialize_SeppoService_SearchTagsRequest,
+    responseSerialize: serialize_SeppoService_TagsConnection,
+    responseDeserialize: deserialize_SeppoService_TagsConnection,
+  },
+  fetchTagById: {
+    path: '/SeppoService.Seppo/fetchTagById',
+    requestStream: false,
+    responseStream: false,
+    requestType: tag_pb.FetchTagByIdRequest,
+    responseType: tag_pb.FetchTagByIdResponse,
+    requestSerialize: serialize_SeppoService_FetchTagByIdRequest,
+    requestDeserialize: deserialize_SeppoService_FetchTagByIdRequest,
+    responseSerialize: serialize_SeppoService_FetchTagByIdResponse,
+    responseDeserialize: deserialize_SeppoService_FetchTagByIdResponse,
+  },
+  searchLanguages: {
+    path: '/SeppoService.Seppo/searchLanguages',
+    requestStream: false,
+    responseStream: false,
+    requestType: language_pb.SearchLanguagesRequest,
+    responseType: language_pb.LanguagesConnection,
+    requestSerialize: serialize_SeppoService_SearchLanguagesRequest,
+    requestDeserialize: deserialize_SeppoService_SearchLanguagesRequest,
+    responseSerialize: serialize_SeppoService_LanguagesConnection,
+    responseDeserialize: deserialize_SeppoService_LanguagesConnection,
+  },
+  fetchLanguageById: {
+    path: '/SeppoService.Seppo/fetchLanguageById',
+    requestStream: false,
+    responseStream: false,
+    requestType: language_pb.FetchLanguageByIdRequest,
+    responseType: language_pb.FetchLanguageByIdResponse,
+    requestSerialize: serialize_SeppoService_FetchLanguageByIdRequest,
+    requestDeserialize: deserialize_SeppoService_FetchLanguageByIdRequest,
+    responseSerialize: serialize_SeppoService_FetchLanguageByIdResponse,
+    responseDeserialize: deserialize_SeppoService_FetchLanguageByIdResponse,
   },
   // Mutations
   //
@@ -772,6 +1038,72 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_ChangeEwSongIdsRequest,
     responseSerialize: serialize_SeppoService_ChangeEwSongIdsResponse,
     responseDeserialize: deserialize_SeppoService_ChangeEwSongIdsResponse,
+  },
+  createTag: {
+    path: '/SeppoService.Seppo/createTag',
+    requestStream: false,
+    responseStream: false,
+    requestType: tag_pb.CreateTagRequest,
+    responseType: tag_pb.CreateTagResponse,
+    requestSerialize: serialize_SeppoService_CreateTagRequest,
+    requestDeserialize: deserialize_SeppoService_CreateTagRequest,
+    responseSerialize: serialize_SeppoService_CreateTagResponse,
+    responseDeserialize: deserialize_SeppoService_CreateTagResponse,
+  },
+  editTag: {
+    path: '/SeppoService.Seppo/editTag',
+    requestStream: false,
+    responseStream: false,
+    requestType: tag_pb.EditTagRequest,
+    responseType: tag_pb.EditTagResponse,
+    requestSerialize: serialize_SeppoService_EditTagRequest,
+    requestDeserialize: deserialize_SeppoService_EditTagRequest,
+    responseSerialize: serialize_SeppoService_EditTagResponse,
+    responseDeserialize: deserialize_SeppoService_EditTagResponse,
+  },
+  removeTag: {
+    path: '/SeppoService.Seppo/removeTag',
+    requestStream: false,
+    responseStream: false,
+    requestType: tag_pb.RemoveTagRequest,
+    responseType: tag_pb.RemoveTagResponse,
+    requestSerialize: serialize_SeppoService_RemoveTagRequest,
+    requestDeserialize: deserialize_SeppoService_RemoveTagRequest,
+    responseSerialize: serialize_SeppoService_RemoveTagResponse,
+    responseDeserialize: deserialize_SeppoService_RemoveTagResponse,
+  },
+  createLanguage: {
+    path: '/SeppoService.Seppo/createLanguage',
+    requestStream: false,
+    responseStream: false,
+    requestType: language_pb.CreateLanguageRequest,
+    responseType: language_pb.CreateLanguageResponse,
+    requestSerialize: serialize_SeppoService_CreateLanguageRequest,
+    requestDeserialize: deserialize_SeppoService_CreateLanguageRequest,
+    responseSerialize: serialize_SeppoService_CreateLanguageResponse,
+    responseDeserialize: deserialize_SeppoService_CreateLanguageResponse,
+  },
+  editLanguage: {
+    path: '/SeppoService.Seppo/editLanguage',
+    requestStream: false,
+    responseStream: false,
+    requestType: language_pb.EditLanguageRequest,
+    responseType: language_pb.EditLanguageResponse,
+    requestSerialize: serialize_SeppoService_EditLanguageRequest,
+    requestDeserialize: deserialize_SeppoService_EditLanguageRequest,
+    responseSerialize: serialize_SeppoService_EditLanguageResponse,
+    responseDeserialize: deserialize_SeppoService_EditLanguageResponse,
+  },
+  removeLanguage: {
+    path: '/SeppoService.Seppo/removeLanguage',
+    requestStream: false,
+    responseStream: false,
+    requestType: language_pb.RemoveLanguageRequest,
+    responseType: language_pb.RemoveLanguageResponse,
+    requestSerialize: serialize_SeppoService_RemoveLanguageRequest,
+    requestDeserialize: deserialize_SeppoService_RemoveLanguageRequest,
+    responseSerialize: serialize_SeppoService_RemoveLanguageResponse,
+    responseDeserialize: deserialize_SeppoService_RemoveLanguageResponse,
   },
 };
 
