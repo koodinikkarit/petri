@@ -1,50 +1,85 @@
+import {
+	GraphQLFloat,
+	GraphQLInt,
+	GraphQLID,
+	GraphQLObjectType,
+	GraphQLString,
+	GraphQLInputObjectType,
+	GraphQLList
+} from "graphql";
 
+export default new GraphQLObjectType({
+	name: "Variation",
+	fields: () => ({
+		id: {
+			type: GraphQLID
+		},
+		name: {
+			type: GraphQLString
+		},
+		text: {
+			type: GraphQLString
+		},
+		version: {
+			type: GraphQLInt
+		}
+	})
+});
 
-const Variation = `
-	type Variation {
-		id: ID
-		name: String
-		text: String
-		versiont: Int
-	}
-`;
+// export const CreateVariationInput = new GraphQLInputObjectType({
+// 	name: "CreateVariationInput",
+// 	fields: () => ({
+// 		name: {
+// 			type: GraphQLString
+// 		},
+// 		text: {
+// 			type: GraphQLString
+// 		}
+// 	})
+// });
 
-const CreateVariationInput = `
-	input CreateVariationInput {
-		name: String
-		text: String
-	}
-`;
+// export const EditVariationInput = new GraphQLInputObjectType({
+// 	name: "EditVariationInput",
+// 	fields: () => ({
+// 		variationId: {
+// 			type: GraphQLID
+// 		},
+// 		name: {
+// 			type: GraphQLString
+// 		},
+// 		text: {
+// 			type: GraphQLString
+// 		},
+// 		songId: {
+// 			type: GraphQLID
+// 		}
+// 	})
+// });
 
-const EditVariationInput = `
-	input EditVariationInput {
-		variationId: ID
-		name: String
-		text: String
-		songId: ID
-		version: Int
-	}
-`;
+// export const SearchVariationsInput = new GraphQLInputObjectType({
+// 	name: "SearchVariationsInput",
+// 	fields: () => ({
+// 		searchWord: {
+// 			type: GraphQLString
+// 		},
+// 		songDatabaseId: {
+// 			type: GraphQLID
+// 		},
+// 		songDatabaseFilterId: {
+// 			type: GraphQLID
+// 		}
+// 	})
+// });
 
-const SearchVariationsInput = `
-	input SearchVariationsInput {
-		searchWord: String
-		songDatabaseId: ID
-		songDatabaseFilterId: ID
-	}
-`;
+// export const SearchVariationsOutput = new GraphQLObjectType({
+// 	name: "SearchVariationsOutput",
+// 	fields: () => ({
+// 		variations: {
+// 			type: new GraphQLList(Variation)
+// 		},
+// 		maxVariations: {
+// 			type: GraphQLInt
+// 		}
+// 	})
+// });
 
-const SearchVariationsOutput = `
-	type SearchVariationsOutput {
-		variations: [Variation]
-		maxVariations: Int
-	}
-`;
-
-export default () => [
-	Variation,
-	CreateVariationInput,
-	EditVariationInput,
-	SearchVariationsInput,
-	SearchVariationsOutput
-];

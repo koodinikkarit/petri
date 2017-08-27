@@ -11,4 +11,4 @@ export default {
 	removeEwDatabase: (obj, props, context) => context.seppo.removeEwDatabase(props.ewDatabaseId),
 	addVariationToSongDatabase: (obj, { songDatabaseId, variationId }, context) => context.seppo.addVariationToSongDatabase(songDatabaseId, variationId),
 	removeVariationFromSongDatabase: (obj, { songDatabaseId, variationId }, context) => context.seppo.removeVariationFromSongDatabase(songDatabaseId, variationId)
-}
+};

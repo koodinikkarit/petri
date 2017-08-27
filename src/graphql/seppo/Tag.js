@@ -5,15 +5,12 @@ import {
 } from "graphql";
 
 export default new GraphQLObjectType({
-	name: "EwDatabase",
+	name: "Tag",
 	fields: () => ({
 		id: {
 			type: GraphQLID
 		},
 		name: {
-			type: GraphQLString
-		},
-		key: {
 			type: GraphQLString
 		}
 	})

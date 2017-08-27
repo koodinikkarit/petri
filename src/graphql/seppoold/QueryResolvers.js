@@ -7,4 +7,4 @@ export default {
 	ewDatabase: (obj, props, context) => context.seppo.fetchEwDatabaseById(props.ewDatabaseId),
 	searchEwDatabases: (obj, props, context) => context.seppo.fetchEwDatabases(props.params || {}),
 	songDatabaseVariations: (obj, {songDatabaseId}, context) => context.seppo.fetchVariationsBySongDatabaseId(songDatabaseId)
-}
+};

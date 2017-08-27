@@ -1,36 +1,31 @@
-import { merge } from 'lodash';
-
-import { makeExecutableSchema } from 'graphql-tools';
 
 import {
-	Queries as wompattiQueries,
-	Mutations as wompattiMutations,
-	resolvers as wompattiResolvers
-} from "./wompatti";
-
-
+	GraphQLObjectType,
+	GraphQLSchema,
+} from "graphql";
 
 import {
-	Queries as seppoQueries,
-	Mutations as seppoMutations,
-	resolvers as seppoResolvers
+	queries as seppoQueries,
+	mutations as seppoMutations	
 } from "./seppo";
 
-export default makeExecutableSchema({
-	typeDefs: [
-		wompattiQueries,
-		wompattiMutations,
-		seppoQueries,
-		seppoMutations,
-		`
-		schema {
-			query: Query
-			mutation: Mutation
-		}
-		`
-	],
-	resolvers: merge(
-		wompattiResolvers,
-		seppoResolvers
-	)
+
+
+const rootQueryType = new GraphQLObjectType({
+	name: "QueryType",
+	fields: () => ({
+		...seppoQueries	
+	})
+});
+
+const rootMutationType = new GraphQLObjectType({
+	name: "MutationType",
+	fields: () => ({
+		...seppoMutations
+	})
+});
+
+export default new GraphQLSchema({
+	query: rootQueryType,
+	mutation: rootMutationType
 });

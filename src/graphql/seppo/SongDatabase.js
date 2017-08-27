@@ -1,46 +1,23 @@
-import Variation from "./Variation";
+import {
+	GraphQLObjectType,
+	GraphQLID,
+	GraphQLString,
+	GraphQLList
+} from "graphql";
 
-const SongDatabase = `
-    type SongDatabase {
-        id: ID
-        name: String
-        variations: [Variation]
-    }
-`;
+import SongDatabase from "./SongDatabase";
 
-const SongDatabasesConnection = `
-    type SongDatabasesConnection {
-        songDatabases: [SongDatabase]
-    }
-`;
-
-const CreateSongDatabaseInput = `
-    input CreateSongDatabaseInput {
-        name: String
-    }
-`;
-
-const EditSongDatabaseInput = `
-    input EditSongDatabaseInput {
-        songDatabaseId: ID
-        name: String
-    }
-`;
-
-const SearchSongDatabasesInput = `
-    input SearchSongDatabasesInput {
-        offset: Int
-        limit: Int
-        searchWord: String
-    }
-`;
-
-
-export default () => [
-    SongDatabase,
-    Variation,
-    SongDatabasesConnection,
-    CreateSongDatabaseInput,
-    EditSongDatabaseInput,
-    SearchSongDatabasesInput
-];
+export default new GraphQLObjectType({
+	name: "SongDatabase",
+	fields: () => ({
+		id: {
+			type: GraphQLID
+		},
+		name: {
+			type: GraphQLString
+		},
+		variations: {
+			type: new GraphQLList(SongDatabase)
+		}
+	})
+});
