@@ -25,6 +25,16 @@ import {
 	SongDatabaseVariation
 } from "./SongDatabaseVariation";
 
+import {
+	Tag,
+	TagsConnection
+} from "./Tag";
+
+import {
+	Language,
+	LanguagesConnection
+} from "./Language";
+
 export default class {
 	constructor({
 		ip,
@@ -53,8 +63,8 @@ export default class {
 					} else {
 						reject();
 					}
-				})
-			}))
+				});
+			}));
 		}
 		return this.variationLoader.load(id);
 	}
@@ -78,8 +88,8 @@ export default class {
 					} else {
 						reject();
 					}
-				})
-			}))
+				});
+			}));
 		}
 		return this.variationTextLoader.load(id);
 	}
@@ -200,8 +210,83 @@ export default class {
 				});
 			}));
 		}
-
 		return this.songDatabaseVariationsLoader.load(id);
+	}
+
+	searchTags() {
+		return new Promise((resolve, reject) => {
+			var req = new messages.SearchTagsRequest();
+
+			this.client.searchTags(req, (err, res) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(new TagsConnection(this, res));
+				}
+			});
+		});
+	}
+
+	fetchTagById(id) {
+		if (!this.tagLoader) {
+			this.tagLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchTagByIdRequest();
+				req.setTagidsList(keys);
+				
+				this.client.fetchTagById(req, (err, res) => {
+					if (err) {
+						reject();
+					} else {
+						resolve(res.getTagsList().map(p => {
+							if (p.getId() > 0) {
+								return new Tag(this, p);
+							} else {
+								return null;
+							}
+						}));
+					}
+				});
+			}));
+		}
+		return this.tagLoader.load(id);
+	}
+
+	searchLanguages() {
+		return new Promise((resolve, reject) => {
+			var req = new messages.SearchLanguagesRequest();
+
+			this.client.searchLanguages(req, (err, res) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(new LanguagesConnection(this, res));
+				}
+			});
+		});
+	}
+
+	fetchLanguageById(id) {
+		if (!this.languageLoader) {
+			this.languageLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchLanguageByIdRequest();
+				req.setLanguageidsList(keys);
+
+				this.client.fetchLanguageById(req, (err, res) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(res.getLanguagesList().map(p => {
+							if (p.getId() > 0) {
+								return new Language(this, p);
+							} else {
+								return null;
+							}
+						}));
+					}
+				});
+			}));
+		}
+		return this.languageLoader.load(id);
 	}
 
 
@@ -391,13 +476,115 @@ export default class {
 			req.setSongdatabaseid(songDatabaseId);
 			req.setVariationid(variationId);
 
-			this.client.removeVariationFromSongDatabase(req, (err, res) => {
+			this.client.removeVariationFromSongDatabase(req, (err) => {
 				if (!err) {
-					resolve()
+					resolve();
 				} else {
 					reject();
 				}
-			})
+			});
+		});
+	}
+
+	createTag({
+		name
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateTagRequest();
+			req.setName(name);
+
+			this.client.createTag(req, (err, res) => {
+				if (!err) {
+					resolve(new Tag(this, res.getTag()));
+				} else {
+					reject(err);
+				}
+			});
+		});
+	}
+
+	editTag({
+		tagId,
+		name
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditTagRequest();
+			req.setTagid(tagId);
+			req.setName(name);
+
+			this.client.editTag(req, (err, res) => {
+				if (!err) {
+					resolve(new Tag(this, res.getTag()));
+				} else {
+					reject(err);
+				}
+			});
+		});
+	}
+
+	removeTag(tagId) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveTagRequest();
+			req.setTagid(tagId);
+
+			this.client.removeTag(req, (err, res) => {
+				if (!err) {
+					resolve(res.getSuccess());
+				} else {
+					reject(err);
+				}
+			});
+		});
+	}
+
+	createLanguage({
+		name
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.CreateLanguageRequest();
+			req.setName(name);
+
+			this.client.createLanguage(req, (err, res) => {
+				if (!err) {
+					resolve(new Language(this, res.getLanguage()));
+				} else {
+					reject(err);
+				}
+			});
+		});
+	}
+
+	editLanguage({
+		languageId,
+		name
+	}) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.EditLanguageRequest();
+			req.setLanguageid(languageId);
+			req.setName(name);
+
+			this.client.editLanguage(req, (err, res) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(new Language(this, res.getLanguage()));
+				}
+			});
+		});
+	}
+
+	removeLanguage(languageId) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveLanguageRequest();
+			req.setLanguageid(languageId);
+
+			this.client.removeLanguage(req, (err, res) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(res.getSuccess());
+				}
+			});
 		});
 	}
 }

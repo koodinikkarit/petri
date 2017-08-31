@@ -242,7 +242,7 @@ proto.SeppoService.LanguagesConnection.toObject = function(includeInstance, msg)
   var f, obj = {
     languagesList: jspb.Message.toObjectList(msg.getLanguagesList(),
     proto.SeppoService.Language.toObject, includeInstance),
-    maxvariations: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    maxlanguages: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -286,7 +286,7 @@ proto.SeppoService.LanguagesConnection.deserializeBinaryFromReader = function(ms
       break;
     case 2:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setMaxvariations(value);
+      msg.setMaxlanguages(value);
       break;
     default:
       reader.skipField();
@@ -324,7 +324,7 @@ proto.SeppoService.LanguagesConnection.serializeBinaryToWriter = function(messag
       proto.SeppoService.Language.serializeBinaryToWriter
     );
   }
-  f = message.getMaxvariations();
+  f = message.getMaxlanguages();
   if (f !== 0) {
     writer.writeUint32(
       2,
@@ -368,16 +368,16 @@ proto.SeppoService.LanguagesConnection.prototype.clearLanguagesList = function()
 
 
 /**
- * optional uint32 maxVariations = 2;
+ * optional uint32 maxLanguages = 2;
  * @return {number}
  */
-proto.SeppoService.LanguagesConnection.prototype.getMaxvariations = function() {
+proto.SeppoService.LanguagesConnection.prototype.getMaxlanguages = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.SeppoService.LanguagesConnection.prototype.setMaxvariations = function(value) {
+proto.SeppoService.LanguagesConnection.prototype.setMaxlanguages = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
@@ -549,7 +549,7 @@ proto.SeppoService.FetchLanguageByIdRequest.prototype.toObject = function(opt_in
  */
 proto.SeppoService.FetchLanguageByIdRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    languagesidsList: jspb.Message.getField(msg, 1)
+    languageidsList: jspb.Message.getField(msg, 1)
   };
 
   if (includeInstance) {
@@ -588,7 +588,7 @@ proto.SeppoService.FetchLanguageByIdRequest.deserializeBinaryFromReader = functi
     switch (field) {
     case 1:
       var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
-      msg.setLanguagesidsList(value);
+      msg.setLanguageidsList(value);
       break;
     default:
       reader.skipField();
@@ -618,7 +618,7 @@ proto.SeppoService.FetchLanguageByIdRequest.prototype.serializeBinary = function
  */
 proto.SeppoService.FetchLanguageByIdRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getLanguagesidsList();
+  f = message.getLanguageidsList();
   if (f.length > 0) {
     writer.writePackedUint32(
       1,
@@ -629,18 +629,18 @@ proto.SeppoService.FetchLanguageByIdRequest.serializeBinaryToWriter = function(m
 
 
 /**
- * repeated uint32 languagesIds = 1;
+ * repeated uint32 languageIds = 1;
  * If you change this array by adding, removing or replacing elements, or if you
  * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
-proto.SeppoService.FetchLanguageByIdRequest.prototype.getLanguagesidsList = function() {
+proto.SeppoService.FetchLanguageByIdRequest.prototype.getLanguageidsList = function() {
   return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
 };
 
 
 /** @param {!Array.<number>} value */
-proto.SeppoService.FetchLanguageByIdRequest.prototype.setLanguagesidsList = function(value) {
+proto.SeppoService.FetchLanguageByIdRequest.prototype.setLanguageidsList = function(value) {
   jspb.Message.setField(this, 1, value || []);
 };
 
@@ -649,13 +649,13 @@ proto.SeppoService.FetchLanguageByIdRequest.prototype.setLanguagesidsList = func
  * @param {!number} value
  * @param {number=} opt_index
  */
-proto.SeppoService.FetchLanguageByIdRequest.prototype.addLanguagesids = function(value, opt_index) {
+proto.SeppoService.FetchLanguageByIdRequest.prototype.addLanguageids = function(value, opt_index) {
   jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 
-proto.SeppoService.FetchLanguageByIdRequest.prototype.clearLanguagesidsList = function() {
-  this.setLanguagesidsList([]);
+proto.SeppoService.FetchLanguageByIdRequest.prototype.clearLanguageidsList = function() {
+  this.setLanguageidsList([]);
 };
 
 
