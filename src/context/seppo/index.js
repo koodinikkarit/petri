@@ -35,6 +35,14 @@ import {
 	LanguagesConnection
 } from "./Language";
 
+import {
+	TagVariation
+} from "./TagVariation";
+
+import{
+	SongDatabaseTag
+} from "./SongDatabaseTag";
+
 export default class {
 	constructor({
 		ip,
@@ -115,12 +123,14 @@ export default class {
 	}
 
 	fetchSongDatabases({
-		searchWord
+		searchWord,
+		variationId
 	}) {
 		return new Promise((resolve, reject) => {			
 			var req = new messages.FetchSongDatabasesRequest();
 			req.setSearchword(searchWord);
-			
+			req.setVariationid(variationId);
+
 			this.client.fetchSongDatabases(req, (err, res) => {
 				if (!err) {
 					resolve(new SongDatabasesConnection(this, res));
@@ -289,6 +299,115 @@ export default class {
 		return this.languageLoader.load(id);
 	}
 
+	fetchVariationTags(variationId) {
+		if (!this.variationTagsLoader) {
+			this.variationTagsLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchVariationTagsRequest();
+				req.setVariationidsList(keys);
+
+				this.client.fetchVariationTags(req, (err, res) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(res.getVariationtagsList().map(p => (
+							p.getTagsList().map(e => (
+								new Tag(this, e)
+							))
+						)));
+					}
+				});
+			}));
+		}
+		return this.variationTagsLoader.load(variationId);
+	}
+
+	fetchTagVariations(tagId) {
+		if (!this.tagVariationsLoader) {
+			this.tagVariationsLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchTagVariationsRequest();
+				req.setTagidsList(keys);
+
+				this.client.fetchTagVariations(req, (err, res) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(res.getTagvariationsList().map(p => (
+							p.getVariationsList().map(e => (
+								new Variation(this, e)
+							))
+						)));
+					}
+				});
+			}));
+		}
+		return this.tagVariationsLoader.load(tagId);
+	}
+
+	fetchTagSongDatabases(tagId) {
+		if (!this.tagSongDatabasesLoader) {
+			this.tagSongDatabasesLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.fetchTagSongDatabasesRequest();
+				req.setTagidsList(keys);
+
+				this.client.fetchTagSongDatabases(req, (err, res) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(res.getTagsongdatabasesList().map(p => (
+							p.getSongdatabasesList().map(e => (
+								new SongDatabase(this, e)
+							))
+						)));
+					}
+				});
+			}));
+		}
+		return this.tagSongDatabasesLoader(tagId);
+	}
+
+	fetchSongDatabaseTags(songDatabaseId) {
+		if (!this.songDatabaseTagsLoader) {
+			this.songDatabaseTagsLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchSongDatabaseTagsRequest();
+				req.setSongdatabaseidsList(keys);
+
+				this.client.fetchSongDatabaseTags(req, (err, res) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(res.getSongdatabasetagsList().map(p => (
+							p.getTagsList().map(e => (
+								new Tag(this, e)
+							))
+						)));
+					}
+				});
+			}));
+		}
+		return this.songDatabaseTagsLoader(songDatabaseId);
+	}
+
+	fetchLanguageVariations(languageId) {
+		if (!this.languageVariationsLoader) {
+			this.languageVariationsLoader = new DataLoader(keys => new Promise((resolve, reject) => {
+				var req = new messages.FetchLanguageVariationsRequest();
+				req.setLanguageidsList(keys);
+
+				this.client.fetchLanguageVariations(req, (err, res) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(res.getLanguagevariations().map(p => (
+							p.getVariationsList().map(e => (
+								new Variation(this, e)
+							))
+						)));
+					}
+				});
+			}));
+		}
+		return this.languageVariationsLoader.load(languageId);
+	}
 
 	// Mutations
 
@@ -306,7 +425,7 @@ export default class {
 				} else {
 					reject();
 				}
-			})
+			});
 		});
 	}
 
@@ -314,7 +433,8 @@ export default class {
 		variationId,
 		name,
 		text,
-		songId
+		songId,
+		languageId
 	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.EditVariationRequest();
@@ -322,6 +442,7 @@ export default class {
 			req.setName(name);
 			req.setText(text);
 			req.setSongid(songId);
+			req.setLanguageid(languageId);
 
 			this.client.editVariation(req, (err, res) => {
 				if (!err) {
@@ -329,8 +450,8 @@ export default class {
 				} else {
 					reject();
 				}
-			})
-		})
+			});
+		});
 	}
 
 	removeVariation(id) {
@@ -338,14 +459,14 @@ export default class {
 			var req = new messages.RemoveVariationRequest();
 			req.setVariationid(id);
 
-			this.client.removeVariation(req, (err, res) => {
+			this.client.removeVariation(req, (err) => {
 				if (!err) {
 					resolve();
 				} else {
-					reject();
+					reject(err);
 				}
 			});
-		})
+		});
 	}
 
 	createSongDatabase({
@@ -583,6 +704,60 @@ export default class {
 					reject(err);
 				} else {
 					resolve(res.getSuccess());
+				}
+			});
+		});
+	}
+
+	addTagToVariation(tagId, variationId) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.AddTagToVariationRequest();
+			req.setTagid(tagId);
+			req.setVariationid(variationId);
+
+			this.client.addTagToVariation(req, (err, res) => {
+				if (err) {
+					reject(err);
+				} else {
+					if (res.getSuccess()) {
+						resolve(new TagVariation(this, res.getTagvariation()));
+					} else {
+						resolve(null);
+					}
+				}
+			});
+		});
+	}
+
+	removeTagFromVariation(tagId, variationId) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveTagFromVariationRequest();
+			req.setTagid(tagId);
+			req.setVariationid(variationId);
+
+			this.client.removeTagFromVariation(req, (err, res) => {
+				if (err) {
+					reject();
+				} else {
+					resolve(res.getSuccess());
+				}
+			});
+		});
+	}
+
+	addTagToSongDatabase(tagId, songDatabaseId) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.AddTagToSongDatabaseRequest();
+			req.setTagid(tagId);
+			req.setSongdatabaseid(songDatabaseId);
+
+			this.client.addTagToSongDatabase(req, (err, res) => {
+				if (err) {
+					reject(err);
+				} else {
+					if (res.getSuccess()) {
+						resolve(new SongDatabaseTag(this, res.getSongdatabase()));
+					}
 				}
 			});
 		});

@@ -69,7 +69,8 @@ proto.SeppoService.Variation.toObject = function(includeInstance, msg) {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     songid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    version: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    version: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    languageid: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -121,6 +122,10 @@ proto.SeppoService.Variation.deserializeBinaryFromReader = function(msg, reader)
     case 5:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setVersion(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLanguageid(value);
       break;
     default:
       reader.skipField();
@@ -175,6 +180,13 @@ proto.SeppoService.Variation.serializeBinaryToWriter = function(message, writer)
   if (f !== 0) {
     writer.writeUint64(
       5,
+      f
+    );
+  }
+  f = message.getLanguageid();
+  if (f !== 0) {
+    writer.writeUint32(
+      6,
       f
     );
   }
@@ -238,6 +250,21 @@ proto.SeppoService.Variation.prototype.getVersion = function() {
 /** @param {number} value */
 proto.SeppoService.Variation.prototype.setVersion = function(value) {
   jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * optional uint32 languageId = 6;
+ * @return {number}
+ */
+proto.SeppoService.Variation.prototype.getLanguageid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.Variation.prototype.setLanguageid = function(value) {
+  jspb.Message.setField(this, 6, value);
 };
 
 
@@ -615,7 +642,7 @@ proto.SeppoService.EditVariationRequest.toObject = function(includeInstance, msg
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     text: jspb.Message.getFieldWithDefault(msg, 3, ""),
     songid: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    version: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    languageid: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -669,8 +696,8 @@ proto.SeppoService.EditVariationRequest.deserializeBinaryFromReader = function(m
       msg.setSongid(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setVersion(value);
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLanguageid(value);
       break;
     default:
       reader.skipField();
@@ -728,9 +755,9 @@ proto.SeppoService.EditVariationRequest.serializeBinaryToWriter = function(messa
       f
     );
   }
-  f = message.getVersion();
+  f = message.getLanguageid();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeUint32(
       5,
       f
     );
@@ -799,16 +826,16 @@ proto.SeppoService.EditVariationRequest.prototype.setSongid = function(value) {
 
 
 /**
- * optional uint64 version = 5;
+ * optional uint32 languageId = 5;
  * @return {number}
  */
-proto.SeppoService.EditVariationRequest.prototype.getVersion = function() {
+proto.SeppoService.EditVariationRequest.prototype.getLanguageid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
 /** @param {number} value */
-proto.SeppoService.EditVariationRequest.prototype.setVersion = function(value) {
+proto.SeppoService.EditVariationRequest.prototype.setLanguageid = function(value) {
   jspb.Message.setField(this, 5, value);
 };
 

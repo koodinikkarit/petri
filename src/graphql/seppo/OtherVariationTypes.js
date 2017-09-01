@@ -35,6 +35,9 @@ export const EditVariationInput = new GraphQLInputObjectType({
 		},
 		songId: {
 			type: GraphQLID
+		},
+		languageId: {
+			type: GraphQLID
 		}
 	})
 });

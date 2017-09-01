@@ -1,50 +1,75 @@
 
-
 export class Variation {
 	constructor(context, model) {
-		Object.defineProperties(this, {
-			"id": {
-				get: () => model.getId()
-			},
-			"name": {
-				get: () => model.getName()
-			},
-			"songId": {
-				get: () => model.getSongid()
-			},
-			"text": {
-				get: () => new Promise((resolve) => {
-					context.fetchVariationTextByVariationId(model.getId()).then(variationText => {
-						resolve(variationText ? variationText.text : "")
-					});
-				})
-			},
-			"version": {
-				get: () => model.getVersion()
-			}
+		this.context = context;
+		this.model = model;
+	}
+
+	get id() {
+		return this.model.getId();
+	}
+
+	get name() {
+		return this.model.getName();
+	}
+
+	get text() {
+		return new Promise((resolve) => {
+			this.context.fetchVariationTextByVariationId(this.model.getId()).then(variationText => {
+				resolve(variationText ? variationText.text : "");
+			});
+		});
+	}
+
+	get version() {
+		return this.model.getVersion();
+	}
+
+	get languageId() {
+		return this.model.getLanguageid();
+	}
+	
+	get language() {
+		return this.context.fetchLanguageById(this.languageId);
+	}
+
+	get tags() {
+		return this.context.fetchVariationTags(this.id);
+	}
+
+	get songDatabases() {
+		return new Promise((resolve) => {
+			this.context.fetchSongDatabases({
+				variationId: this.id
+			}).then(songDatabasesConnection => {
+				resolve(songDatabasesConnection.songDatabases);
+			});
 		});
 	}
 }
 
 export class VariationText {
 	constructor(context, model) {
-		Object.defineProperties(this, {
-			"text": {
-				get: () => model.getText()
-			}
-		})
+		this.context = context;
+		this.model = model;
+	}
+
+	get text() {
+		return this.model.getText();
 	}
 }
 
 export class SearchVariationsOutput {
 	constructor(context, model) {
-		Object.defineProperties(this, {
-			variations: {
-				get: () => model.getVariationsList().map(p => new Variation(context, p))
-			},
-			maxVariations: {
-				get: () => model.getMaxvariations()
-			}
-		});
+		this.context = context;
+		this.model = model;
+	}
+
+	get variations() {
+		return this.model.getVariationsList().map(p => new Variation(this.context, p));
+	}
+
+	get maxVariations() {
+		return this.model.getMaxvariations();
 	}
 }

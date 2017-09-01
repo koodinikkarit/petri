@@ -1,3 +1,7 @@
+import {
+	GraphQLBoolean,
+	GraphQLID
+} from "graphql";
 
 import Variation from "./Variation";
 import SongDatabase from "./SongDatabase";
@@ -31,10 +35,7 @@ import {
 	EditLanguageInput
 } from "./OtherLanguageTypes";
 
-import {
-	GraphQLBoolean,
-	GraphQLID
-} from "graphql";
+import TagVariation from "./TagVariation";
 
 export default {
 	createVariation: {
@@ -316,5 +317,48 @@ export default {
 			},
 			context
 		) => context.seppo.removeLanguage(languageId)
+	},
+	addTagToVariation: {
+		name: "AddTagToVariation",
+		type: TagVariation,
+		args: {
+			tagId: {
+				type: GraphQLID
+			},
+			variationId: {
+				type: GraphQLID
+			}
+		},
+		resolve: (
+			obj,
+			{
+				tagId,
+				variationId
+			},
+			context
+		) => context.seppo.addTagToVariation(tagId, variationId)
+	},
+	removeTagFromVariation: {
+		name: "RemoveTagFromVariation",
+		type: GraphQLBoolean,
+		args: {
+			tagId: {
+				type: GraphQLID
+			},
+			variationId: {
+				type: GraphQLID
+			}
+		},
+		resolve: (
+			obj,
+			{
+				tagId,
+				variationId
+			},
+			context
+		) => context.seppo.removeTagFromVariation(
+			tagId, 
+			variationId
+		)
 	}
 };

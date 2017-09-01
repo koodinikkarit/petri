@@ -18,4 +18,7 @@ var tag_pb = require('./tag_pb.js');
 var language_pb = require('./language_pb.js');
 var variation_pb = require('./variation_pb.js');
 var variation_text_pb = require('./variation_text_pb.js');
+var tag_variation_pb = require('./tag_variation_pb.js');
+var song_database_tag_pb = require('./song_database_tag_pb.js');
+var language_variations_pb = require('./language_variations_pb.js');
 goog.object.extend(exports, proto.SeppoService);
