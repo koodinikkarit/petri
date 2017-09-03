@@ -1,14 +1,14 @@
-const fs = require("fs");
-const grpc = require("grpc");
+// const fs = require("fs");
+// const grpc = require("grpc");
 
-import path from "path";
+// import path from "path";
 
 
-let sslCredentials = grpc.credentials.createSsl(
-	fs.readFileSync(path.join(__dirname, "../../ssl/ca.crt")), 
-	fs.readFileSync(path.join(__dirname, "../../ssl/client.key")), 
-	fs.readFileSync(path.join(__dirname, "../../ssl/client.crt"))
-);
+// let sslCredentials = grpc.credentials.createSsl(
+// 	fs.readFileSync(path.join(__dirname, "../../ssl/ca.crt")), 
+// 	fs.readFileSync(path.join(__dirname, "../../ssl/client.key")), 
+// 	fs.readFileSync(path.join(__dirname, "../../ssl/client.crt"))
+// );
 
 import Wompatti from "./wompatti";
 import Seppo from "./seppo";

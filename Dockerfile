@@ -4,6 +4,7 @@ ADD package.json ./package.json
 RUN npm install
 ADD webpack.config.js ./webpack.config.js
 COPY .babelrc .
+COPY src ./src
 
 # FROM grpc/node:0.11-onbuild
 # WORKDIR /usr/src/petri
