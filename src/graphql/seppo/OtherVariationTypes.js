@@ -53,6 +53,12 @@ export const SearchVariationsInput = new GraphQLInputObjectType({
 		},
 		songDatabaseFilterId: {
 			type: GraphQLID
+		},
+		tagId: {
+			type: GraphQLID
+		},
+		languageId: {
+			type: GraphQLID
 		}
 	})
 });

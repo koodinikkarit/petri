@@ -1630,7 +1630,9 @@ proto.SeppoService.SearchVariationsRequest.toObject = function(includeInstance, 
   var f, obj = {
     searchword: jspb.Message.getFieldWithDefault(msg, 1, ""),
     songdatabaseid: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    songdatabasefilterid: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    songdatabasefilterid: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    tagid: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    languageid: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -1678,6 +1680,14 @@ proto.SeppoService.SearchVariationsRequest.deserializeBinaryFromReader = functio
     case 3:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setSongdatabasefilterid(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTagid(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLanguageid(value);
       break;
     default:
       reader.skipField();
@@ -1728,6 +1738,20 @@ proto.SeppoService.SearchVariationsRequest.serializeBinaryToWriter = function(me
       f
     );
   }
+  f = message.getTagid();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+  f = message.getLanguageid();
+  if (f !== 0) {
+    writer.writeUint32(
+      5,
+      f
+    );
+  }
 };
 
 
@@ -1773,6 +1797,36 @@ proto.SeppoService.SearchVariationsRequest.prototype.getSongdatabasefilterid = f
 /** @param {number} value */
 proto.SeppoService.SearchVariationsRequest.prototype.setSongdatabasefilterid = function(value) {
   jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 tagId = 4;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getTagid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setTagid = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional uint32 languageId = 5;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getLanguageid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setLanguageid = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 

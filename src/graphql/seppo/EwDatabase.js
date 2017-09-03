@@ -4,6 +4,8 @@ import {
 	GraphQLString
 } from "graphql";
 
+import EwDatabase from "./EwDatabase";
+
 export default new GraphQLObjectType({
 	name: "EwDatabase",
 	fields: () => ({
@@ -15,6 +17,9 @@ export default new GraphQLObjectType({
 		},
 		key: {
 			type: GraphQLString
+		},
+		songDatabase: {
+			type: EwDatabase
 		}
 	})
 });

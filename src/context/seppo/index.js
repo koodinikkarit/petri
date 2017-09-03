@@ -105,13 +105,18 @@ export default class {
 	searchVariations({
 		searchWord,
 		songDatabaseId,
-		songDatabaseFilterId
+		songDatabaseFilterId,
+		tagId,
+		languageId
 	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.SearchVariationsRequest();
 			req.setSearchword(searchWord);
 			req.setSongdatabaseid(songDatabaseId);
 			req.setSongdatabasefilterid(songDatabaseFilterId);
+			req.setTagid(tagId);
+			req.setLanguageid(languageId);
+
 			this.client.searchVariations(req, (err, res) => {
 				if (!err) {
 					resolve(new SearchVariationsOutput(this, res));
