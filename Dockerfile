@@ -1,6 +1,6 @@
 FROM node
 WORKDIR /usr/src/petri
-ADD package.json /tmp/package.json
+ADD package.json ./package.json
 RUN npm install
 ADD webpack.config.js ./webpack.config.js
 COPY .babelrc .
