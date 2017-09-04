@@ -24,7 +24,7 @@ export const TagsConnection = new GraphQLObjectType({
 export const SearchTagsInput = new GraphQLInputObjectType({
 	name: "SearchTagsInput",
 	fields: () => ({
-		id: {
+		songDatabaseId: {
 			type: GraphQLID
 		}
 	})

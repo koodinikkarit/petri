@@ -9,6 +9,7 @@ import EwDatabase from "./EwDatabase";
 import Tag from "./Tag";
 import Language from "./Language";
 import SongDatabaseVariation from "./SongDatabaseVariation";
+import SongDatabaseTag from "./SongDatabaseTag";
 
 import {
 	CreateVariationInput,
@@ -359,6 +360,52 @@ export default {
 		) => context.seppo.removeTagFromVariation(
 			tagId, 
 			variationId
+		)
+	},
+	addTagToSongDatabase: {
+		name: "AddTagToSongDatabase",
+		type: SongDatabaseTag,
+		args: {
+			tagId: {
+				type: GraphQLID
+			},
+			songDatabaseId: {
+				type: GraphQLID
+			}
+		},
+		resolve: (
+			obj,
+			{
+				tagId,
+				songDatabaseId
+			},
+			context
+		) => context.seppo.addTagToSongDatabase(
+			tagId, 
+			songDatabaseId
+		)
+	},
+	removeTagFromSongDatabase: {
+		name: "RemoveTagFromSongDatabase",
+		type: GraphQLBoolean,
+		args: {
+			tagId: {
+				type: GraphQLID
+			},
+			songDatabaseId: {
+				type: GraphQLID
+			}
+		},
+		resolve: (
+			obj,
+			{
+				tagId,
+				songDatabaseId
+			},
+			context
+		) => context.seppo.removeTagFromSongDatabase(
+			tagId, 
+			songDatabaseId
 		)
 	}
 };

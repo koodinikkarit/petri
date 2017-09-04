@@ -228,9 +228,12 @@ export default class {
 		return this.songDatabaseVariationsLoader.load(id);
 	}
 
-	searchTags() {
+	searchTags({
+		songDatabaseId
+	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.SearchTagsRequest();
+			req.setSongdatabaseid(songDatabaseId);
 
 			this.client.searchTags(req, (err, res) => {
 				if (err) {
@@ -493,12 +496,16 @@ export default class {
 
 	editSongDatabase({
 		songDatabaseId,
-		name
+		name,
+		addTagIds,
+		removeTagIds
 	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.EditSongDatabaseRequest();
 			req.setSongdatabaseid(songDatabaseId);
 			req.setName(name);
+			req.setAddtagidsList(addTagIds);
+			req.setRemovetagidsList(removeTagIds);
 
 			this.client.editSongDatabase(req, (err, res) => {
 				if (!err) {
@@ -763,6 +770,22 @@ export default class {
 					if (res.getSuccess()) {
 						resolve(new SongDatabaseTag(this, res.getSongdatabase()));
 					}
+				}
+			});
+		});
+	}
+
+	removeTagFromSongDatabase(tagId, songDatabaseId) {
+		return new Promise((resolve, reject) => {
+			var req = new messages.RemoveTagFromSongDatabase();
+			req.setTagid(tagId);
+			req.setSongdatabaseid(songDatabaseId);
+
+			this.client.removeTagFromSongDatabase(req, (err, res) => {
+				if (err) {
+					reject(err);
+				} else {
+					reject(res.getSuccess());
 				}
 			});
 		});

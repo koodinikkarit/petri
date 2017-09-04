@@ -428,7 +428,7 @@ proto.SeppoService.SearchTagsRequest.prototype.toObject = function(opt_includeIn
  */
 proto.SeppoService.SearchTagsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    songdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -465,6 +465,10 @@ proto.SeppoService.SearchTagsRequest.deserializeBinaryFromReader = function(msg,
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSongdatabaseid(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -493,6 +497,28 @@ proto.SeppoService.SearchTagsRequest.prototype.serializeBinary = function() {
  */
 proto.SeppoService.SearchTagsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getSongdatabaseid();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 songDatabaseId = 1;
+ * @return {number}
+ */
+proto.SeppoService.SearchTagsRequest.prototype.getSongdatabaseid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchTagsRequest.prototype.setSongdatabaseid = function(value) {
+  jspb.Message.setField(this, 1, value);
 };
 
 

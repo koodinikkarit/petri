@@ -1510,12 +1510,19 @@ proto.SeppoService.CreateSongDatabaseResponse.prototype.hasSongdatabase = functi
  * @constructor
  */
 proto.SeppoService.EditSongDatabaseRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.EditSongDatabaseRequest.repeatedFields_, null);
 };
 goog.inherits(proto.SeppoService.EditSongDatabaseRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.SeppoService.EditSongDatabaseRequest.displayName = 'proto.SeppoService.EditSongDatabaseRequest';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SeppoService.EditSongDatabaseRequest.repeatedFields_ = [3,4];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1545,7 +1552,9 @@ proto.SeppoService.EditSongDatabaseRequest.prototype.toObject = function(opt_inc
 proto.SeppoService.EditSongDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     songdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 2, "")
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    addtagidsList: jspb.Message.getField(msg, 3),
+    removetagidsList: jspb.Message.getField(msg, 4)
   };
 
   if (includeInstance) {
@@ -1590,6 +1599,14 @@ proto.SeppoService.EditSongDatabaseRequest.deserializeBinaryFromReader = functio
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 3:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setAddtagidsList(value);
+      break;
+    case 4:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setRemovetagidsList(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1632,6 +1649,20 @@ proto.SeppoService.EditSongDatabaseRequest.serializeBinaryToWriter = function(me
       f
     );
   }
+  f = message.getAddtagidsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      3,
+      f
+    );
+  }
+  f = message.getRemovetagidsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -1662,6 +1693,68 @@ proto.SeppoService.EditSongDatabaseRequest.prototype.getName = function() {
 /** @param {string} value */
 proto.SeppoService.EditSongDatabaseRequest.prototype.setName = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * repeated uint32 addTagIds = 3;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.SeppoService.EditSongDatabaseRequest.prototype.getAddtagidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 3));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.SeppoService.EditSongDatabaseRequest.prototype.setAddtagidsList = function(value) {
+  jspb.Message.setField(this, 3, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SeppoService.EditSongDatabaseRequest.prototype.addAddtagids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+};
+
+
+proto.SeppoService.EditSongDatabaseRequest.prototype.clearAddtagidsList = function() {
+  this.setAddtagidsList([]);
+};
+
+
+/**
+ * repeated uint32 removeTagIds = 4;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.SeppoService.EditSongDatabaseRequest.prototype.getRemovetagidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 4));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.SeppoService.EditSongDatabaseRequest.prototype.setRemovetagidsList = function(value) {
+  jspb.Message.setField(this, 4, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SeppoService.EditSongDatabaseRequest.prototype.addRemovetagids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 4, value, opt_index);
+};
+
+
+proto.SeppoService.EditSongDatabaseRequest.prototype.clearRemovetagidsList = function() {
+  this.setRemovetagidsList([]);
 };
 
 

@@ -35,6 +35,12 @@ export const EditSongDatabaseInput = new GraphQLInputObjectType({
 		},
 		name: {
 			type: GraphQLString
+		},
+		addTagIds: {
+			type: new GraphQLList(GraphQLID)
+		},
+		removeTagIds: {
+			type: new GraphQLList(GraphQLID)
 		}
 	})
 });
