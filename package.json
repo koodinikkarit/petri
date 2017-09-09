@@ -9,7 +9,8 @@
 		"start": "babel-node ./src/app.js",
 		"watch": "babel-watch ./src/app.js",
 		"build": "webpack",
-		"test": "jest"
+		"test": "jest",
+		"test-changed": "jest -o"
 	},
 	"dependencies": {
 		"express": "^4.14.0",
