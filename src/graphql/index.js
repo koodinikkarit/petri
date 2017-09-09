@@ -9,19 +9,24 @@ import {
 	mutations as seppoMutations	
 } from "./seppo";
 
-
+import {
+	queries as wompattiQueries,
+	mutations as wompattiMutations
+} from "./wompatti";
 
 const rootQueryType = new GraphQLObjectType({
 	name: "QueryType",
 	fields: () => ({
-		...seppoQueries	
+		...seppoQueries,
+		...wompattiQueries
 	})
 });
 
 const rootMutationType = new GraphQLObjectType({
 	name: "MutationType",
 	fields: () => ({
-		...seppoMutations
+		...seppoMutations,
+		...wompattiMutations
 	})
 });
 

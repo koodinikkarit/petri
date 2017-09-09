@@ -1,6 +1,7 @@
 
 const messages = require("./service/wompatti_service_pb");
 const services = require("./service/wompatti_service_grpc_pb");
+const grpc = require("grpc");
 
 import DataLoader from "dataloader";
 
@@ -32,7 +33,8 @@ import {
 } from "./KeyValue";
 
 import {
-	WolInterface
+	WolInterface,
+	WolInterfacesConnection
 } from "./WolInterface";
 
 import {
@@ -58,9 +60,13 @@ export default class {
 	constructor({
 		ip,
 		port,
-		credentials
+		//credentials
 	}) {
-		this.client = new services.WompattiClient(ip + ":" + port, credentials);
+		console.log("address", ip + ":" + port);
+		this.client = new services.WompattiClient(
+			ip + ":" + port, 
+			grpc.credentials.createInsecure()
+		);
 	}
 
 	// Fetch
@@ -223,10 +229,25 @@ export default class {
 		})
 	}
 
+	fetchWolInterfaces() {
+		return new Promise((resolve, reject) => {
+			var req = new messages.FetchWolInterfacesRequest();
+
+			this.client.fetchWolInterfaces(req, (err, res) => {
+				if (err) {
+					console.log("fetchWolInterfaces error", err);
+					reject();
+				} else {
+					resolve(new WolInterfacesConnection(this, res));
+				}
+			});
+		});
+	}
+
 	fetchWolInterfaceById(id) {
 		if (!this.wolInterfaceLoader) {
 			this.wolInterfaceLoader = new DataLoader(keys => new Promise((resolve, reject) => {
-				var req = new messages.fetchWolInterfaceByIdRequest();
+				var req = new messages.FetchWolInterfaceByIdRequest();
 				req.setWolinterfaceidtList(keys);
 
 				this.client.fetchWolInterfaceById(req, (err, res) => {
@@ -244,7 +265,7 @@ export default class {
 				});
 			}));
 		}
-		return this.wolInterfaceLoader(id);		
+		return this.wolInterfaceLoader.load(id);		
 	}
 
 	fetchDeviceTypes({
@@ -766,14 +787,13 @@ export default class {
 		})
 	}
 
-	createWolInterface({
-		computerId, 
-		ethernetInterfaceId, 
+	createWolInterface(
+		ethernetInterfaceId,
 		mac
-	}) {
+	) {
+		console.log("createWolInterface", ethernetInterfaceId, mac);
 		return new Promise((resolve, reject) => {
-			var req = new messages.CreateWOlInterfaceRequest();
-			req.setComputerid(computerId);
+			var req = new messages.CreateWolInterfaceRequest();
 			req.setEthernetinterfaceid(ethernetInterfaceId);
 			req.setMac(mac);
 
@@ -781,10 +801,11 @@ export default class {
 				if (!err) {
 					resolve(new WolInterface(this, res.getWolinterface()));
 				} else {
+					console.log("err", err);
 					reject();
 				}
-			})
-		})
+			});
+		});
 	}
 
 	editWolInterface({
@@ -800,18 +821,19 @@ export default class {
 
 			this.client.editWolInterface(req, (err, res) => {
 				if (!err) {
-					switch (res.getState()) {
-						case 0:
-							resolve(new WolInterface(this, res.getWolinterface()));
-							break;
-						case 1:
-							resolve(null);
-							break;
-					}
+					resolve(new WolInterface(this, res.getWolinterface()));
+					// switch (res.getState()) {
+					// 	case 0:
+					// 		resolve(new WolInterface(this, res.getWolinterface()));
+					// 		break;
+					// 	case 1:
+					// 		resolve(null);
+					// 		break;
+					// }
 				} else {
 					reject();
 				}
-			})
+			});
 		});
 	}
 
@@ -822,14 +844,15 @@ export default class {
 
 			this.client.removeWolInterface(req, (err, res) => {
 				if (!err) {
-					switch(res.getState()) {
-						case 0:
-							resolve(true);
-							break;
-						case 1:
-							resolve(false);
-							break;
-					}
+					resolve(res.getSuccess());
+					// switch(res.getState()) {
+					// 	case 0:
+					// 		resolve(true);
+					// 		break;
+					// 	case 1:
+					// 		resolve(false);
+					// 		break;
+					// }
 				} else {
 					reject();
 				}
@@ -837,20 +860,20 @@ export default class {
 		});
 	}
 
-	executeWolInterface(id) {
+	wakeup(id) {
 		return new Promise((resolve, reject) => {
-			var req = new messages.ExecuteWolInterfaceRequest();
+			var req = new messages.WakeupRequest();
 			req.setWolinterfaceid(id);
 
-			this.client.executeWolInterface(req, (err, res) => {
+			this.client.wakeup(req, (err, res) => {
 				if (!err) {
 					switch(res.getState()) {
-						case 0:
-							resolve(true);
-							break;
-						case 1:
-							resolve(false);
-							break;
+					case 0:
+						resolve(true);
+						break;
+					case 1:
+						resolve(false);
+						break;
 					}
 				} else {
 					reject();

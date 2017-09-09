@@ -2,12 +2,11 @@
 
 export class Command {
 	constructor(context, model) {
+		this.context = context;
+		this.model = model;
 		Object.defineProperties(this, {
 			"id": {
 				get: () => model.getId()
-			},
-			"deviceInfo": {
-				get: () => context.fetchDeviceInfoById(model.getDeviceinfoid())
 			},
 			"name": {
 				get: () => model.getName()
@@ -16,5 +15,13 @@ export class Command {
 				get: () => model.getValue()
 			}
 		})
+	}
+
+	get realId() {
+		this.model.getId();
+	}
+
+	get deviceType() {
+		return this.context.fetchDeviceTypeById(model.getDevicetypeid())
 	}
 }

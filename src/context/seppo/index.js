@@ -49,7 +49,10 @@ export default class {
 		port,
 		//credentials
 	}) {
-		this.client = new services.SeppoClient(ip + ":" + port, grpc.credentials.createInsecure());
+		this.client = new services.SeppoClient(
+			ip + ":" + port, 
+			grpc.credentials.createInsecure()
+		);
 	}
 
 	// Queries
@@ -67,7 +70,7 @@ export default class {
 							} else {
 								return null;
 							}
-						}))
+						}));
 					} else {
 						reject();
 					}

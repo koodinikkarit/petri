@@ -19,4 +19,7 @@ var wol_interface_pb = require('./wol_interface_pb.js');
 var device_type_pb = require('./device_type_pb.js');
 var serial_interface_pb = require('./serial_interface_pb.js');
 var telnet_interface_pb = require('./telnet_interface_pb.js');
+var command_pb = require('./command_pb.js');
+var keijo_pb = require('./keijo_pb.js');
+var severi_pb = require('./severi_pb.js');
 goog.object.extend(exports, proto.WompattiService);

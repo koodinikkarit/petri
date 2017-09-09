@@ -53,7 +53,7 @@ app.use("/", graphqlExpress((req) => {
 
 	var context = new Context({
 		token: req.get("token"),
-		wompattiIp: process.env.PETRI_WOMPATTI_PORT,
+		wompattiIp: process.env.PETRI_WOMPATTI_IP,
 		wompattiPort: process.env.PETRI_WOMPATTI_PORT,
 		seppoIp: process.env.PETRI_SEPPO_IP,
 		seppoPort: process.env.PETRI_SEPPO_PORT,

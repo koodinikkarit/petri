@@ -51,6 +51,9 @@ export default class {
 		let seppo;
 		let risto;
 
+
+		console.log("wompatti settings", wompattiIp, wompattiPort);
+
 		Object.defineProperties(this, {
 			wompatti: {
 				get: () => {

@@ -10,31 +10,17 @@ var goog = jspb;
 var global = Function('return this')();
 
 var page_info_pb = require('./page_info_pb.js');
-goog.exportSymbol('proto.WompattiService.Command', null, global);
-goog.exportSymbol('proto.WompattiService.CreateCommandRequest', null, global);
-goog.exportSymbol('proto.WompattiService.CreateCommandResponse', null, global);
-goog.exportSymbol('proto.WompattiService.CreateCommandResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.CreateDeviceTypeRequest', null, global);
 goog.exportSymbol('proto.WompattiService.CreateDeviceTypeResponse', null, global);
 goog.exportSymbol('proto.WompattiService.CreateDeviceTypeResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.DeviceType', null, global);
-goog.exportSymbol('proto.WompattiService.DeviceTypeCommands', null, global);
-goog.exportSymbol('proto.WompattiService.DeviceTypesConnection', null, global);
-goog.exportSymbol('proto.WompattiService.DeviceTypesEdge', null, global);
-goog.exportSymbol('proto.WompattiService.EditCommandReponse', null, global);
-goog.exportSymbol('proto.WompattiService.EditCommandReponse.State', null, global);
-goog.exportSymbol('proto.WompattiService.EditCommandRequest', null, global);
 goog.exportSymbol('proto.WompattiService.EditDeviceTypeRequest', null, global);
 goog.exportSymbol('proto.WompattiService.EditDeviceTypeResponse', null, global);
 goog.exportSymbol('proto.WompattiService.EditDeviceTypeResponse.State', null, global);
-goog.exportSymbol('proto.WompattiService.FetchCommandsByDeviceTypeIdRequest', null, global);
-goog.exportSymbol('proto.WompattiService.FetchCommandsByDeviceTypeIdResponse', null, global);
 goog.exportSymbol('proto.WompattiService.FetchDeviceTypeByIdRequest', null, global);
 goog.exportSymbol('proto.WompattiService.FetchDeviceTypeByIdResponse', null, global);
 goog.exportSymbol('proto.WompattiService.FetchDeviceTypesRequest', null, global);
-goog.exportSymbol('proto.WompattiService.RemoveCommandRequest', null, global);
-goog.exportSymbol('proto.WompattiService.RemoveCommandResponse', null, global);
-goog.exportSymbol('proto.WompattiService.RemoveCommandResponse.State', null, global);
+goog.exportSymbol('proto.WompattiService.FetchDeviceTypesResponse', null, global);
 goog.exportSymbol('proto.WompattiService.RemoveDeviceTypeRequest', null, global);
 goog.exportSymbol('proto.WompattiService.RemoveDeviceTypeResponse', null, global);
 goog.exportSymbol('proto.WompattiService.RemoveDeviceTypeResponse.State', null, global);
@@ -216,12 +202,12 @@ proto.WompattiService.DeviceType.prototype.setName = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.WompattiService.Command = function(opt_data) {
+proto.WompattiService.FetchDeviceTypesRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.WompattiService.Command, jspb.Message);
+goog.inherits(proto.WompattiService.FetchDeviceTypesRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.Command.displayName = 'proto.WompattiService.Command';
+  proto.WompattiService.FetchDeviceTypesRequest.displayName = 'proto.WompattiService.FetchDeviceTypesRequest';
 }
 
 
@@ -236,8 +222,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.WompattiService.Command.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.Command.toObject(opt_includeInstance, this);
+proto.WompattiService.FetchDeviceTypesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.FetchDeviceTypesRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -246,15 +232,12 @@ proto.WompattiService.Command.prototype.toObject = function(opt_includeInstance)
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.Command} msg The msg instance to transform.
+ * @param {!proto.WompattiService.FetchDeviceTypesRequest} msg The msg instance to transform.
  * @return {!Object}
  */
-proto.WompattiService.Command.toObject = function(includeInstance, msg) {
+proto.WompattiService.FetchDeviceTypesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    devicetypeid: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    value: jspb.Message.getFieldWithDefault(msg, 4, "")
+
   };
 
   if (includeInstance) {
@@ -268,45 +251,29 @@ proto.WompattiService.Command.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.Command}
+ * @return {!proto.WompattiService.FetchDeviceTypesRequest}
  */
-proto.WompattiService.Command.deserializeBinary = function(bytes) {
+proto.WompattiService.FetchDeviceTypesRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.Command;
-  return proto.WompattiService.Command.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.WompattiService.FetchDeviceTypesRequest;
+  return proto.WompattiService.FetchDeviceTypesRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.WompattiService.Command} msg The message object to deserialize into.
+ * @param {!proto.WompattiService.FetchDeviceTypesRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.Command}
+ * @return {!proto.WompattiService.FetchDeviceTypesRequest}
  */
-proto.WompattiService.Command.deserializeBinaryFromReader = function(msg, reader) {
+proto.WompattiService.FetchDeviceTypesRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setId(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setDevicetypeid(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setValue(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -320,9 +287,9 @@ proto.WompattiService.Command.deserializeBinaryFromReader = function(msg, reader
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.WompattiService.Command.prototype.serializeBinary = function() {
+proto.WompattiService.FetchDeviceTypesRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.WompattiService.Command.serializeBinaryToWriter(this, writer);
+  proto.WompattiService.FetchDeviceTypesRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -330,99 +297,11 @@ proto.WompattiService.Command.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.Command} message
+ * @param {!proto.WompattiService.FetchDeviceTypesRequest} message
  * @param {!jspb.BinaryWriter} writer
  */
-proto.WompattiService.Command.serializeBinaryToWriter = function(message, writer) {
+proto.WompattiService.FetchDeviceTypesRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getId();
-  if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
-  }
-  f = message.getDevicetypeid();
-  if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
-    );
-  }
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
-  f = message.getValue();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
-};
-
-
-/**
- * optional uint32 id = 1;
- * @return {number}
- */
-proto.WompattiService.Command.prototype.getId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.Command.prototype.setId = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * optional uint32 deviceTypeId = 2;
- * @return {number}
- */
-proto.WompattiService.Command.prototype.getDevicetypeid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.Command.prototype.setDevicetypeid = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional string name = 3;
- * @return {string}
- */
-proto.WompattiService.Command.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/** @param {string} value */
-proto.WompattiService.Command.prototype.setName = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional string value = 4;
- * @return {string}
- */
-proto.WompattiService.Command.prototype.getValue = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
-
-/** @param {string} value */
-proto.WompattiService.Command.prototype.setValue = function(value) {
-  jspb.Message.setField(this, 4, value);
 };
 
 
@@ -437,19 +316,133 @@ proto.WompattiService.Command.prototype.setValue = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.WompattiService.DeviceTypesConnection = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.DeviceTypesConnection.repeatedFields_, null);
+proto.WompattiService.FetchDeviceTypesResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.WompattiService.DeviceTypesConnection, jspb.Message);
+goog.inherits(proto.WompattiService.FetchDeviceTypesResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.DeviceTypesConnection.displayName = 'proto.WompattiService.DeviceTypesConnection';
+  proto.WompattiService.FetchDeviceTypesResponse.displayName = 'proto.WompattiService.FetchDeviceTypesResponse';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.WompattiService.FetchDeviceTypesResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.FetchDeviceTypesResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.WompattiService.FetchDeviceTypesResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.WompattiService.FetchDeviceTypesResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.WompattiService.FetchDeviceTypesResponse}
+ */
+proto.WompattiService.FetchDeviceTypesResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.WompattiService.FetchDeviceTypesResponse;
+  return proto.WompattiService.FetchDeviceTypesResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.WompattiService.FetchDeviceTypesResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.WompattiService.FetchDeviceTypesResponse}
+ */
+proto.WompattiService.FetchDeviceTypesResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.WompattiService.FetchDeviceTypesResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.WompattiService.FetchDeviceTypesResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.WompattiService.FetchDeviceTypesResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.WompattiService.FetchDeviceTypesResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.WompattiService.FetchDeviceTypeByIdRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchDeviceTypeByIdRequest.repeatedFields_, null);
+};
+goog.inherits(proto.WompattiService.FetchDeviceTypeByIdRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.WompattiService.FetchDeviceTypeByIdRequest.displayName = 'proto.WompattiService.FetchDeviceTypeByIdRequest';
 }
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.WompattiService.DeviceTypesConnection.repeatedFields_ = [2];
+proto.WompattiService.FetchDeviceTypeByIdRequest.repeatedFields_ = [1];
 
 
 
@@ -464,8 +457,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.WompattiService.DeviceTypesConnection.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.DeviceTypesConnection.toObject(opt_includeInstance, this);
+proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.FetchDeviceTypeByIdRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -474,15 +467,12 @@ proto.WompattiService.DeviceTypesConnection.prototype.toObject = function(opt_in
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.DeviceTypesConnection} msg The msg instance to transform.
+ * @param {!proto.WompattiService.FetchDeviceTypeByIdRequest} msg The msg instance to transform.
  * @return {!Object}
  */
-proto.WompattiService.DeviceTypesConnection.toObject = function(includeInstance, msg) {
+proto.WompattiService.FetchDeviceTypeByIdRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pageinfo: (f = msg.getPageinfo()) && page_info_pb.PageInfo.toObject(includeInstance, f),
-    edgesList: jspb.Message.toObjectList(msg.getEdgesList(),
-    proto.WompattiService.DeviceTypesEdge.toObject, includeInstance),
-    totalcount: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    devicetypesidtList: jspb.Message.getField(msg, 1)
   };
 
   if (includeInstance) {
@@ -496,23 +486,23 @@ proto.WompattiService.DeviceTypesConnection.toObject = function(includeInstance,
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.DeviceTypesConnection}
+ * @return {!proto.WompattiService.FetchDeviceTypeByIdRequest}
  */
-proto.WompattiService.DeviceTypesConnection.deserializeBinary = function(bytes) {
+proto.WompattiService.FetchDeviceTypeByIdRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.DeviceTypesConnection;
-  return proto.WompattiService.DeviceTypesConnection.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.WompattiService.FetchDeviceTypeByIdRequest;
+  return proto.WompattiService.FetchDeviceTypeByIdRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.WompattiService.DeviceTypesConnection} msg The message object to deserialize into.
+ * @param {!proto.WompattiService.FetchDeviceTypeByIdRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.DeviceTypesConnection}
+ * @return {!proto.WompattiService.FetchDeviceTypeByIdRequest}
  */
-proto.WompattiService.DeviceTypesConnection.deserializeBinaryFromReader = function(msg, reader) {
+proto.WompattiService.FetchDeviceTypeByIdRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -520,18 +510,8 @@ proto.WompattiService.DeviceTypesConnection.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new page_info_pb.PageInfo;
-      reader.readMessage(value,page_info_pb.PageInfo.deserializeBinaryFromReader);
-      msg.setPageinfo(value);
-      break;
-    case 2:
-      var value = new proto.WompattiService.DeviceTypesEdge;
-      reader.readMessage(value,proto.WompattiService.DeviceTypesEdge.deserializeBinaryFromReader);
-      msg.addEdges(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setTotalcount(value);
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setDevicetypesidtList(value);
       break;
     default:
       reader.skipField();
@@ -546,9 +526,9 @@ proto.WompattiService.DeviceTypesConnection.deserializeBinaryFromReader = functi
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.WompattiService.DeviceTypesConnection.prototype.serializeBinary = function() {
+proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.WompattiService.DeviceTypesConnection.serializeBinaryToWriter(this, writer);
+  proto.WompattiService.FetchDeviceTypeByIdRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -556,31 +536,15 @@ proto.WompattiService.DeviceTypesConnection.prototype.serializeBinary = function
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.DeviceTypesConnection} message
+ * @param {!proto.WompattiService.FetchDeviceTypeByIdRequest} message
  * @param {!jspb.BinaryWriter} writer
  */
-proto.WompattiService.DeviceTypesConnection.serializeBinaryToWriter = function(message, writer) {
+proto.WompattiService.FetchDeviceTypeByIdRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getPageinfo();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      page_info_pb.PageInfo.serializeBinaryToWriter
-    );
-  }
-  f = message.getEdgesList();
+  f = message.getDevicetypesidtList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      2,
-      f,
-      proto.WompattiService.DeviceTypesEdge.serializeBinaryToWriter
-    );
-  }
-  f = message.getTotalcount();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
+    writer.writePackedUint32(
+      1,
       f
     );
   }
@@ -588,80 +552,33 @@ proto.WompattiService.DeviceTypesConnection.serializeBinaryToWriter = function(m
 
 
 /**
- * optional PageInfo pageInfo = 1;
- * @return {?proto.WompattiService.PageInfo}
- */
-proto.WompattiService.DeviceTypesConnection.prototype.getPageinfo = function() {
-  return /** @type{?proto.WompattiService.PageInfo} */ (
-    jspb.Message.getWrapperField(this, page_info_pb.PageInfo, 1));
-};
-
-
-/** @param {?proto.WompattiService.PageInfo|undefined} value */
-proto.WompattiService.DeviceTypesConnection.prototype.setPageinfo = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-proto.WompattiService.DeviceTypesConnection.prototype.clearPageinfo = function() {
-  this.setPageinfo(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.WompattiService.DeviceTypesConnection.prototype.hasPageinfo = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * repeated DeviceTypesEdge edges = 2;
+ * repeated uint32 deviceTypesIdt = 1;
  * If you change this array by adding, removing or replacing elements, or if you
  * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.WompattiService.DeviceTypesEdge>}
+ * @return {!Array.<number>}
  */
-proto.WompattiService.DeviceTypesConnection.prototype.getEdgesList = function() {
-  return /** @type{!Array.<!proto.WompattiService.DeviceTypesEdge>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.DeviceTypesEdge, 2));
+proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.getDevicetypesidtList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
 };
 
 
-/** @param {!Array.<!proto.WompattiService.DeviceTypesEdge>} value */
-proto.WompattiService.DeviceTypesConnection.prototype.setEdgesList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 2, value);
+/** @param {!Array.<number>} value */
+proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.setDevicetypesidtList = function(value) {
+  jspb.Message.setField(this, 1, value || []);
 };
 
 
 /**
- * @param {!proto.WompattiService.DeviceTypesEdge=} opt_value
+ * @param {!number} value
  * @param {number=} opt_index
- * @return {!proto.WompattiService.DeviceTypesEdge}
  */
-proto.WompattiService.DeviceTypesConnection.prototype.addEdges = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.WompattiService.DeviceTypesEdge, opt_index);
+proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.addDevicetypesidt = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 
-proto.WompattiService.DeviceTypesConnection.prototype.clearEdgesList = function() {
-  this.setEdgesList([]);
-};
-
-
-/**
- * optional uint32 totalCount = 3;
- * @return {number}
- */
-proto.WompattiService.DeviceTypesConnection.prototype.getTotalcount = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.DeviceTypesConnection.prototype.setTotalcount = function(value) {
-  jspb.Message.setField(this, 3, value);
+proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.clearDevicetypesidtList = function() {
+  this.setDevicetypesidtList([]);
 };
 
 
@@ -676,13 +593,20 @@ proto.WompattiService.DeviceTypesConnection.prototype.setTotalcount = function(v
  * @extends {jspb.Message}
  * @constructor
  */
-proto.WompattiService.DeviceTypesEdge = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+proto.WompattiService.FetchDeviceTypeByIdResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchDeviceTypeByIdResponse.repeatedFields_, null);
 };
-goog.inherits(proto.WompattiService.DeviceTypesEdge, jspb.Message);
+goog.inherits(proto.WompattiService.FetchDeviceTypeByIdResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.DeviceTypesEdge.displayName = 'proto.WompattiService.DeviceTypesEdge';
+  proto.WompattiService.FetchDeviceTypeByIdResponse.displayName = 'proto.WompattiService.FetchDeviceTypeByIdResponse';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.WompattiService.FetchDeviceTypeByIdResponse.repeatedFields_ = [1];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -696,8 +620,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.WompattiService.DeviceTypesEdge.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.DeviceTypesEdge.toObject(opt_includeInstance, this);
+proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.FetchDeviceTypeByIdResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -706,13 +630,13 @@ proto.WompattiService.DeviceTypesEdge.prototype.toObject = function(opt_includeI
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.DeviceTypesEdge} msg The msg instance to transform.
+ * @param {!proto.WompattiService.FetchDeviceTypeByIdResponse} msg The msg instance to transform.
  * @return {!Object}
  */
-proto.WompattiService.DeviceTypesEdge.toObject = function(includeInstance, msg) {
+proto.WompattiService.FetchDeviceTypeByIdResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    node: (f = msg.getNode()) && proto.WompattiService.DeviceType.toObject(includeInstance, f),
-    cursor: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    devicetypesList: jspb.Message.toObjectList(msg.getDevicetypesList(),
+    proto.WompattiService.DeviceType.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -726,23 +650,23 @@ proto.WompattiService.DeviceTypesEdge.toObject = function(includeInstance, msg) 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.DeviceTypesEdge}
+ * @return {!proto.WompattiService.FetchDeviceTypeByIdResponse}
  */
-proto.WompattiService.DeviceTypesEdge.deserializeBinary = function(bytes) {
+proto.WompattiService.FetchDeviceTypeByIdResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.DeviceTypesEdge;
-  return proto.WompattiService.DeviceTypesEdge.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.WompattiService.FetchDeviceTypeByIdResponse;
+  return proto.WompattiService.FetchDeviceTypeByIdResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.WompattiService.DeviceTypesEdge} msg The message object to deserialize into.
+ * @param {!proto.WompattiService.FetchDeviceTypeByIdResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.DeviceTypesEdge}
+ * @return {!proto.WompattiService.FetchDeviceTypeByIdResponse}
  */
-proto.WompattiService.DeviceTypesEdge.deserializeBinaryFromReader = function(msg, reader) {
+proto.WompattiService.FetchDeviceTypeByIdResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -752,11 +676,7 @@ proto.WompattiService.DeviceTypesEdge.deserializeBinaryFromReader = function(msg
     case 1:
       var value = new proto.WompattiService.DeviceType;
       reader.readMessage(value,proto.WompattiService.DeviceType.deserializeBinaryFromReader);
-      msg.setNode(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setCursor(value);
+      msg.addDevicetypes(value);
       break;
     default:
       reader.skipField();
@@ -771,9 +691,9 @@ proto.WompattiService.DeviceTypesEdge.deserializeBinaryFromReader = function(msg
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.WompattiService.DeviceTypesEdge.prototype.serializeBinary = function() {
+proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.WompattiService.DeviceTypesEdge.serializeBinaryToWriter(this, writer);
+  proto.WompattiService.FetchDeviceTypeByIdResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -781,71 +701,52 @@ proto.WompattiService.DeviceTypesEdge.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.DeviceTypesEdge} message
+ * @param {!proto.WompattiService.FetchDeviceTypeByIdResponse} message
  * @param {!jspb.BinaryWriter} writer
  */
-proto.WompattiService.DeviceTypesEdge.serializeBinaryToWriter = function(message, writer) {
+proto.WompattiService.FetchDeviceTypeByIdResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getNode();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getDevicetypesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
       1,
       f,
       proto.WompattiService.DeviceType.serializeBinaryToWriter
     );
   }
-  f = message.getCursor();
-  if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
-    );
-  }
 };
 
 
 /**
- * optional DeviceType node = 1;
- * @return {?proto.WompattiService.DeviceType}
+ * repeated DeviceType deviceTypes = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.WompattiService.DeviceType>}
  */
-proto.WompattiService.DeviceTypesEdge.prototype.getNode = function() {
-  return /** @type{?proto.WompattiService.DeviceType} */ (
-    jspb.Message.getWrapperField(this, proto.WompattiService.DeviceType, 1));
+proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.getDevicetypesList = function() {
+  return /** @type{!Array.<!proto.WompattiService.DeviceType>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.DeviceType, 1));
 };
 
 
-/** @param {?proto.WompattiService.DeviceType|undefined} value */
-proto.WompattiService.DeviceTypesEdge.prototype.setNode = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-proto.WompattiService.DeviceTypesEdge.prototype.clearNode = function() {
-  this.setNode(undefined);
+/** @param {!Array.<!proto.WompattiService.DeviceType>} value */
+proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.setDevicetypesList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {!boolean}
+ * @param {!proto.WompattiService.DeviceType=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.WompattiService.DeviceType}
  */
-proto.WompattiService.DeviceTypesEdge.prototype.hasNode = function() {
-  return jspb.Message.getField(this, 1) != null;
+proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.addDevicetypes = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.DeviceType, opt_index);
 };
 
 
-/**
- * optional uint32 cursor = 2;
- * @return {number}
- */
-proto.WompattiService.DeviceTypesEdge.prototype.getCursor = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.DeviceTypesEdge.prototype.setCursor = function(value) {
-  jspb.Message.setField(this, 2, value);
+proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.clearDevicetypesList = function() {
+  this.setDevicetypesList([]);
 };
 
 
@@ -1825,2144 +1726,6 @@ proto.WompattiService.RemoveDeviceTypeResponse.prototype.getState = function() {
 /** @param {!proto.WompattiService.RemoveDeviceTypeResponse.State} value */
 proto.WompattiService.RemoveDeviceTypeResponse.prototype.setState = function(value) {
   jspb.Message.setField(this, 1, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.FetchDeviceTypesRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.FetchDeviceTypesRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.FetchDeviceTypesRequest.displayName = 'proto.WompattiService.FetchDeviceTypesRequest';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.FetchDeviceTypesRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.FetchDeviceTypesRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.FetchDeviceTypesRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.FetchDeviceTypesRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    after: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    before: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    first: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    last: jspb.Message.getFieldWithDefault(msg, 4, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.FetchDeviceTypesRequest}
- */
-proto.WompattiService.FetchDeviceTypesRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.FetchDeviceTypesRequest;
-  return proto.WompattiService.FetchDeviceTypesRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.FetchDeviceTypesRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.FetchDeviceTypesRequest}
- */
-proto.WompattiService.FetchDeviceTypesRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setAfter(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setBefore(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setFirst(value);
-      break;
-    case 4:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setLast(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.FetchDeviceTypesRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.FetchDeviceTypesRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.FetchDeviceTypesRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.FetchDeviceTypesRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAfter();
-  if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
-  }
-  f = message.getBefore();
-  if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
-    );
-  }
-  f = message.getFirst();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
-  f = message.getLast();
-  if (f !== 0) {
-    writer.writeUint32(
-      4,
-      f
-    );
-  }
-};
-
-
-/**
- * optional uint32 after = 1;
- * @return {number}
- */
-proto.WompattiService.FetchDeviceTypesRequest.prototype.getAfter = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchDeviceTypesRequest.prototype.setAfter = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * optional uint32 before = 2;
- * @return {number}
- */
-proto.WompattiService.FetchDeviceTypesRequest.prototype.getBefore = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchDeviceTypesRequest.prototype.setBefore = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 first = 3;
- * @return {number}
- */
-proto.WompattiService.FetchDeviceTypesRequest.prototype.getFirst = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchDeviceTypesRequest.prototype.setFirst = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional uint32 last = 4;
- * @return {number}
- */
-proto.WompattiService.FetchDeviceTypesRequest.prototype.getLast = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.FetchDeviceTypesRequest.prototype.setLast = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.FetchDeviceTypeByIdRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchDeviceTypeByIdRequest.repeatedFields_, null);
-};
-goog.inherits(proto.WompattiService.FetchDeviceTypeByIdRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.FetchDeviceTypeByIdRequest.displayName = 'proto.WompattiService.FetchDeviceTypeByIdRequest';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.WompattiService.FetchDeviceTypeByIdRequest.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.FetchDeviceTypeByIdRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.FetchDeviceTypeByIdRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.FetchDeviceTypeByIdRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    devicetypesidtList: jspb.Message.getField(msg, 1)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.FetchDeviceTypeByIdRequest}
- */
-proto.WompattiService.FetchDeviceTypeByIdRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.FetchDeviceTypeByIdRequest;
-  return proto.WompattiService.FetchDeviceTypeByIdRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.FetchDeviceTypeByIdRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.FetchDeviceTypeByIdRequest}
- */
-proto.WompattiService.FetchDeviceTypeByIdRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
-      msg.setDevicetypesidtList(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.FetchDeviceTypeByIdRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.FetchDeviceTypeByIdRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.FetchDeviceTypeByIdRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDevicetypesidtList();
-  if (f.length > 0) {
-    writer.writePackedUint32(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * repeated uint32 deviceTypesIdt = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<number>}
- */
-proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.getDevicetypesidtList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
-};
-
-
-/** @param {!Array.<number>} value */
-proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.setDevicetypesidtList = function(value) {
-  jspb.Message.setField(this, 1, value || []);
-};
-
-
-/**
- * @param {!number} value
- * @param {number=} opt_index
- */
-proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.addDevicetypesidt = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
-};
-
-
-proto.WompattiService.FetchDeviceTypeByIdRequest.prototype.clearDevicetypesidtList = function() {
-  this.setDevicetypesidtList([]);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.FetchDeviceTypeByIdResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchDeviceTypeByIdResponse.repeatedFields_, null);
-};
-goog.inherits(proto.WompattiService.FetchDeviceTypeByIdResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.FetchDeviceTypeByIdResponse.displayName = 'proto.WompattiService.FetchDeviceTypeByIdResponse';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.WompattiService.FetchDeviceTypeByIdResponse.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.FetchDeviceTypeByIdResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.FetchDeviceTypeByIdResponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.FetchDeviceTypeByIdResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    devicetypesList: jspb.Message.toObjectList(msg.getDevicetypesList(),
-    proto.WompattiService.DeviceType.toObject, includeInstance)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.FetchDeviceTypeByIdResponse}
- */
-proto.WompattiService.FetchDeviceTypeByIdResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.FetchDeviceTypeByIdResponse;
-  return proto.WompattiService.FetchDeviceTypeByIdResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.FetchDeviceTypeByIdResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.FetchDeviceTypeByIdResponse}
- */
-proto.WompattiService.FetchDeviceTypeByIdResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.WompattiService.DeviceType;
-      reader.readMessage(value,proto.WompattiService.DeviceType.deserializeBinaryFromReader);
-      msg.addDevicetypes(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.FetchDeviceTypeByIdResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.FetchDeviceTypeByIdResponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.FetchDeviceTypeByIdResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDevicetypesList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      proto.WompattiService.DeviceType.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * repeated DeviceType deviceTypes = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.WompattiService.DeviceType>}
- */
-proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.getDevicetypesList = function() {
-  return /** @type{!Array.<!proto.WompattiService.DeviceType>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.DeviceType, 1));
-};
-
-
-/** @param {!Array.<!proto.WompattiService.DeviceType>} value */
-proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.setDevicetypesList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.WompattiService.DeviceType=} opt_value
- * @param {number=} opt_index
- * @return {!proto.WompattiService.DeviceType}
- */
-proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.addDevicetypes = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.DeviceType, opt_index);
-};
-
-
-proto.WompattiService.FetchDeviceTypeByIdResponse.prototype.clearDevicetypesList = function() {
-  this.setDevicetypesList([]);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.CreateCommandRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.CreateCommandRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.CreateCommandRequest.displayName = 'proto.WompattiService.CreateCommandRequest';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.CreateCommandRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.CreateCommandRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.CreateCommandRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.CreateCommandRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    devicetypeid: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    value: jspb.Message.getFieldWithDefault(msg, 4, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.CreateCommandRequest}
- */
-proto.WompattiService.CreateCommandRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.CreateCommandRequest;
-  return proto.WompattiService.CreateCommandRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.CreateCommandRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.CreateCommandRequest}
- */
-proto.WompattiService.CreateCommandRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setDevicetypeid(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setValue(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.CreateCommandRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.CreateCommandRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.CreateCommandRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.CreateCommandRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDevicetypeid();
-  if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
-  }
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
-  f = message.getValue();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
-};
-
-
-/**
- * optional uint32 deviceTypeId = 1;
- * @return {number}
- */
-proto.WompattiService.CreateCommandRequest.prototype.getDevicetypeid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.CreateCommandRequest.prototype.setDevicetypeid = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * optional string name = 3;
- * @return {string}
- */
-proto.WompattiService.CreateCommandRequest.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/** @param {string} value */
-proto.WompattiService.CreateCommandRequest.prototype.setName = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional string value = 4;
- * @return {string}
- */
-proto.WompattiService.CreateCommandRequest.prototype.getValue = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
-
-/** @param {string} value */
-proto.WompattiService.CreateCommandRequest.prototype.setValue = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.CreateCommandResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.CreateCommandResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.CreateCommandResponse.displayName = 'proto.WompattiService.CreateCommandResponse';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.CreateCommandResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.CreateCommandResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.CreateCommandResponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.CreateCommandResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    command: (f = msg.getCommand()) && proto.WompattiService.Command.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.CreateCommandResponse}
- */
-proto.WompattiService.CreateCommandResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.CreateCommandResponse;
-  return proto.WompattiService.CreateCommandResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.CreateCommandResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.CreateCommandResponse}
- */
-proto.WompattiService.CreateCommandResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!proto.WompattiService.CreateCommandResponse.State} */ (reader.readEnum());
-      msg.setState(value);
-      break;
-    case 2:
-      var value = new proto.WompattiService.Command;
-      reader.readMessage(value,proto.WompattiService.Command.deserializeBinaryFromReader);
-      msg.setCommand(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.CreateCommandResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.CreateCommandResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.CreateCommandResponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.CreateCommandResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getState();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      1,
-      f
-    );
-  }
-  f = message.getCommand();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      proto.WompattiService.Command.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * @enum {number}
- */
-proto.WompattiService.CreateCommandResponse.State = {
-  SUCCESS: 0,
-  NOT_FOUND: 1
-};
-
-/**
- * optional State state = 1;
- * @return {!proto.WompattiService.CreateCommandResponse.State}
- */
-proto.WompattiService.CreateCommandResponse.prototype.getState = function() {
-  return /** @type {!proto.WompattiService.CreateCommandResponse.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {!proto.WompattiService.CreateCommandResponse.State} value */
-proto.WompattiService.CreateCommandResponse.prototype.setState = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * optional Command command = 2;
- * @return {?proto.WompattiService.Command}
- */
-proto.WompattiService.CreateCommandResponse.prototype.getCommand = function() {
-  return /** @type{?proto.WompattiService.Command} */ (
-    jspb.Message.getWrapperField(this, proto.WompattiService.Command, 2));
-};
-
-
-/** @param {?proto.WompattiService.Command|undefined} value */
-proto.WompattiService.CreateCommandResponse.prototype.setCommand = function(value) {
-  jspb.Message.setWrapperField(this, 2, value);
-};
-
-
-proto.WompattiService.CreateCommandResponse.prototype.clearCommand = function() {
-  this.setCommand(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.WompattiService.CreateCommandResponse.prototype.hasCommand = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.EditCommandRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.EditCommandRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.EditCommandRequest.displayName = 'proto.WompattiService.EditCommandRequest';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.EditCommandRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.EditCommandRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.EditCommandRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.EditCommandRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    commandid: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    value: jspb.Message.getFieldWithDefault(msg, 4, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.EditCommandRequest}
- */
-proto.WompattiService.EditCommandRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.EditCommandRequest;
-  return proto.WompattiService.EditCommandRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.EditCommandRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.EditCommandRequest}
- */
-proto.WompattiService.EditCommandRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setCommandid(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setValue(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.EditCommandRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.EditCommandRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.EditCommandRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.EditCommandRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getCommandid();
-  if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
-  }
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
-  f = message.getValue();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
-};
-
-
-/**
- * optional uint32 commandId = 1;
- * @return {number}
- */
-proto.WompattiService.EditCommandRequest.prototype.getCommandid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.EditCommandRequest.prototype.setCommandid = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * optional string name = 3;
- * @return {string}
- */
-proto.WompattiService.EditCommandRequest.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/** @param {string} value */
-proto.WompattiService.EditCommandRequest.prototype.setName = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional string value = 4;
- * @return {string}
- */
-proto.WompattiService.EditCommandRequest.prototype.getValue = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
-
-/** @param {string} value */
-proto.WompattiService.EditCommandRequest.prototype.setValue = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.EditCommandReponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.EditCommandReponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.EditCommandReponse.displayName = 'proto.WompattiService.EditCommandReponse';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.EditCommandReponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.EditCommandReponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.EditCommandReponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.EditCommandReponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    command: (f = msg.getCommand()) && proto.WompattiService.Command.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.EditCommandReponse}
- */
-proto.WompattiService.EditCommandReponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.EditCommandReponse;
-  return proto.WompattiService.EditCommandReponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.EditCommandReponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.EditCommandReponse}
- */
-proto.WompattiService.EditCommandReponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!proto.WompattiService.EditCommandReponse.State} */ (reader.readEnum());
-      msg.setState(value);
-      break;
-    case 2:
-      var value = new proto.WompattiService.Command;
-      reader.readMessage(value,proto.WompattiService.Command.deserializeBinaryFromReader);
-      msg.setCommand(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.EditCommandReponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.EditCommandReponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.EditCommandReponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.EditCommandReponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getState();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      1,
-      f
-    );
-  }
-  f = message.getCommand();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      proto.WompattiService.Command.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * @enum {number}
- */
-proto.WompattiService.EditCommandReponse.State = {
-  SUCCESS: 0,
-  NOT_FOUND: 1
-};
-
-/**
- * optional State state = 1;
- * @return {!proto.WompattiService.EditCommandReponse.State}
- */
-proto.WompattiService.EditCommandReponse.prototype.getState = function() {
-  return /** @type {!proto.WompattiService.EditCommandReponse.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {!proto.WompattiService.EditCommandReponse.State} value */
-proto.WompattiService.EditCommandReponse.prototype.setState = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * optional Command command = 2;
- * @return {?proto.WompattiService.Command}
- */
-proto.WompattiService.EditCommandReponse.prototype.getCommand = function() {
-  return /** @type{?proto.WompattiService.Command} */ (
-    jspb.Message.getWrapperField(this, proto.WompattiService.Command, 2));
-};
-
-
-/** @param {?proto.WompattiService.Command|undefined} value */
-proto.WompattiService.EditCommandReponse.prototype.setCommand = function(value) {
-  jspb.Message.setWrapperField(this, 2, value);
-};
-
-
-proto.WompattiService.EditCommandReponse.prototype.clearCommand = function() {
-  this.setCommand(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.WompattiService.EditCommandReponse.prototype.hasCommand = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.RemoveCommandRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.RemoveCommandRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.RemoveCommandRequest.displayName = 'proto.WompattiService.RemoveCommandRequest';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.RemoveCommandRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.RemoveCommandRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.RemoveCommandRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.RemoveCommandRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    commandid: jspb.Message.getFieldWithDefault(msg, 1, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.RemoveCommandRequest}
- */
-proto.WompattiService.RemoveCommandRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.RemoveCommandRequest;
-  return proto.WompattiService.RemoveCommandRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.RemoveCommandRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.RemoveCommandRequest}
- */
-proto.WompattiService.RemoveCommandRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setCommandid(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.RemoveCommandRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.RemoveCommandRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.RemoveCommandRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.RemoveCommandRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getCommandid();
-  if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * optional uint32 commandId = 1;
- * @return {number}
- */
-proto.WompattiService.RemoveCommandRequest.prototype.getCommandid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.RemoveCommandRequest.prototype.setCommandid = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.RemoveCommandResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.RemoveCommandResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.RemoveCommandResponse.displayName = 'proto.WompattiService.RemoveCommandResponse';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.RemoveCommandResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.RemoveCommandResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.RemoveCommandResponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.RemoveCommandResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.RemoveCommandResponse}
- */
-proto.WompattiService.RemoveCommandResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.RemoveCommandResponse;
-  return proto.WompattiService.RemoveCommandResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.RemoveCommandResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.RemoveCommandResponse}
- */
-proto.WompattiService.RemoveCommandResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!proto.WompattiService.RemoveCommandResponse.State} */ (reader.readEnum());
-      msg.setState(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.RemoveCommandResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.RemoveCommandResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.RemoveCommandResponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.RemoveCommandResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getState();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * @enum {number}
- */
-proto.WompattiService.RemoveCommandResponse.State = {
-  SUCCESS: 0,
-  NOT_FOUND: 1
-};
-
-/**
- * optional State state = 1;
- * @return {!proto.WompattiService.RemoveCommandResponse.State}
- */
-proto.WompattiService.RemoveCommandResponse.prototype.getState = function() {
-  return /** @type {!proto.WompattiService.RemoveCommandResponse.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {!proto.WompattiService.RemoveCommandResponse.State} value */
-proto.WompattiService.RemoveCommandResponse.prototype.setState = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.repeatedFields_, null);
-};
-goog.inherits(proto.WompattiService.FetchCommandsByDeviceTypeIdRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.displayName = 'proto.WompattiService.FetchCommandsByDeviceTypeIdRequest';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.FetchCommandsByDeviceTypeIdRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    devicetypeidtList: jspb.Message.getField(msg, 1)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.FetchCommandsByDeviceTypeIdRequest}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.FetchCommandsByDeviceTypeIdRequest;
-  return proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.FetchCommandsByDeviceTypeIdRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.FetchCommandsByDeviceTypeIdRequest}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
-      msg.setDevicetypeidtList(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.FetchCommandsByDeviceTypeIdRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDevicetypeidtList();
-  if (f.length > 0) {
-    writer.writePackedUint32(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * repeated uint32 deviceTypeIdt = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<number>}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.prototype.getDevicetypeidtList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
-};
-
-
-/** @param {!Array.<number>} value */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.prototype.setDevicetypeidtList = function(value) {
-  jspb.Message.setField(this, 1, value || []);
-};
-
-
-/**
- * @param {!number} value
- * @param {number=} opt_index
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.prototype.addDevicetypeidt = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
-};
-
-
-proto.WompattiService.FetchCommandsByDeviceTypeIdRequest.prototype.clearDevicetypeidtList = function() {
-  this.setDevicetypeidtList([]);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.DeviceTypeCommands = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.DeviceTypeCommands.repeatedFields_, null);
-};
-goog.inherits(proto.WompattiService.DeviceTypeCommands, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.DeviceTypeCommands.displayName = 'proto.WompattiService.DeviceTypeCommands';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.WompattiService.DeviceTypeCommands.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.DeviceTypeCommands.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.DeviceTypeCommands.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.DeviceTypeCommands} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.DeviceTypeCommands.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    commandsList: jspb.Message.toObjectList(msg.getCommandsList(),
-    proto.WompattiService.Command.toObject, includeInstance),
-    devicetypeid: jspb.Message.getFieldWithDefault(msg, 2, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.DeviceTypeCommands}
- */
-proto.WompattiService.DeviceTypeCommands.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.DeviceTypeCommands;
-  return proto.WompattiService.DeviceTypeCommands.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.DeviceTypeCommands} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.DeviceTypeCommands}
- */
-proto.WompattiService.DeviceTypeCommands.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.WompattiService.Command;
-      reader.readMessage(value,proto.WompattiService.Command.deserializeBinaryFromReader);
-      msg.addCommands(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setDevicetypeid(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.DeviceTypeCommands.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.DeviceTypeCommands.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.DeviceTypeCommands} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.DeviceTypeCommands.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getCommandsList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      proto.WompattiService.Command.serializeBinaryToWriter
-    );
-  }
-  f = message.getDevicetypeid();
-  if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
-    );
-  }
-};
-
-
-/**
- * repeated Command commands = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.WompattiService.Command>}
- */
-proto.WompattiService.DeviceTypeCommands.prototype.getCommandsList = function() {
-  return /** @type{!Array.<!proto.WompattiService.Command>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.Command, 1));
-};
-
-
-/** @param {!Array.<!proto.WompattiService.Command>} value */
-proto.WompattiService.DeviceTypeCommands.prototype.setCommandsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.WompattiService.Command=} opt_value
- * @param {number=} opt_index
- * @return {!proto.WompattiService.Command}
- */
-proto.WompattiService.DeviceTypeCommands.prototype.addCommands = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.Command, opt_index);
-};
-
-
-proto.WompattiService.DeviceTypeCommands.prototype.clearCommandsList = function() {
-  this.setCommandsList([]);
-};
-
-
-/**
- * optional uint32 deviceTypeId = 2;
- * @return {number}
- */
-proto.WompattiService.DeviceTypeCommands.prototype.getDevicetypeid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.DeviceTypeCommands.prototype.setDevicetypeid = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.repeatedFields_, null);
-};
-goog.inherits(proto.WompattiService.FetchCommandsByDeviceTypeIdResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.displayName = 'proto.WompattiService.FetchCommandsByDeviceTypeIdResponse';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.FetchCommandsByDeviceTypeIdResponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    devicetypecommandsList: jspb.Message.toObjectList(msg.getDevicetypecommandsList(),
-    proto.WompattiService.DeviceTypeCommands.toObject, includeInstance)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.FetchCommandsByDeviceTypeIdResponse}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.FetchCommandsByDeviceTypeIdResponse;
-  return proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.FetchCommandsByDeviceTypeIdResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.FetchCommandsByDeviceTypeIdResponse}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.WompattiService.DeviceTypeCommands;
-      reader.readMessage(value,proto.WompattiService.DeviceTypeCommands.deserializeBinaryFromReader);
-      msg.addDevicetypecommands(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.FetchCommandsByDeviceTypeIdResponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDevicetypecommandsList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      proto.WompattiService.DeviceTypeCommands.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * repeated DeviceTypeCommands deviceTypeCommands = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.WompattiService.DeviceTypeCommands>}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.prototype.getDevicetypecommandsList = function() {
-  return /** @type{!Array.<!proto.WompattiService.DeviceTypeCommands>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.WompattiService.DeviceTypeCommands, 1));
-};
-
-
-/** @param {!Array.<!proto.WompattiService.DeviceTypeCommands>} value */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.prototype.setDevicetypecommandsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.WompattiService.DeviceTypeCommands=} opt_value
- * @param {number=} opt_index
- * @return {!proto.WompattiService.DeviceTypeCommands}
- */
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.prototype.addDevicetypecommands = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.WompattiService.DeviceTypeCommands, opt_index);
-};
-
-
-proto.WompattiService.FetchCommandsByDeviceTypeIdResponse.prototype.clearDevicetypecommandsList = function() {
-  this.setDevicetypecommandsList([]);
 };
 
 
