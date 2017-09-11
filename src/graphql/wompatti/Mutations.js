@@ -4,9 +4,63 @@ import {
 	GraphQLString
 } from "graphql";
 
+import Computer from "./Computer";
 import WolInterface from "./WolInterface";
 
+import {
+	CreateComputerInput,
+	UpdateComputerInput
+} from "./OtherComputerTypes";
+
 export default {
+	createComputer: {
+		name: "CreateComputer",
+		type: Computer,
+		args: {
+			params: {
+				type: CreateComputerInput
+			}
+		},
+		resolve: (
+			obj,
+			{
+				params
+			},
+			context
+		) => context.wompatti.createComputer(params || {})
+	},
+	updateComputer: {
+		name: "UpdateComputer",
+		type: Computer,
+		args: {
+			params: {
+				type: UpdateComputerInput
+			}
+		},
+		resolve: (
+			obj,
+			{
+				params
+			},
+			context
+		) => context.wompatti.updateComputer(params || {})
+	},
+	removeComputer: {
+		name: "RemoveComputer",
+		type: GraphQLBoolean,
+		args: {
+			computerId: {
+				type: GraphQLID
+			}
+		},
+		resolve: (
+			obj,
+			{
+				computerId
+			},
+			context
+		) => context.wompatti.removeComputer(computerId)
+	},
 	createWolInterface: {
 		name: "CreateWolInterface",
 		type: WolInterface,

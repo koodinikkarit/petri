@@ -72,17 +72,11 @@ export default class {
 	// Fetch
 
 	fetchComputers({
-		after,
-		before,
-		first,
-		last
+
 	}) {
 		return new Promise((resolve, reject) => {
 			var req = new messages.FetchComputersRequest();
-			req.setAfter(after);
-			req.setBefore(before);
-			req.setFirst(first);
-			req.setLast(last);
+
 
 			this.client.fetchComputers(req, (err, res) => {
 				if (!err) {
@@ -98,7 +92,7 @@ export default class {
 		if (!this.computerLoader) {
 			this.computerLoader = new DataLoader(keys => new Promise((resolve, reject) => {
 				var req = new messages.FetchComputerByIdRequest();
-				req.setComputeridtList(keys);
+				req.setComputeridsList(keys);
 
 				this.client.fetchComputerById(req, (err, res) => {
 					if (!err) {
@@ -436,9 +430,10 @@ export default class {
 		return new Promise((resolve, reject) => {
 			var req = new messages.CreateComputerRequest();
 			req.setName(name);
+
 			this.client.createComputer(req, (err, res) => {
 				if (!err) {
-					resolve(new CreateComputerOutput(this, res));
+					resolve(new Computer(this, res.getComputer()));
 				} else {
 					reject(err);
 				}
@@ -446,51 +441,56 @@ export default class {
 		});
 	}
 
-	editComputer({
+	updateComputer({
 		computerId,
 		name,
-		arttuId,
-		deviceInfoId
+		wolInterfaceId,
+		ip,
+		mac
 	}) {
+		console.log("updateComputer", computerId, name, wolInterfaceId);
 		return new Promise((resolve, reject) => {
-			var req = new messages.EditComputerRequest();
+			var req = new messages.UpdateComputerRequest();
 			req.setComputerid(computerId);
 			req.setName(name);
-			req.setArttuid(arttuId);
-			req.setDeviceinfoid(deviceInfoId);
+			req.setWolinterfaceid(wolInterfaceId);
+			req.setIp(ip);
+			req.setMac(mac);
 
-			this.client.editComputer(req, (err, res) => {
+			this.client.updateComputer(req, (err, res) => {
 				if (!err) {
-					switch(res.getState()) {
-						case 0:
-							resolve(new Computer(this, res.getComputer()));
-							break;
-						case 1:
-							resolve(null);
-							break;
-					}
+					resolve(new Computer(this, res.getComputer()));
+					// switch(res.getState()) {
+					// 	case 0:
+					// 		resolve(new Computer(this, res.getComputer()));
+					// 		break;
+					// 	case 1:
+					// 		resolve(null);
+					// 		break;
+					// }
 				} else {
 					reject();
 				}
 			});
-		})
+		});
 	}
 
 	removeComputer(id) {
 		return new Promise((resolve, reject) => {
-			var removeComputerRequest = new messages.removeComputerRequest();
-			removeComputerRequest.setComputerid(id);
+			var req = new messages.RemoveComputerRequest();
+			req.setComputerid(id);
 
 			this.client.removeComputer(req, (err, res) => {
 				if (!err) {
-					switch(res.getState()) {
-						case 0:
-							resolve(true);
-							break;
-						case 1:
-							resolve(false);
-							break;
-					}
+					resolve(res.getSuccess());
+					// switch(res.getState()) {
+					// 	case 0:
+					// 		resolve(true);
+					// 		break;
+					// 	case 1:
+					// 		resolve(false);
+					// 		break;
+					// }
 				} else {
 					reject();
 				}

@@ -1,84 +1,41 @@
 
-import PageInfo from "./PageInfo";
-import DeviceInfo from "./DeviceInfo";
-
 export class Computer {
-	constructor(context, computer) {
-		var _id = computer.getId();
-		var name = computer.getName();
-		var deviceInfoId = computer.getDeviceinfoid();
-		var arttuId = computer.getArttuid();
-		var wolInterfaceId = computer.getWolinterfaceid();
+	constructor(context, model) {
+		this.context = context;
+		this.model = model;
+	}
 
-		Object.defineProperties(this, {
-			"id": {
-				get: () => _id
-			},
-			"name": {
-				get: () => name
-			},
-			"deviceInfo": {
-				get: () => context.fetchDeviceInfoById(deviceInfoId)
-			},
-			"arttu": {
-				get: () => context.fetchArttuById(arttuId)
-			},
-			"wolInterface": {
-				get: () => context.fetchWolInterfaceById(wolInterfaceId)
-			}
-		})
-	}	
+	get id() {
+		return this.model.getId();
+	}
+
+	get name() {
+		return this.model.getName();
+	}
+
+	get wolInterface() {
+		return this.context.fetchWolInterfaceById(this.model.getWolinterfaceid());
+	}
 }
 
 export class ComputersConnection {
 	constructor(context, model) {
-		Object.defineProperties(this, {
-			"pageInfo": {
-				get: () => new PageInfo(context, model.getPageinfo())
-			},
-			"edges": {
-				get: () => model.getEdgesList().map(p => new ComputersEdge(context, p))
-			},
-			"totalCount": {
-				get: () => model.getTotalcount()
-			},
-			"computers": {
-				get: () => model.getEdgesList().map(p => new Computer(context, p.getNode()))
-			}
-		})
+		this.context = context;
+		this.model = model;
 	}
-}
 
-export class ComputersEdge {
-	constructor(context, model) {
-		Object.defineProperties(this, {
-			"node": {
-				get: () => new Computer(context, model.getNode())
-			},
-			"cursor": {
-				get: () => model.getCursor()
-			}
-		})
+	get computers() {
+		return this.model.getComputersList().map(p => new Computer(this.context, p));
 	}
 }
 
 export class CreateComputerOutput {
 	constructor(context, model) {
-		Object.defineProperties(this, {
-			"computer": {
-				get: () => new Computer(context, model.getComputer())
-			},
-			"deviceInfo": {
-				get: () => new DeviceInfo(context, model.getDeviceinfo())
-			}
-		})
+		this.context = context;
+		this.model = model;
+	}
+
+	get computer(){
+		new Computer(this.context, this.model.getComputer());
 	}
 }
-
-// node: Film
-// cursor: String!
-
-// pageInfo: PageInfo!
-// edges: [FilmsEdge]
-// totalCount: Int
-// films: [Film]
