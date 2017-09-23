@@ -11,9 +11,6 @@ var global = Function('return this')();
 
 goog.exportSymbol('proto.WompattiService.CreateWolInterfaceRequest', null, global);
 goog.exportSymbol('proto.WompattiService.CreateWolInterfaceResponse', null, global);
-goog.exportSymbol('proto.WompattiService.EditWolInterfaceRequest', null, global);
-goog.exportSymbol('proto.WompattiService.EditWolInterfaceResponse', null, global);
-goog.exportSymbol('proto.WompattiService.EditWolInterfaceResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.FetchWolInterfaceByIdRequest', null, global);
 goog.exportSymbol('proto.WompattiService.FetchWolInterfaceByIdResponse', null, global);
 goog.exportSymbol('proto.WompattiService.FetchWolInterfacesRequest', null, global);
@@ -21,9 +18,9 @@ goog.exportSymbol('proto.WompattiService.FetchWolInterfacesResponse', null, glob
 goog.exportSymbol('proto.WompattiService.RemoveWolInterfaceRequest', null, global);
 goog.exportSymbol('proto.WompattiService.RemoveWolInterfaceResponse', null, global);
 goog.exportSymbol('proto.WompattiService.RemoveWolInterfaceResponse.State', null, global);
-goog.exportSymbol('proto.WompattiService.WakeupRequest', null, global);
-goog.exportSymbol('proto.WompattiService.WakeupResponse', null, global);
-goog.exportSymbol('proto.WompattiService.WakeupResponse.State', null, global);
+goog.exportSymbol('proto.WompattiService.UpdateWolInterfaceRequest', null, global);
+goog.exportSymbol('proto.WompattiService.UpdateWolInterfaceResponse', null, global);
+goog.exportSymbol('proto.WompattiService.UpdateWolInterfaceResponse.State', null, global);
 goog.exportSymbol('proto.WompattiService.WolInterface', null, global);
 
 /**
@@ -72,8 +69,8 @@ proto.WompattiService.WolInterface.prototype.toObject = function(opt_includeInst
 proto.WompattiService.WolInterface.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    ethernetinterfaceid: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    mac: jspb.Message.getFieldWithDefault(msg, 3, "")
+    ip: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    port: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -115,12 +112,12 @@ proto.WompattiService.WolInterface.deserializeBinaryFromReader = function(msg, r
       msg.setId(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setEthernetinterfaceid(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIp(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMac(value);
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setPort(value);
       break;
     default:
       reader.skipField();
@@ -157,16 +154,16 @@ proto.WompattiService.WolInterface.serializeBinaryToWriter = function(message, w
       f
     );
   }
-  f = message.getEthernetinterfaceid();
-  if (f !== 0) {
-    writer.writeUint32(
+  f = message.getIp();
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
   }
-  f = message.getMac();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getPort();
+  if (f !== 0) {
+    writer.writeUint32(
       3,
       f
     );
@@ -190,31 +187,31 @@ proto.WompattiService.WolInterface.prototype.setId = function(value) {
 
 
 /**
- * optional uint32 ethernetInterfaceId = 2;
- * @return {number}
+ * optional string ip = 2;
+ * @return {string}
  */
-proto.WompattiService.WolInterface.prototype.getEthernetinterfaceid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+proto.WompattiService.WolInterface.prototype.getIp = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
-/** @param {number} value */
-proto.WompattiService.WolInterface.prototype.setEthernetinterfaceid = function(value) {
+/** @param {string} value */
+proto.WompattiService.WolInterface.prototype.setIp = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional string mac = 3;
- * @return {string}
+ * optional uint32 port = 3;
+ * @return {number}
  */
-proto.WompattiService.WolInterface.prototype.getMac = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+proto.WompattiService.WolInterface.prototype.getPort = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
-/** @param {string} value */
-proto.WompattiService.WolInterface.prototype.setMac = function(value) {
+/** @param {number} value */
+proto.WompattiService.WolInterface.prototype.setPort = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
@@ -554,7 +551,7 @@ proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.toObject = function
  */
 proto.WompattiService.FetchWolInterfaceByIdRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    wolinterfaceidtList: jspb.Message.getField(msg, 1)
+    wolinterfaceidsList: jspb.Message.getField(msg, 1)
   };
 
   if (includeInstance) {
@@ -593,7 +590,7 @@ proto.WompattiService.FetchWolInterfaceByIdRequest.deserializeBinaryFromReader =
     switch (field) {
     case 1:
       var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
-      msg.setWolinterfaceidtList(value);
+      msg.setWolinterfaceidsList(value);
       break;
     default:
       reader.skipField();
@@ -623,7 +620,7 @@ proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.serializeBinary = f
  */
 proto.WompattiService.FetchWolInterfaceByIdRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getWolinterfaceidtList();
+  f = message.getWolinterfaceidsList();
   if (f.length > 0) {
     writer.writePackedUint32(
       1,
@@ -634,18 +631,18 @@ proto.WompattiService.FetchWolInterfaceByIdRequest.serializeBinaryToWriter = fun
 
 
 /**
- * repeated uint32 wolInterfaceIdt = 1;
+ * repeated uint32 wolInterfaceIds = 1;
  * If you change this array by adding, removing or replacing elements, or if you
  * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
-proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.getWolinterfaceidtList = function() {
+proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.getWolinterfaceidsList = function() {
   return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
 };
 
 
 /** @param {!Array.<number>} value */
-proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.setWolinterfaceidtList = function(value) {
+proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.setWolinterfaceidsList = function(value) {
   jspb.Message.setField(this, 1, value || []);
 };
 
@@ -654,13 +651,13 @@ proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.setWolinterfaceidtL
  * @param {!number} value
  * @param {number=} opt_index
  */
-proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.addWolinterfaceidt = function(value, opt_index) {
+proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.addWolinterfaceids = function(value, opt_index) {
   jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 
-proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.clearWolinterfaceidtList = function() {
-  this.setWolinterfaceidtList([]);
+proto.WompattiService.FetchWolInterfaceByIdRequest.prototype.clearWolinterfaceidsList = function() {
+  this.setWolinterfaceidsList([]);
 };
 
 
@@ -878,8 +875,8 @@ proto.WompattiService.CreateWolInterfaceRequest.prototype.toObject = function(op
  */
 proto.WompattiService.CreateWolInterfaceRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    ethernetinterfaceid: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    mac: jspb.Message.getFieldWithDefault(msg, 3, "")
+    ip: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    port: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -917,12 +914,12 @@ proto.WompattiService.CreateWolInterfaceRequest.deserializeBinaryFromReader = fu
     var field = reader.getFieldNumber();
     switch (field) {
     case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setEthernetinterfaceid(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIp(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMac(value);
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setPort(value);
       break;
     default:
       reader.skipField();
@@ -952,16 +949,16 @@ proto.WompattiService.CreateWolInterfaceRequest.prototype.serializeBinary = func
  */
 proto.WompattiService.CreateWolInterfaceRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getEthernetinterfaceid();
-  if (f !== 0) {
-    writer.writeUint32(
+  f = message.getIp();
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
   }
-  f = message.getMac();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getPort();
+  if (f !== 0) {
+    writer.writeUint32(
       3,
       f
     );
@@ -970,31 +967,31 @@ proto.WompattiService.CreateWolInterfaceRequest.serializeBinaryToWriter = functi
 
 
 /**
- * optional uint32 ethernetInterfaceId = 2;
- * @return {number}
+ * optional string ip = 2;
+ * @return {string}
  */
-proto.WompattiService.CreateWolInterfaceRequest.prototype.getEthernetinterfaceid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+proto.WompattiService.CreateWolInterfaceRequest.prototype.getIp = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
-/** @param {number} value */
-proto.WompattiService.CreateWolInterfaceRequest.prototype.setEthernetinterfaceid = function(value) {
+/** @param {string} value */
+proto.WompattiService.CreateWolInterfaceRequest.prototype.setIp = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional string mac = 3;
- * @return {string}
+ * optional uint32 port = 3;
+ * @return {number}
  */
-proto.WompattiService.CreateWolInterfaceRequest.prototype.getMac = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+proto.WompattiService.CreateWolInterfaceRequest.prototype.getPort = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
-/** @param {string} value */
-proto.WompattiService.CreateWolInterfaceRequest.prototype.setMac = function(value) {
+/** @param {number} value */
+proto.WompattiService.CreateWolInterfaceRequest.prototype.setPort = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
@@ -1167,12 +1164,12 @@ proto.WompattiService.CreateWolInterfaceResponse.prototype.hasWolinterface = fun
  * @extends {jspb.Message}
  * @constructor
  */
-proto.WompattiService.EditWolInterfaceRequest = function(opt_data) {
+proto.WompattiService.UpdateWolInterfaceRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.WompattiService.EditWolInterfaceRequest, jspb.Message);
+goog.inherits(proto.WompattiService.UpdateWolInterfaceRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.EditWolInterfaceRequest.displayName = 'proto.WompattiService.EditWolInterfaceRequest';
+  proto.WompattiService.UpdateWolInterfaceRequest.displayName = 'proto.WompattiService.UpdateWolInterfaceRequest';
 }
 
 
@@ -1187,8 +1184,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.WompattiService.EditWolInterfaceRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.EditWolInterfaceRequest.toObject(opt_includeInstance, this);
+proto.WompattiService.UpdateWolInterfaceRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.UpdateWolInterfaceRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -1197,14 +1194,14 @@ proto.WompattiService.EditWolInterfaceRequest.prototype.toObject = function(opt_
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.EditWolInterfaceRequest} msg The msg instance to transform.
+ * @param {!proto.WompattiService.UpdateWolInterfaceRequest} msg The msg instance to transform.
  * @return {!Object}
  */
-proto.WompattiService.EditWolInterfaceRequest.toObject = function(includeInstance, msg) {
+proto.WompattiService.UpdateWolInterfaceRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     wolinterfaceid: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    ethernetinterfaceid: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    mac: jspb.Message.getFieldWithDefault(msg, 3, "")
+    ip: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    port: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -1218,23 +1215,23 @@ proto.WompattiService.EditWolInterfaceRequest.toObject = function(includeInstanc
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.EditWolInterfaceRequest}
+ * @return {!proto.WompattiService.UpdateWolInterfaceRequest}
  */
-proto.WompattiService.EditWolInterfaceRequest.deserializeBinary = function(bytes) {
+proto.WompattiService.UpdateWolInterfaceRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.EditWolInterfaceRequest;
-  return proto.WompattiService.EditWolInterfaceRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.WompattiService.UpdateWolInterfaceRequest;
+  return proto.WompattiService.UpdateWolInterfaceRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.WompattiService.EditWolInterfaceRequest} msg The message object to deserialize into.
+ * @param {!proto.WompattiService.UpdateWolInterfaceRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.EditWolInterfaceRequest}
+ * @return {!proto.WompattiService.UpdateWolInterfaceRequest}
  */
-proto.WompattiService.EditWolInterfaceRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.WompattiService.UpdateWolInterfaceRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -1246,12 +1243,12 @@ proto.WompattiService.EditWolInterfaceRequest.deserializeBinaryFromReader = func
       msg.setWolinterfaceid(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setEthernetinterfaceid(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIp(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMac(value);
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setPort(value);
       break;
     default:
       reader.skipField();
@@ -1266,9 +1263,9 @@ proto.WompattiService.EditWolInterfaceRequest.deserializeBinaryFromReader = func
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.WompattiService.EditWolInterfaceRequest.prototype.serializeBinary = function() {
+proto.WompattiService.UpdateWolInterfaceRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.WompattiService.EditWolInterfaceRequest.serializeBinaryToWriter(this, writer);
+  proto.WompattiService.UpdateWolInterfaceRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -1276,10 +1273,10 @@ proto.WompattiService.EditWolInterfaceRequest.prototype.serializeBinary = functi
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.EditWolInterfaceRequest} message
+ * @param {!proto.WompattiService.UpdateWolInterfaceRequest} message
  * @param {!jspb.BinaryWriter} writer
  */
-proto.WompattiService.EditWolInterfaceRequest.serializeBinaryToWriter = function(message, writer) {
+proto.WompattiService.UpdateWolInterfaceRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getWolinterfaceid();
   if (f !== 0) {
@@ -1288,16 +1285,16 @@ proto.WompattiService.EditWolInterfaceRequest.serializeBinaryToWriter = function
       f
     );
   }
-  f = message.getEthernetinterfaceid();
-  if (f !== 0) {
-    writer.writeUint32(
+  f = message.getIp();
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
   }
-  f = message.getMac();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getPort();
+  if (f !== 0) {
+    writer.writeUint32(
       3,
       f
     );
@@ -1309,43 +1306,43 @@ proto.WompattiService.EditWolInterfaceRequest.serializeBinaryToWriter = function
  * optional uint32 wolInterfaceId = 1;
  * @return {number}
  */
-proto.WompattiService.EditWolInterfaceRequest.prototype.getWolinterfaceid = function() {
+proto.WompattiService.UpdateWolInterfaceRequest.prototype.getWolinterfaceid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {number} value */
-proto.WompattiService.EditWolInterfaceRequest.prototype.setWolinterfaceid = function(value) {
+proto.WompattiService.UpdateWolInterfaceRequest.prototype.setWolinterfaceid = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * optional uint32 ethernetInterfaceId = 2;
- * @return {number}
+ * optional string ip = 2;
+ * @return {string}
  */
-proto.WompattiService.EditWolInterfaceRequest.prototype.getEthernetinterfaceid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+proto.WompattiService.UpdateWolInterfaceRequest.prototype.getIp = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
-/** @param {number} value */
-proto.WompattiService.EditWolInterfaceRequest.prototype.setEthernetinterfaceid = function(value) {
+/** @param {string} value */
+proto.WompattiService.UpdateWolInterfaceRequest.prototype.setIp = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional string mac = 3;
- * @return {string}
+ * optional uint32 port = 3;
+ * @return {number}
  */
-proto.WompattiService.EditWolInterfaceRequest.prototype.getMac = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+proto.WompattiService.UpdateWolInterfaceRequest.prototype.getPort = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
-/** @param {string} value */
-proto.WompattiService.EditWolInterfaceRequest.prototype.setMac = function(value) {
+/** @param {number} value */
+proto.WompattiService.UpdateWolInterfaceRequest.prototype.setPort = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
@@ -1361,12 +1358,12 @@ proto.WompattiService.EditWolInterfaceRequest.prototype.setMac = function(value)
  * @extends {jspb.Message}
  * @constructor
  */
-proto.WompattiService.EditWolInterfaceResponse = function(opt_data) {
+proto.WompattiService.UpdateWolInterfaceResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.WompattiService.EditWolInterfaceResponse, jspb.Message);
+goog.inherits(proto.WompattiService.UpdateWolInterfaceResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.EditWolInterfaceResponse.displayName = 'proto.WompattiService.EditWolInterfaceResponse';
+  proto.WompattiService.UpdateWolInterfaceResponse.displayName = 'proto.WompattiService.UpdateWolInterfaceResponse';
 }
 
 
@@ -1381,8 +1378,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.WompattiService.EditWolInterfaceResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.EditWolInterfaceResponse.toObject(opt_includeInstance, this);
+proto.WompattiService.UpdateWolInterfaceResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.WompattiService.UpdateWolInterfaceResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -1391,10 +1388,10 @@ proto.WompattiService.EditWolInterfaceResponse.prototype.toObject = function(opt
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.EditWolInterfaceResponse} msg The msg instance to transform.
+ * @param {!proto.WompattiService.UpdateWolInterfaceResponse} msg The msg instance to transform.
  * @return {!Object}
  */
-proto.WompattiService.EditWolInterfaceResponse.toObject = function(includeInstance, msg) {
+proto.WompattiService.UpdateWolInterfaceResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     state: jspb.Message.getFieldWithDefault(msg, 1, 0),
     wolinterface: (f = msg.getWolinterface()) && proto.WompattiService.WolInterface.toObject(includeInstance, f)
@@ -1411,23 +1408,23 @@ proto.WompattiService.EditWolInterfaceResponse.toObject = function(includeInstan
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.EditWolInterfaceResponse}
+ * @return {!proto.WompattiService.UpdateWolInterfaceResponse}
  */
-proto.WompattiService.EditWolInterfaceResponse.deserializeBinary = function(bytes) {
+proto.WompattiService.UpdateWolInterfaceResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.EditWolInterfaceResponse;
-  return proto.WompattiService.EditWolInterfaceResponse.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.WompattiService.UpdateWolInterfaceResponse;
+  return proto.WompattiService.UpdateWolInterfaceResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.WompattiService.EditWolInterfaceResponse} msg The message object to deserialize into.
+ * @param {!proto.WompattiService.UpdateWolInterfaceResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.EditWolInterfaceResponse}
+ * @return {!proto.WompattiService.UpdateWolInterfaceResponse}
  */
-proto.WompattiService.EditWolInterfaceResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.WompattiService.UpdateWolInterfaceResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -1435,7 +1432,7 @@ proto.WompattiService.EditWolInterfaceResponse.deserializeBinaryFromReader = fun
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.WompattiService.EditWolInterfaceResponse.State} */ (reader.readEnum());
+      var value = /** @type {!proto.WompattiService.UpdateWolInterfaceResponse.State} */ (reader.readEnum());
       msg.setState(value);
       break;
     case 2:
@@ -1456,9 +1453,9 @@ proto.WompattiService.EditWolInterfaceResponse.deserializeBinaryFromReader = fun
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.WompattiService.EditWolInterfaceResponse.prototype.serializeBinary = function() {
+proto.WompattiService.UpdateWolInterfaceResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.WompattiService.EditWolInterfaceResponse.serializeBinaryToWriter(this, writer);
+  proto.WompattiService.UpdateWolInterfaceResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -1466,10 +1463,10 @@ proto.WompattiService.EditWolInterfaceResponse.prototype.serializeBinary = funct
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.EditWolInterfaceResponse} message
+ * @param {!proto.WompattiService.UpdateWolInterfaceResponse} message
  * @param {!jspb.BinaryWriter} writer
  */
-proto.WompattiService.EditWolInterfaceResponse.serializeBinaryToWriter = function(message, writer) {
+proto.WompattiService.UpdateWolInterfaceResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getState();
   if (f !== 0.0) {
@@ -1492,22 +1489,22 @@ proto.WompattiService.EditWolInterfaceResponse.serializeBinaryToWriter = functio
 /**
  * @enum {number}
  */
-proto.WompattiService.EditWolInterfaceResponse.State = {
+proto.WompattiService.UpdateWolInterfaceResponse.State = {
   SUCCESS: 0,
   NOT_FOUND: 1
 };
 
 /**
  * optional State state = 1;
- * @return {!proto.WompattiService.EditWolInterfaceResponse.State}
+ * @return {!proto.WompattiService.UpdateWolInterfaceResponse.State}
  */
-proto.WompattiService.EditWolInterfaceResponse.prototype.getState = function() {
-  return /** @type {!proto.WompattiService.EditWolInterfaceResponse.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.WompattiService.UpdateWolInterfaceResponse.prototype.getState = function() {
+  return /** @type {!proto.WompattiService.UpdateWolInterfaceResponse.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
-/** @param {!proto.WompattiService.EditWolInterfaceResponse.State} value */
-proto.WompattiService.EditWolInterfaceResponse.prototype.setState = function(value) {
+/** @param {!proto.WompattiService.UpdateWolInterfaceResponse.State} value */
+proto.WompattiService.UpdateWolInterfaceResponse.prototype.setState = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
@@ -1516,19 +1513,19 @@ proto.WompattiService.EditWolInterfaceResponse.prototype.setState = function(val
  * optional WolInterface wolInterface = 2;
  * @return {?proto.WompattiService.WolInterface}
  */
-proto.WompattiService.EditWolInterfaceResponse.prototype.getWolinterface = function() {
+proto.WompattiService.UpdateWolInterfaceResponse.prototype.getWolinterface = function() {
   return /** @type{?proto.WompattiService.WolInterface} */ (
     jspb.Message.getWrapperField(this, proto.WompattiService.WolInterface, 2));
 };
 
 
 /** @param {?proto.WompattiService.WolInterface|undefined} value */
-proto.WompattiService.EditWolInterfaceResponse.prototype.setWolinterface = function(value) {
+proto.WompattiService.UpdateWolInterfaceResponse.prototype.setWolinterface = function(value) {
   jspb.Message.setWrapperField(this, 2, value);
 };
 
 
-proto.WompattiService.EditWolInterfaceResponse.prototype.clearWolinterface = function() {
+proto.WompattiService.UpdateWolInterfaceResponse.prototype.clearWolinterface = function() {
   this.setWolinterface(undefined);
 };
 
@@ -1537,7 +1534,7 @@ proto.WompattiService.EditWolInterfaceResponse.prototype.clearWolinterface = fun
  * Returns whether this field is set.
  * @return {!boolean}
  */
-proto.WompattiService.EditWolInterfaceResponse.prototype.hasWolinterface = function() {
+proto.WompattiService.UpdateWolInterfaceResponse.prototype.hasWolinterface = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
@@ -1855,323 +1852,6 @@ proto.WompattiService.RemoveWolInterfaceResponse.prototype.getSuccess = function
 
 /** @param {boolean} value */
 proto.WompattiService.RemoveWolInterfaceResponse.prototype.setSuccess = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.WakeupRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.WakeupRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.WakeupRequest.displayName = 'proto.WompattiService.WakeupRequest';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.WakeupRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.WakeupRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.WakeupRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.WakeupRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    wolinterfaceid: jspb.Message.getFieldWithDefault(msg, 1, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.WakeupRequest}
- */
-proto.WompattiService.WakeupRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.WakeupRequest;
-  return proto.WompattiService.WakeupRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.WakeupRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.WakeupRequest}
- */
-proto.WompattiService.WakeupRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setWolinterfaceid(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.WakeupRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.WakeupRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.WakeupRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.WakeupRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getWolinterfaceid();
-  if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * optional uint32 wolInterfaceId = 1;
- * @return {number}
- */
-proto.WompattiService.WakeupRequest.prototype.getWolinterfaceid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {number} value */
-proto.WompattiService.WakeupRequest.prototype.setWolinterfaceid = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.WompattiService.WakeupResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.WompattiService.WakeupResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.WompattiService.WakeupResponse.displayName = 'proto.WompattiService.WakeupResponse';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.WompattiService.WakeupResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.WompattiService.WakeupResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.WompattiService.WakeupResponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.WompattiService.WakeupResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    success: jspb.Message.getFieldWithDefault(msg, 2, false)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.WompattiService.WakeupResponse}
- */
-proto.WompattiService.WakeupResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.WompattiService.WakeupResponse;
-  return proto.WompattiService.WakeupResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.WompattiService.WakeupResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.WompattiService.WakeupResponse}
- */
-proto.WompattiService.WakeupResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!proto.WompattiService.WakeupResponse.State} */ (reader.readEnum());
-      msg.setState(value);
-      break;
-    case 2:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setSuccess(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.WompattiService.WakeupResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.WompattiService.WakeupResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.WompattiService.WakeupResponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.WompattiService.WakeupResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getState();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      1,
-      f
-    );
-  }
-  f = message.getSuccess();
-  if (f) {
-    writer.writeBool(
-      2,
-      f
-    );
-  }
-};
-
-
-/**
- * @enum {number}
- */
-proto.WompattiService.WakeupResponse.State = {
-  SUCCESS: 0,
-  NOT_FOUND: 1
-};
-
-/**
- * optional State state = 1;
- * @return {!proto.WompattiService.WakeupResponse.State}
- */
-proto.WompattiService.WakeupResponse.prototype.getState = function() {
-  return /** @type {!proto.WompattiService.WakeupResponse.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {!proto.WompattiService.WakeupResponse.State} value */
-proto.WompattiService.WakeupResponse.prototype.setState = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * optional bool success = 2;
- * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
- * You should avoid comparisons like {@code val === true/false} in those cases.
- * @return {boolean}
- */
-proto.WompattiService.WakeupResponse.prototype.getSuccess = function() {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 2, false));
-};
-
-
-/** @param {boolean} value */
-proto.WompattiService.WakeupResponse.prototype.setSuccess = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 

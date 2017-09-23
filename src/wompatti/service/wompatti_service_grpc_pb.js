@@ -324,28 +324,6 @@ function deserialize_WompattiService_EditTelnetInterfaceResponse(buffer_arg) {
   return telnet_interface_pb.EditTelnetInterfaceResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_WompattiService_EditWolInterfaceRequest(arg) {
-  if (!(arg instanceof wol_interface_pb.EditWolInterfaceRequest)) {
-    throw new Error('Expected argument of type WompattiService.EditWolInterfaceRequest');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_WompattiService_EditWolInterfaceRequest(buffer_arg) {
-  return wol_interface_pb.EditWolInterfaceRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_WompattiService_EditWolInterfaceResponse(arg) {
-  if (!(arg instanceof wol_interface_pb.EditWolInterfaceResponse)) {
-    throw new Error('Expected argument of type WompattiService.EditWolInterfaceResponse');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_WompattiService_EditWolInterfaceResponse(buffer_arg) {
-  return wol_interface_pb.EditWolInterfaceResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_WompattiService_FetchCommandByIdRequest(arg) {
   if (!(arg instanceof command_pb.FetchCommandByIdRequest)) {
     throw new Error('Expected argument of type WompattiService.FetchCommandByIdRequest');
@@ -918,26 +896,48 @@ function deserialize_WompattiService_UpdateComputerResponse(buffer_arg) {
   return computer_pb.UpdateComputerResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_WompattiService_UpdateWolInterfaceRequest(arg) {
+  if (!(arg instanceof wol_interface_pb.UpdateWolInterfaceRequest)) {
+    throw new Error('Expected argument of type WompattiService.UpdateWolInterfaceRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_UpdateWolInterfaceRequest(buffer_arg) {
+  return wol_interface_pb.UpdateWolInterfaceRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_UpdateWolInterfaceResponse(arg) {
+  if (!(arg instanceof wol_interface_pb.UpdateWolInterfaceResponse)) {
+    throw new Error('Expected argument of type WompattiService.UpdateWolInterfaceResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_UpdateWolInterfaceResponse(buffer_arg) {
+  return wol_interface_pb.UpdateWolInterfaceResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_WompattiService_WakeupRequest(arg) {
-  if (!(arg instanceof wol_interface_pb.WakeupRequest)) {
+  if (!(arg instanceof computer_pb.WakeupRequest)) {
     throw new Error('Expected argument of type WompattiService.WakeupRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_WompattiService_WakeupRequest(buffer_arg) {
-  return wol_interface_pb.WakeupRequest.deserializeBinary(new Uint8Array(buffer_arg));
+  return computer_pb.WakeupRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_WakeupResponse(arg) {
-  if (!(arg instanceof wol_interface_pb.WakeupResponse)) {
+  if (!(arg instanceof computer_pb.WakeupResponse)) {
     throw new Error('Expected argument of type WompattiService.WakeupResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_WompattiService_WakeupResponse(buffer_arg) {
-  return wol_interface_pb.WakeupResponse.deserializeBinary(new Uint8Array(buffer_arg));
+  return computer_pb.WakeupResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -1373,16 +1373,16 @@ var WompattiService = exports.WompattiService = {
     responseSerialize: serialize_WompattiService_CreateWolInterfaceResponse,
     responseDeserialize: deserialize_WompattiService_CreateWolInterfaceResponse,
   },
-  editWolInterface: {
-    path: '/WompattiService.Wompatti/editWolInterface',
+  updateWolInterface: {
+    path: '/WompattiService.Wompatti/updateWolInterface',
     requestStream: false,
     responseStream: false,
-    requestType: wol_interface_pb.EditWolInterfaceRequest,
-    responseType: wol_interface_pb.EditWolInterfaceResponse,
-    requestSerialize: serialize_WompattiService_EditWolInterfaceRequest,
-    requestDeserialize: deserialize_WompattiService_EditWolInterfaceRequest,
-    responseSerialize: serialize_WompattiService_EditWolInterfaceResponse,
-    responseDeserialize: deserialize_WompattiService_EditWolInterfaceResponse,
+    requestType: wol_interface_pb.UpdateWolInterfaceRequest,
+    responseType: wol_interface_pb.UpdateWolInterfaceResponse,
+    requestSerialize: serialize_WompattiService_UpdateWolInterfaceRequest,
+    requestDeserialize: deserialize_WompattiService_UpdateWolInterfaceRequest,
+    responseSerialize: serialize_WompattiService_UpdateWolInterfaceResponse,
+    responseDeserialize: deserialize_WompattiService_UpdateWolInterfaceResponse,
   },
   removeWolInterface: {
     path: '/WompattiService.Wompatti/removeWolInterface',
@@ -1399,8 +1399,8 @@ var WompattiService = exports.WompattiService = {
     path: '/WompattiService.Wompatti/wakeup',
     requestStream: false,
     responseStream: false,
-    requestType: wol_interface_pb.WakeupRequest,
-    responseType: wol_interface_pb.WakeupResponse,
+    requestType: computer_pb.WakeupRequest,
+    responseType: computer_pb.WakeupResponse,
     requestSerialize: serialize_WompattiService_WakeupRequest,
     requestDeserialize: deserialize_WompattiService_WakeupRequest,
     responseSerialize: serialize_WompattiService_WakeupResponse,
