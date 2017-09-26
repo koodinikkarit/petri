@@ -10,32 +10,33 @@ import {
 import services from "./service/seppo_service_grpc_pb";
 import messages from "./service/seppo_service_pb";
 
-import Tag from "./Tag";
-
 import {
+	Tag,
 	TagsConnection,
 	CreateTagResponse,
 	UpdateTagResponse,
 	RemoveTagResponse
-} from "./OtherTagTypes";
+} from "./Tag";
 
-import Variation from "./Variation";
 import {
+	Variation,
 	VariationsConnection,
 	CreateVariationResponse,
 	UpdateVariationResponse,
 	RemoveVariationResponse
-} from "./OtherVariationTypes";
+} from "./Variation";
 
-import VariationText from "./VariationText";
-
-import SongDatabase from "./SongDatabase";
 import {
+	VariationText
+} from "./VariationText";
+
+import {
+	SongDatabase,
 	SongDatabasesConnection,
 	CreateSongDatabaseResponse,
 	UpdateSongDatabaseResponse,
-	RemoveSongDatabaseResponse
-} from "./OtherSongDatabaseTypes";
+	RemoveSongDatabaseResponse	
+} from "./SongDatabase";
 
 import EwDatabase from "./EwDatabase";
 import {
@@ -126,6 +127,9 @@ export default new DomainService({
 			type: SongDatabasesConnection,
 			methodType: METHOD_TYPES.QUERY,
 			args: {
+				variationId: {
+					type: IdType
+				},
 				offset: {
 					type: IntType
 				},
@@ -169,7 +173,7 @@ export default new DomainService({
 			}
 		},
 		fetchTagById: {
-			name: "getTagsfsdagasg",
+			name: "tag",
 			type: Tag,
 			returnField: "tag",
 			methodType: METHOD_TYPES.QUERY,
@@ -189,6 +193,12 @@ export default new DomainService({
 				},
 				limit: {
 					type: IntType
+				},
+				variationId: {
+					type: IdType
+				},
+				songDatabaseId: {
+					type: IdType
 				}
 			} 
 		},
@@ -245,6 +255,18 @@ export default new DomainService({
 				},
 				languageId: {
 					type: IdType
+				},
+				addTagIds: {
+					type: new ListType(IdType)
+				},
+				removeTagIds: {
+					type: new ListType(IdType)
+				},
+				addSongDatabaseIds: {
+					type: new ListType(IdType)
+				},
+				removeSongDatabaseIds: {
+					type: new ListType(IdType)
 				}
 			}
 		},
@@ -397,6 +419,14 @@ export default new DomainService({
 				languageId: {
 					type: IdType
 				}
+			}
+		},
+		fetchVariationTags: {
+			type: new ListType(Tag),
+			dataLoader: {
+				name: "variationId",
+				serviceTypeName: "variationIds",
+				returnField: "variationTags"
 			}
 		}
 	}

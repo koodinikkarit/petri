@@ -10,42 +10,42 @@ import Tag from "./Tag";
 
 export const TagsConnection = new DomainEntity({
 	name: "TagsConnection",
-	fields: {
+	fields: () => ({
 		maxTags: {
 			type: IntType
 		},
 		tags: {
 			type: new ListType(Tag)
 		}
-	}
+	})
 });
 
 export const CreateTagResponse = new DomainEntity({
 	name: "CreateTagResponse",
-	fields: {
+	fields: () => ({
 		tag: {
 			type: Tag
 		}
-	}
+	})
 });
 
 export const UpdateTagResponse = new DomainEntity({
 	name: "UpdateTagResponse",
-	fields: {
+	fields: () => ({
 		success: {
 			type: BooleanType
 		},
 		tag: {
 			type: Tag
 		}
-	}
+	})
 });
 
 export const RemoveTagResponse = new DomainEntity({
 	name: "RemoveTagResponse",
-	fields: {
+	fields: () => ({
 		success: {
 			type: BooleanType
 		}
-	}
+	})
 });

@@ -2,14 +2,21 @@ import {
 	DomainEntity,
 	IdType,
 	StringType,
-	ListType
+	ListType,
+	IntType,
+	BooleanType
 } from "grpc-graphql-router-tools";
 
-import Variation from "./Variation";
+import {
+	Variation
+} from "./Variation";
+import {
+	Tag
+} from "./Tag";
 
-export default new DomainEntity({
+export const SongDatabase = new DomainEntity({
 	name: "SongDatabase",
-	fields: {
+	fields: () => ({
 		id: {
 			type: IdType
 		},
@@ -21,7 +28,60 @@ export default new DomainEntity({
 			inhertedArgs: {
 				id: "songDatabaseId"
 			},
-			serviceMethod: "fetchVariationsBySongDatabaseId"
+			serviceMethod: "searchVariations",
+			returnField: "variations"
+		},
+		tags: {
+			type: new ListType(Tag),
+			inhertedArgs: {
+				id: "songDatabaseId"
+			},
+			serviceMethod: "searchTags",
+			returnField: "tags"
 		}
-	}
+	})
+});
+export const SongDatabasesConnection = new DomainEntity({
+	name: "SongDatabasesConnection",
+	fields: () => ({
+		id: {
+			type: IdType
+		},
+		maxSongDatabase: {
+			type: IntType
+		},
+		songDatabases: {
+			type: new ListType(SongDatabase)
+		}
+	})
+});
+
+export const CreateSongDatabaseResponse = new DomainEntity({
+	name: "CreateSongDatabaseResponse",
+	fields: () => ({
+		songDatabase: {
+			type: SongDatabase
+		}
+	})
+});
+
+export const UpdateSongDatabaseResponse = new DomainEntity({
+	name: "UpdateSongDatabaseResponse",
+	fields: () => ({
+		success: {
+			type: BooleanType
+		},
+		songDatabase: {
+			type: SongDatabase
+		}
+	})
+});
+
+export const RemoveSongDatabaseResponse = new DomainEntity({
+	name: "RemoveSongDatabaseResponse",
+	fields: () => ({
+		success: {
+			type: BooleanType
+		}
+	})
 });

@@ -4,11 +4,13 @@ import {
 	StringType
 } from "grpc-graphql-router-tools";
 
-import Variation from "./Variation";
+import {
+	Variation
+} from "./Variation";
 
-export default new DomainEntity({
+export const VariationText = new DomainEntity({
 	name: "VariationText",
-	fields: {
+	fields: () => ({
 		id: {
 			type: IdType
 		},
@@ -18,5 +20,5 @@ export default new DomainEntity({
 		text: {
 			type: StringType
 		}
-	}
+	})
 });

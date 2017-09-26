@@ -962,6 +962,8 @@ function deserialize_SeppoService_UpdateVariationResponse(buffer_arg) {
 }
 
 
+// import "variation_song_database.proto";
+//
 var SeppoService = exports.SeppoService = {
   fetchVariationById: {
     path: '/SeppoService.Seppo/fetchVariationById',
@@ -1128,6 +1130,7 @@ var SeppoService = exports.SeppoService = {
     responseSerialize: serialize_SeppoService_FetchVariationTagsResponse,
     responseDeserialize: deserialize_SeppoService_FetchVariationTagsResponse,
   },
+  // rpc fetchVariationSongDatabases(FetchVariationSongDatabasesRequest) returns(FetchVariationSongDatabasesResponse) {}
   fetchTagVariations: {
     path: '/SeppoService.Seppo/fetchTagVariations',
     requestStream: false,

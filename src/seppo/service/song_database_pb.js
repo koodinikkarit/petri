@@ -425,7 +425,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.SeppoService.SongDatabasesConnection.repeatedFields_ = [1];
+proto.SeppoService.SongDatabasesConnection.repeatedFields_ = [2];
 
 
 
@@ -455,9 +455,10 @@ proto.SeppoService.SongDatabasesConnection.prototype.toObject = function(opt_inc
  */
 proto.SeppoService.SongDatabasesConnection.toObject = function(includeInstance, msg) {
   var f, obj = {
-    edgesList: jspb.Message.toObjectList(msg.getEdgesList(),
-    proto.SeppoService.SongDatabaseEdge.toObject, includeInstance),
-    totalcount: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    maxsongdatabases: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    songdatabasesList: jspb.Message.toObjectList(msg.getSongdatabasesList(),
+    proto.SeppoService.SongDatabase.toObject, includeInstance),
+    id: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -495,13 +496,17 @@ proto.SeppoService.SongDatabasesConnection.deserializeBinaryFromReader = functio
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.SeppoService.SongDatabaseEdge;
-      reader.readMessage(value,proto.SeppoService.SongDatabaseEdge.deserializeBinaryFromReader);
-      msg.addEdges(value);
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setMaxsongdatabases(value);
+      break;
+    case 2:
+      var value = new proto.SeppoService.SongDatabase;
+      reader.readMessage(value,proto.SeppoService.SongDatabase.deserializeBinaryFromReader);
+      msg.addSongdatabases(value);
       break;
     case 3:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setTotalcount(value);
+      msg.setId(value);
       break;
     default:
       reader.skipField();
@@ -531,15 +536,22 @@ proto.SeppoService.SongDatabasesConnection.prototype.serializeBinary = function(
  */
 proto.SeppoService.SongDatabasesConnection.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getEdgesList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
+  f = message.getMaxsongdatabases();
+  if (f !== 0) {
+    writer.writeUint32(
       1,
-      f,
-      proto.SeppoService.SongDatabaseEdge.serializeBinaryToWriter
+      f
     );
   }
-  f = message.getTotalcount();
+  f = message.getSongdatabasesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.SeppoService.SongDatabase.serializeBinaryToWriter
+    );
+  }
+  f = message.getId();
   if (f !== 0) {
     writer.writeUint32(
       3,
@@ -550,49 +562,64 @@ proto.SeppoService.SongDatabasesConnection.serializeBinaryToWriter = function(me
 
 
 /**
- * repeated SongDatabaseEdge edges = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.SeppoService.SongDatabaseEdge>}
- */
-proto.SeppoService.SongDatabasesConnection.prototype.getEdgesList = function() {
-  return /** @type{!Array.<!proto.SeppoService.SongDatabaseEdge>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.SongDatabaseEdge, 1));
-};
-
-
-/** @param {!Array.<!proto.SeppoService.SongDatabaseEdge>} value */
-proto.SeppoService.SongDatabasesConnection.prototype.setEdgesList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.SeppoService.SongDatabaseEdge=} opt_value
- * @param {number=} opt_index
- * @return {!proto.SeppoService.SongDatabaseEdge}
- */
-proto.SeppoService.SongDatabasesConnection.prototype.addEdges = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.SeppoService.SongDatabaseEdge, opt_index);
-};
-
-
-proto.SeppoService.SongDatabasesConnection.prototype.clearEdgesList = function() {
-  this.setEdgesList([]);
-};
-
-
-/**
- * optional uint32 totalCount = 3;
+ * optional uint32 maxSongDatabases = 1;
  * @return {number}
  */
-proto.SeppoService.SongDatabasesConnection.prototype.getTotalcount = function() {
+proto.SeppoService.SongDatabasesConnection.prototype.getMaxsongdatabases = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SongDatabasesConnection.prototype.setMaxsongdatabases = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * repeated SongDatabase songDatabases = 2;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.SeppoService.SongDatabase>}
+ */
+proto.SeppoService.SongDatabasesConnection.prototype.getSongdatabasesList = function() {
+  return /** @type{!Array.<!proto.SeppoService.SongDatabase>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.SongDatabase, 2));
+};
+
+
+/** @param {!Array.<!proto.SeppoService.SongDatabase>} value */
+proto.SeppoService.SongDatabasesConnection.prototype.setSongdatabasesList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.SeppoService.SongDatabase=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.SeppoService.SongDatabase}
+ */
+proto.SeppoService.SongDatabasesConnection.prototype.addSongdatabases = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.SeppoService.SongDatabase, opt_index);
+};
+
+
+proto.SeppoService.SongDatabasesConnection.prototype.clearSongdatabasesList = function() {
+  this.setSongdatabasesList([]);
+};
+
+
+/**
+ * optional uint32 id = 3;
+ * @return {number}
+ */
+proto.SeppoService.SongDatabasesConnection.prototype.getId = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /** @param {number} value */
-proto.SeppoService.SongDatabasesConnection.prototype.setTotalcount = function(value) {
+proto.SeppoService.SongDatabasesConnection.prototype.setId = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 

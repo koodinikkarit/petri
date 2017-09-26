@@ -724,12 +724,19 @@ proto.SeppoService.CreateVariationResponse.prototype.hasVariation = function() {
  * @constructor
  */
 proto.SeppoService.UpdateVariationRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.UpdateVariationRequest.repeatedFields_, null);
 };
 goog.inherits(proto.SeppoService.UpdateVariationRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.SeppoService.UpdateVariationRequest.displayName = 'proto.SeppoService.UpdateVariationRequest';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SeppoService.UpdateVariationRequest.repeatedFields_ = [6,7,8,9];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -762,7 +769,11 @@ proto.SeppoService.UpdateVariationRequest.toObject = function(includeInstance, m
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     text: jspb.Message.getFieldWithDefault(msg, 3, ""),
     songid: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    languageid: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    languageid: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    addtagidsList: jspb.Message.getField(msg, 6),
+    removetagidsList: jspb.Message.getField(msg, 7),
+    addsongdatabaseidsList: jspb.Message.getField(msg, 8),
+    removesongdatabaseidsList: jspb.Message.getField(msg, 9)
   };
 
   if (includeInstance) {
@@ -818,6 +829,22 @@ proto.SeppoService.UpdateVariationRequest.deserializeBinaryFromReader = function
     case 5:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setLanguageid(value);
+      break;
+    case 6:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setAddtagidsList(value);
+      break;
+    case 7:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setRemovetagidsList(value);
+      break;
+    case 8:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setAddsongdatabaseidsList(value);
+      break;
+    case 9:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setRemovesongdatabaseidsList(value);
       break;
     default:
       reader.skipField();
@@ -879,6 +906,34 @@ proto.SeppoService.UpdateVariationRequest.serializeBinaryToWriter = function(mes
   if (f !== 0) {
     writer.writeUint32(
       5,
+      f
+    );
+  }
+  f = message.getAddtagidsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      6,
+      f
+    );
+  }
+  f = message.getRemovetagidsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      7,
+      f
+    );
+  }
+  f = message.getAddsongdatabaseidsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      8,
+      f
+    );
+  }
+  f = message.getRemovesongdatabaseidsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      9,
       f
     );
   }
@@ -957,6 +1012,130 @@ proto.SeppoService.UpdateVariationRequest.prototype.getLanguageid = function() {
 /** @param {number} value */
 proto.SeppoService.UpdateVariationRequest.prototype.setLanguageid = function(value) {
   jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * repeated uint32 addTagIds = 6;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.SeppoService.UpdateVariationRequest.prototype.getAddtagidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 6));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.SeppoService.UpdateVariationRequest.prototype.setAddtagidsList = function(value) {
+  jspb.Message.setField(this, 6, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SeppoService.UpdateVariationRequest.prototype.addAddtagids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 6, value, opt_index);
+};
+
+
+proto.SeppoService.UpdateVariationRequest.prototype.clearAddtagidsList = function() {
+  this.setAddtagidsList([]);
+};
+
+
+/**
+ * repeated uint32 removeTagIds = 7;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.SeppoService.UpdateVariationRequest.prototype.getRemovetagidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 7));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.SeppoService.UpdateVariationRequest.prototype.setRemovetagidsList = function(value) {
+  jspb.Message.setField(this, 7, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SeppoService.UpdateVariationRequest.prototype.addRemovetagids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 7, value, opt_index);
+};
+
+
+proto.SeppoService.UpdateVariationRequest.prototype.clearRemovetagidsList = function() {
+  this.setRemovetagidsList([]);
+};
+
+
+/**
+ * repeated uint32 addSongDatabaseIds = 8;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.SeppoService.UpdateVariationRequest.prototype.getAddsongdatabaseidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 8));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.SeppoService.UpdateVariationRequest.prototype.setAddsongdatabaseidsList = function(value) {
+  jspb.Message.setField(this, 8, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SeppoService.UpdateVariationRequest.prototype.addAddsongdatabaseids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 8, value, opt_index);
+};
+
+
+proto.SeppoService.UpdateVariationRequest.prototype.clearAddsongdatabaseidsList = function() {
+  this.setAddsongdatabaseidsList([]);
+};
+
+
+/**
+ * repeated uint32 removeSongDatabaseIds = 9;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.SeppoService.UpdateVariationRequest.prototype.getRemovesongdatabaseidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 9));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.SeppoService.UpdateVariationRequest.prototype.setRemovesongdatabaseidsList = function(value) {
+  jspb.Message.setField(this, 9, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SeppoService.UpdateVariationRequest.prototype.addRemovesongdatabaseids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 9, value, opt_index);
+};
+
+
+proto.SeppoService.UpdateVariationRequest.prototype.clearRemovesongdatabaseidsList = function() {
+  this.setRemovesongdatabaseidsList([]);
 };
 
 

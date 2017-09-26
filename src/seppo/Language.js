@@ -6,12 +6,12 @@ import {
 
 export default new DomainEntity({
 	name: "Language",
-	fields: {
+	fields: () => ({
 		id: {
 			type: IdType
 		},
 		name: {
 			type: StringType
 		}
-	}
+	})
 });

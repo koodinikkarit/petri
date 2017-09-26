@@ -10,42 +10,42 @@ import Language from "./Language";
 
 export const LanguagesConnection = new DomainEntity({
 	name: "LanguageConnection",
-	fields: {
+	fields: () => ({
 		maxLanguages: {
 			type: IntType
 		},
 		languages: {
 			type: new ListType(Language)
 		}
-	}
+	})
 });
 
 export const CreateLanguageResponse = new DomainEntity({
 	name: "CreateLanguageResponse",
-	fields: {
+	fields: () => ({
 		language: {
 			type: Language
 		}
-	}
+	})
 });
 
 export const UpdateLanguageResponse = new DomainEntity({
 	name: "UpdateLanguageResponse",
-	fields: {
+	fields: () => ({
 		success: {
 			type: BooleanType
 		},
 		language: {
 			type: Language
 		}
-	}
+	})
 });
 
 export const RemoveLanguageResponse = new DomainEntity({
 	name: "RemoveLanguageResponse",
-	fields: {
+	fields: () => ({
 		success: {
 			type: BooleanType
 		}
-	}
+	})
 });
