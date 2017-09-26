@@ -179,7 +179,7 @@ export default new DomainService({
 			methodType: METHOD_TYPES.QUERY,
 			dataLoader: {
 				name: "tagId",
-				serviceTypeNam: "tagIds",
+				serviceTypeName: "tagIds",
 				returnField: "tags"
 			}
 		},
@@ -342,6 +342,9 @@ export default new DomainService({
 				},
 				name: {
 					type: StringType
+				},
+				songDatabaseId: {
+					type: IdType
 				}
 			}
 		},
