@@ -18,46 +18,19 @@ app.use("/graphiql", graphiqlExpress({
 	graphiql: true
 }));
 
-var context = petriCompose.createContext({
-	wompatti: {
-		ip: "localhost",
-		port: 3112
-	},
-	seppo: {
-		ip: "localhost",
-		port: 3214
-	}
-	// wompatti: {
-	// 	ip: process.env.PETRI_WOMPATTI_IP,
-	// 	port: process.env.PETRI_WOMPATTI_PORT
-	// },
-	// seppo: {
-	// 	ip: process.env.PETRI_SEPPO_IP,
-	// 	port: process.env.PETRI_SEPPO_PORT
-	// }
-});
-
 app.use("/", graphqlExpress((req) => {
 	return {
 		schema: petriCompose.schema,
 		context: petriCompose.createContext({
 			token: req.get("token"),
 			wompatti: {
-				ip: "localhost",
-				port: 3112
+				ip: process.env.PETRI_WOMPATTI_IP,
+				port: process.env.PETRI_WOMPATTI_PORT
 			},
 			seppo: {
-				ip: "localhost",
-				port: 3214
+				ip: process.env.PETRI_SEPPO_IP,
+				port: process.env.PETRI_SEPPO_PORT
 			}
-			// wompatti: {
-			// 	ip: process.env.PETRI_WOMPATTI_IP,
-			// 	port: process.env.PETRI_WOMPATTI_PORT
-			// },
-			// seppo: {
-			// 	ip: process.env.PETRI_SEPPO_IP,
-			// 	port: process.env.PETRI_SEPPO_PORT
-			// }
 		})
 	};
 }));
