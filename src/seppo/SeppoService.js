@@ -55,6 +55,14 @@ import {
 	RemoveLanguageResponse
 } from "./OtherLanguageTypes";
 
+import {
+	Schedule,
+	SchedulesConnection,
+	CreateScheduleResponse,
+	UpdateScheduleResponse,
+	RemoveScheduleResponse
+} from "./Schedule";
+
 export default new DomainService({
 	name: "seppo",
 	messages: messages,
@@ -70,6 +78,18 @@ export default new DomainService({
 				name: "variationId",
 				serviceTypeName: "variationIds",
 				returnField: "variations"
+			}
+		},
+		fetchVariationById2: {
+			name: "variations",
+			serviceMethodName: "fetchVariationById",
+			returnField: "variations",
+			type: new ListType(Variation),
+			methodType: METHOD_TYPES.QUERY,
+			args: {
+				variationIds: {
+					type: new ListType(IdType)
+				}
 			}
 		},
 		searchVariations: {
@@ -92,6 +112,12 @@ export default new DomainService({
 				},
 				languageId: {
 					type: IdType
+				},
+				scheduleId: {
+					type: IdType
+				},
+				skipVariationIds: {
+					type: new ListType(IdType)
 				},
 				offset: {
 					type: IntType
@@ -430,6 +456,69 @@ export default new DomainService({
 				name: "variationId",
 				serviceTypeName: "variationIds",
 				returnField: "variationTags"
+			}
+		},
+		createSchedule: {
+			name: "createSchedule",
+			type: CreateScheduleResponse,
+			methodType: METHOD_TYPES.MUTATION,
+			args: {
+				name: {
+					type: StringType
+				}
+			}
+		},
+		updateSchedule: {
+			name: "updateSchedule",
+			type: UpdateScheduleResponse,
+			methodType: METHOD_TYPES.MUTATION,
+			args: {
+				scheduleId: {
+					type: IdType
+				},
+				name: {
+					type: StringType
+				},
+				addSongIds: {
+					type: new ListType(IdType)
+				},
+				removeSongIds: {
+					type: new ListType(IdType)
+				}
+			}
+		},
+		removeSchedule: {
+			name: "removeSchedule",
+			type: RemoveScheduleResponse,
+			methodType: METHOD_TYPES.MUTATION,
+			args: {
+				scheduleId: {
+					type: IdType
+				}
+			}
+		},
+		fetchScheduleById: {
+			name: "schedule",
+			type: Schedule,
+			returnField: "schedule",
+			methodType: METHOD_TYPES.QUERY,
+			dataLoader: {
+				name: "scheduleId",
+				serviceTypeName: "scheduleIds",
+				returnField: "schedules"
+			}
+		},
+		searchSchedules: {
+			name: "searchSchedules",
+			type: SchedulesConnection,
+			methodType: METHOD_TYPES.QUERY,
+			args: {
+				offset: {
+					type: IntType
+				},
+				limit: {
+					type: IntType
+				}
 			}
 		}
 	}

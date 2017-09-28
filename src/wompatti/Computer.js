@@ -13,7 +13,7 @@ import {
 
 export const Computer = new DomainEntity({
 	name: "Computer",
-	fields: {
+	fields: () => ({
 		id: {
 			type: IdType
 		},
@@ -36,56 +36,56 @@ export const Computer = new DomainEntity({
 			},
 			serviceMethod: "fetchWolInterfaceById"		
 		}
-	}
+	})
 });
 
 export const ComputersConnection = new DomainEntity({
 	name: "ComputersConnection",
-	fields: {
+	fields: () => ({
 		computers: {
 			type: new ListType(Computer)
 		},
 		maxComputers: {
 			type: IntType
 		}
-	}
+	})
 });
 
 export const CreateComputerResponse = new DomainEntity({
 	name: "CreateComputerResponse",
-	fields: {
+	fields: () => ({
 		computer: {
 			type: Computer
 		}
-	}
+	})
 });
 
 export const UpdateComputerResponse = new DomainEntity({
 	name: "UpdateComputerResponse",
-	fields: {
+	fields: () => ({
 		computer: {
 			type: Computer
 		},
 		success: {
 			type: BooleanType
 		}
-	}
+	})
 });
 
 export const RemoveComputerResponse = new DomainEntity({
 	name: "RemoveComputerResponse",
-	fields: {
+	fields: () => ({
 		success: {
 			type: BooleanType
 		}
-	}
+	})
 });
 
 export const WakeupComputerResponse = new DomainEntity({
 	name: "WakeupComputerResponse",
-	fields: {
+	fields: () => ({
 		success: {
 			type: BooleanType
 		}
-	}
+	})
 });

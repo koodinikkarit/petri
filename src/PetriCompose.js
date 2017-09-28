@@ -7,9 +7,9 @@ import SeppoService from "./seppo/SeppoService";
 
 export default new DomainCompose({
 	domainServices: {
-		// wompatti: {
-		// 	type: WompattiService
-		// },
+		wompatti: {
+			type: WompattiService
+		},
 		seppo: {
 			type: SeppoService
 		}

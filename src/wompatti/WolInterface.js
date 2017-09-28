@@ -9,7 +9,7 @@ import {
 
 export const WolInterface = new DomainEntity({
 	name: "WolInterface",
-	fields: {
+	fields: () => ({
 		id: {
 			type: IdType
 		},
@@ -19,47 +19,47 @@ export const WolInterface = new DomainEntity({
 		port: {
 			type: IntType
 		}
-	}
+	})
 });
 
 export const WolInterfacesConnection = new DomainEntity({
 	name: "WolInterfacesConnection",
-	fields: {
+	fields: () => ({
 		wolInterfaces: {
 			type: new ListType(WolInterface)
 		},
 		maxWolinterfaces: {
 			type: IntType
 		}
-	}
+	})
 });
 
 export const CreateWolInterfaceResponse = new DomainEntity({
 	name: "CreateWolInterfaceResponse",
-	fields: {
+	fields: () => ({
 		wolInterface: {
 			type: WolInterface
 		}
-	}
+	})
 });
 
 export const UpdateWolInterfaceResponse = new DomainEntity({
 	name: "UpdateWolInterfaceResponse",
-	fields: {
+	fields: () => ({
 		wolInterface: {
 			type: WolInterface
 		},
 		success: {
 			type: BooleanType
 		}
-	}
+	})
 });
 
 export const RemoveWolInterfaceResponse = new DomainEntity({
 	name: "RemoveWolInterfaceResponse",
-	fields: {
+	fields: () => ({
 		success: {
 			type: BooleanType
 		}
-	}
-})
+	})
+});

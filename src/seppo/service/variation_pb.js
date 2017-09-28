@@ -1893,12 +1893,19 @@ proto.SeppoService.FetchVariationByIdResponse.prototype.clearVariationsList = fu
  * @constructor
  */
 proto.SeppoService.SearchVariationsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.SearchVariationsRequest.repeatedFields_, null);
 };
 goog.inherits(proto.SeppoService.SearchVariationsRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.SeppoService.SearchVariationsRequest.displayName = 'proto.SeppoService.SearchVariationsRequest';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SeppoService.SearchVariationsRequest.repeatedFields_ = [9];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1933,7 +1940,9 @@ proto.SeppoService.SearchVariationsRequest.toObject = function(includeInstance, 
     tagid: jspb.Message.getFieldWithDefault(msg, 4, 0),
     languageid: jspb.Message.getFieldWithDefault(msg, 5, 0),
     offset: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    limit: jspb.Message.getFieldWithDefault(msg, 7, 0)
+    limit: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    scheduleid: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    skipvariationidsList: jspb.Message.getField(msg, 9)
   };
 
   if (includeInstance) {
@@ -1997,6 +2006,14 @@ proto.SeppoService.SearchVariationsRequest.deserializeBinaryFromReader = functio
     case 7:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setLimit(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setScheduleid(value);
+      break;
+    case 9:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setSkipvariationidsList(value);
       break;
     default:
       reader.skipField();
@@ -2072,6 +2089,20 @@ proto.SeppoService.SearchVariationsRequest.serializeBinaryToWriter = function(me
   if (f !== 0) {
     writer.writeUint32(
       7,
+      f
+    );
+  }
+  f = message.getScheduleid();
+  if (f !== 0) {
+    writer.writeUint32(
+      8,
+      f
+    );
+  }
+  f = message.getSkipvariationidsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      9,
       f
     );
   }
@@ -2180,6 +2211,52 @@ proto.SeppoService.SearchVariationsRequest.prototype.getLimit = function() {
 /** @param {number} value */
 proto.SeppoService.SearchVariationsRequest.prototype.setLimit = function(value) {
   jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * optional uint32 scheduleId = 8;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getScheduleid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setScheduleid = function(value) {
+  jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * repeated uint32 skipVariationIds = 9;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getSkipvariationidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 9));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setSkipvariationidsList = function(value) {
+  jspb.Message.setField(this, 9, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.addSkipvariationids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 9, value, opt_index);
+};
+
+
+proto.SeppoService.SearchVariationsRequest.prototype.clearSkipvariationidsList = function() {
+  this.setSkipvariationidsList([]);
 };
 
 

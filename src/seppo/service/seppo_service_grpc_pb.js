@@ -9,6 +9,7 @@ var ew_song_pb = require('./ew_song_pb.js');
 var ew_verse_pb = require('./ew_verse_pb.js');
 var tag_pb = require('./tag_pb.js');
 var language_pb = require('./language_pb.js');
+var schedule_pb = require('./schedule_pb.js');
 var variation_pb = require('./variation_pb.js');
 var variation_text_pb = require('./variation_text_pb.js');
 var tag_variation_pb = require('./tag_variation_pb.js');
@@ -145,6 +146,28 @@ function serialize_SeppoService_CreateLanguageResponse(arg) {
 
 function deserialize_SeppoService_CreateLanguageResponse(buffer_arg) {
   return language_pb.CreateLanguageResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_CreateScheduleRequest(arg) {
+  if (!(arg instanceof schedule_pb.CreateScheduleRequest)) {
+    throw new Error('Expected argument of type SeppoService.CreateScheduleRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_CreateScheduleRequest(buffer_arg) {
+  return schedule_pb.CreateScheduleRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_CreateScheduleResponse(arg) {
+  if (!(arg instanceof schedule_pb.CreateScheduleResponse)) {
+    throw new Error('Expected argument of type SeppoService.CreateScheduleResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_CreateScheduleResponse(buffer_arg) {
+  return schedule_pb.CreateScheduleResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_CreateSongDatabaseRequest(arg) {
@@ -310,6 +333,28 @@ function serialize_SeppoService_FetchLanguageVariationsResponse(arg) {
 
 function deserialize_SeppoService_FetchLanguageVariationsResponse(buffer_arg) {
   return language_variations_pb.FetchLanguageVariationsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchScheduleByIdRequest(arg) {
+  if (!(arg instanceof schedule_pb.FetchScheduleByIdRequest)) {
+    throw new Error('Expected argument of type SeppoService.FetchScheduleByIdRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchScheduleByIdRequest(buffer_arg) {
+  return schedule_pb.FetchScheduleByIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchScheduleByIdResponse(arg) {
+  if (!(arg instanceof schedule_pb.FetchScheduleByIdResponse)) {
+    throw new Error('Expected argument of type SeppoService.FetchScheduleByIdResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchScheduleByIdResponse(buffer_arg) {
+  return schedule_pb.FetchScheduleByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_FetchSongDatabaseByIdRequest(arg) {
@@ -631,6 +676,28 @@ function deserialize_SeppoService_RemoveLanguageResponse(buffer_arg) {
   return language_pb.RemoveLanguageResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_RemoveScheduleRequest(arg) {
+  if (!(arg instanceof schedule_pb.RemoveScheduleRequest)) {
+    throw new Error('Expected argument of type SeppoService.RemoveScheduleRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveScheduleRequest(buffer_arg) {
+  return schedule_pb.RemoveScheduleRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_RemoveScheduleResponse(arg) {
+  if (!(arg instanceof schedule_pb.RemoveScheduleResponse)) {
+    throw new Error('Expected argument of type SeppoService.RemoveScheduleResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveScheduleResponse(buffer_arg) {
+  return schedule_pb.RemoveScheduleResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_RemoveSongDatabaseRequest(arg) {
   if (!(arg instanceof song_database_pb.RemoveSongDatabaseRequest)) {
     throw new Error('Expected argument of type SeppoService.RemoveSongDatabaseRequest');
@@ -774,6 +841,28 @@ function deserialize_SeppoService_SearchLanguagesRequest(buffer_arg) {
   return language_pb.SearchLanguagesRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_SearchSchedulesRequest(arg) {
+  if (!(arg instanceof schedule_pb.SearchSchedulesRequest)) {
+    throw new Error('Expected argument of type SeppoService.SearchSchedulesRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_SearchSchedulesRequest(buffer_arg) {
+  return schedule_pb.SearchSchedulesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_SearchSchedulesResponse(arg) {
+  if (!(arg instanceof schedule_pb.SearchSchedulesResponse)) {
+    throw new Error('Expected argument of type SeppoService.SearchSchedulesResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_SearchSchedulesResponse(buffer_arg) {
+  return schedule_pb.SearchSchedulesResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_SearchTagsRequest(arg) {
   if (!(arg instanceof tag_pb.SearchTagsRequest)) {
     throw new Error('Expected argument of type SeppoService.SearchTagsRequest');
@@ -895,6 +984,28 @@ function deserialize_SeppoService_UpdateLanguageResponse(buffer_arg) {
   return language_pb.UpdateLanguageResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_UpdateScheduleRequest(arg) {
+  if (!(arg instanceof schedule_pb.UpdateScheduleRequest)) {
+    throw new Error('Expected argument of type SeppoService.UpdateScheduleRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_UpdateScheduleRequest(buffer_arg) {
+  return schedule_pb.UpdateScheduleRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_UpdateScheduleResponse(arg) {
+  if (!(arg instanceof schedule_pb.UpdateScheduleResponse)) {
+    throw new Error('Expected argument of type SeppoService.UpdateScheduleResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_UpdateScheduleResponse(buffer_arg) {
+  return schedule_pb.UpdateScheduleResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_UpdateSongDatabaseRequest(arg) {
   if (!(arg instanceof song_database_pb.UpdateSongDatabaseRequest)) {
     throw new Error('Expected argument of type SeppoService.UpdateSongDatabaseRequest');
@@ -962,8 +1073,6 @@ function deserialize_SeppoService_UpdateVariationResponse(buffer_arg) {
 }
 
 
-// import "variation_song_database.proto";
-//
 var SeppoService = exports.SeppoService = {
   fetchVariationById: {
     path: '/SeppoService.Seppo/fetchVariationById',
@@ -1174,6 +1283,28 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_FetchLanguageVariationsRequest,
     responseSerialize: serialize_SeppoService_FetchLanguageVariationsResponse,
     responseDeserialize: deserialize_SeppoService_FetchLanguageVariationsResponse,
+  },
+  searchSchedules: {
+    path: '/SeppoService.Seppo/searchSchedules',
+    requestStream: false,
+    responseStream: false,
+    requestType: schedule_pb.SearchSchedulesRequest,
+    responseType: schedule_pb.SearchSchedulesResponse,
+    requestSerialize: serialize_SeppoService_SearchSchedulesRequest,
+    requestDeserialize: deserialize_SeppoService_SearchSchedulesRequest,
+    responseSerialize: serialize_SeppoService_SearchSchedulesResponse,
+    responseDeserialize: deserialize_SeppoService_SearchSchedulesResponse,
+  },
+  fetchScheduleById: {
+    path: '/SeppoService.Seppo/fetchScheduleById',
+    requestStream: false,
+    responseStream: false,
+    requestType: schedule_pb.FetchScheduleByIdRequest,
+    responseType: schedule_pb.FetchScheduleByIdResponse,
+    requestSerialize: serialize_SeppoService_FetchScheduleByIdRequest,
+    requestDeserialize: deserialize_SeppoService_FetchScheduleByIdRequest,
+    responseSerialize: serialize_SeppoService_FetchScheduleByIdResponse,
+    responseDeserialize: deserialize_SeppoService_FetchScheduleByIdResponse,
   },
   // Mutations
   //
@@ -1440,6 +1571,39 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_RemoveTagFromSongDatabaseRequest,
     responseSerialize: serialize_SeppoService_RemoveTagFromSongDatabaseResponse,
     responseDeserialize: deserialize_SeppoService_RemoveTagFromSongDatabaseResponse,
+  },
+  createSchedule: {
+    path: '/SeppoService.Seppo/createSchedule',
+    requestStream: false,
+    responseStream: false,
+    requestType: schedule_pb.CreateScheduleRequest,
+    responseType: schedule_pb.CreateScheduleResponse,
+    requestSerialize: serialize_SeppoService_CreateScheduleRequest,
+    requestDeserialize: deserialize_SeppoService_CreateScheduleRequest,
+    responseSerialize: serialize_SeppoService_CreateScheduleResponse,
+    responseDeserialize: deserialize_SeppoService_CreateScheduleResponse,
+  },
+  updateSchedule: {
+    path: '/SeppoService.Seppo/updateSchedule',
+    requestStream: false,
+    responseStream: false,
+    requestType: schedule_pb.UpdateScheduleRequest,
+    responseType: schedule_pb.UpdateScheduleResponse,
+    requestSerialize: serialize_SeppoService_UpdateScheduleRequest,
+    requestDeserialize: deserialize_SeppoService_UpdateScheduleRequest,
+    responseSerialize: serialize_SeppoService_UpdateScheduleResponse,
+    responseDeserialize: deserialize_SeppoService_UpdateScheduleResponse,
+  },
+  removeSchedule: {
+    path: '/SeppoService.Seppo/removeSchedule',
+    requestStream: false,
+    responseStream: false,
+    requestType: schedule_pb.RemoveScheduleRequest,
+    responseType: schedule_pb.RemoveScheduleResponse,
+    requestSerialize: serialize_SeppoService_RemoveScheduleRequest,
+    requestDeserialize: deserialize_SeppoService_RemoveScheduleRequest,
+    responseSerialize: serialize_SeppoService_RemoveScheduleResponse,
+    responseDeserialize: deserialize_SeppoService_RemoveScheduleResponse,
   },
 };
 
