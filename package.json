@@ -1,6 +1,6 @@
 {
 	"name": "petri",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"main": "app.js",
 	"author": {
 		"name": "Jaska"
@@ -11,7 +11,10 @@
 		"build": "webpack",
 		"test": "jest",
 		"test-changed": "jest -o",
-		"clean": "rimraf node_modules"
+		"clean": "rimraf node_modules",
+		"bump-patch": "grunt bump:patch",
+		"bump-minor": "grunt bump:minor",
+		"bump-major": "grunt bump:major"
 	},
 	"dependencies": {
 		"express": "^4.15.5",
@@ -38,13 +41,14 @@
 		"webpack": "3.4.1",
 		"babel-watch": "2.0.6",
 		"babel-loader": "7.1.1",
-		"grunt-bump": "0.8.0",
 		"eslint": "4.4.1",
 		"eslint-plugin-flowtype": "2.35.0",
 		"eslint-plugin-import": "2.7.0",
 		"eslint-plugin-jest": "20.0.3",
 		"eslint-plugin-react": "7.2.1",
 		"jest": "^20.0.4",
-		"rimraf": "^2.6.2"
+		"rimraf": "^2.6.2",
+		"grunt": "^1.0.1",
+		"grunt-bump": "^0.8.0"
 	}
 }
