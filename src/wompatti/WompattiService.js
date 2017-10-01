@@ -26,6 +26,10 @@ import {
 	RemoveWolInterfaceResponse
 } from "./WolInterface";
 
+import {
+	PingResponse
+} from "./Ping";
+
 export default new DomainService({
 	name: "wompatti",
 	messages: messages,
@@ -126,6 +130,16 @@ export default new DomainService({
 				name: "wolInterfaceId",
 				serviceTypeName: "wolInterfaceIds",
 				returnField: "wolInterfaces"
+			}
+		},
+		ping: {
+			name: "ping",
+			type: PingResponse,
+			methodType: METHOD_TYPES.QUERY,
+			args: {
+				ipAddress: {
+					type: StringType
+				}
 			}
 		},
 		createWolInterface: {

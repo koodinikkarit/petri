@@ -11,6 +11,10 @@ import {
 	WolInterface
 } from "./WolInterface";
 
+import {
+	PingResponse
+} from "./Ping";
+
 export const Computer = new DomainEntity({
 	name: "Computer",
 	fields: () => ({
@@ -25,6 +29,14 @@ export const Computer = new DomainEntity({
 		},
 		mac: {
 			type: StringType
+		},
+		awake: {
+			type: BooleanType,
+			returnField: "success",
+			inhertedArgs: {
+				ip: "ipAddress"
+			},
+			serviceMethod: "ping"
 		},
 		wolInterfaceId: {
 			type: IdType

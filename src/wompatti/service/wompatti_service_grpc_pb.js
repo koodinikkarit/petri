@@ -15,6 +15,7 @@ var telnet_interface_pb = require('./telnet_interface_pb.js');
 var command_pb = require('./command_pb.js');
 var keijo_pb = require('./keijo_pb.js');
 var severi_pb = require('./severi_pb.js');
+var ping_pb = require('./ping_pb.js');
 
 function serialize_WompattiService_CreateCommandRequest(arg) {
   if (!(arg instanceof command_pb.CreateCommandRequest)) {
@@ -696,6 +697,28 @@ function serialize_WompattiService_FetchWolInterfacesResponse(arg) {
 
 function deserialize_WompattiService_FetchWolInterfacesResponse(buffer_arg) {
   return wol_interface_pb.FetchWolInterfacesResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_PingRequest(arg) {
+  if (!(arg instanceof ping_pb.PingRequest)) {
+    throw new Error('Expected argument of type WompattiService.PingRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_PingRequest(buffer_arg) {
+  return ping_pb.PingRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_WompattiService_PingResponse(arg) {
+  if (!(arg instanceof ping_pb.PingResponse)) {
+    throw new Error('Expected argument of type WompattiService.PingResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_WompattiService_PingResponse(buffer_arg) {
+  return ping_pb.PingResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WompattiService_RemoveCommandRequest(arg) {
@@ -1405,6 +1428,17 @@ var WompattiService = exports.WompattiService = {
     requestDeserialize: deserialize_WompattiService_WakeupRequest,
     responseSerialize: serialize_WompattiService_WakeupResponse,
     responseDeserialize: deserialize_WompattiService_WakeupResponse,
+  },
+  ping: {
+    path: '/WompattiService.Wompatti/ping',
+    requestStream: false,
+    responseStream: false,
+    requestType: ping_pb.PingRequest,
+    responseType: ping_pb.PingResponse,
+    requestSerialize: serialize_WompattiService_PingRequest,
+    requestDeserialize: deserialize_WompattiService_PingRequest,
+    responseSerialize: serialize_WompattiService_PingResponse,
+    responseDeserialize: deserialize_WompattiService_PingResponse,
   },
 };
 

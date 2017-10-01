@@ -22,4 +22,5 @@ var telnet_interface_pb = require('./telnet_interface_pb.js');
 var command_pb = require('./command_pb.js');
 var keijo_pb = require('./keijo_pb.js');
 var severi_pb = require('./severi_pb.js');
+var ping_pb = require('./ping_pb.js');
 goog.object.extend(exports, proto.WompattiService);
