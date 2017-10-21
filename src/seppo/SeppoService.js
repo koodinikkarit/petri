@@ -63,6 +63,11 @@ import {
 	RemoveScheduleResponse
 } from "./Schedule";
 
+import {
+	Log,
+	LogsConnection
+} from "./Log";
+
 export default new DomainService({
 	name: "seppo",
 	messages: messages,
@@ -225,6 +230,9 @@ export default new DomainService({
 				},
 				songDatabaseId: {
 					type: IdType
+				},
+				searchWord: {
+					type: StringType
 				}
 			} 
 		},
@@ -518,6 +526,28 @@ export default new DomainService({
 				},
 				limit: {
 					type: IntType
+				}
+			}
+		},
+		searchLogs: {
+			name: "searchSeppoLogs",
+			type: LogsConnection,
+			methodType: METHOD_TYPES.QUERY,
+			args: {
+				offset: {
+					type: IntType
+				},
+				limit: {
+					type: IntType
+				},
+				startDate: {
+					type: IntType
+				},
+				endDate: {
+					type: IntType
+				},
+				searchWord: {
+					type: StringType
 				}
 			}
 		}

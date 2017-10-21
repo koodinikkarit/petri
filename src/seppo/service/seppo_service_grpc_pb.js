@@ -10,6 +10,7 @@ var ew_verse_pb = require('./ew_verse_pb.js');
 var tag_pb = require('./tag_pb.js');
 var language_pb = require('./language_pb.js');
 var schedule_pb = require('./schedule_pb.js');
+var log_pb = require('./log_pb.js');
 var variation_pb = require('./variation_pb.js');
 var variation_text_pb = require('./variation_text_pb.js');
 var tag_variation_pb = require('./tag_variation_pb.js');
@@ -797,6 +798,28 @@ function deserialize_SeppoService_SearchLanguagesRequest(buffer_arg) {
   return language_pb.SearchLanguagesRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_SearchLogsRequest(arg) {
+  if (!(arg instanceof log_pb.SearchLogsRequest)) {
+    throw new Error('Expected argument of type SeppoService.SearchLogsRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_SearchLogsRequest(buffer_arg) {
+  return log_pb.SearchLogsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_SearchLogsResponse(arg) {
+  if (!(arg instanceof log_pb.SearchLogsResponse)) {
+    throw new Error('Expected argument of type SeppoService.SearchLogsResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_SearchLogsResponse(buffer_arg) {
+  return log_pb.SearchLogsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_SearchSchedulesRequest(arg) {
   if (!(arg instanceof schedule_pb.SearchSchedulesRequest)) {
     throw new Error('Expected argument of type SeppoService.SearchSchedulesRequest');
@@ -1239,6 +1262,17 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_FetchScheduleByIdRequest,
     responseSerialize: serialize_SeppoService_FetchScheduleByIdResponse,
     responseDeserialize: deserialize_SeppoService_FetchScheduleByIdResponse,
+  },
+  searchLogs: {
+    path: '/SeppoService.Seppo/searchLogs',
+    requestStream: false,
+    responseStream: false,
+    requestType: log_pb.SearchLogsRequest,
+    responseType: log_pb.SearchLogsResponse,
+    requestSerialize: serialize_SeppoService_SearchLogsRequest,
+    requestDeserialize: deserialize_SeppoService_SearchLogsRequest,
+    responseSerialize: serialize_SeppoService_SearchLogsResponse,
+    responseDeserialize: deserialize_SeppoService_SearchLogsResponse,
   },
   // Mutations
   //

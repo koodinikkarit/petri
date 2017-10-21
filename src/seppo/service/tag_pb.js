@@ -458,7 +458,8 @@ proto.SeppoService.SearchTagsRequest.toObject = function(includeInstance, msg) {
     songdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0),
     variationid: jspb.Message.getFieldWithDefault(msg, 2, 0),
     offset: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    limit: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    limit: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    searchword: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -510,6 +511,10 @@ proto.SeppoService.SearchTagsRequest.deserializeBinaryFromReader = function(msg,
     case 4:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setLimit(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSearchword(value);
       break;
     default:
       reader.skipField();
@@ -564,6 +569,13 @@ proto.SeppoService.SearchTagsRequest.serializeBinaryToWriter = function(message,
   if (f !== 0) {
     writer.writeUint32(
       4,
+      f
+    );
+  }
+  f = message.getSearchword();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -627,6 +639,21 @@ proto.SeppoService.SearchTagsRequest.prototype.getLimit = function() {
 /** @param {number} value */
 proto.SeppoService.SearchTagsRequest.prototype.setLimit = function(value) {
   jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string searchWord = 5;
+ * @return {string}
+ */
+proto.SeppoService.SearchTagsRequest.prototype.getSearchword = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.SeppoService.SearchTagsRequest.prototype.setSearchword = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 
@@ -1471,7 +1498,8 @@ proto.SeppoService.UpdateTagResponse.prototype.toObject = function(opt_includeIn
  */
 proto.SeppoService.UpdateTagResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    tag: (f = msg.getTag()) && proto.SeppoService.Tag.toObject(includeInstance, f)
+    tag: (f = msg.getTag()) && proto.SeppoService.Tag.toObject(includeInstance, f),
+    success: jspb.Message.getFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -1513,6 +1541,10 @@ proto.SeppoService.UpdateTagResponse.deserializeBinaryFromReader = function(msg,
       reader.readMessage(value,proto.SeppoService.Tag.deserializeBinaryFromReader);
       msg.setTag(value);
       break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSuccess(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1549,6 +1581,13 @@ proto.SeppoService.UpdateTagResponse.serializeBinaryToWriter = function(message,
       proto.SeppoService.Tag.serializeBinaryToWriter
     );
   }
+  f = message.getSuccess();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -1579,6 +1618,23 @@ proto.SeppoService.UpdateTagResponse.prototype.clearTag = function() {
  */
 proto.SeppoService.UpdateTagResponse.prototype.hasTag = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional bool Success = 2;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.SeppoService.UpdateTagResponse.prototype.getSuccess = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 2, false));
+};
+
+
+/** @param {boolean} value */
+proto.SeppoService.UpdateTagResponse.prototype.setSuccess = function(value) {
+  jspb.Message.setField(this, 2, value);
 };
 
 

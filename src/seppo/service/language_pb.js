@@ -428,7 +428,9 @@ proto.SeppoService.SearchLanguagesRequest.prototype.toObject = function(opt_incl
  */
 proto.SeppoService.SearchLanguagesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    offset: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    limit: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    searchword: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -465,6 +467,18 @@ proto.SeppoService.SearchLanguagesRequest.deserializeBinaryFromReader = function
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setOffset(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLimit(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSearchword(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -493,6 +507,72 @@ proto.SeppoService.SearchLanguagesRequest.prototype.serializeBinary = function()
  */
 proto.SeppoService.SearchLanguagesRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getOffset();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getLimit();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getSearchword();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 offset = 1;
+ * @return {number}
+ */
+proto.SeppoService.SearchLanguagesRequest.prototype.getOffset = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchLanguagesRequest.prototype.setOffset = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 limit = 2;
+ * @return {number}
+ */
+proto.SeppoService.SearchLanguagesRequest.prototype.getLimit = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchLanguagesRequest.prototype.setLimit = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional string searchWord = 3;
+ * @return {string}
+ */
+proto.SeppoService.SearchLanguagesRequest.prototype.getSearchword = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.SeppoService.SearchLanguagesRequest.prototype.setSearchword = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 
@@ -1337,7 +1417,8 @@ proto.SeppoService.UpdateLanguageResponse.prototype.toObject = function(opt_incl
  */
 proto.SeppoService.UpdateLanguageResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    language: (f = msg.getLanguage()) && proto.SeppoService.Language.toObject(includeInstance, f)
+    language: (f = msg.getLanguage()) && proto.SeppoService.Language.toObject(includeInstance, f),
+    success: jspb.Message.getFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1379,6 +1460,10 @@ proto.SeppoService.UpdateLanguageResponse.deserializeBinaryFromReader = function
       reader.readMessage(value,proto.SeppoService.Language.deserializeBinaryFromReader);
       msg.setLanguage(value);
       break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSuccess(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1415,6 +1500,13 @@ proto.SeppoService.UpdateLanguageResponse.serializeBinaryToWriter = function(mes
       proto.SeppoService.Language.serializeBinaryToWriter
     );
   }
+  f = message.getSuccess();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -1445,6 +1537,23 @@ proto.SeppoService.UpdateLanguageResponse.prototype.clearLanguage = function() {
  */
 proto.SeppoService.UpdateLanguageResponse.prototype.hasLanguage = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional bool success = 3;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.SeppoService.UpdateLanguageResponse.prototype.getSuccess = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 3, false));
+};
+
+
+/** @param {boolean} value */
+proto.SeppoService.UpdateLanguageResponse.prototype.setSuccess = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 

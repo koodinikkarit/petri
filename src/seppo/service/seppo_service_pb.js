@@ -17,6 +17,7 @@ var ew_verse_pb = require('./ew_verse_pb.js');
 var tag_pb = require('./tag_pb.js');
 var language_pb = require('./language_pb.js');
 var schedule_pb = require('./schedule_pb.js');
+var log_pb = require('./log_pb.js');
 var variation_pb = require('./variation_pb.js');
 var variation_text_pb = require('./variation_text_pb.js');
 var tag_variation_pb = require('./tag_variation_pb.js');

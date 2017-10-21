@@ -1482,7 +1482,7 @@ proto.SeppoService.RemoveVariationResponse.prototype.toObject = function(opt_inc
  */
 proto.SeppoService.RemoveVariationResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    success: jspb.Message.getFieldWithDefault(msg, 1, false)
   };
 
   if (includeInstance) {
@@ -1519,6 +1519,10 @@ proto.SeppoService.RemoveVariationResponse.deserializeBinaryFromReader = functio
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSuccess(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1547,6 +1551,30 @@ proto.SeppoService.RemoveVariationResponse.prototype.serializeBinary = function(
  */
 proto.SeppoService.RemoveVariationResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getSuccess();
+  if (f) {
+    writer.writeBool(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional bool success = 1;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.SeppoService.RemoveVariationResponse.prototype.getSuccess = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 1, false));
+};
+
+
+/** @param {boolean} value */
+proto.SeppoService.RemoveVariationResponse.prototype.setSuccess = function(value) {
+  jspb.Message.setField(this, 1, value);
 };
 
 
