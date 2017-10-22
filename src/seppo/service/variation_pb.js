@@ -1970,7 +1970,9 @@ proto.SeppoService.SearchVariationsRequest.toObject = function(includeInstance, 
     offset: jspb.Message.getFieldWithDefault(msg, 6, 0),
     limit: jspb.Message.getFieldWithDefault(msg, 7, 0),
     scheduleid: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    skipvariationidsList: jspb.Message.getField(msg, 9)
+    skipvariationidsList: jspb.Message.getField(msg, 9),
+    orderby: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    searchfrom: jspb.Message.getFieldWithDefault(msg, 11, 0)
   };
 
   if (includeInstance) {
@@ -2042,6 +2044,14 @@ proto.SeppoService.SearchVariationsRequest.deserializeBinaryFromReader = functio
     case 9:
       var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
       msg.setSkipvariationidsList(value);
+      break;
+    case 10:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setOrderby(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSearchfrom(value);
       break;
     default:
       reader.skipField();
@@ -2131,6 +2141,20 @@ proto.SeppoService.SearchVariationsRequest.serializeBinaryToWriter = function(me
   if (f.length > 0) {
     writer.writePackedUint32(
       9,
+      f
+    );
+  }
+  f = message.getOrderby();
+  if (f !== 0) {
+    writer.writeUint32(
+      10,
+      f
+    );
+  }
+  f = message.getSearchfrom();
+  if (f !== 0) {
+    writer.writeUint32(
+      11,
       f
     );
   }
@@ -2285,6 +2309,36 @@ proto.SeppoService.SearchVariationsRequest.prototype.addSkipvariationids = funct
 
 proto.SeppoService.SearchVariationsRequest.prototype.clearSkipvariationidsList = function() {
   this.setSkipvariationidsList([]);
+};
+
+
+/**
+ * optional uint32 orderBy = 10;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getOrderby = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setOrderby = function(value) {
+  jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * optional uint32 searchFrom = 11;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getSearchfrom = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setSearchfrom = function(value) {
+  jspb.Message.setField(this, 11, value);
 };
 
 
