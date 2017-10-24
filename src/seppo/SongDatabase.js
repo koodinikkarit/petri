@@ -44,10 +44,7 @@ export const SongDatabase = new DomainEntity({
 export const SongDatabasesConnection = new DomainEntity({
 	name: "SongDatabasesConnection",
 	fields: () => ({
-		id: {
-			type: IdType
-		},
-		maxSongDatabase: {
+		maxSongDatabases: {
 			type: IntType
 		},
 		songDatabases: {

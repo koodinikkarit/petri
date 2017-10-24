@@ -1,10 +1,13 @@
 import {
 	DomainEntity,
 	IdType,
-	StringType
+	StringType,
+	IntType,
+	ListType,
+	BooleanType
 } from "grpc-graphql-router-tools";
 
-export default new DomainEntity({
+export const Language = new DomainEntity({
 	name: "Language",
 	fields: () => ({
 		id: {
@@ -12,6 +15,48 @@ export default new DomainEntity({
 		},
 		name: {
 			type: StringType
+		}
+	})
+});
+
+export const LanguagesConnection = new DomainEntity({
+	name: "LanguageConnection",
+	fields: () => ({
+		maxLanguages: {
+			type: IntType
+		},
+		languages: {
+			type: new ListType(Language)
+		}
+	})
+});
+
+export const CreateLanguageResponse = new DomainEntity({
+	name: "CreateLanguageResponse",
+	fields: () => ({
+		language: {
+			type: Language
+		}
+	})
+});
+
+export const UpdateLanguageResponse = new DomainEntity({
+	name: "UpdateLanguageResponse",
+	fields: () => ({
+		success: {
+			type: BooleanType
+		},
+		language: {
+			type: Language
+		}
+	})
+});
+
+export const RemoveLanguageResponse = new DomainEntity({
+	name: "RemoveLanguageResponse",
+	fields: () => ({
+		success: {
+			type: BooleanType
 		}
 	})
 });

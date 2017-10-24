@@ -17,6 +17,10 @@ import {
 	VariationText
 } from "./VariationText";
 
+import {
+	Language
+} from "./Language";
+
 export const Variation = new DomainEntity({
 	name: "Variation",
 	fields: () => ({
@@ -24,26 +28,47 @@ export const Variation = new DomainEntity({
 			type: IdType
 		},
 		name: {
-			type: StringType
+			type: StringType,
+			inhertedArgs: {
+				variationVersionId: "variationVersionId"
+			},
+			serviceMethod: "fetchVariationVersionById",
+			returnField: "name"
 		},
 		version: {
-			type: IntType
+			type: IntType,
+			inhertedArgs: {
+				variationVersionId: "variationVersionId"
+			},
+			serviceMethod: "fetchVariationVersionById",
+			returnField: "version"
 		},
 		text: {
 			type: StringType,
 			inhertedArgs: {
-				id: "variationId"
+				variationVersionId: "variationVersionId"
 			},
-			serviceMethod: "fetchVariationTextByVariationId",
+			serviceMethod: "fetchVariationVersionById",
 			returnField: "text"
 		},
 		languageId: {
 			type: IdType
 		},
+		songId: {
+			type: IdType
+		},
+		language: {
+			type: Language,
+			inhertedArgs: {
+				languageId: "languageId"
+			},
+			serviceMethod: "fetchLanguageById",
+			returnField: "language"
+		},
 		tags: {
 			type: TagsConnection,
 			inhertedArgs: {
-				id: "variationId"
+				variationVersionId: "variationVersionId"
 			},
 			serviceMethod: "searchTags",
 			args: {
@@ -58,9 +83,9 @@ export const Variation = new DomainEntity({
 		songDatabases: {
 			type: SongDatabasesConnection,
 			inhertedArgs: {
-				id: "variationId"
+				variationVersionId: "variationVersionId"
 			},
-			serviceMethod: "fetchSongDatabases",
+			serviceMethod: "searchSongDatabases",
 			args: {
 				offset: {
 					type: IntType

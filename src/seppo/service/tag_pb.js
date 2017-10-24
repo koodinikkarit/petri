@@ -16,8 +16,8 @@ goog.exportSymbol('proto.SeppoService.FetchTagByIdResponse', null, global);
 goog.exportSymbol('proto.SeppoService.RemoveTagRequest', null, global);
 goog.exportSymbol('proto.SeppoService.RemoveTagResponse', null, global);
 goog.exportSymbol('proto.SeppoService.SearchTagsRequest', null, global);
+goog.exportSymbol('proto.SeppoService.SearchTagsResponse', null, global);
 goog.exportSymbol('proto.SeppoService.Tag', null, global);
-goog.exportSymbol('proto.SeppoService.TagsConnection', null, global);
 goog.exportSymbol('proto.SeppoService.UpdateTagRequest', null, global);
 goog.exportSymbol('proto.SeppoService.UpdateTagResponse', null, global);
 
@@ -198,228 +198,6 @@ proto.SeppoService.Tag.prototype.setName = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.SeppoService.TagsConnection = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.TagsConnection.repeatedFields_, null);
-};
-goog.inherits(proto.SeppoService.TagsConnection, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.SeppoService.TagsConnection.displayName = 'proto.SeppoService.TagsConnection';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.SeppoService.TagsConnection.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.SeppoService.TagsConnection.prototype.toObject = function(opt_includeInstance) {
-  return proto.SeppoService.TagsConnection.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.SeppoService.TagsConnection} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.SeppoService.TagsConnection.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    tagsList: jspb.Message.toObjectList(msg.getTagsList(),
-    proto.SeppoService.Tag.toObject, includeInstance),
-    maxtags: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    id: jspb.Message.getFieldWithDefault(msg, 3, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.SeppoService.TagsConnection}
- */
-proto.SeppoService.TagsConnection.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.SeppoService.TagsConnection;
-  return proto.SeppoService.TagsConnection.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.SeppoService.TagsConnection} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.SeppoService.TagsConnection}
- */
-proto.SeppoService.TagsConnection.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.SeppoService.Tag;
-      reader.readMessage(value,proto.SeppoService.Tag.deserializeBinaryFromReader);
-      msg.addTags(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setMaxtags(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setId(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.SeppoService.TagsConnection.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.SeppoService.TagsConnection.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.SeppoService.TagsConnection} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.SeppoService.TagsConnection.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTagsList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      proto.SeppoService.Tag.serializeBinaryToWriter
-    );
-  }
-  f = message.getMaxtags();
-  if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
-    );
-  }
-  f = message.getId();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
-};
-
-
-/**
- * repeated Tag tags = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.SeppoService.Tag>}
- */
-proto.SeppoService.TagsConnection.prototype.getTagsList = function() {
-  return /** @type{!Array.<!proto.SeppoService.Tag>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.Tag, 1));
-};
-
-
-/** @param {!Array.<!proto.SeppoService.Tag>} value */
-proto.SeppoService.TagsConnection.prototype.setTagsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.SeppoService.Tag=} opt_value
- * @param {number=} opt_index
- * @return {!proto.SeppoService.Tag}
- */
-proto.SeppoService.TagsConnection.prototype.addTags = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.SeppoService.Tag, opt_index);
-};
-
-
-proto.SeppoService.TagsConnection.prototype.clearTagsList = function() {
-  this.setTagsList([]);
-};
-
-
-/**
- * optional uint32 maxTags = 2;
- * @return {number}
- */
-proto.SeppoService.TagsConnection.prototype.getMaxtags = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.TagsConnection.prototype.setMaxtags = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 id = 3;
- * @return {number}
- */
-proto.SeppoService.TagsConnection.prototype.getId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.TagsConnection.prototype.setId = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
 proto.SeppoService.SearchTagsRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -456,7 +234,7 @@ proto.SeppoService.SearchTagsRequest.prototype.toObject = function(opt_includeIn
 proto.SeppoService.SearchTagsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     songdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    variationid: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    variationversionid: jspb.Message.getFieldWithDefault(msg, 2, 0),
     offset: jspb.Message.getFieldWithDefault(msg, 3, 0),
     limit: jspb.Message.getFieldWithDefault(msg, 4, 0),
     searchword: jspb.Message.getFieldWithDefault(msg, 5, "")
@@ -502,7 +280,7 @@ proto.SeppoService.SearchTagsRequest.deserializeBinaryFromReader = function(msg,
       break;
     case 2:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setVariationid(value);
+      msg.setVariationversionid(value);
       break;
     case 3:
       var value = /** @type {number} */ (reader.readUint32());
@@ -551,7 +329,7 @@ proto.SeppoService.SearchTagsRequest.serializeBinaryToWriter = function(message,
       f
     );
   }
-  f = message.getVariationid();
+  f = message.getVariationversionid();
   if (f !== 0) {
     writer.writeUint32(
       2,
@@ -598,16 +376,16 @@ proto.SeppoService.SearchTagsRequest.prototype.setSongdatabaseid = function(valu
 
 
 /**
- * optional uint32 variationId = 2;
+ * optional uint32 variationVersionId = 2;
  * @return {number}
  */
-proto.SeppoService.SearchTagsRequest.prototype.getVariationid = function() {
+proto.SeppoService.SearchTagsRequest.prototype.getVariationversionid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.SeppoService.SearchTagsRequest.prototype.setVariationid = function(value) {
+proto.SeppoService.SearchTagsRequest.prototype.setVariationversionid = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
@@ -654,6 +432,201 @@ proto.SeppoService.SearchTagsRequest.prototype.getSearchword = function() {
 /** @param {string} value */
 proto.SeppoService.SearchTagsRequest.prototype.setSearchword = function(value) {
   jspb.Message.setField(this, 5, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SeppoService.SearchTagsResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.SearchTagsResponse.repeatedFields_, null);
+};
+goog.inherits(proto.SeppoService.SearchTagsResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SeppoService.SearchTagsResponse.displayName = 'proto.SeppoService.SearchTagsResponse';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SeppoService.SearchTagsResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SeppoService.SearchTagsResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.SeppoService.SearchTagsResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SeppoService.SearchTagsResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.SeppoService.SearchTagsResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    tagsList: jspb.Message.toObjectList(msg.getTagsList(),
+    proto.SeppoService.Tag.toObject, includeInstance),
+    maxtags: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SeppoService.SearchTagsResponse}
+ */
+proto.SeppoService.SearchTagsResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SeppoService.SearchTagsResponse;
+  return proto.SeppoService.SearchTagsResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SeppoService.SearchTagsResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SeppoService.SearchTagsResponse}
+ */
+proto.SeppoService.SearchTagsResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.SeppoService.Tag;
+      reader.readMessage(value,proto.SeppoService.Tag.deserializeBinaryFromReader);
+      msg.addTags(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setMaxtags(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SeppoService.SearchTagsResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SeppoService.SearchTagsResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SeppoService.SearchTagsResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.SeppoService.SearchTagsResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTagsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.SeppoService.Tag.serializeBinaryToWriter
+    );
+  }
+  f = message.getMaxtags();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated Tag tags = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.SeppoService.Tag>}
+ */
+proto.SeppoService.SearchTagsResponse.prototype.getTagsList = function() {
+  return /** @type{!Array.<!proto.SeppoService.Tag>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.Tag, 1));
+};
+
+
+/** @param {!Array.<!proto.SeppoService.Tag>} value */
+proto.SeppoService.SearchTagsResponse.prototype.setTagsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.SeppoService.Tag=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.SeppoService.Tag}
+ */
+proto.SeppoService.SearchTagsResponse.prototype.addTags = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.SeppoService.Tag, opt_index);
+};
+
+
+proto.SeppoService.SearchTagsResponse.prototype.clearTagsList = function() {
+  this.setTagsList([]);
+};
+
+
+/**
+ * optional uint32 maxTags = 2;
+ * @return {number}
+ */
+proto.SeppoService.SearchTagsResponse.prototype.getMaxtags = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchTagsResponse.prototype.setMaxtags = function(value) {
+  jspb.Message.setField(this, 2, value);
 };
 
 

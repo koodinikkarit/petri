@@ -67,7 +67,9 @@ proto.SeppoService.Schedule.prototype.toObject = function(opt_includeInstance) {
 proto.SeppoService.Schedule.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 2, "")
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    start: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    end: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -112,6 +114,14 @@ proto.SeppoService.Schedule.deserializeBinaryFromReader = function(msg, reader) 
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStart(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setEnd(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -154,6 +164,20 @@ proto.SeppoService.Schedule.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
+  f = message.getStart();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
+      f
+    );
+  }
+  f = message.getEnd();
+  if (f !== 0) {
+    writer.writeInt64(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -184,6 +208,36 @@ proto.SeppoService.Schedule.prototype.getName = function() {
 /** @param {string} value */
 proto.SeppoService.Schedule.prototype.setName = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional int64 start = 3;
+ * @return {number}
+ */
+proto.SeppoService.Schedule.prototype.getStart = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.Schedule.prototype.setStart = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional int64 end = 4;
+ * @return {number}
+ */
+proto.SeppoService.Schedule.prototype.getEnd = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.Schedule.prototype.setEnd = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 
@@ -926,7 +980,9 @@ proto.SeppoService.CreateScheduleRequest.prototype.toObject = function(opt_inclu
  */
 proto.SeppoService.CreateScheduleRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    start: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    end: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -967,6 +1023,14 @@ proto.SeppoService.CreateScheduleRequest.deserializeBinaryFromReader = function(
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStart(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setEnd(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1002,6 +1066,20 @@ proto.SeppoService.CreateScheduleRequest.serializeBinaryToWriter = function(mess
       f
     );
   }
+  f = message.getStart();
+  if (f !== 0) {
+    writer.writeInt64(
+      2,
+      f
+    );
+  }
+  f = message.getEnd();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -1017,6 +1095,36 @@ proto.SeppoService.CreateScheduleRequest.prototype.getName = function() {
 /** @param {string} value */
 proto.SeppoService.CreateScheduleRequest.prototype.setName = function(value) {
   jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional int64 start = 2;
+ * @return {number}
+ */
+proto.SeppoService.CreateScheduleRequest.prototype.getStart = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.CreateScheduleRequest.prototype.setStart = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional int64 end = 3;
+ * @return {number}
+ */
+proto.SeppoService.CreateScheduleRequest.prototype.getEnd = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.CreateScheduleRequest.prototype.setEnd = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 
@@ -1233,7 +1341,8 @@ proto.SeppoService.UpdateScheduleRequest.toObject = function(includeInstance, ms
     scheduleid: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     addsongidsList: jspb.Message.getField(msg, 3),
-    removesongidsList: jspb.Message.getField(msg, 4)
+    removesongidsList: jspb.Message.getField(msg, 4),
+    changeorderidsMap: (f = msg.getChangeorderidsMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -1285,6 +1394,12 @@ proto.SeppoService.UpdateScheduleRequest.deserializeBinaryFromReader = function(
     case 4:
       var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
       msg.setRemovesongidsList(value);
+      break;
+    case 5:
+      var value = msg.getChangeorderidsMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readUint32, jspb.BinaryReader.prototype.readUint32);
+         });
       break;
     default:
       reader.skipField();
@@ -1341,6 +1456,10 @@ proto.SeppoService.UpdateScheduleRequest.serializeBinaryToWriter = function(mess
       4,
       f
     );
+  }
+  f = message.getChangeorderidsMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(5, writer, jspb.BinaryWriter.prototype.writeUint32, jspb.BinaryWriter.prototype.writeUint32);
   }
 };
 
@@ -1434,6 +1553,24 @@ proto.SeppoService.UpdateScheduleRequest.prototype.addRemovesongids = function(v
 
 proto.SeppoService.UpdateScheduleRequest.prototype.clearRemovesongidsList = function() {
   this.setRemovesongidsList([]);
+};
+
+
+/**
+ * map<uint32, uint32> changeOrderIds = 5;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<number,number>}
+ */
+proto.SeppoService.UpdateScheduleRequest.prototype.getChangeorderidsMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<number,number>} */ (
+      jspb.Message.getMapField(this, 5, opt_noLazyCreate,
+      null));
+};
+
+
+proto.SeppoService.UpdateScheduleRequest.prototype.clearChangeorderidsMap = function() {
+  this.getChangeorderidsMap().clear();
 };
 
 
