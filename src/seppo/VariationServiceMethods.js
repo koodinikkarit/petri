@@ -7,6 +7,17 @@ import {
 } from "./VariationVersion";
 
 export default {
+	fetchNewestVariationVersionByVariationId: {
+		name: "newestVariationVersion",
+		returnField: "variationVersions",
+		type: VariationVersion,
+		methodType: METHOD_TYPES.QUERY,
+		dataLoader: {
+			name: "variationId",
+			serviceTypeName: "variationIds",
+			returnField: "variationVersions"
+		}
+	},
 	fetchVariationVersionById: {
 		name: "variationVersion",
 		returnField: "variationVersions",

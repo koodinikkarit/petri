@@ -188,6 +188,28 @@ function deserialize_SeppoService_FetchLanguageByIdResponse(buffer_arg) {
   return language_pb.FetchLanguageByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_FetchNewestVariationVersionByVariationIdRequest(arg) {
+  if (!(arg instanceof variation_version_pb.FetchNewestVariationVersionByVariationIdRequest)) {
+    throw new Error('Expected argument of type SeppoService.FetchNewestVariationVersionByVariationIdRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchNewestVariationVersionByVariationIdRequest(buffer_arg) {
+  return variation_version_pb.FetchNewestVariationVersionByVariationIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchNewestVariationVersionByVariationIdResponse(arg) {
+  if (!(arg instanceof variation_version_pb.FetchNewestVariationVersionByVariationIdResponse)) {
+    throw new Error('Expected argument of type SeppoService.FetchNewestVariationVersionByVariationIdResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchNewestVariationVersionByVariationIdResponse(buffer_arg) {
+  return variation_version_pb.FetchNewestVariationVersionByVariationIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_FetchScheduleByIdRequest(arg) {
   if (!(arg instanceof schedule_pb.FetchScheduleByIdRequest)) {
     throw new Error('Expected argument of type SeppoService.FetchScheduleByIdRequest');
@@ -739,6 +761,17 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_SearchVariationsRequest,
     responseSerialize: serialize_SeppoService_SearchVariationsResponse,
     responseDeserialize: deserialize_SeppoService_SearchVariationsResponse,
+  },
+  fetchNewestVariationVersionByVariationId: {
+    path: '/SeppoService.Seppo/fetchNewestVariationVersionByVariationId',
+    requestStream: false,
+    responseStream: false,
+    requestType: variation_version_pb.FetchNewestVariationVersionByVariationIdRequest,
+    responseType: variation_version_pb.FetchNewestVariationVersionByVariationIdResponse,
+    requestSerialize: serialize_SeppoService_FetchNewestVariationVersionByVariationIdRequest,
+    requestDeserialize: deserialize_SeppoService_FetchNewestVariationVersionByVariationIdRequest,
+    responseSerialize: serialize_SeppoService_FetchNewestVariationVersionByVariationIdResponse,
+    responseDeserialize: deserialize_SeppoService_FetchNewestVariationVersionByVariationIdResponse,
   },
   fetchVariationVersionById: {
     path: '/SeppoService.Seppo/fetchVariationVersionById',

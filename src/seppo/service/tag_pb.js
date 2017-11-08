@@ -234,7 +234,7 @@ proto.SeppoService.SearchTagsRequest.prototype.toObject = function(opt_includeIn
 proto.SeppoService.SearchTagsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     songdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    variationversionid: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    variationid: jspb.Message.getFieldWithDefault(msg, 2, 0),
     offset: jspb.Message.getFieldWithDefault(msg, 3, 0),
     limit: jspb.Message.getFieldWithDefault(msg, 4, 0),
     searchword: jspb.Message.getFieldWithDefault(msg, 5, "")
@@ -280,7 +280,7 @@ proto.SeppoService.SearchTagsRequest.deserializeBinaryFromReader = function(msg,
       break;
     case 2:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setVariationversionid(value);
+      msg.setVariationid(value);
       break;
     case 3:
       var value = /** @type {number} */ (reader.readUint32());
@@ -329,7 +329,7 @@ proto.SeppoService.SearchTagsRequest.serializeBinaryToWriter = function(message,
       f
     );
   }
-  f = message.getVariationversionid();
+  f = message.getVariationid();
   if (f !== 0) {
     writer.writeUint32(
       2,
@@ -376,16 +376,16 @@ proto.SeppoService.SearchTagsRequest.prototype.setSongdatabaseid = function(valu
 
 
 /**
- * optional uint32 variationVersionId = 2;
+ * optional uint32 variationId = 2;
  * @return {number}
  */
-proto.SeppoService.SearchTagsRequest.prototype.getVariationversionid = function() {
+proto.SeppoService.SearchTagsRequest.prototype.getVariationid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.SeppoService.SearchTagsRequest.prototype.setVariationversionid = function(value) {
+proto.SeppoService.SearchTagsRequest.prototype.setVariationid = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 

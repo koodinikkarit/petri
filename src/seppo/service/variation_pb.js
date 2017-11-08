@@ -1277,7 +1277,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.SeppoService.CreateVariationRequest.repeatedFields_ = [4,5];
+proto.SeppoService.CreateVariationRequest.repeatedFields_ = [3,4];
 
 
 
@@ -1309,9 +1309,8 @@ proto.SeppoService.CreateVariationRequest.toObject = function(includeInstance, m
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     text: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    origin: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    tagidsList: jspb.Message.getField(msg, 4),
-    songdatabaseidsList: jspb.Message.getField(msg, 5)
+    tagidsList: jspb.Message.getField(msg, 3),
+    songdatabaseidsList: jspb.Message.getField(msg, 4)
   };
 
   if (includeInstance) {
@@ -1357,14 +1356,10 @@ proto.SeppoService.CreateVariationRequest.deserializeBinaryFromReader = function
       msg.setText(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setOrigin(value);
-      break;
-    case 4:
       var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
       msg.setTagidsList(value);
       break;
-    case 5:
+    case 4:
       var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
       msg.setSongdatabaseidsList(value);
       break;
@@ -1410,24 +1405,17 @@ proto.SeppoService.CreateVariationRequest.serializeBinaryToWriter = function(mes
       f
     );
   }
-  f = message.getOrigin();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
   f = message.getTagidsList();
   if (f.length > 0) {
     writer.writePackedUint32(
-      4,
+      3,
       f
     );
   }
   f = message.getSongdatabaseidsList();
   if (f.length > 0) {
     writer.writePackedUint32(
-      5,
+      4,
       f
     );
   }
@@ -1465,34 +1453,19 @@ proto.SeppoService.CreateVariationRequest.prototype.setText = function(value) {
 
 
 /**
- * optional string origin = 3;
- * @return {string}
- */
-proto.SeppoService.CreateVariationRequest.prototype.getOrigin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/** @param {string} value */
-proto.SeppoService.CreateVariationRequest.prototype.setOrigin = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * repeated uint32 tagIds = 4;
+ * repeated uint32 tagIds = 3;
  * If you change this array by adding, removing or replacing elements, or if you
  * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.CreateVariationRequest.prototype.getTagidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 4));
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 3));
 };
 
 
 /** @param {!Array.<number>} value */
 proto.SeppoService.CreateVariationRequest.prototype.setTagidsList = function(value) {
-  jspb.Message.setField(this, 4, value || []);
+  jspb.Message.setField(this, 3, value || []);
 };
 
 
@@ -1501,7 +1474,7 @@ proto.SeppoService.CreateVariationRequest.prototype.setTagidsList = function(val
  * @param {number=} opt_index
  */
 proto.SeppoService.CreateVariationRequest.prototype.addTagids = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 4, value, opt_index);
+  jspb.Message.addToRepeatedField(this, 3, value, opt_index);
 };
 
 
@@ -1511,19 +1484,19 @@ proto.SeppoService.CreateVariationRequest.prototype.clearTagidsList = function()
 
 
 /**
- * repeated uint32 songDatabaseIds = 5;
+ * repeated uint32 songDatabaseIds = 4;
  * If you change this array by adding, removing or replacing elements, or if you
  * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.CreateVariationRequest.prototype.getSongdatabaseidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 5));
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 4));
 };
 
 
 /** @param {!Array.<number>} value */
 proto.SeppoService.CreateVariationRequest.prototype.setSongdatabaseidsList = function(value) {
-  jspb.Message.setField(this, 5, value || []);
+  jspb.Message.setField(this, 4, value || []);
 };
 
 
@@ -1532,7 +1505,7 @@ proto.SeppoService.CreateVariationRequest.prototype.setSongdatabaseidsList = fun
  * @param {number=} opt_index
  */
 proto.SeppoService.CreateVariationRequest.prototype.addSongdatabaseids = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+  jspb.Message.addToRepeatedField(this, 4, value, opt_index);
 };
 
 

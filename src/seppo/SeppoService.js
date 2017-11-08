@@ -150,7 +150,7 @@ export default new DomainService({
 				type: SongDatabasesConnection,
 				methodType: METHOD_TYPES.QUERY,
 				args: {
-					variationVersionId: {
+					variationId: {
 						type: IdType
 					},
 					offset: {
@@ -207,7 +207,7 @@ export default new DomainService({
 					limit: {
 						type: IntType
 					},
-					variationVersionId: {
+					variationId: {
 						type: IdType
 					},
 					songDatabaseId: {
