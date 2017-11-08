@@ -31,7 +31,9 @@
 		"lodash": "4.17.4",
 		"graphql-tools": "^1.0.0",
 		"read-yaml": "1.1.0",
-		"grpc-graphql-router-tools": "^0.0.26"
+		"grpc-graphql-router-tools": "^0.0.26",
+		"cors": "^2.8.4",
+		"express-session": "^1.15.6"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.0",
