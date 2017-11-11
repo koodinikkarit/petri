@@ -11,6 +11,52 @@ var schedule_pb = require('./schedule_pb.js');
 var variation_version_pb = require('./variation_version_pb.js');
 var log_pb = require('./log_pb.js');
 var variation_pb = require('./variation_pb.js');
+var author_pb = require('./author_pb.js');
+var copyright_pb = require('./copyright_pb.js');
+
+function serialize_SeppoService_CreateAuthorRequest(arg) {
+  if (!(arg instanceof author_pb.CreateAuthorRequest)) {
+    throw new Error('Expected argument of type SeppoService.CreateAuthorRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_CreateAuthorRequest(buffer_arg) {
+  return author_pb.CreateAuthorRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_CreateAuthorResponse(arg) {
+  if (!(arg instanceof author_pb.CreateAuthorResponse)) {
+    throw new Error('Expected argument of type SeppoService.CreateAuthorResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_CreateAuthorResponse(buffer_arg) {
+  return author_pb.CreateAuthorResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_CreateCopyrightRequest(arg) {
+  if (!(arg instanceof copyright_pb.CreateCopyrightRequest)) {
+    throw new Error('Expected argument of type SeppoService.CreateCopyrightRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_CreateCopyrightRequest(buffer_arg) {
+  return copyright_pb.CreateCopyrightRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_CreateCopyrightResponse(arg) {
+  if (!(arg instanceof copyright_pb.CreateCopyrightResponse)) {
+    throw new Error('Expected argument of type SeppoService.CreateCopyrightResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_CreateCopyrightResponse(buffer_arg) {
+  return copyright_pb.CreateCopyrightResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
 
 function serialize_SeppoService_CreateEwDatabaseRequest(arg) {
   if (!(arg instanceof ew_database_pb.CreateEwDatabaseRequest)) {
@@ -142,6 +188,50 @@ function serialize_SeppoService_CreateVariationResponse(arg) {
 
 function deserialize_SeppoService_CreateVariationResponse(buffer_arg) {
   return variation_pb.CreateVariationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchAuthorByIdRequest(arg) {
+  if (!(arg instanceof author_pb.FetchAuthorByIdRequest)) {
+    throw new Error('Expected argument of type SeppoService.FetchAuthorByIdRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchAuthorByIdRequest(buffer_arg) {
+  return author_pb.FetchAuthorByIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchAuthorByIdResponse(arg) {
+  if (!(arg instanceof author_pb.FetchAuthorByIdResponse)) {
+    throw new Error('Expected argument of type SeppoService.FetchAuthorByIdResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchAuthorByIdResponse(buffer_arg) {
+  return author_pb.FetchAuthorByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchCopyrightByIdRequest(arg) {
+  if (!(arg instanceof copyright_pb.FetchCopyrightByIdRequest)) {
+    throw new Error('Expected argument of type SeppoService.FetchCopyrightByIdRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchCopyrightByIdRequest(buffer_arg) {
+  return copyright_pb.FetchCopyrightByIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_FetchCopyrightByIdResponse(arg) {
+  if (!(arg instanceof copyright_pb.FetchCopyrightByIdResponse)) {
+    throw new Error('Expected argument of type SeppoService.FetchCopyrightByIdResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_FetchCopyrightByIdResponse(buffer_arg) {
+  return copyright_pb.FetchCopyrightByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_FetchEwDatabaseByIdRequest(arg) {
@@ -320,6 +410,50 @@ function deserialize_SeppoService_FetchVariationVersionByIdResponse(buffer_arg) 
   return variation_version_pb.FetchVariationVersionByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_SeppoService_RemoveAuthorRequest(arg) {
+  if (!(arg instanceof author_pb.RemoveAuthorRequest)) {
+    throw new Error('Expected argument of type SeppoService.RemoveAuthorRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveAuthorRequest(buffer_arg) {
+  return author_pb.RemoveAuthorRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_RemoveAuthorResponse(arg) {
+  if (!(arg instanceof author_pb.RemoveAuthorResponse)) {
+    throw new Error('Expected argument of type SeppoService.RemoveAuthorResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveAuthorResponse(buffer_arg) {
+  return author_pb.RemoveAuthorResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_RemoveCopyrightRequest(arg) {
+  if (!(arg instanceof copyright_pb.RemoveCopyrightRequest)) {
+    throw new Error('Expected argument of type SeppoService.RemoveCopyrightRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveCopyrightRequest(buffer_arg) {
+  return copyright_pb.RemoveCopyrightRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_RemoveCopyrightResponse(arg) {
+  if (!(arg instanceof copyright_pb.RemoveCopyrightResponse)) {
+    throw new Error('Expected argument of type SeppoService.RemoveCopyrightResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_RemoveCopyrightResponse(buffer_arg) {
+  return copyright_pb.RemoveCopyrightResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_SeppoService_RemoveEwDatabaseRequest(arg) {
   if (!(arg instanceof ew_database_pb.RemoveEwDatabaseRequest)) {
     throw new Error('Expected argument of type SeppoService.RemoveEwDatabaseRequest');
@@ -450,6 +584,50 @@ function serialize_SeppoService_RemoveVariationResponse(arg) {
 
 function deserialize_SeppoService_RemoveVariationResponse(buffer_arg) {
   return variation_pb.RemoveVariationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_SearchAuthorsRequest(arg) {
+  if (!(arg instanceof author_pb.SearchAuthorsRequest)) {
+    throw new Error('Expected argument of type SeppoService.SearchAuthorsRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_SearchAuthorsRequest(buffer_arg) {
+  return author_pb.SearchAuthorsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_SearchAuthorsResponse(arg) {
+  if (!(arg instanceof author_pb.SearchAuthorsResponse)) {
+    throw new Error('Expected argument of type SeppoService.SearchAuthorsResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_SearchAuthorsResponse(buffer_arg) {
+  return author_pb.SearchAuthorsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_SearchCopyrightsRequest(arg) {
+  if (!(arg instanceof copyright_pb.SearchCopyrightsRequest)) {
+    throw new Error('Expected argument of type SeppoService.SearchCopyrightsRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_SearchCopyrightsRequest(buffer_arg) {
+  return copyright_pb.SearchCopyrightsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_SearchCopyrightsResponse(arg) {
+  if (!(arg instanceof copyright_pb.SearchCopyrightsResponse)) {
+    throw new Error('Expected argument of type SeppoService.SearchCopyrightsResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_SearchCopyrightsResponse(buffer_arg) {
+  return copyright_pb.SearchCopyrightsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_SearchEwDatabasesRequest(arg) {
@@ -604,6 +782,50 @@ function serialize_SeppoService_SearchVariationsResponse(arg) {
 
 function deserialize_SeppoService_SearchVariationsResponse(buffer_arg) {
   return variation_pb.SearchVariationsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_UpdateAuthorRequest(arg) {
+  if (!(arg instanceof author_pb.UpdateAuthorRequest)) {
+    throw new Error('Expected argument of type SeppoService.UpdateAuthorRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_UpdateAuthorRequest(buffer_arg) {
+  return author_pb.UpdateAuthorRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_UpdateAuthorResponse(arg) {
+  if (!(arg instanceof author_pb.UpdateAuthorResponse)) {
+    throw new Error('Expected argument of type SeppoService.UpdateAuthorResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_UpdateAuthorResponse(buffer_arg) {
+  return author_pb.UpdateAuthorResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_UpdateCopyrightRequest(arg) {
+  if (!(arg instanceof copyright_pb.UpdateCopyrightRequest)) {
+    throw new Error('Expected argument of type SeppoService.UpdateCopyrightRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_UpdateCopyrightRequest(buffer_arg) {
+  return copyright_pb.UpdateCopyrightRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_SeppoService_UpdateCopyrightResponse(arg) {
+  if (!(arg instanceof copyright_pb.UpdateCopyrightResponse)) {
+    throw new Error('Expected argument of type SeppoService.UpdateCopyrightResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_SeppoService_UpdateCopyrightResponse(buffer_arg) {
+  return copyright_pb.UpdateCopyrightResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_SeppoService_UpdateEwDatabaseRequest(arg) {
@@ -894,6 +1116,50 @@ var SeppoService = exports.SeppoService = {
     responseSerialize: serialize_SeppoService_FetchScheduleByIdResponse,
     responseDeserialize: deserialize_SeppoService_FetchScheduleByIdResponse,
   },
+  searchAuthors: {
+    path: '/SeppoService.Seppo/searchAuthors',
+    requestStream: false,
+    responseStream: false,
+    requestType: author_pb.SearchAuthorsRequest,
+    responseType: author_pb.SearchAuthorsResponse,
+    requestSerialize: serialize_SeppoService_SearchAuthorsRequest,
+    requestDeserialize: deserialize_SeppoService_SearchAuthorsRequest,
+    responseSerialize: serialize_SeppoService_SearchAuthorsResponse,
+    responseDeserialize: deserialize_SeppoService_SearchAuthorsResponse,
+  },
+  fetchAuthorById: {
+    path: '/SeppoService.Seppo/fetchAuthorById',
+    requestStream: false,
+    responseStream: false,
+    requestType: author_pb.FetchAuthorByIdRequest,
+    responseType: author_pb.FetchAuthorByIdResponse,
+    requestSerialize: serialize_SeppoService_FetchAuthorByIdRequest,
+    requestDeserialize: deserialize_SeppoService_FetchAuthorByIdRequest,
+    responseSerialize: serialize_SeppoService_FetchAuthorByIdResponse,
+    responseDeserialize: deserialize_SeppoService_FetchAuthorByIdResponse,
+  },
+  searchCopyrights: {
+    path: '/SeppoService.Seppo/searchCopyrights',
+    requestStream: false,
+    responseStream: false,
+    requestType: copyright_pb.SearchCopyrightsRequest,
+    responseType: copyright_pb.SearchCopyrightsResponse,
+    requestSerialize: serialize_SeppoService_SearchCopyrightsRequest,
+    requestDeserialize: deserialize_SeppoService_SearchCopyrightsRequest,
+    responseSerialize: serialize_SeppoService_SearchCopyrightsResponse,
+    responseDeserialize: deserialize_SeppoService_SearchCopyrightsResponse,
+  },
+  fetchCopyrightById: {
+    path: '/SeppoService.Seppo/fetchCopyrightById',
+    requestStream: false,
+    responseStream: false,
+    requestType: copyright_pb.FetchCopyrightByIdRequest,
+    responseType: copyright_pb.FetchCopyrightByIdResponse,
+    requestSerialize: serialize_SeppoService_FetchCopyrightByIdRequest,
+    requestDeserialize: deserialize_SeppoService_FetchCopyrightByIdRequest,
+    responseSerialize: serialize_SeppoService_FetchCopyrightByIdResponse,
+    responseDeserialize: deserialize_SeppoService_FetchCopyrightByIdResponse,
+  },
   searchLogs: {
     path: '/SeppoService.Seppo/searchLogs',
     requestStream: false,
@@ -1104,6 +1370,72 @@ var SeppoService = exports.SeppoService = {
     requestDeserialize: deserialize_SeppoService_RemoveScheduleRequest,
     responseSerialize: serialize_SeppoService_RemoveScheduleResponse,
     responseDeserialize: deserialize_SeppoService_RemoveScheduleResponse,
+  },
+  createAuthor: {
+    path: '/SeppoService.Seppo/createAuthor',
+    requestStream: false,
+    responseStream: false,
+    requestType: author_pb.CreateAuthorRequest,
+    responseType: author_pb.CreateAuthorResponse,
+    requestSerialize: serialize_SeppoService_CreateAuthorRequest,
+    requestDeserialize: deserialize_SeppoService_CreateAuthorRequest,
+    responseSerialize: serialize_SeppoService_CreateAuthorResponse,
+    responseDeserialize: deserialize_SeppoService_CreateAuthorResponse,
+  },
+  updateAuthor: {
+    path: '/SeppoService.Seppo/updateAuthor',
+    requestStream: false,
+    responseStream: false,
+    requestType: author_pb.UpdateAuthorRequest,
+    responseType: author_pb.UpdateAuthorResponse,
+    requestSerialize: serialize_SeppoService_UpdateAuthorRequest,
+    requestDeserialize: deserialize_SeppoService_UpdateAuthorRequest,
+    responseSerialize: serialize_SeppoService_UpdateAuthorResponse,
+    responseDeserialize: deserialize_SeppoService_UpdateAuthorResponse,
+  },
+  removeAuthor: {
+    path: '/SeppoService.Seppo/removeAuthor',
+    requestStream: false,
+    responseStream: false,
+    requestType: author_pb.RemoveAuthorRequest,
+    responseType: author_pb.RemoveAuthorResponse,
+    requestSerialize: serialize_SeppoService_RemoveAuthorRequest,
+    requestDeserialize: deserialize_SeppoService_RemoveAuthorRequest,
+    responseSerialize: serialize_SeppoService_RemoveAuthorResponse,
+    responseDeserialize: deserialize_SeppoService_RemoveAuthorResponse,
+  },
+  createCopyright: {
+    path: '/SeppoService.Seppo/createCopyright',
+    requestStream: false,
+    responseStream: false,
+    requestType: copyright_pb.CreateCopyrightRequest,
+    responseType: copyright_pb.CreateCopyrightResponse,
+    requestSerialize: serialize_SeppoService_CreateCopyrightRequest,
+    requestDeserialize: deserialize_SeppoService_CreateCopyrightRequest,
+    responseSerialize: serialize_SeppoService_CreateCopyrightResponse,
+    responseDeserialize: deserialize_SeppoService_CreateCopyrightResponse,
+  },
+  updateCopyright: {
+    path: '/SeppoService.Seppo/updateCopyright',
+    requestStream: false,
+    responseStream: false,
+    requestType: copyright_pb.UpdateCopyrightRequest,
+    responseType: copyright_pb.UpdateCopyrightResponse,
+    requestSerialize: serialize_SeppoService_UpdateCopyrightRequest,
+    requestDeserialize: deserialize_SeppoService_UpdateCopyrightRequest,
+    responseSerialize: serialize_SeppoService_UpdateCopyrightResponse,
+    responseDeserialize: deserialize_SeppoService_UpdateCopyrightResponse,
+  },
+  removeCopyright: {
+    path: '/SeppoService.Seppo/removeCopyright',
+    requestStream: false,
+    responseStream: false,
+    requestType: copyright_pb.RemoveCopyrightRequest,
+    responseType: copyright_pb.RemoveCopyrightResponse,
+    requestSerialize: serialize_SeppoService_RemoveCopyrightRequest,
+    requestDeserialize: deserialize_SeppoService_RemoveCopyrightRequest,
+    responseSerialize: serialize_SeppoService_RemoveCopyrightResponse,
+    responseDeserialize: deserialize_SeppoService_RemoveCopyrightResponse,
   },
 };
 

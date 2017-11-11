@@ -18,4 +18,6 @@ var schedule_pb = require('./schedule_pb.js');
 var variation_version_pb = require('./variation_version_pb.js');
 var log_pb = require('./log_pb.js');
 var variation_pb = require('./variation_pb.js');
+var author_pb = require('./author_pb.js');
+var copyright_pb = require('./copyright_pb.js');
 goog.object.extend(exports, proto.SeppoService);
