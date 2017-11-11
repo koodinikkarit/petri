@@ -38,13 +38,7 @@ import {
 	RemoveSongDatabaseResponse
 } from "./SongDatabase";
 
-import EwDatabase from "./EwDatabase";
-import {
-	EwDatabasesConnection,
-	CreateEwDatabaseResponse,
-	UpdateEwDatabaseResponse,
-	RemoveEwDatabaseResponse
-} from "./OtherEwDatabaseTypes";
+
 
 import {
 	Language,
@@ -63,6 +57,7 @@ import {
 } from "./Schedule";
 
 import VariationServiceMethods from "./VariationServiceMethods";
+import EwDatabaseServiceMethods from "./EwDatabaseServiceMethods";
 
 import {
 	LogsConnection
@@ -74,6 +69,7 @@ export default new DomainService({
 	services: services,
 	methods: Object.assign(
 		VariationServiceMethods,
+		EwDatabaseServiceMethods,
 		{
 			fetchVariationById: {
 				name: "variation",
@@ -153,30 +149,6 @@ export default new DomainService({
 					variationId: {
 						type: IdType
 					},
-					offset: {
-						type: IntType
-					},
-					limit: {
-						type: IntType
-					}
-				}
-			},
-			fetchEwDatabaseById: {
-				name: "ewDatabase",
-				type: EwDatabase,
-				returnField: "ewDatabase",
-				methodType: METHOD_TYPES.QUERY,
-				dataLoader: {
-					name: "ewDatabaseId",
-					serviceTypeName: "ewDatabaseIds",
-					returnField: "ewDatabases"
-				}
-			},
-			searchEwDatabases: {
-				name: "searchEwDatabases",
-				type: EwDatabasesConnection,
-				methodType: METHOD_TYPES.QUERY,
-				args: {
 					offset: {
 						type: IntType
 					},
@@ -331,45 +303,6 @@ export default new DomainService({
 				methodType: METHOD_TYPES.MUTATION,
 				args: {
 					songDatabaseId: {
-						type: IdType
-					}
-				}
-			},
-			createEwDatabase: {
-				name: "createEwDatabase",
-				type: CreateEwDatabaseResponse,
-				methodType: METHOD_TYPES.MUTATION,
-				args: {
-					name: {
-						type: StringType
-					},
-					songDatabaseId: {
-						type: IdType
-					}
-				}
-			},
-			updateEwDatabase: {
-				name: "updateEwDatabase",
-				type: UpdateEwDatabaseResponse,
-				methodType: METHOD_TYPES.MUTATION,
-				args: {
-					ewDatabaseId: {
-						type: IdType
-					},
-					name: {
-						type: StringType
-					},
-					songDatabaseId: {
-						type: IdType
-					}
-				}
-			},
-			removeEwDatabase: {
-				name: "removeEwDatabase",
-				type: RemoveEwDatabaseResponse,
-				methodType: METHOD_TYPES.MUTATION,
-				args: {
-					ewDatabaseId: {
 						type: IdType
 					}
 				}
