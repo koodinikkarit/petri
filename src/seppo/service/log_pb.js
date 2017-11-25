@@ -99,7 +99,7 @@ proto.SeppoService.Log.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setId(value);
       break;
     case 2:
@@ -144,7 +144,7 @@ proto.SeppoService.Log.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getId();
   if (f !== 0) {
-    writer.writeUint32(
+    writer.writeUint64(
       1,
       f
     );
@@ -174,7 +174,7 @@ proto.SeppoService.Log.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional uint32 id = 1;
+ * optional uint64 id = 1;
  * @return {number}
  */
 proto.SeppoService.Log.prototype.getId = function() {
@@ -606,7 +606,7 @@ proto.SeppoService.SearchLogsResponse.deserializeBinaryFromReader = function(msg
       msg.addLogs(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setMaxlogs(value);
       break;
     default:
@@ -647,7 +647,7 @@ proto.SeppoService.SearchLogsResponse.serializeBinaryToWriter = function(message
   }
   f = message.getMaxlogs();
   if (f !== 0) {
-    writer.writeUint32(
+    writer.writeUint64(
       2,
       f
     );
@@ -689,7 +689,7 @@ proto.SeppoService.SearchLogsResponse.prototype.clearLogsList = function() {
 
 
 /**
- * optional uint32 maxLogs = 2;
+ * optional uint64 maxLogs = 2;
  * @return {number}
  */
 proto.SeppoService.SearchLogsResponse.prototype.getMaxlogs = function() {

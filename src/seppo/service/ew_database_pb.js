@@ -70,8 +70,8 @@ proto.SeppoService.EwDatabase.toObject = function(includeInstance, msg) {
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     songdatabaseid: jspb.Message.getFieldWithDefault(msg, 3, 0),
     databasekey: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    removesongsfromexternaldatabase: jspb.Message.getFieldWithDefault(msg, 5, false),
-    removesongsfromsongdatabase: jspb.Message.getFieldWithDefault(msg, 6, false),
+    removesongsfromewdatabase: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    removesongsfromsongdatabase: jspb.Message.getFieldWithDefault(msg, 6, 0),
     variationversionconflictaction: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
@@ -126,11 +126,11 @@ proto.SeppoService.EwDatabase.deserializeBinaryFromReader = function(msg, reader
       msg.setDatabasekey(value);
       break;
     case 5:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setRemovesongsfromexternaldatabase(value);
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setRemovesongsfromewdatabase(value);
       break;
     case 6:
-      var value = /** @type {boolean} */ (reader.readBool());
+      var value = /** @type {number} */ (reader.readUint32());
       msg.setRemovesongsfromsongdatabase(value);
       break;
     case 7:
@@ -193,16 +193,16 @@ proto.SeppoService.EwDatabase.serializeBinaryToWriter = function(message, writer
       f
     );
   }
-  f = message.getRemovesongsfromexternaldatabase();
-  if (f) {
-    writer.writeBool(
+  f = message.getRemovesongsfromewdatabase();
+  if (f !== 0) {
+    writer.writeUint32(
       5,
       f
     );
   }
   f = message.getRemovesongsfromsongdatabase();
-  if (f) {
-    writer.writeBool(
+  if (f !== 0) {
+    writer.writeUint32(
       6,
       f
     );
@@ -278,34 +278,30 @@ proto.SeppoService.EwDatabase.prototype.setDatabasekey = function(value) {
 
 
 /**
- * optional bool removeSongsFromExternalDatabase = 5;
- * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
- * You should avoid comparisons like {@code val === true/false} in those cases.
- * @return {boolean}
+ * optional uint32 removeSongsFromEwDatabase = 5;
+ * @return {number}
  */
-proto.SeppoService.EwDatabase.prototype.getRemovesongsfromexternaldatabase = function() {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 5, false));
+proto.SeppoService.EwDatabase.prototype.getRemovesongsfromewdatabase = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
-/** @param {boolean} value */
-proto.SeppoService.EwDatabase.prototype.setRemovesongsfromexternaldatabase = function(value) {
+/** @param {number} value */
+proto.SeppoService.EwDatabase.prototype.setRemovesongsfromewdatabase = function(value) {
   jspb.Message.setField(this, 5, value);
 };
 
 
 /**
- * optional bool removeSongsFromSongDatabase = 6;
- * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
- * You should avoid comparisons like {@code val === true/false} in those cases.
- * @return {boolean}
+ * optional uint32 removeSongsFromSongDatabase = 6;
+ * @return {number}
  */
 proto.SeppoService.EwDatabase.prototype.getRemovesongsfromsongdatabase = function() {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 6, false));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
 
-/** @param {boolean} value */
+/** @param {number} value */
 proto.SeppoService.EwDatabase.prototype.setRemovesongsfromsongdatabase = function(value) {
   jspb.Message.setField(this, 6, value);
 };
@@ -1419,8 +1415,8 @@ proto.SeppoService.UpdateEwDatabaseRequest.toObject = function(includeInstance, 
     ewdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     songdatabaseid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    removesongsfromexternaldatabase: jspb.Message.getFieldWithDefault(msg, 4, false),
-    removesongsfromsongdatabase: jspb.Message.getFieldWithDefault(msg, 5, false),
+    removesongsfromewdatabase: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    removesongsfromsongdatabase: jspb.Message.getFieldWithDefault(msg, 5, 0),
     variationversionconflictaction: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
@@ -1471,11 +1467,11 @@ proto.SeppoService.UpdateEwDatabaseRequest.deserializeBinaryFromReader = functio
       msg.setSongdatabaseid(value);
       break;
     case 4:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setRemovesongsfromexternaldatabase(value);
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setRemovesongsfromewdatabase(value);
       break;
     case 5:
-      var value = /** @type {boolean} */ (reader.readBool());
+      var value = /** @type {number} */ (reader.readUint32());
       msg.setRemovesongsfromsongdatabase(value);
       break;
     case 6:
@@ -1531,16 +1527,16 @@ proto.SeppoService.UpdateEwDatabaseRequest.serializeBinaryToWriter = function(me
       f
     );
   }
-  f = message.getRemovesongsfromexternaldatabase();
-  if (f) {
-    writer.writeBool(
+  f = message.getRemovesongsfromewdatabase();
+  if (f !== 0) {
+    writer.writeUint32(
       4,
       f
     );
   }
   f = message.getRemovesongsfromsongdatabase();
-  if (f) {
-    writer.writeBool(
+  if (f !== 0) {
+    writer.writeUint32(
       5,
       f
     );
@@ -1601,34 +1597,30 @@ proto.SeppoService.UpdateEwDatabaseRequest.prototype.setSongdatabaseid = functio
 
 
 /**
- * optional bool removeSongsFromExternalDatabase = 4;
- * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
- * You should avoid comparisons like {@code val === true/false} in those cases.
- * @return {boolean}
+ * optional uint32 removeSongsFromEwDatabase = 4;
+ * @return {number}
  */
-proto.SeppoService.UpdateEwDatabaseRequest.prototype.getRemovesongsfromexternaldatabase = function() {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 4, false));
+proto.SeppoService.UpdateEwDatabaseRequest.prototype.getRemovesongsfromewdatabase = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
-/** @param {boolean} value */
-proto.SeppoService.UpdateEwDatabaseRequest.prototype.setRemovesongsfromexternaldatabase = function(value) {
+/** @param {number} value */
+proto.SeppoService.UpdateEwDatabaseRequest.prototype.setRemovesongsfromewdatabase = function(value) {
   jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * optional bool removeSongsFromSongDatabase = 5;
- * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
- * You should avoid comparisons like {@code val === true/false} in those cases.
- * @return {boolean}
+ * optional uint32 removeSongsFromSongDatabase = 5;
+ * @return {number}
  */
 proto.SeppoService.UpdateEwDatabaseRequest.prototype.getRemovesongsfromsongdatabase = function() {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 5, false));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
-/** @param {boolean} value */
+/** @param {number} value */
 proto.SeppoService.UpdateEwDatabaseRequest.prototype.setRemovesongsfromsongdatabase = function(value) {
   jspb.Message.setField(this, 5, value);
 };

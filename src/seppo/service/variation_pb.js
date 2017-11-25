@@ -69,9 +69,9 @@ proto.SeppoService.Variation.toObject = function(includeInstance, msg) {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     songid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    version: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    languageid: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    variationversionid: jspb.Message.getFieldWithDefault(msg, 7, 0)
+    languageid: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    authorid: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    copyrightid: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -120,17 +120,17 @@ proto.SeppoService.Variation.deserializeBinaryFromReader = function(msg, reader)
       var value = /** @type {number} */ (reader.readUint32());
       msg.setSongid(value);
       break;
-    case 5:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setVersion(value);
-      break;
-    case 6:
+    case 4:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setLanguageid(value);
       break;
-    case 7:
+    case 5:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setVariationversionid(value);
+      msg.setAuthorid(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setCopyrightid(value);
       break;
     default:
       reader.skipField();
@@ -181,24 +181,24 @@ proto.SeppoService.Variation.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
-  f = message.getVersion();
+  f = message.getLanguageid();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+  f = message.getAuthorid();
+  if (f !== 0) {
+    writer.writeUint32(
       5,
       f
     );
   }
-  f = message.getLanguageid();
+  f = message.getCopyrightid();
   if (f !== 0) {
     writer.writeUint32(
       6,
-      f
-    );
-  }
-  f = message.getVariationversionid();
-  if (f !== 0) {
-    writer.writeUint32(
-      7,
       f
     );
   }
@@ -251,47 +251,47 @@ proto.SeppoService.Variation.prototype.setSongid = function(value) {
 
 
 /**
- * optional uint64 version = 5;
- * @return {number}
- */
-proto.SeppoService.Variation.prototype.getVersion = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.Variation.prototype.setVersion = function(value) {
-  jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional uint32 languageId = 6;
+ * optional uint32 languageId = 4;
  * @return {number}
  */
 proto.SeppoService.Variation.prototype.getLanguageid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /** @param {number} value */
 proto.SeppoService.Variation.prototype.setLanguageid = function(value) {
-  jspb.Message.setField(this, 6, value);
+  jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * optional uint32 variationVersionId = 7;
+ * optional uint32 authorId = 5;
  * @return {number}
  */
-proto.SeppoService.Variation.prototype.getVariationversionid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+proto.SeppoService.Variation.prototype.getAuthorid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
 /** @param {number} value */
-proto.SeppoService.Variation.prototype.setVariationversionid = function(value) {
-  jspb.Message.setField(this, 7, value);
+proto.SeppoService.Variation.prototype.setAuthorid = function(value) {
+  jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * optional uint32 copyrightId = 6;
+ * @return {number}
+ */
+proto.SeppoService.Variation.prototype.getCopyrightid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.Variation.prototype.setCopyrightid = function(value) {
+  jspb.Message.setField(this, 6, value);
 };
 
 

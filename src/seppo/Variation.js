@@ -21,6 +21,14 @@ import {
 	Language
 } from "./Language";
 
+import {
+	Author
+} from "./Author";
+
+import {
+	Copyright
+} from "./Copyright";
+
 export const Variation = new DomainEntity({
 	name: "Variation",
 	fields: () => ({
@@ -94,6 +102,26 @@ export const Variation = new DomainEntity({
 					type: IntType
 				}
 			}
+		},
+		authorId: {
+			type: IntType
+		},
+		author: {
+			type: Author,
+			inhertedArgs: {
+				authorId: "authorId"
+			},
+			serviceMethod: "fetchAuthorById"
+		},
+		copyrightId: {
+			type: IntType
+		},
+		copyright: {
+			type: Copyright,
+			inhertedArgs: {
+				copyrightId: "copyrightId"
+			},
+			serviceMethod: "fetchCopyrightById"
 		}
 	})
 });
