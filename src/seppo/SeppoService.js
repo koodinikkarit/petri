@@ -58,6 +58,8 @@ import {
 
 import VariationServiceMethods from "./VariationServiceMethods";
 import EwDatabaseServiceMethods from "./EwDatabaseServiceMethods";
+import AuthorServiceMethods from "./AuthorServiceMethods";
+import CopyrightServiceMethods from "./CopyrightServiceMethods";
 
 import {
 	LogsConnection
@@ -70,6 +72,8 @@ export default new DomainService({
 	methods: Object.assign(
 		VariationServiceMethods,
 		EwDatabaseServiceMethods,
+		AuthorServiceMethods,
+		CopyrightServiceMethods,
 		{
 			fetchVariationById: {
 				name: "variation",
