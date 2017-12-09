@@ -67,11 +67,10 @@ proto.SeppoService.Variation.prototype.toObject = function(opt_includeInstance) 
 proto.SeppoService.Variation.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    songid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    languageid: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    authorid: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    copyrightid: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    songid: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    languageid: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    authorid: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    copyrightid: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -113,22 +112,18 @@ proto.SeppoService.Variation.deserializeBinaryFromReader = function(msg, reader)
       msg.setId(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 3:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setSongid(value);
       break;
-    case 4:
+    case 3:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setLanguageid(value);
       break;
-    case 5:
+    case 4:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setAuthorid(value);
       break;
-    case 6:
+    case 5:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setCopyrightid(value);
       break;
@@ -167,38 +162,31 @@ proto.SeppoService.Variation.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
   f = message.getSongid();
   if (f !== 0) {
     writer.writeUint32(
-      3,
+      2,
       f
     );
   }
   f = message.getLanguageid();
   if (f !== 0) {
     writer.writeUint32(
-      4,
+      3,
       f
     );
   }
   f = message.getAuthorid();
   if (f !== 0) {
     writer.writeUint32(
-      5,
+      4,
       f
     );
   }
   f = message.getCopyrightid();
   if (f !== 0) {
     writer.writeUint32(
-      6,
+      5,
       f
     );
   }
@@ -221,77 +209,62 @@ proto.SeppoService.Variation.prototype.setId = function(value) {
 
 
 /**
- * optional string name = 2;
- * @return {string}
- */
-proto.SeppoService.Variation.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/** @param {string} value */
-proto.SeppoService.Variation.prototype.setName = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 songId = 3;
+ * optional uint32 songId = 2;
  * @return {number}
  */
 proto.SeppoService.Variation.prototype.getSongid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
 proto.SeppoService.Variation.prototype.setSongid = function(value) {
-  jspb.Message.setField(this, 3, value);
+  jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional uint32 languageId = 4;
+ * optional uint32 languageId = 3;
  * @return {number}
  */
 proto.SeppoService.Variation.prototype.getLanguageid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /** @param {number} value */
 proto.SeppoService.Variation.prototype.setLanguageid = function(value) {
-  jspb.Message.setField(this, 4, value);
+  jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * optional uint32 authorId = 5;
+ * optional uint32 authorId = 4;
  * @return {number}
  */
 proto.SeppoService.Variation.prototype.getAuthorid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /** @param {number} value */
 proto.SeppoService.Variation.prototype.setAuthorid = function(value) {
-  jspb.Message.setField(this, 5, value);
+  jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * optional uint32 copyrightId = 6;
+ * optional uint32 copyrightId = 5;
  * @return {number}
  */
 proto.SeppoService.Variation.prototype.getCopyrightid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
 /** @param {number} value */
 proto.SeppoService.Variation.prototype.setCopyrightid = function(value) {
-  jspb.Message.setField(this, 6, value);
+  jspb.Message.setField(this, 5, value);
 };
 
 
