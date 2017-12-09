@@ -22,9 +22,6 @@ export const Tag = new DomainEntity({
 export const TagsConnection = new DomainEntity({
 	name: "TagsConnection",
 	fields: () => ({
-		id: {
-			type: IdType
-		},
 		maxTags: {
 			type: IntType
 		},

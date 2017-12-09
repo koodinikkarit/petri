@@ -6,6 +6,8 @@ import {
 	graphiqlExpress
 } from "graphql-server-express";
 import bodyParser from "body-parser";
+import cors from "cors";
+import session from "express-session";
 
 const app = express();
 
@@ -16,6 +18,24 @@ app.use("/graphiql", graphiqlExpress({
 	endpointURL: "/graphql",
 	schema: petriCompose.schema,
 	graphiql: true
+}));
+
+
+app.use(session(
+	{
+		secret: "keybordcat",
+		resave: false,
+		saveUninitialized: false,
+		cookie: {
+			maxAge: 600000,
+			secure: false
+		}
+	}
+));
+
+app.use(cors({
+	origin: true,
+	credentials: true
 }));
 
 app.use("/", graphqlExpress((req) => {

@@ -9,19 +9,15 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var song_database_variation_pb = require('./song_database_variation_pb.js');
 goog.exportSymbol('proto.SeppoService.CreateSongDatabaseRequest', null, global);
 goog.exportSymbol('proto.SeppoService.CreateSongDatabaseResponse', null, global);
 goog.exportSymbol('proto.SeppoService.FetchSongDatabaseByIdRequest', null, global);
 goog.exportSymbol('proto.SeppoService.FetchSongDatabaseByIdResponse', null, global);
-goog.exportSymbol('proto.SeppoService.FetchSongDatabasesRequest', null, global);
-goog.exportSymbol('proto.SeppoService.FetchTagsBySongDatabaseIdRequest', null, global);
-goog.exportSymbol('proto.SeppoService.FetchTagsBySongDatabaseIdResponse', null, global);
 goog.exportSymbol('proto.SeppoService.RemoveSongDatabaseRequest', null, global);
 goog.exportSymbol('proto.SeppoService.RemoveSongDatabaseResponse', null, global);
+goog.exportSymbol('proto.SeppoService.SearchSongDatabasesRequest', null, global);
+goog.exportSymbol('proto.SeppoService.SearchSongDatabasesResponse', null, global);
 goog.exportSymbol('proto.SeppoService.SongDatabase', null, global);
-goog.exportSymbol('proto.SeppoService.SongDatabaseEdge', null, global);
-goog.exportSymbol('proto.SeppoService.SongDatabasesConnection', null, global);
 goog.exportSymbol('proto.SeppoService.UpdateSongDatabaseRequest', null, global);
 goog.exportSymbol('proto.SeppoService.UpdateSongDatabaseResponse', null, global);
 
@@ -229,12 +225,12 @@ proto.SeppoService.SongDatabase.prototype.setVersion = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.SeppoService.SongDatabaseEdge = function(opt_data) {
+proto.SeppoService.SearchSongDatabasesRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.SeppoService.SongDatabaseEdge, jspb.Message);
+goog.inherits(proto.SeppoService.SearchSongDatabasesRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.SeppoService.SongDatabaseEdge.displayName = 'proto.SeppoService.SongDatabaseEdge';
+  proto.SeppoService.SearchSongDatabasesRequest.displayName = 'proto.SeppoService.SearchSongDatabasesRequest';
 }
 
 
@@ -249,8 +245,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.SeppoService.SongDatabaseEdge.prototype.toObject = function(opt_includeInstance) {
-  return proto.SeppoService.SongDatabaseEdge.toObject(opt_includeInstance, this);
+proto.SeppoService.SearchSongDatabasesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.SeppoService.SearchSongDatabasesRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -259,13 +255,15 @@ proto.SeppoService.SongDatabaseEdge.prototype.toObject = function(opt_includeIns
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.SeppoService.SongDatabaseEdge} msg The msg instance to transform.
+ * @param {!proto.SeppoService.SearchSongDatabasesRequest} msg The msg instance to transform.
  * @return {!Object}
  */
-proto.SeppoService.SongDatabaseEdge.toObject = function(includeInstance, msg) {
+proto.SeppoService.SearchSongDatabasesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    node: (f = msg.getNode()) && proto.SeppoService.SongDatabase.toObject(includeInstance, f),
-    cursor: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    offset: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    limit: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    searchword: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    variationid: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -279,216 +277,23 @@ proto.SeppoService.SongDatabaseEdge.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.SeppoService.SongDatabaseEdge}
+ * @return {!proto.SeppoService.SearchSongDatabasesRequest}
  */
-proto.SeppoService.SongDatabaseEdge.deserializeBinary = function(bytes) {
+proto.SeppoService.SearchSongDatabasesRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.SeppoService.SongDatabaseEdge;
-  return proto.SeppoService.SongDatabaseEdge.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.SeppoService.SearchSongDatabasesRequest;
+  return proto.SeppoService.SearchSongDatabasesRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.SeppoService.SongDatabaseEdge} msg The message object to deserialize into.
+ * @param {!proto.SeppoService.SearchSongDatabasesRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.SeppoService.SongDatabaseEdge}
+ * @return {!proto.SeppoService.SearchSongDatabasesRequest}
  */
-proto.SeppoService.SongDatabaseEdge.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.SeppoService.SongDatabase;
-      reader.readMessage(value,proto.SeppoService.SongDatabase.deserializeBinaryFromReader);
-      msg.setNode(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setCursor(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.SeppoService.SongDatabaseEdge.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.SeppoService.SongDatabaseEdge.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.SeppoService.SongDatabaseEdge} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.SeppoService.SongDatabaseEdge.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getNode();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      proto.SeppoService.SongDatabase.serializeBinaryToWriter
-    );
-  }
-  f = message.getCursor();
-  if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
-    );
-  }
-};
-
-
-/**
- * optional SongDatabase node = 1;
- * @return {?proto.SeppoService.SongDatabase}
- */
-proto.SeppoService.SongDatabaseEdge.prototype.getNode = function() {
-  return /** @type{?proto.SeppoService.SongDatabase} */ (
-    jspb.Message.getWrapperField(this, proto.SeppoService.SongDatabase, 1));
-};
-
-
-/** @param {?proto.SeppoService.SongDatabase|undefined} value */
-proto.SeppoService.SongDatabaseEdge.prototype.setNode = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-proto.SeppoService.SongDatabaseEdge.prototype.clearNode = function() {
-  this.setNode(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.SeppoService.SongDatabaseEdge.prototype.hasNode = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional uint32 cursor = 2;
- * @return {number}
- */
-proto.SeppoService.SongDatabaseEdge.prototype.getCursor = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SongDatabaseEdge.prototype.setCursor = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.SeppoService.SongDatabasesConnection = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.SongDatabasesConnection.repeatedFields_, null);
-};
-goog.inherits(proto.SeppoService.SongDatabasesConnection, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.SeppoService.SongDatabasesConnection.displayName = 'proto.SeppoService.SongDatabasesConnection';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.SeppoService.SongDatabasesConnection.repeatedFields_ = [2];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.SeppoService.SongDatabasesConnection.prototype.toObject = function(opt_includeInstance) {
-  return proto.SeppoService.SongDatabasesConnection.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.SeppoService.SongDatabasesConnection} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.SeppoService.SongDatabasesConnection.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    maxsongdatabases: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    songdatabasesList: jspb.Message.toObjectList(msg.getSongdatabasesList(),
-    proto.SeppoService.SongDatabase.toObject, includeInstance),
-    id: jspb.Message.getFieldWithDefault(msg, 3, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.SeppoService.SongDatabasesConnection}
- */
-proto.SeppoService.SongDatabasesConnection.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.SeppoService.SongDatabasesConnection;
-  return proto.SeppoService.SongDatabasesConnection.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.SeppoService.SongDatabasesConnection} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.SeppoService.SongDatabasesConnection}
- */
-proto.SeppoService.SongDatabasesConnection.deserializeBinaryFromReader = function(msg, reader) {
+proto.SeppoService.SearchSongDatabasesRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -497,242 +302,17 @@ proto.SeppoService.SongDatabasesConnection.deserializeBinaryFromReader = functio
     switch (field) {
     case 1:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setMaxsongdatabases(value);
+      msg.setOffset(value);
       break;
     case 2:
-      var value = new proto.SeppoService.SongDatabase;
-      reader.readMessage(value,proto.SeppoService.SongDatabase.deserializeBinaryFromReader);
-      msg.addSongdatabases(value);
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLimit(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setId(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.SeppoService.SongDatabasesConnection.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.SeppoService.SongDatabasesConnection.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.SeppoService.SongDatabasesConnection} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.SeppoService.SongDatabasesConnection.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getMaxsongdatabases();
-  if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
-  }
-  f = message.getSongdatabasesList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      2,
-      f,
-      proto.SeppoService.SongDatabase.serializeBinaryToWriter
-    );
-  }
-  f = message.getId();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
-};
-
-
-/**
- * optional uint32 maxSongDatabases = 1;
- * @return {number}
- */
-proto.SeppoService.SongDatabasesConnection.prototype.getMaxsongdatabases = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SongDatabasesConnection.prototype.setMaxsongdatabases = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * repeated SongDatabase songDatabases = 2;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.SeppoService.SongDatabase>}
- */
-proto.SeppoService.SongDatabasesConnection.prototype.getSongdatabasesList = function() {
-  return /** @type{!Array.<!proto.SeppoService.SongDatabase>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.SongDatabase, 2));
-};
-
-
-/** @param {!Array.<!proto.SeppoService.SongDatabase>} value */
-proto.SeppoService.SongDatabasesConnection.prototype.setSongdatabasesList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 2, value);
-};
-
-
-/**
- * @param {!proto.SeppoService.SongDatabase=} opt_value
- * @param {number=} opt_index
- * @return {!proto.SeppoService.SongDatabase}
- */
-proto.SeppoService.SongDatabasesConnection.prototype.addSongdatabases = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.SeppoService.SongDatabase, opt_index);
-};
-
-
-proto.SeppoService.SongDatabasesConnection.prototype.clearSongdatabasesList = function() {
-  this.setSongdatabasesList([]);
-};
-
-
-/**
- * optional uint32 id = 3;
- * @return {number}
- */
-proto.SeppoService.SongDatabasesConnection.prototype.getId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SongDatabasesConnection.prototype.setId = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.SeppoService.FetchSongDatabasesRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.SeppoService.FetchSongDatabasesRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.SeppoService.FetchSongDatabasesRequest.displayName = 'proto.SeppoService.FetchSongDatabasesRequest';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.SeppoService.FetchSongDatabasesRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.SeppoService.FetchSongDatabasesRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.SeppoService.FetchSongDatabasesRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    after: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    before: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    first: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    last: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    searchword: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    variationid: jspb.Message.getFieldWithDefault(msg, 6, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.SeppoService.FetchSongDatabasesRequest}
- */
-proto.SeppoService.FetchSongDatabasesRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.SeppoService.FetchSongDatabasesRequest;
-  return proto.SeppoService.FetchSongDatabasesRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.SeppoService.FetchSongDatabasesRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.SeppoService.FetchSongDatabasesRequest}
- */
-proto.SeppoService.FetchSongDatabasesRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setAfter(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setBefore(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setFirst(value);
-      break;
-    case 4:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setLast(value);
-      break;
-    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setSearchword(value);
       break;
-    case 6:
+    case 4:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setVariationid(value);
       break;
@@ -749,9 +329,9 @@ proto.SeppoService.FetchSongDatabasesRequest.deserializeBinaryFromReader = funct
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.serializeBinary = function() {
+proto.SeppoService.SearchSongDatabasesRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.SeppoService.FetchSongDatabasesRequest.serializeBinaryToWriter(this, writer);
+  proto.SeppoService.SearchSongDatabasesRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -759,50 +339,36 @@ proto.SeppoService.FetchSongDatabasesRequest.prototype.serializeBinary = functio
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.SeppoService.FetchSongDatabasesRequest} message
+ * @param {!proto.SeppoService.SearchSongDatabasesRequest} message
  * @param {!jspb.BinaryWriter} writer
  */
-proto.SeppoService.FetchSongDatabasesRequest.serializeBinaryToWriter = function(message, writer) {
+proto.SeppoService.SearchSongDatabasesRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getAfter();
+  f = message.getOffset();
   if (f !== 0) {
     writer.writeUint32(
       1,
       f
     );
   }
-  f = message.getBefore();
+  f = message.getLimit();
   if (f !== 0) {
     writer.writeUint32(
       2,
       f
     );
   }
-  f = message.getFirst();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
-  f = message.getLast();
-  if (f !== 0) {
-    writer.writeUint32(
-      4,
-      f
-    );
-  }
   f = message.getSearchword();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      3,
       f
     );
   }
   f = message.getVariationid();
   if (f !== 0) {
     writer.writeUint32(
-      6,
+      4,
       f
     );
   }
@@ -810,92 +376,257 @@ proto.SeppoService.FetchSongDatabasesRequest.serializeBinaryToWriter = function(
 
 
 /**
- * optional uint32 after = 1;
+ * optional uint32 offset = 1;
  * @return {number}
  */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.getAfter = function() {
+proto.SeppoService.SearchSongDatabasesRequest.prototype.getOffset = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {number} value */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.setAfter = function(value) {
+proto.SeppoService.SearchSongDatabasesRequest.prototype.setOffset = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * optional uint32 before = 2;
+ * optional uint32 limit = 2;
  * @return {number}
  */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.getBefore = function() {
+proto.SeppoService.SearchSongDatabasesRequest.prototype.getLimit = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.setBefore = function(value) {
+proto.SeppoService.SearchSongDatabasesRequest.prototype.setLimit = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional uint32 first = 3;
- * @return {number}
+ * optional string searchWord = 3;
+ * @return {string}
  */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.getFirst = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+proto.SeppoService.SearchSongDatabasesRequest.prototype.getSearchword = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
-/** @param {number} value */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.setFirst = function(value) {
+/** @param {string} value */
+proto.SeppoService.SearchSongDatabasesRequest.prototype.setSearchword = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * optional uint32 last = 4;
+ * optional uint32 variationId = 4;
  * @return {number}
  */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.getLast = function() {
+proto.SeppoService.SearchSongDatabasesRequest.prototype.getVariationid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /** @param {number} value */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.setLast = function(value) {
+proto.SeppoService.SearchSongDatabasesRequest.prototype.setVariationid = function(value) {
   jspb.Message.setField(this, 4, value);
 };
 
 
+
 /**
- * optional string searchWord = 5;
- * @return {string}
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
  */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.getSearchword = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+proto.SeppoService.SearchSongDatabasesResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.SearchSongDatabasesResponse.repeatedFields_, null);
 };
+goog.inherits(proto.SeppoService.SearchSongDatabasesResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SeppoService.SearchSongDatabasesResponse.displayName = 'proto.SeppoService.SearchSongDatabasesResponse';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SeppoService.SearchSongDatabasesResponse.repeatedFields_ = [1];
 
 
-/** @param {string} value */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.setSearchword = function(value) {
-  jspb.Message.setField(this, 5, value);
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SeppoService.SearchSongDatabasesResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.SeppoService.SearchSongDatabasesResponse.toObject(opt_includeInstance, this);
 };
 
 
 /**
- * optional uint32 variationId = 6;
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SeppoService.SearchSongDatabasesResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.SeppoService.SearchSongDatabasesResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    songdatabasesList: jspb.Message.toObjectList(msg.getSongdatabasesList(),
+    proto.SeppoService.SongDatabase.toObject, includeInstance),
+    maxsongdatabases: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SeppoService.SearchSongDatabasesResponse}
+ */
+proto.SeppoService.SearchSongDatabasesResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SeppoService.SearchSongDatabasesResponse;
+  return proto.SeppoService.SearchSongDatabasesResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SeppoService.SearchSongDatabasesResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SeppoService.SearchSongDatabasesResponse}
+ */
+proto.SeppoService.SearchSongDatabasesResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.SeppoService.SongDatabase;
+      reader.readMessage(value,proto.SeppoService.SongDatabase.deserializeBinaryFromReader);
+      msg.addSongdatabases(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setMaxsongdatabases(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SeppoService.SearchSongDatabasesResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SeppoService.SearchSongDatabasesResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SeppoService.SearchSongDatabasesResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.SeppoService.SearchSongDatabasesResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSongdatabasesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.SeppoService.SongDatabase.serializeBinaryToWriter
+    );
+  }
+  f = message.getMaxsongdatabases();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated SongDatabase songDatabases = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.SeppoService.SongDatabase>}
+ */
+proto.SeppoService.SearchSongDatabasesResponse.prototype.getSongdatabasesList = function() {
+  return /** @type{!Array.<!proto.SeppoService.SongDatabase>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.SongDatabase, 1));
+};
+
+
+/** @param {!Array.<!proto.SeppoService.SongDatabase>} value */
+proto.SeppoService.SearchSongDatabasesResponse.prototype.setSongdatabasesList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.SeppoService.SongDatabase=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.SeppoService.SongDatabase}
+ */
+proto.SeppoService.SearchSongDatabasesResponse.prototype.addSongdatabases = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.SeppoService.SongDatabase, opt_index);
+};
+
+
+proto.SeppoService.SearchSongDatabasesResponse.prototype.clearSongdatabasesList = function() {
+  this.setSongdatabasesList([]);
+};
+
+
+/**
+ * optional uint32 maxSongDatabases = 2;
  * @return {number}
  */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.getVariationid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+proto.SeppoService.SearchSongDatabasesResponse.prototype.getMaxsongdatabases = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.SeppoService.FetchSongDatabasesRequest.prototype.setVariationid = function(value) {
-  jspb.Message.setField(this, 6, value);
+proto.SeppoService.SearchSongDatabasesResponse.prototype.setMaxsongdatabases = function(value) {
+  jspb.Message.setField(this, 2, value);
 };
 
 
@@ -1227,234 +958,6 @@ proto.SeppoService.FetchSongDatabaseByIdResponse.prototype.addSongdatabases = fu
 
 proto.SeppoService.FetchSongDatabaseByIdResponse.prototype.clearSongdatabasesList = function() {
   this.setSongdatabasesList([]);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.SeppoService.FetchTagsBySongDatabaseIdRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.SeppoService.FetchTagsBySongDatabaseIdRequest.displayName = 'proto.SeppoService.FetchTagsBySongDatabaseIdRequest';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.SeppoService.FetchTagsBySongDatabaseIdRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.SeppoService.FetchTagsBySongDatabaseIdRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.SeppoService.FetchTagsBySongDatabaseIdRequest}
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.SeppoService.FetchTagsBySongDatabaseIdRequest;
-  return proto.SeppoService.FetchTagsBySongDatabaseIdRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.SeppoService.FetchTagsBySongDatabaseIdRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.SeppoService.FetchTagsBySongDatabaseIdRequest}
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.SeppoService.FetchTagsBySongDatabaseIdRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.SeppoService.FetchTagsBySongDatabaseIdRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.SeppoService.FetchTagsBySongDatabaseIdResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.SeppoService.FetchTagsBySongDatabaseIdResponse.displayName = 'proto.SeppoService.FetchTagsBySongDatabaseIdResponse';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.SeppoService.FetchTagsBySongDatabaseIdResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.SeppoService.FetchTagsBySongDatabaseIdResponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.SeppoService.FetchTagsBySongDatabaseIdResponse}
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.SeppoService.FetchTagsBySongDatabaseIdResponse;
-  return proto.SeppoService.FetchTagsBySongDatabaseIdResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.SeppoService.FetchTagsBySongDatabaseIdResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.SeppoService.FetchTagsBySongDatabaseIdResponse}
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.SeppoService.FetchTagsBySongDatabaseIdResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.SeppoService.FetchTagsBySongDatabaseIdResponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.SeppoService.FetchTagsBySongDatabaseIdResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
 };
 
 
@@ -2061,7 +1564,8 @@ proto.SeppoService.UpdateSongDatabaseResponse.prototype.toObject = function(opt_
  */
 proto.SeppoService.UpdateSongDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    songdatabase: (f = msg.getSongdatabase()) && proto.SeppoService.SongDatabase.toObject(includeInstance, f)
+    songdatabase: (f = msg.getSongdatabase()) && proto.SeppoService.SongDatabase.toObject(includeInstance, f),
+    success: jspb.Message.getFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -2103,6 +1607,10 @@ proto.SeppoService.UpdateSongDatabaseResponse.deserializeBinaryFromReader = func
       reader.readMessage(value,proto.SeppoService.SongDatabase.deserializeBinaryFromReader);
       msg.setSongdatabase(value);
       break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSuccess(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2139,6 +1647,13 @@ proto.SeppoService.UpdateSongDatabaseResponse.serializeBinaryToWriter = function
       proto.SeppoService.SongDatabase.serializeBinaryToWriter
     );
   }
+  f = message.getSuccess();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -2169,6 +1684,23 @@ proto.SeppoService.UpdateSongDatabaseResponse.prototype.clearSongdatabase = func
  */
 proto.SeppoService.UpdateSongDatabaseResponse.prototype.hasSongdatabase = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional bool success = 2;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.SeppoService.UpdateSongDatabaseResponse.prototype.getSuccess = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 2, false));
+};
+
+
+/** @param {boolean} value */
+proto.SeppoService.UpdateSongDatabaseResponse.prototype.setSuccess = function(value) {
+  jspb.Message.setField(this, 2, value);
 };
 
 
@@ -2358,7 +1890,7 @@ proto.SeppoService.RemoveSongDatabaseResponse.prototype.toObject = function(opt_
  */
 proto.SeppoService.RemoveSongDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    success: jspb.Message.getFieldWithDefault(msg, 1, false)
   };
 
   if (includeInstance) {
@@ -2395,6 +1927,10 @@ proto.SeppoService.RemoveSongDatabaseResponse.deserializeBinaryFromReader = func
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSuccess(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2423,6 +1959,30 @@ proto.SeppoService.RemoveSongDatabaseResponse.prototype.serializeBinary = functi
  */
 proto.SeppoService.RemoveSongDatabaseResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getSuccess();
+  if (f) {
+    writer.writeBool(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional bool success = 1;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.SeppoService.RemoveSongDatabaseResponse.prototype.getSuccess = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 1, false));
+};
+
+
+/** @param {boolean} value */
+proto.SeppoService.RemoveSongDatabaseResponse.prototype.setSuccess = function(value) {
+  jspb.Message.setField(this, 1, value);
 };
 
 

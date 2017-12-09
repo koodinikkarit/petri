@@ -67,10 +67,10 @@ proto.SeppoService.Variation.prototype.toObject = function(opt_includeInstance) 
 proto.SeppoService.Variation.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    songid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    version: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    languageid: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    songid: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    languageid: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    authorid: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    copyrightid: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -112,20 +112,20 @@ proto.SeppoService.Variation.deserializeBinaryFromReader = function(msg, reader)
       msg.setId(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 3:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setSongid(value);
       break;
-    case 5:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setVersion(value);
-      break;
-    case 6:
+    case 3:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setLanguageid(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setAuthorid(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setCopyrightid(value);
       break;
     default:
       reader.skipField();
@@ -162,31 +162,31 @@ proto.SeppoService.Variation.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
   f = message.getSongid();
   if (f !== 0) {
     writer.writeUint32(
-      3,
-      f
-    );
-  }
-  f = message.getVersion();
-  if (f !== 0) {
-    writer.writeUint64(
-      5,
+      2,
       f
     );
   }
   f = message.getLanguageid();
   if (f !== 0) {
     writer.writeUint32(
-      6,
+      3,
+      f
+    );
+  }
+  f = message.getAuthorid();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+  f = message.getCopyrightid();
+  if (f !== 0) {
+    writer.writeUint32(
+      5,
       f
     );
   }
@@ -209,62 +209,1021 @@ proto.SeppoService.Variation.prototype.setId = function(value) {
 
 
 /**
- * optional string name = 2;
- * @return {string}
- */
-proto.SeppoService.Variation.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/** @param {string} value */
-proto.SeppoService.Variation.prototype.setName = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 songId = 3;
+ * optional uint32 songId = 2;
  * @return {number}
  */
 proto.SeppoService.Variation.prototype.getSongid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
 proto.SeppoService.Variation.prototype.setSongid = function(value) {
-  jspb.Message.setField(this, 3, value);
+  jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional uint64 version = 5;
- * @return {number}
- */
-proto.SeppoService.Variation.prototype.getVersion = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.Variation.prototype.setVersion = function(value) {
-  jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional uint32 languageId = 6;
+ * optional uint32 languageId = 3;
  * @return {number}
  */
 proto.SeppoService.Variation.prototype.getLanguageid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /** @param {number} value */
 proto.SeppoService.Variation.prototype.setLanguageid = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 authorId = 4;
+ * @return {number}
+ */
+proto.SeppoService.Variation.prototype.getAuthorid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.Variation.prototype.setAuthorid = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional uint32 copyrightId = 5;
+ * @return {number}
+ */
+proto.SeppoService.Variation.prototype.getCopyrightid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.Variation.prototype.setCopyrightid = function(value) {
+  jspb.Message.setField(this, 5, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SeppoService.SearchVariationsRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.SearchVariationsRequest.repeatedFields_, null);
+};
+goog.inherits(proto.SeppoService.SearchVariationsRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SeppoService.SearchVariationsRequest.displayName = 'proto.SeppoService.SearchVariationsRequest';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SeppoService.SearchVariationsRequest.repeatedFields_ = [9];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.SeppoService.SearchVariationsRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SeppoService.SearchVariationsRequest} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.SeppoService.SearchVariationsRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    searchword: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    songdatabaseid: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    songdatabasefilterid: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    tagid: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    languageid: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    offset: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    limit: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    scheduleid: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    skipvariationidsList: jspb.Message.getField(msg, 9),
+    orderby: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    searchfrom: jspb.Message.getFieldWithDefault(msg, 11, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SeppoService.SearchVariationsRequest}
+ */
+proto.SeppoService.SearchVariationsRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SeppoService.SearchVariationsRequest;
+  return proto.SeppoService.SearchVariationsRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SeppoService.SearchVariationsRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SeppoService.SearchVariationsRequest}
+ */
+proto.SeppoService.SearchVariationsRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSearchword(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSongdatabaseid(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSongdatabasefilterid(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTagid(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLanguageid(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setOffset(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLimit(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setScheduleid(value);
+      break;
+    case 9:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setSkipvariationidsList(value);
+      break;
+    case 10:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setOrderby(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSearchfrom(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SeppoService.SearchVariationsRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SeppoService.SearchVariationsRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.SeppoService.SearchVariationsRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSearchword();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getSongdatabaseid();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getSongdatabasefilterid();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = message.getTagid();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+  f = message.getLanguageid();
+  if (f !== 0) {
+    writer.writeUint32(
+      5,
+      f
+    );
+  }
+  f = message.getOffset();
+  if (f !== 0) {
+    writer.writeUint32(
+      6,
+      f
+    );
+  }
+  f = message.getLimit();
+  if (f !== 0) {
+    writer.writeUint32(
+      7,
+      f
+    );
+  }
+  f = message.getScheduleid();
+  if (f !== 0) {
+    writer.writeUint32(
+      8,
+      f
+    );
+  }
+  f = message.getSkipvariationidsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      9,
+      f
+    );
+  }
+  f = message.getOrderby();
+  if (f !== 0) {
+    writer.writeUint32(
+      10,
+      f
+    );
+  }
+  f = message.getSearchfrom();
+  if (f !== 0) {
+    writer.writeUint32(
+      11,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string searchWord = 1;
+ * @return {string}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getSearchword = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setSearchword = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 songDatabaseId = 2;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getSongdatabaseid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setSongdatabaseid = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 songDatabaseFilterId = 3;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getSongdatabasefilterid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setSongdatabasefilterid = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 tagId = 4;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getTagid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setTagid = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional uint32 languageId = 5;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getLanguageid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setLanguageid = function(value) {
+  jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * optional uint32 offset = 6;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getOffset = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setOffset = function(value) {
   jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional uint32 limit = 7;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getLimit = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setLimit = function(value) {
+  jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * optional uint32 scheduleId = 8;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getScheduleid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setScheduleid = function(value) {
+  jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * repeated uint32 skipVariationIds = 9;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getSkipvariationidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 9));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setSkipvariationidsList = function(value) {
+  jspb.Message.setField(this, 9, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.addSkipvariationids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 9, value, opt_index);
+};
+
+
+proto.SeppoService.SearchVariationsRequest.prototype.clearSkipvariationidsList = function() {
+  this.setSkipvariationidsList([]);
+};
+
+
+/**
+ * optional uint32 orderBy = 10;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getOrderby = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setOrderby = function(value) {
+  jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * optional uint32 searchFrom = 11;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsRequest.prototype.getSearchfrom = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsRequest.prototype.setSearchfrom = function(value) {
+  jspb.Message.setField(this, 11, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SeppoService.SearchVariationsResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.SearchVariationsResponse.repeatedFields_, null);
+};
+goog.inherits(proto.SeppoService.SearchVariationsResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SeppoService.SearchVariationsResponse.displayName = 'proto.SeppoService.SearchVariationsResponse';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SeppoService.SearchVariationsResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SeppoService.SearchVariationsResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.SeppoService.SearchVariationsResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SeppoService.SearchVariationsResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.SeppoService.SearchVariationsResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    variationsList: jspb.Message.toObjectList(msg.getVariationsList(),
+    proto.SeppoService.Variation.toObject, includeInstance),
+    maxvariations: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SeppoService.SearchVariationsResponse}
+ */
+proto.SeppoService.SearchVariationsResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SeppoService.SearchVariationsResponse;
+  return proto.SeppoService.SearchVariationsResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SeppoService.SearchVariationsResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SeppoService.SearchVariationsResponse}
+ */
+proto.SeppoService.SearchVariationsResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.SeppoService.Variation;
+      reader.readMessage(value,proto.SeppoService.Variation.deserializeBinaryFromReader);
+      msg.addVariations(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setMaxvariations(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SeppoService.SearchVariationsResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SeppoService.SearchVariationsResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SeppoService.SearchVariationsResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.SeppoService.SearchVariationsResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getVariationsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.SeppoService.Variation.serializeBinaryToWriter
+    );
+  }
+  f = message.getMaxvariations();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated Variation variations = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.SeppoService.Variation>}
+ */
+proto.SeppoService.SearchVariationsResponse.prototype.getVariationsList = function() {
+  return /** @type{!Array.<!proto.SeppoService.Variation>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.Variation, 1));
+};
+
+
+/** @param {!Array.<!proto.SeppoService.Variation>} value */
+proto.SeppoService.SearchVariationsResponse.prototype.setVariationsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.SeppoService.Variation=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.SeppoService.Variation}
+ */
+proto.SeppoService.SearchVariationsResponse.prototype.addVariations = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.SeppoService.Variation, opt_index);
+};
+
+
+proto.SeppoService.SearchVariationsResponse.prototype.clearVariationsList = function() {
+  this.setVariationsList([]);
+};
+
+
+/**
+ * optional uint32 maxVariations = 2;
+ * @return {number}
+ */
+proto.SeppoService.SearchVariationsResponse.prototype.getMaxvariations = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.SeppoService.SearchVariationsResponse.prototype.setMaxvariations = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SeppoService.FetchVariationByIdRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.FetchVariationByIdRequest.repeatedFields_, null);
+};
+goog.inherits(proto.SeppoService.FetchVariationByIdRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SeppoService.FetchVariationByIdRequest.displayName = 'proto.SeppoService.FetchVariationByIdRequest';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SeppoService.FetchVariationByIdRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SeppoService.FetchVariationByIdRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.SeppoService.FetchVariationByIdRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SeppoService.FetchVariationByIdRequest} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.SeppoService.FetchVariationByIdRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    variationidsList: jspb.Message.getField(msg, 1)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SeppoService.FetchVariationByIdRequest}
+ */
+proto.SeppoService.FetchVariationByIdRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SeppoService.FetchVariationByIdRequest;
+  return proto.SeppoService.FetchVariationByIdRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SeppoService.FetchVariationByIdRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SeppoService.FetchVariationByIdRequest}
+ */
+proto.SeppoService.FetchVariationByIdRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
+      msg.setVariationidsList(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SeppoService.FetchVariationByIdRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SeppoService.FetchVariationByIdRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SeppoService.FetchVariationByIdRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.SeppoService.FetchVariationByIdRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getVariationidsList();
+  if (f.length > 0) {
+    writer.writePackedUint32(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated uint32 variationIds = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<number>}
+ */
+proto.SeppoService.FetchVariationByIdRequest.prototype.getVariationidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.SeppoService.FetchVariationByIdRequest.prototype.setVariationidsList = function(value) {
+  jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.SeppoService.FetchVariationByIdRequest.prototype.addVariationids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+proto.SeppoService.FetchVariationByIdRequest.prototype.clearVariationidsList = function() {
+  this.setVariationidsList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.SeppoService.FetchVariationByIdResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.FetchVariationByIdResponse.repeatedFields_, null);
+};
+goog.inherits(proto.SeppoService.FetchVariationByIdResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.SeppoService.FetchVariationByIdResponse.displayName = 'proto.SeppoService.FetchVariationByIdResponse';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.SeppoService.FetchVariationByIdResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.SeppoService.FetchVariationByIdResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.SeppoService.FetchVariationByIdResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.SeppoService.FetchVariationByIdResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.SeppoService.FetchVariationByIdResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    variationsList: jspb.Message.toObjectList(msg.getVariationsList(),
+    proto.SeppoService.Variation.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.SeppoService.FetchVariationByIdResponse}
+ */
+proto.SeppoService.FetchVariationByIdResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.SeppoService.FetchVariationByIdResponse;
+  return proto.SeppoService.FetchVariationByIdResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.SeppoService.FetchVariationByIdResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.SeppoService.FetchVariationByIdResponse}
+ */
+proto.SeppoService.FetchVariationByIdResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.SeppoService.Variation;
+      reader.readMessage(value,proto.SeppoService.Variation.deserializeBinaryFromReader);
+      msg.addVariations(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.SeppoService.FetchVariationByIdResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.SeppoService.FetchVariationByIdResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.SeppoService.FetchVariationByIdResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.SeppoService.FetchVariationByIdResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getVariationsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.SeppoService.Variation.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated Variation variations = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.SeppoService.Variation>}
+ */
+proto.SeppoService.FetchVariationByIdResponse.prototype.getVariationsList = function() {
+  return /** @type{!Array.<!proto.SeppoService.Variation>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.Variation, 1));
+};
+
+
+/** @param {!Array.<!proto.SeppoService.Variation>} value */
+proto.SeppoService.FetchVariationByIdResponse.prototype.setVariationsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.SeppoService.Variation=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.SeppoService.Variation}
+ */
+proto.SeppoService.FetchVariationByIdResponse.prototype.addVariations = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.SeppoService.Variation, opt_index);
+};
+
+
+proto.SeppoService.FetchVariationByIdResponse.prototype.clearVariationsList = function() {
+  this.setVariationsList([]);
 };
 
 
@@ -291,7 +1250,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.SeppoService.CreateVariationRequest.repeatedFields_ = [4,5];
+proto.SeppoService.CreateVariationRequest.repeatedFields_ = [3,4];
 
 
 
@@ -323,9 +1282,8 @@ proto.SeppoService.CreateVariationRequest.toObject = function(includeInstance, m
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     text: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    origin: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    tagidsList: jspb.Message.getField(msg, 4),
-    songdatabaseidsList: jspb.Message.getField(msg, 5)
+    tagidsList: jspb.Message.getField(msg, 3),
+    songdatabaseidsList: jspb.Message.getField(msg, 4)
   };
 
   if (includeInstance) {
@@ -371,14 +1329,10 @@ proto.SeppoService.CreateVariationRequest.deserializeBinaryFromReader = function
       msg.setText(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setOrigin(value);
-      break;
-    case 4:
       var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
       msg.setTagidsList(value);
       break;
-    case 5:
+    case 4:
       var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
       msg.setSongdatabaseidsList(value);
       break;
@@ -424,24 +1378,17 @@ proto.SeppoService.CreateVariationRequest.serializeBinaryToWriter = function(mes
       f
     );
   }
-  f = message.getOrigin();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
   f = message.getTagidsList();
   if (f.length > 0) {
     writer.writePackedUint32(
-      4,
+      3,
       f
     );
   }
   f = message.getSongdatabaseidsList();
   if (f.length > 0) {
     writer.writePackedUint32(
-      5,
+      4,
       f
     );
   }
@@ -479,34 +1426,19 @@ proto.SeppoService.CreateVariationRequest.prototype.setText = function(value) {
 
 
 /**
- * optional string origin = 3;
- * @return {string}
- */
-proto.SeppoService.CreateVariationRequest.prototype.getOrigin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/** @param {string} value */
-proto.SeppoService.CreateVariationRequest.prototype.setOrigin = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * repeated uint32 tagIds = 4;
+ * repeated uint32 tagIds = 3;
  * If you change this array by adding, removing or replacing elements, or if you
  * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.CreateVariationRequest.prototype.getTagidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 4));
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 3));
 };
 
 
 /** @param {!Array.<number>} value */
 proto.SeppoService.CreateVariationRequest.prototype.setTagidsList = function(value) {
-  jspb.Message.setField(this, 4, value || []);
+  jspb.Message.setField(this, 3, value || []);
 };
 
 
@@ -515,7 +1447,7 @@ proto.SeppoService.CreateVariationRequest.prototype.setTagidsList = function(val
  * @param {number=} opt_index
  */
 proto.SeppoService.CreateVariationRequest.prototype.addTagids = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 4, value, opt_index);
+  jspb.Message.addToRepeatedField(this, 3, value, opt_index);
 };
 
 
@@ -525,19 +1457,19 @@ proto.SeppoService.CreateVariationRequest.prototype.clearTagidsList = function()
 
 
 /**
- * repeated uint32 songDatabaseIds = 5;
+ * repeated uint32 songDatabaseIds = 4;
  * If you change this array by adding, removing or replacing elements, or if you
  * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.CreateVariationRequest.prototype.getSongdatabaseidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 5));
+  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 4));
 };
 
 
 /** @param {!Array.<number>} value */
 proto.SeppoService.CreateVariationRequest.prototype.setSongdatabaseidsList = function(value) {
-  jspb.Message.setField(this, 5, value || []);
+  jspb.Message.setField(this, 4, value || []);
 };
 
 
@@ -546,7 +1478,7 @@ proto.SeppoService.CreateVariationRequest.prototype.setSongdatabaseidsList = fun
  * @param {number=} opt_index
  */
 proto.SeppoService.CreateVariationRequest.prototype.addSongdatabaseids = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+  jspb.Message.addToRepeatedField(this, 4, value, opt_index);
 };
 
 
@@ -1185,7 +2117,8 @@ proto.SeppoService.UpdateVariationResponse.prototype.toObject = function(opt_inc
  */
 proto.SeppoService.UpdateVariationResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    variation: (f = msg.getVariation()) && proto.SeppoService.Variation.toObject(includeInstance, f)
+    variation: (f = msg.getVariation()) && proto.SeppoService.Variation.toObject(includeInstance, f),
+    success: jspb.Message.getFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -1227,6 +2160,10 @@ proto.SeppoService.UpdateVariationResponse.deserializeBinaryFromReader = functio
       reader.readMessage(value,proto.SeppoService.Variation.deserializeBinaryFromReader);
       msg.setVariation(value);
       break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSuccess(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1263,6 +2200,13 @@ proto.SeppoService.UpdateVariationResponse.serializeBinaryToWriter = function(me
       proto.SeppoService.Variation.serializeBinaryToWriter
     );
   }
+  f = message.getSuccess();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -1293,6 +2237,23 @@ proto.SeppoService.UpdateVariationResponse.prototype.clearVariation = function()
  */
 proto.SeppoService.UpdateVariationResponse.prototype.hasVariation = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional bool success = 2;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.SeppoService.UpdateVariationResponse.prototype.getSuccess = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 2, false));
+};
+
+
+/** @param {boolean} value */
+proto.SeppoService.UpdateVariationResponse.prototype.setSuccess = function(value) {
+  jspb.Message.setField(this, 2, value);
 };
 
 
@@ -1575,965 +2536,6 @@ proto.SeppoService.RemoveVariationResponse.prototype.getSuccess = function() {
 /** @param {boolean} value */
 proto.SeppoService.RemoveVariationResponse.prototype.setSuccess = function(value) {
   jspb.Message.setField(this, 1, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.SeppoService.FetchVariationByIdRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.FetchVariationByIdRequest.repeatedFields_, null);
-};
-goog.inherits(proto.SeppoService.FetchVariationByIdRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.SeppoService.FetchVariationByIdRequest.displayName = 'proto.SeppoService.FetchVariationByIdRequest';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.SeppoService.FetchVariationByIdRequest.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.SeppoService.FetchVariationByIdRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.SeppoService.FetchVariationByIdRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.SeppoService.FetchVariationByIdRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.SeppoService.FetchVariationByIdRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    variationidsList: jspb.Message.getField(msg, 1)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.SeppoService.FetchVariationByIdRequest}
- */
-proto.SeppoService.FetchVariationByIdRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.SeppoService.FetchVariationByIdRequest;
-  return proto.SeppoService.FetchVariationByIdRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.SeppoService.FetchVariationByIdRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.SeppoService.FetchVariationByIdRequest}
- */
-proto.SeppoService.FetchVariationByIdRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
-      msg.setVariationidsList(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.SeppoService.FetchVariationByIdRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.SeppoService.FetchVariationByIdRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.SeppoService.FetchVariationByIdRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.SeppoService.FetchVariationByIdRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getVariationidsList();
-  if (f.length > 0) {
-    writer.writePackedUint32(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * repeated uint32 variationIds = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<number>}
- */
-proto.SeppoService.FetchVariationByIdRequest.prototype.getVariationidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
-};
-
-
-/** @param {!Array.<number>} value */
-proto.SeppoService.FetchVariationByIdRequest.prototype.setVariationidsList = function(value) {
-  jspb.Message.setField(this, 1, value || []);
-};
-
-
-/**
- * @param {!number} value
- * @param {number=} opt_index
- */
-proto.SeppoService.FetchVariationByIdRequest.prototype.addVariationids = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
-};
-
-
-proto.SeppoService.FetchVariationByIdRequest.prototype.clearVariationidsList = function() {
-  this.setVariationidsList([]);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.SeppoService.FetchVariationByIdResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.FetchVariationByIdResponse.repeatedFields_, null);
-};
-goog.inherits(proto.SeppoService.FetchVariationByIdResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.SeppoService.FetchVariationByIdResponse.displayName = 'proto.SeppoService.FetchVariationByIdResponse';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.SeppoService.FetchVariationByIdResponse.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.SeppoService.FetchVariationByIdResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.SeppoService.FetchVariationByIdResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.SeppoService.FetchVariationByIdResponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.SeppoService.FetchVariationByIdResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    variationsList: jspb.Message.toObjectList(msg.getVariationsList(),
-    proto.SeppoService.Variation.toObject, includeInstance)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.SeppoService.FetchVariationByIdResponse}
- */
-proto.SeppoService.FetchVariationByIdResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.SeppoService.FetchVariationByIdResponse;
-  return proto.SeppoService.FetchVariationByIdResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.SeppoService.FetchVariationByIdResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.SeppoService.FetchVariationByIdResponse}
- */
-proto.SeppoService.FetchVariationByIdResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.SeppoService.Variation;
-      reader.readMessage(value,proto.SeppoService.Variation.deserializeBinaryFromReader);
-      msg.addVariations(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.SeppoService.FetchVariationByIdResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.SeppoService.FetchVariationByIdResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.SeppoService.FetchVariationByIdResponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.SeppoService.FetchVariationByIdResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getVariationsList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      proto.SeppoService.Variation.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * repeated Variation variations = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.SeppoService.Variation>}
- */
-proto.SeppoService.FetchVariationByIdResponse.prototype.getVariationsList = function() {
-  return /** @type{!Array.<!proto.SeppoService.Variation>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.Variation, 1));
-};
-
-
-/** @param {!Array.<!proto.SeppoService.Variation>} value */
-proto.SeppoService.FetchVariationByIdResponse.prototype.setVariationsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.SeppoService.Variation=} opt_value
- * @param {number=} opt_index
- * @return {!proto.SeppoService.Variation}
- */
-proto.SeppoService.FetchVariationByIdResponse.prototype.addVariations = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.SeppoService.Variation, opt_index);
-};
-
-
-proto.SeppoService.FetchVariationByIdResponse.prototype.clearVariationsList = function() {
-  this.setVariationsList([]);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.SeppoService.SearchVariationsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.SearchVariationsRequest.repeatedFields_, null);
-};
-goog.inherits(proto.SeppoService.SearchVariationsRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.SeppoService.SearchVariationsRequest.displayName = 'proto.SeppoService.SearchVariationsRequest';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.SeppoService.SearchVariationsRequest.repeatedFields_ = [9];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.SeppoService.SearchVariationsRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.SeppoService.SearchVariationsRequest} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.SeppoService.SearchVariationsRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    searchword: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    songdatabaseid: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    songdatabasefilterid: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    tagid: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    languageid: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    offset: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    limit: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    scheduleid: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    skipvariationidsList: jspb.Message.getField(msg, 9),
-    orderby: jspb.Message.getFieldWithDefault(msg, 10, 0),
-    searchfrom: jspb.Message.getFieldWithDefault(msg, 11, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.SeppoService.SearchVariationsRequest}
- */
-proto.SeppoService.SearchVariationsRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.SeppoService.SearchVariationsRequest;
-  return proto.SeppoService.SearchVariationsRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.SeppoService.SearchVariationsRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.SeppoService.SearchVariationsRequest}
- */
-proto.SeppoService.SearchVariationsRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSearchword(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setSongdatabaseid(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setSongdatabasefilterid(value);
-      break;
-    case 4:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setTagid(value);
-      break;
-    case 5:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setLanguageid(value);
-      break;
-    case 6:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setOffset(value);
-      break;
-    case 7:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setLimit(value);
-      break;
-    case 8:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setScheduleid(value);
-      break;
-    case 9:
-      var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
-      msg.setSkipvariationidsList(value);
-      break;
-    case 10:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setOrderby(value);
-      break;
-    case 11:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setSearchfrom(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.SeppoService.SearchVariationsRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.SeppoService.SearchVariationsRequest} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.SeppoService.SearchVariationsRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getSearchword();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-  f = message.getSongdatabaseid();
-  if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
-    );
-  }
-  f = message.getSongdatabasefilterid();
-  if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
-  f = message.getTagid();
-  if (f !== 0) {
-    writer.writeUint32(
-      4,
-      f
-    );
-  }
-  f = message.getLanguageid();
-  if (f !== 0) {
-    writer.writeUint32(
-      5,
-      f
-    );
-  }
-  f = message.getOffset();
-  if (f !== 0) {
-    writer.writeUint32(
-      6,
-      f
-    );
-  }
-  f = message.getLimit();
-  if (f !== 0) {
-    writer.writeUint32(
-      7,
-      f
-    );
-  }
-  f = message.getScheduleid();
-  if (f !== 0) {
-    writer.writeUint32(
-      8,
-      f
-    );
-  }
-  f = message.getSkipvariationidsList();
-  if (f.length > 0) {
-    writer.writePackedUint32(
-      9,
-      f
-    );
-  }
-  f = message.getOrderby();
-  if (f !== 0) {
-    writer.writeUint32(
-      10,
-      f
-    );
-  }
-  f = message.getSearchfrom();
-  if (f !== 0) {
-    writer.writeUint32(
-      11,
-      f
-    );
-  }
-};
-
-
-/**
- * optional string searchWord = 1;
- * @return {string}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getSearchword = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/** @param {string} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setSearchword = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * optional uint32 songDatabaseId = 2;
- * @return {number}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getSongdatabaseid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setSongdatabaseid = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional uint32 songDatabaseFilterId = 3;
- * @return {number}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getSongdatabasefilterid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setSongdatabasefilterid = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional uint32 tagId = 4;
- * @return {number}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getTagid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setTagid = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-/**
- * optional uint32 languageId = 5;
- * @return {number}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getLanguageid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setLanguageid = function(value) {
-  jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional uint32 offset = 6;
- * @return {number}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getOffset = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setOffset = function(value) {
-  jspb.Message.setField(this, 6, value);
-};
-
-
-/**
- * optional uint32 limit = 7;
- * @return {number}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getLimit = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setLimit = function(value) {
-  jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * optional uint32 scheduleId = 8;
- * @return {number}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getScheduleid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setScheduleid = function(value) {
-  jspb.Message.setField(this, 8, value);
-};
-
-
-/**
- * repeated uint32 skipVariationIds = 9;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<number>}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getSkipvariationidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 9));
-};
-
-
-/** @param {!Array.<number>} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setSkipvariationidsList = function(value) {
-  jspb.Message.setField(this, 9, value || []);
-};
-
-
-/**
- * @param {!number} value
- * @param {number=} opt_index
- */
-proto.SeppoService.SearchVariationsRequest.prototype.addSkipvariationids = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 9, value, opt_index);
-};
-
-
-proto.SeppoService.SearchVariationsRequest.prototype.clearSkipvariationidsList = function() {
-  this.setSkipvariationidsList([]);
-};
-
-
-/**
- * optional uint32 orderBy = 10;
- * @return {number}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getOrderby = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setOrderby = function(value) {
-  jspb.Message.setField(this, 10, value);
-};
-
-
-/**
- * optional uint32 searchFrom = 11;
- * @return {number}
- */
-proto.SeppoService.SearchVariationsRequest.prototype.getSearchfrom = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SearchVariationsRequest.prototype.setSearchfrom = function(value) {
-  jspb.Message.setField(this, 11, value);
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.SeppoService.SearchVariationsResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.SeppoService.SearchVariationsResponse.repeatedFields_, null);
-};
-goog.inherits(proto.SeppoService.SearchVariationsResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.SeppoService.SearchVariationsResponse.displayName = 'proto.SeppoService.SearchVariationsResponse';
-}
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.SeppoService.SearchVariationsResponse.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.SeppoService.SearchVariationsResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.SeppoService.SearchVariationsResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.SeppoService.SearchVariationsResponse} msg The msg instance to transform.
- * @return {!Object}
- */
-proto.SeppoService.SearchVariationsResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    variationsList: jspb.Message.toObjectList(msg.getVariationsList(),
-    proto.SeppoService.Variation.toObject, includeInstance),
-    maxvariations: jspb.Message.getFieldWithDefault(msg, 2, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.SeppoService.SearchVariationsResponse}
- */
-proto.SeppoService.SearchVariationsResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.SeppoService.SearchVariationsResponse;
-  return proto.SeppoService.SearchVariationsResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.SeppoService.SearchVariationsResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.SeppoService.SearchVariationsResponse}
- */
-proto.SeppoService.SearchVariationsResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.SeppoService.Variation;
-      reader.readMessage(value,proto.SeppoService.Variation.deserializeBinaryFromReader);
-      msg.addVariations(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setMaxvariations(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.SeppoService.SearchVariationsResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.SeppoService.SearchVariationsResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.SeppoService.SearchVariationsResponse} message
- * @param {!jspb.BinaryWriter} writer
- */
-proto.SeppoService.SearchVariationsResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getVariationsList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      proto.SeppoService.Variation.serializeBinaryToWriter
-    );
-  }
-  f = message.getMaxvariations();
-  if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
-    );
-  }
-};
-
-
-/**
- * repeated Variation variations = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
- * @return {!Array.<!proto.SeppoService.Variation>}
- */
-proto.SeppoService.SearchVariationsResponse.prototype.getVariationsList = function() {
-  return /** @type{!Array.<!proto.SeppoService.Variation>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.SeppoService.Variation, 1));
-};
-
-
-/** @param {!Array.<!proto.SeppoService.Variation>} value */
-proto.SeppoService.SearchVariationsResponse.prototype.setVariationsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.SeppoService.Variation=} opt_value
- * @param {number=} opt_index
- * @return {!proto.SeppoService.Variation}
- */
-proto.SeppoService.SearchVariationsResponse.prototype.addVariations = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.SeppoService.Variation, opt_index);
-};
-
-
-proto.SeppoService.SearchVariationsResponse.prototype.clearVariationsList = function() {
-  this.setVariationsList([]);
-};
-
-
-/**
- * optional uint32 maxVariations = 2;
- * @return {number}
- */
-proto.SeppoService.SearchVariationsResponse.prototype.getMaxvariations = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.SeppoService.SearchVariationsResponse.prototype.setMaxvariations = function(value) {
-  jspb.Message.setField(this, 2, value);
 };
 
 

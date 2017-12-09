@@ -17,6 +17,18 @@ import {
 	VariationText
 } from "./VariationText";
 
+import {
+	Language
+} from "./Language";
+
+import {
+	Author
+} from "./Author";
+
+import {
+	Copyright
+} from "./Copyright";
+
 export const Variation = new DomainEntity({
 	name: "Variation",
 	fields: () => ({
@@ -24,21 +36,42 @@ export const Variation = new DomainEntity({
 			type: IdType
 		},
 		name: {
-			type: StringType
+			type: StringType,
+			inhertedArgs: {
+				id: "variationId"
+			},
+			serviceMethod: "fetchNewestVariationVersionByVariationId",
+			returnField: "name"
 		},
 		version: {
-			type: IntType
+			type: IntType,
+			inhertedArgs: {
+				id: "variationId"
+			},
+			serviceMethod: "fetchNewestVariationVersionByVariationId",
+			returnField: "version"
 		},
 		text: {
 			type: StringType,
 			inhertedArgs: {
 				id: "variationId"
 			},
-			serviceMethod: "fetchVariationTextByVariationId",
+			serviceMethod: "fetchNewestVariationVersionByVariationId",
 			returnField: "text"
 		},
 		languageId: {
 			type: IdType
+		},
+		songId: {
+			type: IdType
+		},
+		language: {
+			type: Language,
+			inhertedArgs: {
+				languageId: "languageId"
+			},
+			serviceMethod: "fetchLanguageById",
+			returnField: "language"
 		},
 		tags: {
 			type: TagsConnection,
@@ -60,7 +93,7 @@ export const Variation = new DomainEntity({
 			inhertedArgs: {
 				id: "variationId"
 			},
-			serviceMethod: "fetchSongDatabases",
+			serviceMethod: "searchSongDatabases",
 			args: {
 				offset: {
 					type: IntType
@@ -69,6 +102,26 @@ export const Variation = new DomainEntity({
 					type: IntType
 				}
 			}
+		},
+		authorId: {
+			type: IntType
+		},
+		author: {
+			type: Author,
+			inhertedArgs: {
+				authorId: "authorId"
+			},
+			serviceMethod: "fetchAuthorById"
+		},
+		copyrightId: {
+			type: IntType
+		},
+		copyright: {
+			type: Copyright,
+			inhertedArgs: {
+				copyrightId: "copyrightId"
+			},
+			serviceMethod: "fetchCopyrightById"
 		}
 	})
 });

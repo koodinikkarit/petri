@@ -3,4 +3,4 @@ config.json
 npm-debug.log
 npm-debug.log*
 dist/*
-config.yml
+config.env
