@@ -1,6 +1,8 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
@@ -63,6 +65,7 @@ proto.SeppoService.Variation.prototype.toObject = function(opt_includeInstance) 
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.Variation} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.Variation.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -152,6 +155,7 @@ proto.SeppoService.Variation.prototype.serializeBinary = function() {
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.Variation} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.Variation.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -318,6 +322,7 @@ proto.SeppoService.SearchVariationsRequest.prototype.toObject = function(opt_inc
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchVariationsRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchVariationsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -329,7 +334,7 @@ proto.SeppoService.SearchVariationsRequest.toObject = function(includeInstance, 
     offset: jspb.Message.getFieldWithDefault(msg, 6, 0),
     limit: jspb.Message.getFieldWithDefault(msg, 7, 0),
     scheduleid: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    skipvariationidsList: jspb.Message.getField(msg, 9),
+    skipvariationidsList: jspb.Message.getRepeatedField(msg, 9),
     orderby: jspb.Message.getFieldWithDefault(msg, 10, 0),
     searchfrom: jspb.Message.getFieldWithDefault(msg, 11, 0)
   };
@@ -437,6 +442,7 @@ proto.SeppoService.SearchVariationsRequest.prototype.serializeBinary = function(
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchVariationsRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchVariationsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -642,12 +648,10 @@ proto.SeppoService.SearchVariationsRequest.prototype.setScheduleid = function(va
 
 /**
  * repeated uint32 skipVariationIds = 9;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.SearchVariationsRequest.prototype.getSkipvariationidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 9));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 9));
 };
 
 
@@ -751,6 +755,7 @@ proto.SeppoService.SearchVariationsResponse.prototype.toObject = function(opt_in
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchVariationsResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchVariationsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -827,6 +832,7 @@ proto.SeppoService.SearchVariationsResponse.prototype.serializeBinary = function
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchVariationsResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchVariationsResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -850,8 +856,6 @@ proto.SeppoService.SearchVariationsResponse.serializeBinaryToWriter = function(m
 
 /**
  * repeated Variation variations = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.Variation>}
  */
 proto.SeppoService.SearchVariationsResponse.prototype.getVariationsList = function() {
@@ -946,10 +950,11 @@ proto.SeppoService.FetchVariationByIdRequest.prototype.toObject = function(opt_i
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.FetchVariationByIdRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchVariationByIdRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    variationidsList: jspb.Message.getField(msg, 1)
+    variationidsList: jspb.Message.getRepeatedField(msg, 1)
   };
 
   if (includeInstance) {
@@ -1015,6 +1020,7 @@ proto.SeppoService.FetchVariationByIdRequest.prototype.serializeBinary = functio
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.FetchVariationByIdRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchVariationByIdRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1030,12 +1036,10 @@ proto.SeppoService.FetchVariationByIdRequest.serializeBinaryToWriter = function(
 
 /**
  * repeated uint32 variationIds = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.FetchVariationByIdRequest.prototype.getVariationidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
@@ -1109,6 +1113,7 @@ proto.SeppoService.FetchVariationByIdResponse.prototype.toObject = function(opt_
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.FetchVariationByIdResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchVariationByIdResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1180,6 +1185,7 @@ proto.SeppoService.FetchVariationByIdResponse.prototype.serializeBinary = functi
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.FetchVariationByIdResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchVariationByIdResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1196,8 +1202,6 @@ proto.SeppoService.FetchVariationByIdResponse.serializeBinaryToWriter = function
 
 /**
  * repeated Variation variations = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.Variation>}
  */
 proto.SeppoService.FetchVariationByIdResponse.prototype.getVariationsList = function() {
@@ -1277,13 +1281,14 @@ proto.SeppoService.CreateVariationRequest.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.CreateVariationRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateVariationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     text: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    tagidsList: jspb.Message.getField(msg, 3),
-    songdatabaseidsList: jspb.Message.getField(msg, 4)
+    tagidsList: jspb.Message.getRepeatedField(msg, 3),
+    songdatabaseidsList: jspb.Message.getRepeatedField(msg, 4)
   };
 
   if (includeInstance) {
@@ -1361,6 +1366,7 @@ proto.SeppoService.CreateVariationRequest.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.CreateVariationRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateVariationRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1427,12 +1433,10 @@ proto.SeppoService.CreateVariationRequest.prototype.setText = function(value) {
 
 /**
  * repeated uint32 tagIds = 3;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.CreateVariationRequest.prototype.getTagidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 3));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 3));
 };
 
 
@@ -1458,12 +1462,10 @@ proto.SeppoService.CreateVariationRequest.prototype.clearTagidsList = function()
 
 /**
  * repeated uint32 songDatabaseIds = 4;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.CreateVariationRequest.prototype.getSongdatabaseidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 4));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 4));
 };
 
 
@@ -1530,6 +1532,7 @@ proto.SeppoService.CreateVariationResponse.prototype.toObject = function(opt_inc
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.CreateVariationResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateVariationResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1600,6 +1603,7 @@ proto.SeppoService.CreateVariationResponse.prototype.serializeBinary = function(
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.CreateVariationResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateVariationResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1694,6 +1698,7 @@ proto.SeppoService.UpdateVariationRequest.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.UpdateVariationRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateVariationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1702,10 +1707,10 @@ proto.SeppoService.UpdateVariationRequest.toObject = function(includeInstance, m
     text: jspb.Message.getFieldWithDefault(msg, 3, ""),
     songid: jspb.Message.getFieldWithDefault(msg, 4, 0),
     languageid: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    addtagidsList: jspb.Message.getField(msg, 6),
-    removetagidsList: jspb.Message.getField(msg, 7),
-    addsongdatabaseidsList: jspb.Message.getField(msg, 8),
-    removesongdatabaseidsList: jspb.Message.getField(msg, 9)
+    addtagidsList: jspb.Message.getRepeatedField(msg, 6),
+    removetagidsList: jspb.Message.getRepeatedField(msg, 7),
+    addsongdatabaseidsList: jspb.Message.getRepeatedField(msg, 8),
+    removesongdatabaseidsList: jspb.Message.getRepeatedField(msg, 9)
   };
 
   if (includeInstance) {
@@ -1803,6 +1808,7 @@ proto.SeppoService.UpdateVariationRequest.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.UpdateVariationRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateVariationRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1949,12 +1955,10 @@ proto.SeppoService.UpdateVariationRequest.prototype.setLanguageid = function(val
 
 /**
  * repeated uint32 addTagIds = 6;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.UpdateVariationRequest.prototype.getAddtagidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 6));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 6));
 };
 
 
@@ -1980,12 +1984,10 @@ proto.SeppoService.UpdateVariationRequest.prototype.clearAddtagidsList = functio
 
 /**
  * repeated uint32 removeTagIds = 7;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.UpdateVariationRequest.prototype.getRemovetagidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 7));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 7));
 };
 
 
@@ -2011,12 +2013,10 @@ proto.SeppoService.UpdateVariationRequest.prototype.clearRemovetagidsList = func
 
 /**
  * repeated uint32 addSongDatabaseIds = 8;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.UpdateVariationRequest.prototype.getAddsongdatabaseidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 8));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 8));
 };
 
 
@@ -2042,12 +2042,10 @@ proto.SeppoService.UpdateVariationRequest.prototype.clearAddsongdatabaseidsList 
 
 /**
  * repeated uint32 removeSongDatabaseIds = 9;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.UpdateVariationRequest.prototype.getRemovesongdatabaseidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 9));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 9));
 };
 
 
@@ -2114,6 +2112,7 @@ proto.SeppoService.UpdateVariationResponse.prototype.toObject = function(opt_inc
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.UpdateVariationResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateVariationResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -2189,6 +2188,7 @@ proto.SeppoService.UpdateVariationResponse.prototype.serializeBinary = function(
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.UpdateVariationResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateVariationResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -2300,6 +2300,7 @@ proto.SeppoService.RemoveVariationRequest.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.RemoveVariationRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveVariationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -2369,6 +2370,7 @@ proto.SeppoService.RemoveVariationRequest.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.RemoveVariationRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveVariationRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -2440,6 +2442,7 @@ proto.SeppoService.RemoveVariationResponse.prototype.toObject = function(opt_inc
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.RemoveVariationResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveVariationResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -2509,6 +2512,7 @@ proto.SeppoService.RemoveVariationResponse.prototype.serializeBinary = function(
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.RemoveVariationResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveVariationResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;

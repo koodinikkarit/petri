@@ -1,6 +1,8 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
@@ -63,6 +65,7 @@ proto.SeppoService.Language.prototype.toObject = function(opt_includeInstance) {
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.Language} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.Language.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -137,6 +140,7 @@ proto.SeppoService.Language.prototype.serializeBinary = function() {
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.Language} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.Language.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -230,6 +234,7 @@ proto.SeppoService.SearchLanguagesRequest.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchLanguagesRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchLanguagesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -309,6 +314,7 @@ proto.SeppoService.SearchLanguagesRequest.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchLanguagesRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchLanguagesRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -431,6 +437,7 @@ proto.SeppoService.SearchLanguagesResponse.prototype.toObject = function(opt_inc
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchLanguagesResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchLanguagesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -507,6 +514,7 @@ proto.SeppoService.SearchLanguagesResponse.prototype.serializeBinary = function(
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchLanguagesResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchLanguagesResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -530,8 +538,6 @@ proto.SeppoService.SearchLanguagesResponse.serializeBinaryToWriter = function(me
 
 /**
  * repeated Language languages = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.Language>}
  */
 proto.SeppoService.SearchLanguagesResponse.prototype.getLanguagesList = function() {
@@ -626,10 +632,11 @@ proto.SeppoService.FetchLanguageByIdRequest.prototype.toObject = function(opt_in
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.FetchLanguageByIdRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchLanguageByIdRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    languageidsList: jspb.Message.getField(msg, 1)
+    languageidsList: jspb.Message.getRepeatedField(msg, 1)
   };
 
   if (includeInstance) {
@@ -695,6 +702,7 @@ proto.SeppoService.FetchLanguageByIdRequest.prototype.serializeBinary = function
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.FetchLanguageByIdRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchLanguageByIdRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -710,12 +718,10 @@ proto.SeppoService.FetchLanguageByIdRequest.serializeBinaryToWriter = function(m
 
 /**
  * repeated uint32 languageIds = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.FetchLanguageByIdRequest.prototype.getLanguageidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
@@ -789,6 +795,7 @@ proto.SeppoService.FetchLanguageByIdResponse.prototype.toObject = function(opt_i
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.FetchLanguageByIdResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchLanguageByIdResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -860,6 +867,7 @@ proto.SeppoService.FetchLanguageByIdResponse.prototype.serializeBinary = functio
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.FetchLanguageByIdResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchLanguageByIdResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -876,8 +884,6 @@ proto.SeppoService.FetchLanguageByIdResponse.serializeBinaryToWriter = function(
 
 /**
  * repeated Language languages = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.Language>}
  */
 proto.SeppoService.FetchLanguageByIdResponse.prototype.getLanguagesList = function() {
@@ -950,6 +956,7 @@ proto.SeppoService.CreateLanguageRequest.prototype.toObject = function(opt_inclu
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.CreateLanguageRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateLanguageRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1019,6 +1026,7 @@ proto.SeppoService.CreateLanguageRequest.prototype.serializeBinary = function() 
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.CreateLanguageRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateLanguageRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1090,6 +1098,7 @@ proto.SeppoService.CreateLanguageResponse.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.CreateLanguageResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateLanguageResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1160,6 +1169,7 @@ proto.SeppoService.CreateLanguageResponse.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.CreateLanguageResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateLanguageResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1247,6 +1257,7 @@ proto.SeppoService.UpdateLanguageRequest.prototype.toObject = function(opt_inclu
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.UpdateLanguageRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateLanguageRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1321,6 +1332,7 @@ proto.SeppoService.UpdateLanguageRequest.prototype.serializeBinary = function() 
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.UpdateLanguageRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateLanguageRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1414,6 +1426,7 @@ proto.SeppoService.UpdateLanguageResponse.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.UpdateLanguageResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateLanguageResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1489,6 +1502,7 @@ proto.SeppoService.UpdateLanguageResponse.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.UpdateLanguageResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateLanguageResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1600,6 +1614,7 @@ proto.SeppoService.RemoveLanguageRequest.prototype.toObject = function(opt_inclu
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.RemoveLanguageRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveLanguageRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1669,6 +1684,7 @@ proto.SeppoService.RemoveLanguageRequest.prototype.serializeBinary = function() 
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.RemoveLanguageRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveLanguageRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1740,6 +1756,7 @@ proto.SeppoService.RemoveLanguageResponse.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.RemoveLanguageResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveLanguageResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1809,6 +1826,7 @@ proto.SeppoService.RemoveLanguageResponse.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.RemoveLanguageResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveLanguageResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;

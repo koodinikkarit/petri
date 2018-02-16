@@ -1,6 +1,8 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
@@ -53,6 +55,7 @@ proto.SeppoService.EwSong.prototype.toObject = function(opt_includeInstance) {
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.EwSong} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.EwSong.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -162,6 +165,7 @@ proto.SeppoService.EwSong.prototype.serializeBinary = function() {
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.EwSong} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.EwSong.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;

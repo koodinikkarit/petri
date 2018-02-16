@@ -1,6 +1,8 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
@@ -63,6 +65,7 @@ proto.SeppoService.Schedule.prototype.toObject = function(opt_includeInstance) {
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.Schedule} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.Schedule.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -147,6 +150,7 @@ proto.SeppoService.Schedule.prototype.serializeBinary = function() {
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.Schedule} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.Schedule.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -284,6 +288,7 @@ proto.SeppoService.SearchSchedulesRequest.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchSchedulesRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchSchedulesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -358,6 +363,7 @@ proto.SeppoService.SearchSchedulesRequest.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchSchedulesRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchSchedulesRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -458,6 +464,7 @@ proto.SeppoService.SearchSchedulesResponse.prototype.toObject = function(opt_inc
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchSchedulesResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchSchedulesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -534,6 +541,7 @@ proto.SeppoService.SearchSchedulesResponse.prototype.serializeBinary = function(
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchSchedulesResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchSchedulesResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -557,8 +565,6 @@ proto.SeppoService.SearchSchedulesResponse.serializeBinaryToWriter = function(me
 
 /**
  * repeated Schedule schedules = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.Schedule>}
  */
 proto.SeppoService.SearchSchedulesResponse.prototype.getSchedulesList = function() {
@@ -653,10 +659,11 @@ proto.SeppoService.FetchScheduleByIdRequest.prototype.toObject = function(opt_in
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.FetchScheduleByIdRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchScheduleByIdRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    scheduleidsList: jspb.Message.getField(msg, 1)
+    scheduleidsList: jspb.Message.getRepeatedField(msg, 1)
   };
 
   if (includeInstance) {
@@ -722,6 +729,7 @@ proto.SeppoService.FetchScheduleByIdRequest.prototype.serializeBinary = function
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.FetchScheduleByIdRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchScheduleByIdRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -737,12 +745,10 @@ proto.SeppoService.FetchScheduleByIdRequest.serializeBinaryToWriter = function(m
 
 /**
  * repeated uint32 scheduleIds = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.FetchScheduleByIdRequest.prototype.getScheduleidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
@@ -816,6 +822,7 @@ proto.SeppoService.FetchScheduleByIdResponse.prototype.toObject = function(opt_i
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.FetchScheduleByIdResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchScheduleByIdResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -887,6 +894,7 @@ proto.SeppoService.FetchScheduleByIdResponse.prototype.serializeBinary = functio
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.FetchScheduleByIdResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchScheduleByIdResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -903,8 +911,6 @@ proto.SeppoService.FetchScheduleByIdResponse.serializeBinaryToWriter = function(
 
 /**
  * repeated Schedule schedules = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.Schedule>}
  */
 proto.SeppoService.FetchScheduleByIdResponse.prototype.getSchedulesList = function() {
@@ -977,6 +983,7 @@ proto.SeppoService.CreateScheduleRequest.prototype.toObject = function(opt_inclu
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.CreateScheduleRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateScheduleRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1056,6 +1063,7 @@ proto.SeppoService.CreateScheduleRequest.prototype.serializeBinary = function() 
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.CreateScheduleRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateScheduleRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1171,6 +1179,7 @@ proto.SeppoService.CreateScheduleResponse.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.CreateScheduleResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateScheduleResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1241,6 +1250,7 @@ proto.SeppoService.CreateScheduleResponse.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.CreateScheduleResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateScheduleResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1335,13 +1345,14 @@ proto.SeppoService.UpdateScheduleRequest.prototype.toObject = function(opt_inclu
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.UpdateScheduleRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateScheduleRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     scheduleid: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    addsongidsList: jspb.Message.getField(msg, 3),
-    removesongidsList: jspb.Message.getField(msg, 4),
+    addsongidsList: jspb.Message.getRepeatedField(msg, 3),
+    removesongidsList: jspb.Message.getRepeatedField(msg, 4),
     changeorderidsMap: (f = msg.getChangeorderidsMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
@@ -1426,6 +1437,7 @@ proto.SeppoService.UpdateScheduleRequest.prototype.serializeBinary = function() 
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.UpdateScheduleRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateScheduleRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1496,12 +1508,10 @@ proto.SeppoService.UpdateScheduleRequest.prototype.setName = function(value) {
 
 /**
  * repeated uint32 addSongIds = 3;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.UpdateScheduleRequest.prototype.getAddsongidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 3));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 3));
 };
 
 
@@ -1527,12 +1537,10 @@ proto.SeppoService.UpdateScheduleRequest.prototype.clearAddsongidsList = functio
 
 /**
  * repeated uint32 removeSongIds = 4;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.UpdateScheduleRequest.prototype.getRemovesongidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 4));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 4));
 };
 
 
@@ -1617,6 +1625,7 @@ proto.SeppoService.UpdateScheduleResponse.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.UpdateScheduleResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateScheduleResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1692,6 +1701,7 @@ proto.SeppoService.UpdateScheduleResponse.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.UpdateScheduleResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateScheduleResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1803,6 +1813,7 @@ proto.SeppoService.RemoveScheduleRequest.prototype.toObject = function(opt_inclu
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.RemoveScheduleRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveScheduleRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1872,6 +1883,7 @@ proto.SeppoService.RemoveScheduleRequest.prototype.serializeBinary = function() 
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.RemoveScheduleRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveScheduleRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1943,6 +1955,7 @@ proto.SeppoService.RemoveScheduleResponse.prototype.toObject = function(opt_incl
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.RemoveScheduleResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveScheduleResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -2012,6 +2025,7 @@ proto.SeppoService.RemoveScheduleResponse.prototype.serializeBinary = function()
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.RemoveScheduleResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveScheduleResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;

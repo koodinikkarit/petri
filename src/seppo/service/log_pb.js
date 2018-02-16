@@ -1,6 +1,8 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
@@ -55,6 +57,7 @@ proto.SeppoService.Log.prototype.toObject = function(opt_includeInstance) {
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.Log} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.Log.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -139,6 +142,7 @@ proto.SeppoService.Log.prototype.serializeBinary = function() {
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.Log} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.Log.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -276,6 +280,7 @@ proto.SeppoService.SearchLogsRequest.prototype.toObject = function(opt_includeIn
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchLogsRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchLogsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -370,6 +375,7 @@ proto.SeppoService.SearchLogsRequest.prototype.serializeBinary = function() {
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchLogsRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchLogsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -558,6 +564,7 @@ proto.SeppoService.SearchLogsResponse.prototype.toObject = function(opt_includeI
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchLogsResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchLogsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -634,6 +641,7 @@ proto.SeppoService.SearchLogsResponse.prototype.serializeBinary = function() {
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchLogsResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchLogsResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -657,8 +665,6 @@ proto.SeppoService.SearchLogsResponse.serializeBinaryToWriter = function(message
 
 /**
  * repeated Log logs = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.Log>}
  */
 proto.SeppoService.SearchLogsResponse.prototype.getLogsList = function() {

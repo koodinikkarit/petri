@@ -1,6 +1,8 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
@@ -63,6 +65,7 @@ proto.SeppoService.SongDatabase.prototype.toObject = function(opt_includeInstanc
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SongDatabase} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SongDatabase.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -142,6 +145,7 @@ proto.SeppoService.SongDatabase.prototype.serializeBinary = function() {
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SongDatabase} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SongDatabase.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -257,6 +261,7 @@ proto.SeppoService.SearchSongDatabasesRequest.prototype.toObject = function(opt_
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchSongDatabasesRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchSongDatabasesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -341,6 +346,7 @@ proto.SeppoService.SearchSongDatabasesRequest.prototype.serializeBinary = functi
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchSongDatabasesRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchSongDatabasesRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -485,6 +491,7 @@ proto.SeppoService.SearchSongDatabasesResponse.prototype.toObject = function(opt
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchSongDatabasesResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchSongDatabasesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -561,6 +568,7 @@ proto.SeppoService.SearchSongDatabasesResponse.prototype.serializeBinary = funct
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchSongDatabasesResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchSongDatabasesResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -584,8 +592,6 @@ proto.SeppoService.SearchSongDatabasesResponse.serializeBinaryToWriter = functio
 
 /**
  * repeated SongDatabase songDatabases = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.SongDatabase>}
  */
 proto.SeppoService.SearchSongDatabasesResponse.prototype.getSongdatabasesList = function() {
@@ -680,10 +686,11 @@ proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.toObject = function(op
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.FetchSongDatabaseByIdRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchSongDatabaseByIdRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    songdatabaseidsList: jspb.Message.getField(msg, 1)
+    songdatabaseidsList: jspb.Message.getRepeatedField(msg, 1)
   };
 
   if (includeInstance) {
@@ -749,6 +756,7 @@ proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.serializeBinary = func
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.FetchSongDatabaseByIdRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchSongDatabaseByIdRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -764,12 +772,10 @@ proto.SeppoService.FetchSongDatabaseByIdRequest.serializeBinaryToWriter = functi
 
 /**
  * repeated uint32 songDatabaseIds = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.FetchSongDatabaseByIdRequest.prototype.getSongdatabaseidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
@@ -843,6 +849,7 @@ proto.SeppoService.FetchSongDatabaseByIdResponse.prototype.toObject = function(o
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.FetchSongDatabaseByIdResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchSongDatabaseByIdResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -914,6 +921,7 @@ proto.SeppoService.FetchSongDatabaseByIdResponse.prototype.serializeBinary = fun
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.FetchSongDatabaseByIdResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchSongDatabaseByIdResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -930,8 +938,6 @@ proto.SeppoService.FetchSongDatabaseByIdResponse.serializeBinaryToWriter = funct
 
 /**
  * repeated SongDatabase songDatabases = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.SongDatabase>}
  */
 proto.SeppoService.FetchSongDatabaseByIdResponse.prototype.getSongdatabasesList = function() {
@@ -1004,6 +1010,7 @@ proto.SeppoService.CreateSongDatabaseRequest.prototype.toObject = function(opt_i
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.CreateSongDatabaseRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateSongDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1073,6 +1080,7 @@ proto.SeppoService.CreateSongDatabaseRequest.prototype.serializeBinary = functio
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.CreateSongDatabaseRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateSongDatabaseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1144,6 +1152,7 @@ proto.SeppoService.CreateSongDatabaseResponse.prototype.toObject = function(opt_
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.CreateSongDatabaseResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateSongDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1214,6 +1223,7 @@ proto.SeppoService.CreateSongDatabaseResponse.prototype.serializeBinary = functi
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.CreateSongDatabaseResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateSongDatabaseResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1308,13 +1318,14 @@ proto.SeppoService.UpdateSongDatabaseRequest.prototype.toObject = function(opt_i
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.UpdateSongDatabaseRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateSongDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     songdatabaseid: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    addtagidsList: jspb.Message.getField(msg, 3),
-    removetagidsList: jspb.Message.getField(msg, 4)
+    addtagidsList: jspb.Message.getRepeatedField(msg, 3),
+    removetagidsList: jspb.Message.getRepeatedField(msg, 4)
   };
 
   if (includeInstance) {
@@ -1392,6 +1403,7 @@ proto.SeppoService.UpdateSongDatabaseRequest.prototype.serializeBinary = functio
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.UpdateSongDatabaseRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateSongDatabaseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1458,12 +1470,10 @@ proto.SeppoService.UpdateSongDatabaseRequest.prototype.setName = function(value)
 
 /**
  * repeated uint32 addTagIds = 3;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.UpdateSongDatabaseRequest.prototype.getAddtagidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 3));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 3));
 };
 
 
@@ -1489,12 +1499,10 @@ proto.SeppoService.UpdateSongDatabaseRequest.prototype.clearAddtagidsList = func
 
 /**
  * repeated uint32 removeTagIds = 4;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.UpdateSongDatabaseRequest.prototype.getRemovetagidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 4));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 4));
 };
 
 
@@ -1561,6 +1569,7 @@ proto.SeppoService.UpdateSongDatabaseResponse.prototype.toObject = function(opt_
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.UpdateSongDatabaseResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateSongDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1636,6 +1645,7 @@ proto.SeppoService.UpdateSongDatabaseResponse.prototype.serializeBinary = functi
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.UpdateSongDatabaseResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateSongDatabaseResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1747,6 +1757,7 @@ proto.SeppoService.RemoveSongDatabaseRequest.prototype.toObject = function(opt_i
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.RemoveSongDatabaseRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveSongDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1816,6 +1827,7 @@ proto.SeppoService.RemoveSongDatabaseRequest.prototype.serializeBinary = functio
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.RemoveSongDatabaseRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveSongDatabaseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1887,6 +1899,7 @@ proto.SeppoService.RemoveSongDatabaseResponse.prototype.toObject = function(opt_
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.RemoveSongDatabaseResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveSongDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1956,6 +1969,7 @@ proto.SeppoService.RemoveSongDatabaseResponse.prototype.serializeBinary = functi
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.RemoveSongDatabaseResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveSongDatabaseResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;

@@ -1,6 +1,8 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
@@ -63,6 +65,7 @@ proto.SeppoService.EwDatabase.prototype.toObject = function(opt_includeInstance)
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.EwDatabase} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.EwDatabase.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -162,6 +165,7 @@ proto.SeppoService.EwDatabase.prototype.serializeBinary = function() {
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.EwDatabase} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.EwDatabase.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -365,6 +369,7 @@ proto.SeppoService.SearchEwDatabasesRequest.prototype.toObject = function(opt_in
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchEwDatabasesRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchEwDatabasesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -444,6 +449,7 @@ proto.SeppoService.SearchEwDatabasesRequest.prototype.serializeBinary = function
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchEwDatabasesRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchEwDatabasesRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -566,6 +572,7 @@ proto.SeppoService.SearchEwDatabasesResponse.prototype.toObject = function(opt_i
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.SearchEwDatabasesResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchEwDatabasesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -642,6 +649,7 @@ proto.SeppoService.SearchEwDatabasesResponse.prototype.serializeBinary = functio
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.SearchEwDatabasesResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.SearchEwDatabasesResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -665,8 +673,6 @@ proto.SeppoService.SearchEwDatabasesResponse.serializeBinaryToWriter = function(
 
 /**
  * repeated EwDatabase ewDatabases = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.EwDatabase>}
  */
 proto.SeppoService.SearchEwDatabasesResponse.prototype.getEwdatabasesList = function() {
@@ -761,10 +767,11 @@ proto.SeppoService.FetchEwDatabaseByIdRequest.prototype.toObject = function(opt_
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.FetchEwDatabaseByIdRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchEwDatabaseByIdRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    ewdatabaseidsList: jspb.Message.getField(msg, 1)
+    ewdatabaseidsList: jspb.Message.getRepeatedField(msg, 1)
   };
 
   if (includeInstance) {
@@ -830,6 +837,7 @@ proto.SeppoService.FetchEwDatabaseByIdRequest.prototype.serializeBinary = functi
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.FetchEwDatabaseByIdRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchEwDatabaseByIdRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -845,12 +853,10 @@ proto.SeppoService.FetchEwDatabaseByIdRequest.serializeBinaryToWriter = function
 
 /**
  * repeated uint32 ewDatabaseIds = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
 proto.SeppoService.FetchEwDatabaseByIdRequest.prototype.getEwdatabaseidsList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getField(this, 1));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
@@ -924,6 +930,7 @@ proto.SeppoService.FetchEwDatabaseByIdResponse.prototype.toObject = function(opt
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.FetchEwDatabaseByIdResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchEwDatabaseByIdResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -995,6 +1002,7 @@ proto.SeppoService.FetchEwDatabaseByIdResponse.prototype.serializeBinary = funct
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.FetchEwDatabaseByIdResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.FetchEwDatabaseByIdResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1011,8 +1019,6 @@ proto.SeppoService.FetchEwDatabaseByIdResponse.serializeBinaryToWriter = functio
 
 /**
  * repeated EwDatabase ewDatabases = 1;
- * If you change this array by adding, removing or replacing elements, or if you
- * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<!proto.SeppoService.EwDatabase>}
  */
 proto.SeppoService.FetchEwDatabaseByIdResponse.prototype.getEwdatabasesList = function() {
@@ -1085,6 +1091,7 @@ proto.SeppoService.CreateEwDatabaseRequest.prototype.toObject = function(opt_inc
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.CreateEwDatabaseRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateEwDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1159,6 +1166,7 @@ proto.SeppoService.CreateEwDatabaseRequest.prototype.serializeBinary = function(
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.CreateEwDatabaseRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateEwDatabaseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1252,6 +1260,7 @@ proto.SeppoService.CreateEwDatabaseResponse.prototype.toObject = function(opt_in
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.CreateEwDatabaseResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateEwDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1322,6 +1331,7 @@ proto.SeppoService.CreateEwDatabaseResponse.prototype.serializeBinary = function
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.CreateEwDatabaseResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.CreateEwDatabaseResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1409,6 +1419,7 @@ proto.SeppoService.UpdateEwDatabaseRequest.prototype.toObject = function(opt_inc
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.UpdateEwDatabaseRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateEwDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1503,6 +1514,7 @@ proto.SeppoService.UpdateEwDatabaseRequest.prototype.serializeBinary = function(
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.UpdateEwDatabaseRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateEwDatabaseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1684,6 +1696,7 @@ proto.SeppoService.UpdateEwDatabaseResponse.prototype.toObject = function(opt_in
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.UpdateEwDatabaseResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateEwDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1759,6 +1772,7 @@ proto.SeppoService.UpdateEwDatabaseResponse.prototype.serializeBinary = function
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.UpdateEwDatabaseResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.UpdateEwDatabaseResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -1870,6 +1884,7 @@ proto.SeppoService.RemoveEwDatabaseRequest.prototype.toObject = function(opt_inc
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.RemoveEwDatabaseRequest} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveEwDatabaseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -1939,6 +1954,7 @@ proto.SeppoService.RemoveEwDatabaseRequest.prototype.serializeBinary = function(
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.RemoveEwDatabaseRequest} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveEwDatabaseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
@@ -2010,6 +2026,7 @@ proto.SeppoService.RemoveEwDatabaseResponse.prototype.toObject = function(opt_in
  *     http://goto/soy-param-migration
  * @param {!proto.SeppoService.RemoveEwDatabaseResponse} msg The msg instance to transform.
  * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveEwDatabaseResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
@@ -2079,6 +2096,7 @@ proto.SeppoService.RemoveEwDatabaseResponse.prototype.serializeBinary = function
  * format), writing to the given BinaryWriter.
  * @param {!proto.SeppoService.RemoveEwDatabaseResponse} message
  * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.SeppoService.RemoveEwDatabaseResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
