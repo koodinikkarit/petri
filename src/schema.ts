@@ -1,9 +1,12 @@
-import { mergeSchemas } from "graphql-tools";
+import { makeExecutableSchema } from "graphql-tools";
+import { readdirSync, readFileSync } from "fs";
+import { join } from "path";
 
-import seppo from "./seppo";
+import { resolvers } from "./resolvers";
 
-export default mergeSchemas({
-	schemas: [seppo]
+import { typeDefs } from "./schemadef";
+
+export const schema = makeExecutableSchema({
+	typeDefs,
+	resolvers
 });
-
-// export const context = sepp;

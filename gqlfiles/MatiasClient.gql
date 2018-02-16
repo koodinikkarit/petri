@@ -1,0 +1,18 @@
+type MatiasClient {
+	id: ID
+	name: String
+	hostName: String
+	key: String
+	accepted: Boolean
+	ewDatabases: [EwDatabase]
+}
+
+type MatiasClientsConnection {
+	totalCount: Int
+	matiasClients: [MatiasClient]
+}
+
+type UpdateMatiasClientResponse {
+	success: Boolean
+	matiasClient: MatiasClient
+}

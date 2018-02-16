@@ -1,0 +1,5 @@
+type Schedule {
+	id: ID
+	name: String
+	variations: [Variation]
+}

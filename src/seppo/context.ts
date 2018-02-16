@@ -23,7 +23,8 @@ import {
 	UpdateSongDatabaseResponse,
 	RemoveSongDatabaseRequest,
 	CreateEwDatabaseRequest,
-	SearchEwDatabasesRequest
+	SearchEwDatabasesRequest,
+	UpdateEwDatabaseRequest
 } from "seppo-client-js";
 
 import {
@@ -34,7 +35,8 @@ import {
 	EwDatabaseType,
 	SongDatabaseType,
 	UpdateSongDatabaseResponseType,
-	SongDatabasesConnectionType
+	SongDatabasesConnectionType,
+	IVariationsConnection
 } from "./types";
 import {
 	newVariation,
@@ -69,32 +71,46 @@ export default class Seppo {
 			this.client.createVariation(req, (err, res) => {
 				if (err) {
 					reject(err);
+				} else {
+					resolve(
+						res.getVariation()
+							? newVariation(res.getVariation())
+							: null
+					);
 				}
-				resolve(
-					res.getVariation() ? newVariation(res.getVariation()) : null
-				);
 			});
 		});
 	}
 
-	async updateVariation({ variationId, name, text, languageId }) {
+	updateVariation(args: {
+		variationId: number;
+		name: string;
+		text: string;
+		languageId: number;
+		addSongDatabaseIds: number[];
+		removeSongDatabaseIds: number[];
+	}) {
 		return new Promise((resolve, reject) => {
+			console.log("update varioations", args);
 			let req = new UpdateVariationRequest();
-			req.setVariationid(variationId);
-			req.setName(name);
-			req.setText(text);
-			req.setLanguageid(languageId);
+			req.setVariationid(args.variationId);
+			req.setName(args.name);
+			req.setText(args.text);
+			req.setLanguageid(args.languageId);
+			req.setAddsongdatabaseidsList(args.addSongDatabaseIds);
+			req.setRemovesongdatabaseidsList(args.removeSongDatabaseIds);
 
 			this.client.updateVariation(req, (err, res) => {
 				if (err) {
 					reject(err);
+				} else {
+					resolve({
+						success: res.getSuccess(),
+						variation: res.getVariation()
+							? newVariation(res.getVariation())
+							: null
+					});
 				}
-				resolve({
-					success: res.getSuccess(),
-					variation: res.getVariation()
-						? newVariation(res.getVariation())
-						: null
-				});
 			});
 		});
 	}
@@ -115,43 +131,39 @@ export default class Seppo {
 		});
 	}
 
-	searchVariations({
-		searchWord,
-		songDatabaseId,
-		tagId,
-		languageId,
-		offset,
-		limit
-	}: {
-		searchWord: string;
-		songDatabaseId: number;
-		tagId: number;
-		languageId: number;
-		offset: number;
-		limit: number;
-	}): Promise<VariationType[]> {
+	searchVariations(args: {
+		searchWord?: string;
+		songDatabaseId?: number;
+		tagId?: number;
+		languageId?: number;
+		offset?: number;
+		limit?: number;
+	}): Promise<IVariationsConnection> {
 		return new Promise((resolve, reject) => {
 			let request = new SearchVariationsRequest();
-			request.setSearchword(searchWord);
-			request.setSongdatabaseid(songDatabaseId);
-			request.setTagid(tagId);
-			request.setLanguageid(languageId);
-			request.setOffset(offset);
-			request.setLimit(limit);
+			if (args.searchWord) request.setSearchword(args.searchWord);
+			if (args.songDatabaseId)
+				request.setSongdatabaseid(args.songDatabaseId);
+			if (args.tagId) request.setTagid(args.tagId);
+			if (args.languageId) request.setLanguageid(args.languageId);
+			if (args.offset) request.setOffset(args.offset);
+			if (args.limit) request.setLimit(args.limit);
 
 			this.client.searchVariations(request, (err, res) => {
 				if (err) {
 					reject(err);
+				} else {
+					resolve({
+						totalCount: res.getMaxvariations(),
+						variations: res.getVariationsList().map(p => ({
+							id: p.getId(),
+							authorId: p.getAuthorid(),
+							copyrightId: p.getCopyrightid(),
+							languageId: p.getLanguageid(),
+							songId: p.getSongid()
+						}))
+					});
 				}
-				resolve(
-					res.getVariationsList().map(p => ({
-						id: p.getId(),
-						authorId: p.getAuthorid(),
-						copyrightId: p.getCopyrightid(),
-						languageId: p.getLanguageid(),
-						songId: p.getSongid()
-					}))
-				);
 			});
 		});
 	}
@@ -170,15 +182,18 @@ export default class Seppo {
 							(err, res) => {
 								if (err) {
 									reject(err);
+								} else {
+									resolve(
+										res
+											.getVariationversionsList()
+											.map(p => ({
+												id: p.getId(),
+												name: p.getName(),
+												text: p.getText(),
+												version: p.getVersion()
+											}))
+									);
 								}
-								resolve(
-									res.getVariationversionsList().map(p => ({
-										id: p.getId(),
-										name: p.getName(),
-										text: p.getText(),
-										version: p.getVersion()
-									}))
-								);
 							}
 						);
 					})
@@ -197,14 +212,13 @@ export default class Seppo {
 						this.client.fetchVariationById(request, (err, res) => {
 							if (err) {
 								reject(err);
+							} else {
+								resolve(
+									res
+										.getVariationsList()
+										.map(p => newVariation(p))
+								);
 							}
-							res.getVariationsList().map(p => ({
-								id: p.getId(),
-								authorId: p.getAuthorid(),
-								copyrightId: p.getCopyrightid(),
-								languageId: p.getLanguageid(),
-								songId: p.getSongid()
-							}));
 						});
 					})
 			);
@@ -237,9 +251,18 @@ export default class Seppo {
 		return this.songDatabaseLoader.load(songDatabaseId);
 	}
 
-	searchSongDatabases(): Promise<SongDatabasesConnectionType> {
+	searchSongDatabases(args: {
+		limit?: number;
+		offset?: number;
+		searchWord?: string;
+		variationId?: number;
+	}): Promise<SongDatabasesConnectionType> {
 		return new Promise((resolve, reject) => {
 			let req = new SearchSongDatabasesRequest();
+			req.setLimit(args.limit);
+			req.setOffset(args.offset);
+			req.setSearchword(args.searchWord);
+			req.setVariationid(args.variationId);
 
 			this.client.searchSongDatabases(req, (err, res) => {
 				if (err) {
@@ -251,10 +274,10 @@ export default class Seppo {
 		});
 	}
 
-	createSongDatabase({ name }: { name: string }): Promise<SongDatabaseType> {
+	createSongDatabase(args: { name: string }): Promise<SongDatabaseType> {
 		return new Promise((resolve, reject) => {
 			let req = new CreateSongDatabaseRequest();
-			req.setName(name);
+			req.setName(args.name);
 
 			this.client.createSongDatabase(req, (err, res) => {
 				if (err) {
@@ -315,12 +338,13 @@ export default class Seppo {
 						this.client.fetchMatiasClient(request, (err, res) => {
 							if (err) {
 								reject(err);
+							} else {
+								resolve(
+									res
+										.getMatiasclientsList()
+										.map(p => newMatiasClient(p))
+								);
 							}
-							resolve(
-								res
-									.getMatiasclientsList()
-									.map(p => newMatiasClient(p))
-							);
 						});
 					})
 			);
@@ -407,11 +431,12 @@ export default class Seppo {
 			this.client.updateMatiasClient(req, (err, res) => {
 				if (err) {
 					reject(err);
+				} else {
+					resolve({
+						success: res.getSuccess(),
+						matiasClient: newMatiasClient(res.getMatiasclient())
+					});
 				}
-				resolve({
-					success: res.getSuccess(),
-					matiasClient: newMatiasClient(res.getMatiasclient())
-				});
 			});
 		});
 	}
@@ -463,6 +488,18 @@ export default class Seppo {
 					resolve(newEwDatabase(res.getEwdatabase()));
 				}
 			});
+		});
+	}
+	updateEwDatabase(args: {
+		ewDatabaseId: number;
+		name: string;
+		accepted: boolean;
+	}) {
+		return new Promise((resolve, reject) => {
+			let req = new UpdateEwDatabaseRequest();
+			req.setEwdatabaseid(args.ewDatabaseId);
+			req.setName(args.name);
+			req.setAccepted(args.accepted);
 		});
 	}
 }

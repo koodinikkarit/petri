@@ -4,7 +4,7 @@ import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as session from "express-session";
 
-import schema from "./schema";
+import { schema } from "./schema";
 import Context from "./Context";
 
 const app = express();

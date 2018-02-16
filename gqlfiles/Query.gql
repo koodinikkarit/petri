@@ -1,0 +1,28 @@
+type Query {
+	variation(variationId: ID): Variation
+	searchVariations(
+		searchWord: String
+		songDatabaseId: ID
+		tagId: ID
+		languageId: ID
+		offset: Int
+		limit: Int
+	): VariationsConnection
+	newVariationVersion: VariationVersion
+	songDatabase: SongDatabase
+	searchSongDatabases(
+		offset: Int
+		limit: Int
+		searchWord: String
+		variationId: ID
+	): SongDatabasesConnection
+	matiasClient(matiasClientId: ID): MatiasClient
+	searchMatiasClients: MatiasClientsConnection
+	ewDatabase(ewDatabaseId: ID): EwDatabase
+	searchEwDatabases(
+		offset: Int
+		limit: Int
+		songDatabaseId: ID
+		matiasClientId: ID
+	): EwDatabasesConnection
+}

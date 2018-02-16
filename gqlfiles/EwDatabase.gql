@@ -1,0 +1,22 @@
+type EwDatabase {
+	id: ID
+	name: String
+	matiasClientId: ID
+	matiasClient: MatiasClient
+	filesystemPath: String
+	songDatabaseId: ID
+	songDatabase: SongDatabase
+	removeSongsFromEwDatabase: Int
+	removeSongsFromSongDatabase: Int
+	variationVersionConflictAction: Int
+}
+
+type EwDatabasesConnection {
+	totalCount: Int
+	ewDatabases: [EwDatabase]
+}
+
+type UpdateEwDatabaseResponse {
+	success: Boolean
+	ewDatabase: EwDatabase
+}

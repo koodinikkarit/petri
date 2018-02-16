@@ -8,6 +8,11 @@ export type VariationType = {
 	songId: number;
 };
 
+export type IVariationsConnection = {
+	totalCount: number;
+	variations: VariationType[];
+};
+
 export type VariationVersion = {
 	id: number;
 	name: string;
