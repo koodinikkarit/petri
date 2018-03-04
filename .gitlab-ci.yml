@@ -11,7 +11,7 @@ Build-petri-image:
   stage: Build
   script:
     - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
-    - docker build -t jaska/joona-frontend:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA -f dockerfiles/frontend/Dockerfile .
+    - docker build -t jaska/joona-frontend:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA .
     - docker push jaska/joona-frontend
 
 Deploy-production:
