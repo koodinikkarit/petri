@@ -1,9 +1,26 @@
-// import { makeExecutableSchema } from "graphql-tools";
+import { introspectSchema, makeRemoteExecutableSchema } from "graphql-tools";
+import { ApolloLink } from "apollo-link";
+import { onError } from "apollo-link-error";
+import { HttpLink, createHttpLink } from "apollo-link-http";
+import fetch from "node-fetch";
+import { seppoIp, seppoPort } from "../config";
 
-// import typeDefs from "./typeDef";
-// import resolvers from "./resolvers";
+export const getSeppoExecutableSchema = async () => {
+	const httpLink = createHttpLink({
+		uri: `http://${seppoIp}:${seppoPort}/graphql`,
+		fetch
+	});
 
-// export default makeExecutableSchema({
-// 	typeDefs,
-// 	resolvers
-// });
+	const errorLink = onError(({ graphQLErrors, networkError }) => {});
+
+	const link = ApolloLink.from([httpLink, errorLink]);
+
+	const schema = await introspectSchema(link);
+
+	const executableSchema = makeRemoteExecutableSchema({
+		schema,
+		link
+	});
+
+	return executableSchema;
+};

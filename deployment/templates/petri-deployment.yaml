@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: petri
+  labels:
+    app: petri
+spec:
+  template:
+    metadata:
+      labels:
+        app: petri
+    spec:
+      containers:
+        - name: petri
+          image: "{{ .Values.petriImage }}"
+          ports:
+            - containerPort: 80
