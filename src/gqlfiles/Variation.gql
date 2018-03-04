@@ -1,0 +1,44 @@
+type Variation {
+	id: ID
+	songId: ID
+	song: Song
+	languageId: ID
+	language: Language
+	authorId: ID
+	author: Author
+	copyrightId: ID
+	copyright: Copyright
+	name: String
+	version: Int
+	text: String
+	songDatabasesConnection(offset: Int, limit: Int): SongDatabasesConnection
+}
+
+input UpdateVariationInputType {
+	variationId: ID
+	name: String
+	text: String
+	languageId: ID
+	addSongDatabaseIds: [ID]
+	removeSongDatabaseIds: [ID]
+}
+
+type VariationVersion {
+	id: ID
+	name: String
+	text: String
+	version: Int
+	createdAt: String
+	disabledAt: String
+	variation: Variation
+}
+
+type VariationsConnection {
+	totalCount: Int
+	variations: [Variation]
+}
+
+type UpdateVariationResponse {
+	variation: Variation
+	success: Boolean
+}

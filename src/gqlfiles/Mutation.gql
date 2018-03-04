@@ -1,0 +1,27 @@
+type Mutation {
+	createVariation(name: String, text: String): Variation
+	updateVariation(params: UpdateVariationInputType): UpdateVariationResponse
+	removeVariation(variationId: ID): Boolean
+	createSongDatabase(name: String): SongDatabase
+	updateSongDatabase(
+		songDatabaseId: ID
+		name: String
+	): UpdateSongDatabaseResponse
+	removeSongDatabase(songDatabaseId: ID): Boolean
+	updateMatiasClient(
+		matiasClientId: ID
+		name: String
+		accepted: Boolean
+	): UpdateMatiasClientResponse
+	createEwDatabase(
+		name: String
+		filesystemPath: String
+		songDatabaseId: ID
+		matiasClientId: ID
+	): EwDatabase
+	updateEwDatabase(
+		ewDatabaseId: ID
+		name: String
+		accepted: Boolean
+	): UpdateEwDatabaseResponse
+}

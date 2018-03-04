@@ -1,0 +1,4 @@
+type Copyright {
+	id: ID
+	name: String
+}

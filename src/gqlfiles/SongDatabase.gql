@@ -1,0 +1,16 @@
+type SongDatabase {
+	id: ID
+	name: String
+	variations: [Variation]
+	tags: [Tag]
+}
+
+type SongDatabasesConnection {
+	totalCount: Int
+	songDatabases: [SongDatabase]
+}
+
+type UpdateSongDatabaseResponse {
+	success: Boolean
+	songDatabase: SongDatabase
+}

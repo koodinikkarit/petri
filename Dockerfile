@@ -1,28 +1,16 @@
-FROM node
-WORKDIR /usr/src/petri
+FROM node:9.7.1-stretch as builder
+WORKDIR /usr/src/
 ADD package.json ./package.json
+ADD package-lock.json ./package-lock.json
+ADD tsconfig.json tsconfig.json
+ADD combineGraphqlSchema.js combineGraphqlSchema.js
+COPY src src
 RUN npm install
-ADD webpack.config.js ./webpack.config.js
-COPY .babelrc .
-COPY src ./src
+RUN npm run build-schemadef
+RUN npm run build
 
-# FROM grpc/node:0.11-onbuild
-# WORKDIR /usr/src/petri
-
-# ADD package.json /tmp/package.json
-
-# RUN cd /tmp && npm install
-# RUN cp -ar /tmp/node_modules /usr/src/petri/
-
-# COPY src ./src
-
-# ADD package.json ./package.json
-# ADD webpack.config.js ./webpack.config.js
-# COPY .babelrc .
-# COPY ./ssl ./ssl
-
-CMD ["npm", "start"]
-
-EXPOSE 9595
-
-
+FROM node:9.7.1-alpine
+ADD package.json ./package.json
+COPY --from=builder /usr/src/node_modules /usr/src/node_modules
+COPY --from=builder /usr/src/dist /usr/src/dist
+CMD ["npm", "run", "app"]
