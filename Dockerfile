@@ -10,7 +10,9 @@ RUN npm run build-schemadef
 RUN npm run build
 
 FROM node:9.7.1-alpine
+WORKDIR /usr/src
 ADD package.json ./package.json
-COPY --from=builder /usr/src/node_modules /usr/src/node_modules
-COPY --from=builder /usr/src/dist /usr/src/dist
+COPY --from=builder /usr/src/node_modules node_modules
+COPY --from=builder /usr/src/dist dist
+RUN ls dist
 CMD ["npm", "run", "app"]
