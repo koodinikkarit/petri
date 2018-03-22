@@ -1,0 +1,14 @@
+type User {
+	id: ID
+	userName: String
+}
+
+type LoginResponse {
+	user: User
+	success: Boolean
+}
+
+type CreateAdminAccountResponse {
+	user: User
+	success: Boolean
+}

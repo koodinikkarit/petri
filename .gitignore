@@ -5,3 +5,5 @@ npm-debug.log*
 dist/*
 config.env
 src/schema.ts
+src/schemadef.ts
+schema.gql

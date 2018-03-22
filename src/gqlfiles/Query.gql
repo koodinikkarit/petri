@@ -25,4 +25,6 @@ type Query {
 		songDatabaseId: ID
 		matiasClientId: ID
 	): EwDatabasesConnection
+	hasAdminAccount: Boolean
+	viewer: Viewer
 }

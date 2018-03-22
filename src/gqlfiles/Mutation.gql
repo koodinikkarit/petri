@@ -24,4 +24,11 @@ type Mutation {
 		name: String
 		accepted: Boolean
 	): UpdateEwDatabaseResponse
+	login(
+		userName: String
+		password: String
+		rememberMe: Boolean
+		token: String
+	): LoginResponse
+	createAdminAccount(password: String): CreateAdminAccountResponse
 }

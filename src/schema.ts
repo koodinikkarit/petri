@@ -1,20 +1,10 @@
-import {
-	makeExecutableSchema,
-	makeRemoteExecutableSchema,
-	mergeSchemas
-} from "graphql-tools";
-import { HttpLink } from "apollo-link-http";
-import { BatchHttpLink } from "apollo-link-batch-http";
+import { makeExecutableSchema } from "graphql-tools";
 
 import { typeDefs } from "./schemadef";
-import { getSeppoExecutableSchema } from "./seppo";
 
-export const getSchema = async () => {
-	try {
-		return mergeSchemas({
-			schemas: [await getSeppoExecutableSchema()]
-		});
-	} catch (e) {
-		console.log("getSchema failed", e);
-	}
-};
+import { resolvers } from "./resolvers";
+
+export const schema = makeExecutableSchema({
+	typeDefs,
+	resolvers
+});

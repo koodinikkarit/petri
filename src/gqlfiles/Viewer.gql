@@ -1,0 +1,5 @@
+type Viewer {
+	token: String
+	user: User
+	hasAdminUser: Boolean
+}

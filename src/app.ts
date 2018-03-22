@@ -4,7 +4,8 @@ import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as session from "express-session";
 
-import { getSchema } from "./schema";
+import { schema } from "./schema";
+import { Context } from "./context";
 
 export const Main = async () => {
 	const app = express();
@@ -38,12 +39,16 @@ export const Main = async () => {
 		})
 	);
 
-	const seppoSchema = await getSchema();
-
 	app.use("/", async (req, res, next) => {
+		console.log("session", req.session);
+
 		try {
 			graphqlExpress({
-				schema: seppoSchema
+				schema: schema,
+				context: new Context({
+					token: "qwertyu",
+					req
+				})
 			})(req, res, next);
 		} catch (e) {
 			console.log("graphq serve error", e);
