@@ -22,7 +22,7 @@ export const Mutation = {
 	},
 	login: async (root, args: LoginMutationArgs, context: Context) => {
 		const res = await ristoClient.createToken({
-			username: args.userName,
+			username: args.username,
 			password: args.password,
 			rememberMe: args.rememberMe || false
 		});
@@ -33,9 +33,9 @@ export const Mutation = {
 			case CreateTokenResponseState.PASSWORD_WRONG:
 				break;
 			case CreateTokenResponseState.TOKEN_CREATED:
-				console.log("token created", res.token);
 				success = true;
 				context.setToken(res.token);
+				context.setUser(res.user);
 				break;
 			case CreateTokenResponseState.USER_NOT_FOUND:
 				break;

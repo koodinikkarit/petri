@@ -40,13 +40,10 @@ export const Main = async () => {
 	);
 
 	app.use("/", async (req, res, next) => {
-		console.log("session", req.session);
-
 		try {
 			graphqlExpress({
 				schema: schema,
 				context: new Context({
-					token: "qwertyu",
 					req
 				})
 			})(req, res, next);

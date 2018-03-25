@@ -25,10 +25,10 @@ type Mutation {
 		accepted: Boolean
 	): UpdateEwDatabaseResponse
 	login(
-		userName: String
+		username: String
 		password: String
 		rememberMe: Boolean
 		token: String
 	): LoginResponse
-	createAdminAccount(password: String): CreateAdminAccountResponse
+	createAdminAccount(password: String!): CreateAdminAccountResponse
 }

@@ -14,5 +14,8 @@ export const Viewer = {
 	hasAdminUser: async (root, args, context: Context) => {
 		const res = await ristoClient.hasAdminAccount();
 		return res.hasAdminAccount;
+	},
+	user: async (root, args, context: Context) => {
+		return context.getUser();
 	}
 };

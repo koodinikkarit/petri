@@ -1,22 +1,26 @@
 import { Request } from "express";
 
 export class Context {
-	private token: string;
 	private req: Request;
 
-	constructor(args: { token: string; req?: Request }) {
-		this.token = args.token;
+	constructor(args: { req?: Request }) {
 		this.req = args.req;
 	}
 
 	public setToken(token: string) {
-		this.token = token;
 		this.req.session.token = token;
 	}
 
-	public getToken() {
-		return this.token;
+	public setUser(user) {
+		this.req.session.user = user;
+		console.log("setUset", user, this.req.session);
 	}
 
-	public setUser(user) {}
+	public getToken() {
+		return this.req.session.token;
+	}
+
+	public getUser() {
+		return this.req.session.user;
+	}
 }
