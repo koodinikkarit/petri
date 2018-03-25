@@ -46,5 +46,17 @@ export const Mutation = {
 			user: res.user,
 			token: res.token
 		};
+	},
+	logout: async (root, args, context: Context) => {
+		if (context.getUser()) {
+			context.clearToken();
+			context.clearUser();
+			return {
+				success: true
+			};
+		}
+		return {
+			success: false
+		};
 	}
 };

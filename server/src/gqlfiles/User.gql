@@ -8,6 +8,10 @@ type LoginResponse {
 	success: Boolean
 }
 
+type LogoutResponse {
+	success: Boolean
+}
+
 type CreateAdminAccountResponse {
 	user: User
 	success: Boolean

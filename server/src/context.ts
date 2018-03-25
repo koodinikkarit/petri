@@ -16,6 +16,14 @@ export class Context {
 		console.log("setUset", user, this.req.session);
 	}
 
+	public clearToken() {
+		this.req.session.token = null;
+	}
+
+	public clearUser() {
+		this.req.session.user = null;
+	}
+
 	public getToken() {
 		return this.req.session.token;
 	}

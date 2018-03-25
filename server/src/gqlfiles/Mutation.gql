@@ -30,5 +30,6 @@ type Mutation {
 		rememberMe: Boolean
 		token: String
 	): LoginResponse
+	logout: LogoutResponse
 	createAdminAccount(password: String!): CreateAdminAccountResponse
 }
