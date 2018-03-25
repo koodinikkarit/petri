@@ -1,0 +1,40 @@
+{
+	"name": "petri-client",
+	"version": "0.0.13",
+	"description": "",
+	"main": "index.js",
+	"files": [
+		"lib",
+		"index.js",
+		"index.d.ts",
+		"schema.json"
+	],
+	"scripts": {
+		"build": "tsc --declaration -p tsconfig.json",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepublish": "npm run build && npm run build-json-schema && npm run bump-patch",
+		"bump-patch": "npm version --no-git-tag-version patch",
+		"bump-minor": "npm version --no-git-tag-version minor",
+		"bump-major": "npm version --no-git-tag-version major",
+		"build-json-schema": "npm --prefix ../server/ run build-json-schema && node copyJsonSchema.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@types/node": "^9.4.7",
+		"apollo-link-http": "^1.5.3",
+		"apollo-client": "^2.2.7",
+		"apollo-link": "^1.2.1",
+		"apollo-link-batch-http": "^1.2.1",
+		"apollo-link-ws": "^1.0.7",
+		"graphql-tag": "^2.8.0",
+		"apollo-cache-inmemory": "^1.1.11",
+		"apollo-fetch": "^0.7.0",
+		"graphql": "^0.13.2",
+		"subscriptions-transport-ws": "^0.9.7"
+	},
+	"devDependencies": {
+		"typescript": "^2.7.2",
+		"prettier": "^1.11.1"
+	}
+}
