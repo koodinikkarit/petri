@@ -17,13 +17,19 @@ export const createPetriClient = (args: {
 	const isHttps = protocol.includes("https:");
 	const wsProtocol = isHttps ? "wss" : "ws";
 
-	const graphqlAddress = `${protocol}//${args.graphqlHost}:${
-		args.graphqlPort
+	const graphqlAddress = `${protocol}//${args.graphqlHost}${
+		args.graphqlPort && !isNaN(args.graphqlPort)
+			? `:${args.graphqlPort}`
+			: ""
 	}/graphql`;
 
 	const subscriptionsAddress = `${wsProtocol}//${
 		args.graphqlSubscriptionsHost
-	}:${args.graphqlSubscriptionsPort}/subscriptions`;
+	}${
+		args.graphqlPort && !isNaN(args.graphqlPort)
+			? `:${args.graphqlSubscriptionsPort}`
+			: ""
+	}/subscriptions`;
 
 	const cache = new InMemoryCache();
 
