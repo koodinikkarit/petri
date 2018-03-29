@@ -6,6 +6,7 @@ import * as session from "express-session";
 
 import { schema } from "./schema";
 import { Context } from "./context";
+import { httpPort } from "./config";
 
 export const Main = async () => {
 	const app = express();
@@ -52,7 +53,7 @@ export const Main = async () => {
 		}
 	});
 
-	app.listen(process.env.HTTP_PORT, () => {
+	app.listen(httpPort, () => {
 		console.log("Server http port " + process.env.HTTP_PORT);
 	});
 };
