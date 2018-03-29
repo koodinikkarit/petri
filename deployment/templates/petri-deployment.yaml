@@ -15,3 +15,12 @@ spec:
           image: "{{ .Values.petriImage }}"
           ports:
             - containerPort: 80
+          env:
+            - name: SEPPO_IP
+              value: seppo-service
+            - name: SEPPO_PORT
+              value: 80
+            - name: RISTO_IP
+              value: risto-service
+            - name: RISTO_PORT
+              value: 80
