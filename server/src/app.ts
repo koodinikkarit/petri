@@ -54,7 +54,7 @@ export const Main = async () => {
 	});
 
 	app.listen(httpPort, () => {
-		console.log("Server http port " + process.env.HTTP_PORT);
+		console.log("Server http port " + httpPort);
 	});
 };
 
