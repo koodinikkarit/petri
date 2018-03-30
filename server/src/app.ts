@@ -42,6 +42,7 @@ export const Main = async () => {
 
 	app.use("/", async (req, res, next) => {
 		try {
+			console.log("session is", req.session);
 			graphqlExpress({
 				schema: schema,
 				context: new Context({
