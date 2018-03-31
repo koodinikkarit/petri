@@ -4,7 +4,11 @@ import { ApolloLink, split } from "apollo-link";
 import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 import { createApolloFetch } from "apollo-fetch";
-import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
+import {
+	InMemoryCache,
+	NormalizedCacheObject,
+	defaultDataIdFromObject
+} from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 
 export const createPetriClient = (args: {
@@ -31,7 +35,16 @@ export const createPetriClient = (args: {
 			: ""
 	}/subscriptions`;
 
-	const cache = new InMemoryCache();
+	const cache = new InMemoryCache({
+		dataIdFromObject: (o: any) => {
+			switch (o.__typename) {
+				case "Viewer":
+					return "viewer";
+				default:
+					return defaultDataIdFromObject(o);
+			}
+		}
+	});
 
 	const httpLink = createHttpLink({
 		uri: graphqlAddress,
