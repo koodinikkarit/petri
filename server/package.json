@@ -8,17 +8,20 @@
 	"scripts": {
 		"start": "env-cmd ./config.env ts-node-dev --respawn src/app.ts",
 		"app": "node ./dist/app.js",
-		"watch": "env-cmd ./config.env babel-watch ./src/app.js",
+		"watch": "tsc -w -p tsconfig.json",
 		"build": "tsc -p tsconfig.json",
 		"test": "jest",
 		"test-changed": "jest -o",
 		"clean": "rimraf ./node_modules",
-		"build-schemadef": "node combineGraphqlSchema.js && graphql-to-typescript schema.gql src/schemadef.ts",
-		"build-json-schema": "node combineGraphqlSchema.js && apollo-codegen introspect-schema schema.gql --output schema.json",
+		"build-schemadef":
+			"node combineGraphqlSchema.js && graphql-to-typescript schema.gql src/schemadef.ts",
+		"build-json-schema":
+			"node combineGraphqlSchema.js && apollo-codegen introspect-schema schema.gql --output schema.json",
 		"bump-patch": "grunt bump:patch",
 		"bump-minor": "grunt bump:minor",
 		"bump-major": "grunt bump:major",
-		"build-graphql-typescript-types": "graphql-to-typescript gqlfiles/* src/schemadef.ts"
+		"build-graphql-typescript-types":
+			"graphql-to-typescript gqlfiles/* src/schemadef.ts"
 	},
 	"dependencies": {
 		"apollo-link": "^1.2.1",

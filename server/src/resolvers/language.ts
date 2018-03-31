@@ -3,7 +3,7 @@ import {
 	SearchLanguagesQueryArgs,
 	CreateLanguageMutationArgs
 } from "../schemadef";
-import { seppoClient } from "../seppo";
+import { getSeppoClient } from "../seppo";
 import { logger } from "../logger";
 
 export const Query = {
@@ -13,6 +13,7 @@ export const Query = {
 		context: Context
 	) => {
 		try {
+			const seppoClient = getSeppoClient();
 			const res = await seppoClient.searchLanguages({
 				searchWord: args.searchWord
 			});
@@ -41,6 +42,7 @@ export const Mutation = {
 		context: Context
 	) => {
 		try {
+			const seppoClient = getSeppoClient();
 			const res = await seppoClient.createLanguage({
 				name: args.name
 			});
