@@ -44,7 +44,8 @@ export const Mutation = {
 		return {
 			success,
 			user: res.user,
-			token: res.token
+			token: res.token,
+			viewer: {}
 		};
 	},
 	logout: async (root, args, context: Context) => {
@@ -52,7 +53,8 @@ export const Mutation = {
 			context.clearToken();
 			context.clearUser();
 			return {
-				success: true
+				success: true,
+				viewer: {}
 			};
 		}
 		return {

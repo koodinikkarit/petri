@@ -6,10 +6,12 @@ type User {
 type LoginResponse {
 	user: User
 	success: Boolean
+	viewer: Viewer
 }
 
 type LogoutResponse {
 	success: Boolean
+	viewer: Viewer
 }
 
 type CreateAdminAccountResponse {
