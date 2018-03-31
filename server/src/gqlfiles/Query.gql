@@ -28,4 +28,5 @@ type Query {
 	hasAdminAccount: Boolean
 	viewer: Viewer
 	searchTags(searchWord: String): TagsConnection
+	searchLanguages(searchWord: String): LanguagesConnection
 }

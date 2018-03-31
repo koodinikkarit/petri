@@ -2,3 +2,13 @@ type Language {
 	id: ID
 	name: String
 }
+
+type LanguagesConnection {
+	languages: [Language]
+	totalCount: Int
+}
+
+type CreateLanguageResponse {
+	success: Boolean
+	language: Language
+}

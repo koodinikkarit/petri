@@ -27,7 +27,7 @@ export const Main = async () => {
 			resave: false,
 			saveUninitialized: false,
 			cookie: {
-				maxAge: 600000,
+				maxAge: 60000000,
 				secure: false
 			}
 		})
