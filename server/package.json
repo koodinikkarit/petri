@@ -40,7 +40,9 @@
 		"apollo-link-batch-http": "^1.2.0",
 		"apollo-link-error": "^1.0.7",
 		"jsonwebtoken": "^8.2.0",
-		"risto-client-js": "^0.0.24"
+		"risto-client-js": "^0.0.24",
+		"seppo-client-js": "^0.0.23",
+		"winston": "^2.4.1"
 	},
 	"devDependencies": {
 		"@types/cors": "2.8.3",
@@ -50,6 +52,7 @@
 		"@types/graphql": "^0.11.7",
 		"@types/lodash": "^4.14.105",
 		"@types/jsonwebtoken": "^7.2.6",
+		"@types/winston": "^2.3.8",
 		"@playlyfe/gql": "^2.4.0",
 		"grunt": "^1.0.1",
 		"grunt-bump": "^0.8.0",

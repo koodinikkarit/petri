@@ -27,4 +27,5 @@ type Query {
 	): EwDatabasesConnection
 	hasAdminAccount: Boolean
 	viewer: Viewer
+	searchTags(searchWord: String): TagsConnection
 }

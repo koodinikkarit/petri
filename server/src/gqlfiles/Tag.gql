@@ -3,3 +3,13 @@ type Tag {
 	name: String
 	variations: [Variation]
 }
+
+type TagsConnection {
+	tags: [Tag]
+	totalCount: Int
+}
+
+type CreateTagResponse {
+	success: Boolean
+	tag: Tag
+}
