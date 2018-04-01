@@ -35,4 +35,5 @@ type Mutation {
 	createTag(name: String!): CreateTagResponse
 	createLanguage(name: String!): CreateLanguageResponse
 	createAuthor(name: String!): CreateAuthorResponse
+	createCopyright(name: String!): CreateCopyrightResponse
 }

@@ -2,3 +2,13 @@ type Copyright {
 	id: ID
 	name: String
 }
+
+type CopyrightsConnection {
+	totalCount: Int
+	copyrights: [Copyright]
+}
+
+type CreateCopyrightResponse {
+	success: Boolean
+	copyright: Copyright
+}
