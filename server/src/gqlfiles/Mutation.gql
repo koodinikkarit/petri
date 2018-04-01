@@ -34,4 +34,5 @@ type Mutation {
 	createAdminAccount(password: String!): CreateAdminAccountResponse
 	createTag(name: String!): CreateTagResponse
 	createLanguage(name: String!): CreateLanguageResponse
+	createAuthor(name: String!): CreateAuthorResponse
 }

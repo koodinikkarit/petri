@@ -2,3 +2,13 @@ type Author {
 	id: ID
 	name: String
 }
+
+type AuthorsConnection {
+	totalCount: Int
+	authors: [Author]
+}
+
+type CreateAuthorResponse {
+	success: Boolean
+	author: Author
+}

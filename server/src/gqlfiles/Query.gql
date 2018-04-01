@@ -29,4 +29,5 @@ type Query {
 	viewer: Viewer
 	searchTags(searchWord: String): TagsConnection
 	searchLanguages(searchWord: String): LanguagesConnection
+	searchAuthors(searchWord: String): AuthorsConnection
 }
