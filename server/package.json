@@ -41,8 +41,8 @@
 		"apollo-link-batch-http": "^1.2.0",
 		"apollo-link-error": "^1.0.7",
 		"jsonwebtoken": "^8.2.0",
-		"risto-client-js": "^0.0.56",
-		"seppo-client-js": "^0.0.73",
+		"risto-client-js": "^0.0.58",
+		"seppo-client-js": "^0.0.75",
 		"winston": "^2.4.1"
 	},
 	"devDependencies": {
