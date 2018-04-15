@@ -4,7 +4,9 @@ import {
 	CreateVariationMutationArgs,
 	VariationQueryArgs,
 	AddTagToVariationMutationArgs,
-	RemoveTagFromVariationMutationArgs
+	RemoveTagFromVariationMutationArgs,
+	UpdateVariationInputType,
+	UpdateVariationMutationArgs
 } from "../schemadef";
 import { getSeppoClient } from "../seppo";
 import { Variation as VariationType } from "seppo-client-js";
@@ -56,6 +58,24 @@ export const Mutation = {
 
 		return res.variation;
 	},
+	updateVariation: async (
+		root,
+		args: UpdateVariationMutationArgs,
+		context: Context
+	) => {
+		const variationId = parseInt(args.params.variationId, 10);
+
+		const res = await context.seppo.updateVariation({
+			variationId,
+			name: args.params.name,
+			text: args.params.text
+		});
+
+		return {
+			success: res.success,
+			variation: res.variation
+		};
+	},
 	addTagToVariation: async (
 		root,
 		args: AddTagToVariationMutationArgs,
@@ -100,21 +120,25 @@ export const Variation = {
 			root.id
 		);
 
-		return newestVariationVersion.name;
+		if (newestVariationVersion) {
+			return newestVariationVersion.name;
+		}
 	},
 	text: async (root: VariationType, args, context: Context) => {
 		const newestVariationVersion = await context.seppo.fetchNewestVariationVersion(
 			root.id
 		);
-
-		return newestVariationVersion.text;
+		if (newestVariationVersion) {
+			return newestVariationVersion.text;
+		}
 	},
 	version: async (root: VariationType, args, context: Context) => {
 		const newestVariationVersion = await context.seppo.fetchNewestVariationVersion(
 			root.id
 		);
-
-		return newestVariationVersion.version;
+		if (newestVariationVersion) {
+			return newestVariationVersion.version;
+		}
 	},
 	author: async (root: VariationType, args, context: Context) => {
 		const author = await context.seppo.fetchAuthor(root.authorId);
