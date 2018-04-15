@@ -9,6 +9,11 @@ type TagsConnection {
 	totalCount: Int
 }
 
+type VariationTagsConnection {
+	totalCount: Int
+	tags: [Tag]
+}
+
 type CreateTagResponse {
 	success: Boolean
 	tag: Tag

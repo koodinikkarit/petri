@@ -36,4 +36,6 @@ type Mutation {
 	createLanguage(name: String!): CreateLanguageResponse
 	createAuthor(name: String!): CreateAuthorResponse
 	createCopyright(name: String!): CreateCopyrightResponse
+	addTagToVariation(variationId: ID!, tagId: ID!): Boolean
+	removeTagFromVariation(variationId: ID!, tagId: ID!): Boolean
 }

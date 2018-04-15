@@ -2,10 +2,13 @@ import { Context } from "../context";
 import {
 	SearchVariationsQueryArgs,
 	CreateVariationMutationArgs,
-	VariationQueryArgs
+	VariationQueryArgs,
+	AddTagToVariationMutationArgs,
+	RemoveTagFromVariationMutationArgs
 } from "../schemadef";
 import { getSeppoClient } from "../seppo";
 import { Variation as VariationType } from "seppo-client-js";
+import { ParseOptions } from "graphql";
 
 export const Query = {
 	variation: async (root, args: VariationQueryArgs, context: Context) => {
@@ -52,6 +55,42 @@ export const Mutation = {
 		console.log("createVariation res", res);
 
 		return res.variation;
+	},
+	addTagToVariation: async (
+		root,
+		args: AddTagToVariationMutationArgs,
+		context: Context
+	) => {
+		const variationId = parseInt(args.variationId, 10);
+		const tagId = parseInt(args.tagId, 10);
+
+		const res = await context.seppo.updateVariation({
+			variationId: variationId,
+			addTagIds: [tagId]
+		});
+
+		if (res.success) {
+			return true;
+		}
+		return false;
+	},
+	removeTagFromVariation: async (
+		root,
+		args: RemoveTagFromVariationMutationArgs,
+		context: Context
+	) => {
+		const variationId = parseInt(args.variationId, 10);
+		const tagId = parseInt(args.tagId, 10);
+
+		const res = await context.seppo.updateVariation({
+			variationId: variationId,
+			removeTagIds: [tagId]
+		});
+
+		if (res.success) {
+			return true;
+		}
+		return false;
 	}
 };
 
@@ -76,5 +115,10 @@ export const Variation = {
 		);
 
 		return newestVariationVersion.version;
+	},
+	author: async (root: VariationType, args, context: Context) => {
+		const author = await context.seppo.fetchAuthor(root.authorId);
+
+		return author;
 	}
 };

@@ -1,4 +1,9 @@
-import { CreateTagMutationArgs, SearchTagsQueryArgs } from "../schemadef";
+import {
+	CreateTagMutationArgs,
+	SearchTagsQueryArgs,
+	VariationTagsQueryArgs,
+	VariationTagsConnection
+} from "../schemadef";
 import { Context } from "../context";
 import { getSeppoClient } from "../seppo";
 import { logger } from "../logger";
@@ -25,6 +30,22 @@ export const Query = {
 				tags: []
 			};
 		}
+	},
+	variationTags: async (
+		root,
+		args: VariationTagsQueryArgs,
+		context: Context
+	) => {
+		const variationId = parseInt(args.variationId, 10);
+
+		const res = await context.seppo.searchTags({
+			variationId
+		});
+
+		return {
+			totalCount: res.maxTags,
+			tags: res.tags
+		};
 	}
 };
 

@@ -31,4 +31,5 @@ type Query {
 	searchLanguages(searchWord: String): LanguagesConnection
 	searchAuthors(searchWord: String): AuthorsConnection
 	searchCopyrights(searchWord: String): CopyrightsConnection
+	variationTags(variationId: ID!): VariationTagsConnection
 }
