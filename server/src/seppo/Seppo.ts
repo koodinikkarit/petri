@@ -40,7 +40,7 @@ export class Seppo extends SeppoClient implements ISeppo {
 				);
 
 				return keys.map(p =>
-					res.variationVersions.find(e => e.id === p)
+					res.variationVersions.find(e => e.variationId === p)
 				);
 			});
 		}
@@ -58,5 +58,6 @@ export class Seppo extends SeppoClient implements ISeppo {
 				return keys.map(p => res.authors.find(e => e.id === p));
 			});
 		}
+		return this.authorLoader.load(authorId);
 	}
 }
