@@ -29,7 +29,7 @@ export const Query = {
 			tagId: parseInt(args.tagId, 10),
 			languageId: parseInt(args.languageId, 10),
 			offset: args.offset,
-			limit: args.limit
+			limit: args.limit || 100
 		});
 
 		return {
