@@ -1,10 +1,13 @@
 import * as grpc from "grpc";
 
-import { SeppoClient } from "seppo-client-js";
+import { Seppo } from "seppo-client-js";
 import { seppoIp, seppoPort } from "../config";
 
 export const getSeppoClient = () =>
-	new SeppoClient({
+	new Seppo({
 		ip: seppoIp,
 		port: seppoPort
 	});
+
+export * from "./ISeppo";
+export * from "./Seppo";

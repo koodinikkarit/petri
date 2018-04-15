@@ -6,7 +6,9 @@ import * as session from "express-session";
 
 import { schema } from "./schema";
 import { Context } from "./context";
-import { httpPort } from "./config";
+import { httpPort, seppoIp, seppoPort, ristoIp, ristoPort } from "./config";
+import { Seppo } from "./seppo";
+import { Risto } from "./risto/Risto";
 
 export const Main = async () => {
 	const app = express();
@@ -43,10 +45,23 @@ export const Main = async () => {
 	app.use("/", async (req, res, next) => {
 		try {
 			console.log("session is", req.session);
+
+			const seppo = new Seppo({
+				ip: seppoIp,
+				port: seppoPort
+			});
+
+			const risto = new Risto({
+				ip: ristoIp,
+				port: ristoPort
+			});
+
 			graphqlExpress({
 				schema: schema,
 				context: new Context({
-					req
+					req,
+					seppo,
+					risto
 				})
 			})(req, res, next);
 		} catch (e) {

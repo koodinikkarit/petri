@@ -36,6 +36,7 @@ export const Mutation = {
 			case CreateTokenResponseState.PASSWORD_WRONG:
 				break;
 			case CreateTokenResponseState.TOKEN_CREATED:
+				console.log("token created");
 				success = true;
 				context.setToken(res.token);
 				context.setUser(res.user);

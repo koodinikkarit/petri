@@ -1,10 +1,10 @@
 import * as grpc from "grpc";
 
-import { RistoClient } from "risto-client-js";
+import { Risto } from "risto-client-js";
 import { ristoIp, ristoPort } from "../config";
 
 export const getRistoClient = () =>
-	new RistoClient({
+	new Risto({
 		ip: ristoIp,
 		port: ristoPort
 	});

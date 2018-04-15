@@ -1,10 +1,24 @@
 import { Request } from "express";
+import { ISeppo } from "./seppo/ISeppo";
+import { IRisto } from "./risto/IRisto";
 
 export class Context {
 	private req: Request;
+	private _seppo: ISeppo;
+	private _risto: IRisto;
 
-	constructor(args: { req?: Request }) {
+	constructor(args: { req?: Request; seppo?: ISeppo; risto?: IRisto }) {
 		this.req = args.req;
+		this._seppo = args.seppo;
+		this._risto = args.risto;
+	}
+
+	get seppo() {
+		return this._seppo;
+	}
+
+	get risto() {
+		return this._risto;
 	}
 
 	public setToken(token: string) {
