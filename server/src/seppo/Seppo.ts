@@ -16,48 +16,58 @@ export class Seppo extends SeppoClient implements ISeppo {
 		super(args);
 	}
 
-	fetchVariationWithLoader(variationId: number) {
-		if (!this.variationLoader) {
-			this.variationLoader = new DataLoader(async keys => {
-				const res = await this.fetchVariationById({
-					variationIds: keys
+	fetchVariation(variationId: number) {
+		if (variationId) {
+			if (!this.variationLoader) {
+				this.variationLoader = new DataLoader(async keys => {
+					const res = await this.fetchVariationById({
+						variationIds: keys
+					});
+
+					return keys.map(p => res.variations.find(e => e.id === p));
 				});
+			}
 
-				return keys.map(p => res.variations.find(e => e.id === p));
-			});
+			return this.variationLoader.load(variationId);
 		}
-
-		return this.variationLoader.load(variationId);
 	}
 
 	fetchNewestVariationVersion(variationId: number) {
-		if (!this.newestVariationVersionLoader) {
-			this.newestVariationVersionLoader = new DataLoader(async keys => {
-				const res = await this.fetchNewestVariationVersionByVariationId(
-					{
-						variationIds: keys
+		if (variationId > 0) {
+			if (!this.newestVariationVersionLoader) {
+				this.newestVariationVersionLoader = new DataLoader(
+					async keys => {
+						const res = await this.fetchNewestVariationVersionByVariationId(
+							{
+								variationIds: keys
+							}
+						);
+
+						return keys.map(p =>
+							res.variationVersions.find(e => e.variationId === p)
+						);
 					}
 				);
+			}
 
-				return keys.map(p =>
-					res.variationVersions.find(e => e.variationId === p)
-				);
-			});
+			return this.newestVariationVersionLoader.load(variationId);
 		}
-
-		return this.newestVariationVersionLoader.load(variationId);
 	}
 
 	fetchAuthor(authorId: number) {
-		if (!this.authorLoader) {
-			this.authorLoader = new DataLoader(async keys => {
-				const res = await this.fetchAuthorById({
-					authorIds: keys
-				});
+		if (authorId > 0) {
+			if (!this.authorLoader) {
+				this.authorLoader = new DataLoader(async keys => {
+					const res = await this.fetchAuthorById({
+						authorIds: keys
+					});
 
-				return keys.map(p => res.authors.find(e => e.id === p));
-			});
+					console.log("keys", keys);
+
+					return keys.map(p => res.authors.find(e => e.id === p));
+				});
+			}
+			return this.authorLoader.load(authorId);
 		}
-		return this.authorLoader.load(authorId);
 	}
 }

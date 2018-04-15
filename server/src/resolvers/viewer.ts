@@ -13,7 +13,7 @@ export const Viewer = {
 	},
 	hasAdminUser: async (root, args, context: Context) => {
 		const ristoClient = getRistoClient();
-		const res = await ristoClient.hasAdminAccount();
+		const res = await ristoClient.hasAdminAccount({});
 		return res.hasAdminAccount;
 	},
 	user: async (root, args, context: Context) => {

@@ -9,7 +9,7 @@ import { Context } from "../context";
 export const Query = {
 	hasAdminAccount: async (root, args) => {
 		const ristoClient = getRistoClient();
-		const hasAdminAccountRes = await ristoClient.hasAdminAccount();
+		const hasAdminAccountRes = await ristoClient.hasAdminAccount({});
 		return hasAdminAccountRes.hasAdminAccount;
 	}
 };

@@ -14,9 +14,7 @@ import { ParseOptions } from "graphql";
 
 export const Query = {
 	variation: async (root, args: VariationQueryArgs, context: Context) => {
-		return context.seppo.fetchVariationWithLoader(
-			parseInt(args.variationId, 10)
-		);
+		return context.seppo.fetchVariation(parseInt(args.variationId, 10));
 	},
 	searchVariations: async (
 		root,
