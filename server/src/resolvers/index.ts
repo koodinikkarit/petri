@@ -7,6 +7,7 @@ import * as language from "./language";
 import * as author from "./author";
 import * as copyright from "./copyright";
 import * as variation from "./variation";
+import * as songdatabase from "./songdatabase";
 
 export const resolvers = merge(
 	user,
@@ -15,5 +16,6 @@ export const resolvers = merge(
 	language,
 	author,
 	copyright,
-	variation
+	variation,
+	songdatabase
 );
