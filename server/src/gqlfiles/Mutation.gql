@@ -38,4 +38,9 @@ type Mutation {
 	createCopyright(name: String!): CreateCopyrightResponse
 	addTagToVariation(variationId: ID!, tagId: ID!): Boolean
 	removeTagFromVariation(variationId: ID!, tagId: ID!): Boolean
+	addVariationToSongDatabase(songDatabaseId: ID!, variationId: ID!): Boolean
+	removeVariationFromSongDatabase(
+		songDatabaseId: ID!
+		variationId: ID!
+	): Boolean
 }

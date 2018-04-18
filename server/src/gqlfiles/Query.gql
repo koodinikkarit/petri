@@ -10,6 +10,9 @@ type Query {
 	): VariationsConnection
 	newVariationVersion: VariationVersion
 	songDatabase(songDatabaseId: ID!): SongDatabase
+	songDatabaseVariations(
+		songDatabaseId: ID!
+	): SongDatabaseVariationsConnection
 	searchSongDatabases(
 		offset: Int
 		limit: Int
