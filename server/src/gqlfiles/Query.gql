@@ -38,4 +38,5 @@ type Query {
 	searchAuthors(searchWord: String): AuthorsConnection
 	searchCopyrights(searchWord: String): CopyrightsConnection
 	variationTags(variationId: ID!): VariationTagsConnection
+	variationSongDatabases(variationId: ID!): VariationSongDatabasesConnection
 }
