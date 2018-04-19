@@ -19,7 +19,9 @@ export const Query = {
 		return res;
 	},
 	searchSongDatabases: async (root, args, context: Context) => {
-		const res = await context.seppo.searchSongDatabases({});
+		const res = await context.seppo.searchSongDatabases({
+			limit: 100
+		});
 
 		return {
 			totalCount: res.maxSongDatabases,

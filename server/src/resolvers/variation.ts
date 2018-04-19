@@ -6,7 +6,8 @@ import {
 	AddTagToVariationMutationArgs,
 	RemoveTagFromVariationMutationArgs,
 	UpdateVariationInputType,
-	UpdateVariationMutationArgs
+	UpdateVariationMutationArgs,
+	VariationsNotInSongDatabaseQueryArgs
 } from "../schemadef";
 import { getSeppoClient } from "../seppo";
 import { Variation as VariationType } from "seppo-client-js";
@@ -30,6 +31,22 @@ export const Query = {
 			languageId: parseInt(args.languageId, 10),
 			offset: args.offset,
 			limit: args.limit || 100
+		});
+
+		return {
+			totalCount: res.maxVariations,
+			variations: res.variations
+		};
+	},
+	variationsNotInSongDatabase: async (
+		root,
+		args: VariationsNotInSongDatabaseQueryArgs,
+		context: Context
+	) => {
+		const songDatabaseId = parseInt(args.songDatabaseId, 10);
+
+		const res = await context.seppo.searchVariations({
+			songDatabaseFilterId: 1
 		});
 
 		return {

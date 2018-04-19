@@ -43,6 +43,11 @@ type SongDatabaseVariationsConnection {
 	variations: [Variation]
 }
 
+type VariationsNotInSongDatabaseConnection {
+	totalCount: Int
+	variations: [Variation]
+}
+
 type UpdateVariationResponse {
 	variation: Variation
 	success: Boolean
