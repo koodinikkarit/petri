@@ -11,11 +11,16 @@ import {
 } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 
+import { withClientState } from "apollo-link-state";
+
 export const createPetriClient = (args: {
 	graphqlHost: string;
 	graphqlPort: number;
 	graphqlSubscriptionsHost: string;
 	graphqlSubscriptionsPort: number;
+	resolvers?: any;
+	defaults?: any;
+	typeDefs?: string | string[];
 }) => {
 	const protocol = window.location.protocol;
 	const isHttps = protocol.includes("https:");
@@ -46,6 +51,17 @@ export const createPetriClient = (args: {
 		}
 	});
 
+	const stateLink = withClientState({
+		cache,
+		resolvers: {
+			...args.resolvers
+		},
+		defaults: {
+			...args.defaults
+		},
+		typeDefs: args.typeDefs
+	});
+
 	const httpLink = createHttpLink({
 		uri: graphqlAddress,
 		credentials: "include"
@@ -68,7 +84,7 @@ export const createPetriClient = (args: {
 			);
 		},
 		wsLink,
-		ApolloLink.from([httpLink])
+		ApolloLink.from([stateLink, httpLink])
 	);
 
 	return new ApolloClient({

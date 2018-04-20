@@ -1,6 +1,6 @@
 {
 	"name": "petri-client",
-	"version": "0.0.28",
+	"version": "0.0.31",
 	"description": "",
 	"main": "index.js",
 	"files": [
@@ -26,6 +26,7 @@
 		"apollo-client": "^2.2.7",
 		"apollo-link": "^1.2.1",
 		"apollo-link-batch-http": "^1.2.1",
+		"apollo-link-state": "^0.4.1",
 		"apollo-link-ws": "^1.0.7",
 		"graphql-tag": "^2.8.0",
 		"apollo-cache-inmemory": "^1.1.11",
