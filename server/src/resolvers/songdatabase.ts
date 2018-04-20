@@ -3,7 +3,8 @@ import {
 	SongDatabaseQueryArgs,
 	SongDatabaseVariationsQueryArgs,
 	AddVariationToSongDatabaseMutationArgs,
-	RemoveVariationFromSongDatabaseMutationArgs
+	RemoveVariationFromSongDatabaseMutationArgs,
+	CreateSongDatabaseMutationArgs
 } from "../schemadef";
 
 export const Query = {
@@ -48,6 +49,17 @@ export const Query = {
 };
 
 export const Mutation = {
+	createSongDatabase: async (
+		root,
+		args: CreateSongDatabaseMutationArgs,
+		context: Context
+	) => {
+		const res = await context.seppo.createSongDatabase({
+			name: args.name
+		});
+
+		return res.songDatabase;
+	},
 	addVariationToSongDatabase: async (
 		root,
 		args: AddVariationToSongDatabaseMutationArgs,
