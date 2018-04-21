@@ -12,3 +12,8 @@ type CreateLanguageResponse {
 	success: Boolean
 	language: Language
 }
+
+type LanguageVariationsConnection {
+	totalCount: Int
+	variations: [Variation]
+}

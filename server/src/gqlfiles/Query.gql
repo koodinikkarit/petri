@@ -41,4 +41,6 @@ type Query {
 	variationSongDatabases(variationId: ID!): VariationSongDatabasesConnection
 	tagVariations(tagId: ID!): TagVariationsConnection
 	tag(tagId: ID!): Tag
+	language(languageId: ID!): Language
+	languageVariations(languageId: ID!): LanguageVariationsConnection
 }

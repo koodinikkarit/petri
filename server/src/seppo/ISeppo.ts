@@ -4,7 +4,8 @@ import {
 	VariationVersion,
 	Author,
 	SongDatabase,
-	Tag
+	Tag,
+	Language
 } from "seppo-client-js";
 
 export interface ISeppo extends SeppoClient {
@@ -13,4 +14,5 @@ export interface ISeppo extends SeppoClient {
 	fetchAuthor(authorId: number): Promise<Author>;
 	fetchSongDatabase(songDatabaseId: number): Promise<SongDatabase>;
 	fetchTag(tagId: number): Promise<Tag>;
+	fetchLanguage(languageId: number): Promise<Language>;
 }

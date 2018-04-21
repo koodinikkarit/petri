@@ -5,7 +5,8 @@ import {
 	VariationVersion,
 	Author,
 	SongDatabase,
-	Tag
+	Tag,
+	Language
 } from "seppo-client-js";
 import { ISeppo } from "./ISeppo";
 
@@ -15,6 +16,7 @@ export class Seppo extends SeppoClient implements ISeppo {
 	private newestVariationVersionLoader: DataLoader<number, VariationVersion>;
 	private songDatabaseLoader: DataLoader<number, SongDatabase>;
 	private tagLoader: DataLoader<number, Tag>;
+	private languageLoader: DataLoader<number, Language>;
 
 	constructor(args: { ip: string; port: number }) {
 		super(args);
@@ -103,7 +105,24 @@ export class Seppo extends SeppoClient implements ISeppo {
 					return keys.map(p => res.tags.find(e => e.id === p));
 				});
 			}
+			return this.tagLoader.load(tagId);
 		}
-		return this.tagLoader.load(tagId);
+	}
+
+	async fetchLanguage(languageId: number) {
+		if (languageId) {
+			if (!this.languageLoader) {
+				console.log("lanaugelodaer", languageId);
+				this.languageLoader = new DataLoader(async keys => {
+					console.log("keys", keys);
+					const res = await this.fetchLanguageById({
+						languageIds: keys
+					});
+
+					return keys.map(p => res.languages.find(e => e.id === p));
+				});
+			}
+			return this.languageLoader.load(languageId);
+		}
 	}
 }
