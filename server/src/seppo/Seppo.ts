@@ -4,7 +4,8 @@ import {
 	Variation,
 	VariationVersion,
 	Author,
-	SongDatabase
+	SongDatabase,
+	Tag
 } from "seppo-client-js";
 import { ISeppo } from "./ISeppo";
 
@@ -13,6 +14,7 @@ export class Seppo extends SeppoClient implements ISeppo {
 	private authorLoader: DataLoader<number, Author>;
 	private newestVariationVersionLoader: DataLoader<number, VariationVersion>;
 	private songDatabaseLoader: DataLoader<number, SongDatabase>;
+	private tagLoader: DataLoader<number, Tag>;
 
 	constructor(args: { ip: string; port: number }) {
 		super(args);
@@ -88,5 +90,20 @@ export class Seppo extends SeppoClient implements ISeppo {
 			}
 			return this.songDatabaseLoader.load(songDatabaseId);
 		}
+	}
+
+	async fetchTag(tagId: number) {
+		if (tagId) {
+			if (!this.tagLoader) {
+				this.tagLoader = new DataLoader(async keys => {
+					const res = await this.fetchTagById({
+						tagIds: keys
+					});
+
+					return keys.map(p => res.tags.find(e => e.id === p));
+				});
+			}
+		}
+		return this.tagLoader.load(tagId);
 	}
 }
