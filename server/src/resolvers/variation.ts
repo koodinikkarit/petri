@@ -96,11 +96,15 @@ export const Mutation = {
 		context: Context
 	) => {
 		const variationId = parseInt(args.params.variationId, 10);
+		const languageId = parseInt(args.params.languageId, 10);
+		const authorId = parseInt(args.params.authorId, 10);
 
 		const res = await context.seppo.updateVariation({
 			variationId,
 			name: args.params.name,
-			text: args.params.text
+			text: args.params.text,
+			languageId,
+			authorId
 		});
 
 		return {

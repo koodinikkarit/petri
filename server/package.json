@@ -42,7 +42,7 @@
 		"apollo-link-error": "^1.0.7",
 		"jsonwebtoken": "^8.2.0",
 		"risto-client-js": "^0.0.58",
-		"seppo-client-js": "^0.0.75",
+		"seppo-client-js": "^0.0.76",
 		"winston": "^2.4.1"
 	},
 	"devDependencies": {

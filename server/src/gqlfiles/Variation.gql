@@ -19,6 +19,7 @@ input UpdateVariationInputType {
 	name: String
 	text: String
 	languageId: ID
+	authorId: ID
 	addSongDatabaseIds: [ID]
 	removeSongDatabaseIds: [ID]
 }
