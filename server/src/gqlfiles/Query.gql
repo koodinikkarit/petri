@@ -43,4 +43,6 @@ type Query {
 	tag(tagId: ID!): Tag
 	language(languageId: ID!): Language
 	languageVariations(languageId: ID!): LanguageVariationsConnection
+	author(authorId: ID!): Author
+	authorVariations(authorId: ID!): AuthorVariationsConnection
 }

@@ -1,9 +1,32 @@
 import { Context } from "../context";
-import { SearchAuthorsQueryArgs, CreateAuthorMutationArgs } from "../schemadef";
+import {
+	SearchAuthorsQueryArgs,
+	CreateAuthorMutationArgs,
+	AuthorQueryArgs
+} from "../schemadef";
 import { getSeppoClient } from "../seppo";
 import { logger } from "../logger";
 
 export const Query = {
+	author: async (root, args: AuthorQueryArgs, context: Context) => {
+		const authorId = parseInt(args.authorId, 10);
+
+		const res = await context.seppo.fetchAuthor(authorId);
+
+		return res;
+	},
+	authorVariations: async (root, args, context: Context) => {
+		const authorId = parseInt(args.authorId, 10);
+
+		const res = await context.seppo.searchVariations({
+			authorId
+		});
+
+		return {
+			totalCount: res.maxVariations,
+			variations: res.variations
+		};
+	},
 	searchAuthors: async (
 		root,
 		args: SearchAuthorsQueryArgs,

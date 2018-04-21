@@ -15,4 +15,5 @@ export interface ISeppo extends SeppoClient {
 	fetchSongDatabase(songDatabaseId: number): Promise<SongDatabase>;
 	fetchTag(tagId: number): Promise<Tag>;
 	fetchLanguage(languageId: number): Promise<Language>;
+	fetchAuthor(authorId: number): Promise<Author>;
 }

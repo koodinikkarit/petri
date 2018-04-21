@@ -12,3 +12,8 @@ type CreateAuthorResponse {
 	success: Boolean
 	author: Author
 }
+
+type AuthorVariationsConnection {
+	totalCount: Int
+	variations: [Variation]
+}
