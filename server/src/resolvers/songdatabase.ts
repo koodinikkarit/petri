@@ -4,7 +4,9 @@ import {
 	SongDatabaseVariationsQueryArgs,
 	AddVariationToSongDatabaseMutationArgs,
 	RemoveVariationFromSongDatabaseMutationArgs,
-	CreateSongDatabaseMutationArgs
+	CreateSongDatabaseMutationArgs,
+	SongDatabaseTagsQueryArgs,
+	AddTagToSongDatabaseMutationArgs
 } from "../schemadef";
 
 export const Query = {
@@ -44,6 +46,22 @@ export const Query = {
 		return {
 			totalCount: res.maxVariations,
 			variations: res.variations
+		};
+	},
+	songDatabaseTags: async (
+		root,
+		args: SongDatabaseTagsQueryArgs,
+		context: Context
+	) => {
+		const songDatabaseId = parseInt(args.songDatabaseId, 10);
+
+		const res = await context.seppo.searchTags({
+			songDatabaseId: songDatabaseId
+		});
+
+		return {
+			totalCount: res.maxTags,
+			tags: res.tags
 		};
 	}
 };
@@ -86,6 +104,32 @@ export const Mutation = {
 		const res = await context.seppo.updateVariation({
 			variationId: variationId,
 			removeSongDatabaseIds: [songDatabaseId]
+		});
+
+		return res.success;
+	},
+	addTagToSongDatabase: async (
+		root,
+		args: AddTagToSongDatabaseMutationArgs,
+		context: Context
+	) => {
+		const songDatabaseId = parseInt(args.songDatabaseId);
+		const tagId = parseInt(args.tagId, 10);
+
+		const res = await context.seppo.updateSongDatabase({
+			songDatabaseId: songDatabaseId,
+			addTagIds: [tagId]
+		});
+
+		return res.success;
+	},
+	removeTagFromSongDatabase: async (root, args, context: Context) => {
+		const songDatabaseId = parseInt(args.songDatabaseId);
+		const tagId = parseInt(args.tagId, 10);
+
+		const res = await context.seppo.updateSongDatabase({
+			songDatabaseId: songDatabaseId,
+			removeTagIds: [tagId]
 		});
 
 		return res.success;

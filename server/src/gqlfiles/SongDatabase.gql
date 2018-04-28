@@ -10,6 +10,11 @@ type SongDatabasesConnection {
 	songDatabases: [SongDatabase]
 }
 
+type SongDatabaseTagsConnection {
+	totalCount: Int
+	tags: [Tag]
+}
+
 type UpdateSongDatabaseResponse {
 	success: Boolean
 	songDatabase: SongDatabase

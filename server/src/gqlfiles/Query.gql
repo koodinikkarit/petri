@@ -45,4 +45,5 @@ type Query {
 	languageVariations(languageId: ID!): LanguageVariationsConnection
 	author(authorId: ID!): Author
 	authorVariations(authorId: ID!): AuthorVariationsConnection
+	songDatabaseTags(songDatabaseId: ID!): SongDatabaseTagsConnection
 }

@@ -43,4 +43,6 @@ type Mutation {
 		songDatabaseId: ID!
 		variationId: ID!
 	): Boolean
+	addTagToSongDatabase(songDatabaseId: ID!, tagId: ID!): Boolean
+	removeTagFromSongDatabase(songDatabaseId: ID!, tagId: ID!): Boolean
 }
