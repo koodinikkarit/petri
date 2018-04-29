@@ -6,7 +6,8 @@ import {
 	Author,
 	SongDatabase,
 	Tag,
-	Language
+	Language,
+	EwDatabase
 } from "seppo-client-js";
 import { ISeppo } from "./ISeppo";
 
@@ -17,6 +18,7 @@ export class Seppo extends SeppoClient implements ISeppo {
 	private songDatabaseLoader: DataLoader<number, SongDatabase>;
 	private tagLoader: DataLoader<number, Tag>;
 	private languageLoader: DataLoader<number, Language>;
+	private ewDatabaseLoader: DataLoader<number, EwDatabase>;
 
 	constructor(args: { ip: string; port: number }) {
 		super(args);
@@ -123,6 +125,23 @@ export class Seppo extends SeppoClient implements ISeppo {
 				});
 			}
 			return this.languageLoader.load(languageId);
+		}
+	}
+
+	async fetchEwDatabase(ewDatabaseId: number) {
+		if (ewDatabaseId) {
+			if (!this.ewDatabaseLoader) {
+				this.ewDatabaseLoader = new DataLoader(async keys => {
+					const res = await this.fetchEwDatabaseById({
+						ewDatabaseIds: keys
+					});
+
+					console.log("loaderres", res);
+
+					return keys.map(p => res.ewDatabases.find(e => e.id === p));
+				});
+			}
+			return this.ewDatabaseLoader.load(ewDatabaseId);
 		}
 	}
 }
