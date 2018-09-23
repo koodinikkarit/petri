@@ -19,7 +19,7 @@ export const Main = async () => {
 	app.use(
 		"/graphiql",
 		graphiqlExpress({
-			endpointURL: "/"
+			endpointURL: "/graphql"
 		})
 	);
 
