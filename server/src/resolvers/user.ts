@@ -1,10 +1,12 @@
 import {
+	CreateAccountMutationArgs,
 	CreateAdminAccountMutationArgs,
 	LoginMutationArgs
 } from "../schemadef";
-import { getRistoClient } from "../risto";
-import { CreateTokenResponseState } from "risto-client-js";
+
 import { Context } from "../context";
+import { CreateTokenResponseState } from "risto-client-js";
+import { getRistoClient } from "../risto";
 
 export const Query = {
 	hasAdminAccount: async (root, args) => {
@@ -15,6 +17,19 @@ export const Query = {
 };
 
 export const Mutation = {
+	createAccount: async (
+		root,
+		args: CreateAccountMutationArgs,
+		context: Context
+	) => {
+		const ristoClient = getRistoClient();
+		const res = await ristoClient.createUser({
+			username: args.username,
+			password: args.password
+		});
+
+		return res;
+	},
 	createAdminAccount: async (root, args: CreateAdminAccountMutationArgs) => {
 		const ristoClient = getRistoClient();
 		const res = await ristoClient.createAdminAccount({
